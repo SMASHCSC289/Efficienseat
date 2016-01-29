@@ -1,0 +1,25 @@
+\\svwvmp290\vs_share\Dan's Projects\UI_Design\UI_Design\bin\Debug\UI_Design.exe.config
+\\svwvmp290\vs_share\Dan's Projects\UI_Design\UI_Design\bin\Debug\UI_Design.exe
+\\svwvmp290\vs_share\Dan's Projects\UI_Design\UI_Design\bin\Debug\UI_Design.pdb
+\\svwvmp290\vs_share\Dan's Projects\UI_Design\UI_Design\obj\Debug\UI_Design.csprojResolveAssemblyReference.cache
+\\svwvmp290\vs_share\Dan's Projects\UI_Design\UI_Design\obj\Debug\UI_Design.StartupForm.resources
+\\svwvmp290\vs_share\Dan's Projects\UI_Design\UI_Design\obj\Debug\UI_Design.Properties.Resources.resources
+\\svwvmp290\vs_share\Dan's Projects\UI_Design\UI_Design\obj\Debug\UI_Design.csproj.GenerateResource.Cache
+\\svwvmp290\vs_share\Dan's Projects\UI_Design\UI_Design\obj\Debug\UI_Design.exe
+\\svwvmp290\vs_share\Dan's Projects\UI_Design\UI_Design\obj\Debug\UI_Design.pdb
+\\svwvmp290\vs_share\Dan's Projects\UI_Design\UI_Design\obj\Debug\UI_Design.Attendee_List.resources
+\\svwvmp290\vs_share\Dan's Projects\UI_Design\UI_Design\obj\Debug\UI_Design.DataEntryForm.resources
+\\svwvmp290\vs_share\Dan's Projects\UI_Design\UI_Design\obj\Debug\UI_Design.TableAssignments.resources
+C:\Users\dstab\Downloads\UI_Design\UI_Design\UI_Design\bin\Debug\UI_Design.exe.config
+C:\Users\dstab\Downloads\UI_Design\UI_Design\UI_Design\obj\Debug\UI_Design.exe
+C:\Users\dstab\Downloads\UI_Design\UI_Design\UI_Design\obj\Debug\UI_Design.pdb
+C:\Users\dstab\Downloads\UI_Design\UI_Design\UI_Design\bin\Debug\UI_Design.exe
+C:\Users\dstab\Downloads\UI_Design\UI_Design\UI_Design\bin\Debug\UI_Design.pdb
+C:\Users\dstab\Downloads\UI_Design\UI_Design\UI_Design\obj\Debug\UI_Design.csprojResolveAssemblyReference.cache
+C:\Users\dstab\Downloads\UI_Design\UI_Design\UI_Design\obj\Debug\UI_Design.Attendee_List.resources
+C:\Users\dstab\Downloads\UI_Design\UI_Design\UI_Design\obj\Debug\UI_Design.DataEntryForm.resources
+C:\Users\dstab\Downloads\UI_Design\UI_Design\UI_Design\obj\Debug\UI_Design.StartupForm.resources
+C:\Users\dstab\Downloads\UI_Design\UI_Design\UI_Design\obj\Debug\UI_Design.Properties.Resources.resources
+C:\Users\dstab\Downloads\UI_Design\UI_Design\UI_Design\obj\Debug\UI_Design.TableAssignments.resources
+C:\Users\dstab\Downloads\UI_Design\UI_Design\UI_Design\obj\Debug\UI_Design.csproj.GenerateResource.Cache
+C:\Users\dstab\Downloads\UI_Design\UI_Design\UI_Design\obj\Debug\UI_Design.Play_With_MDI.resources
