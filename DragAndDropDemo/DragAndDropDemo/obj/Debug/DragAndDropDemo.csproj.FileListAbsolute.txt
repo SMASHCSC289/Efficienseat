@@ -16,3 +16,6 @@ C:\School\CSC 289\DragAndDropDemo\DragAndDropDemo\obj\Debug\DragAndDropDemo.cspr
 C:\School\CSC 289\DragAndDropDemo\DragAndDropDemo\obj\Debug\DragAndDropDemo.Form1.resources
 C:\School\CSC 289\DragAndDropDemo\DragAndDropDemo\obj\Debug\DragAndDropDemo.Properties.Resources.resources
 C:\School\CSC 289\DragAndDropDemo\DragAndDropDemo\obj\Debug\DragAndDropDemo.csproj.GenerateResource.Cache
+C:\Users\dstab\Documents\GitHub\Efficienseat\DragAndDropDemo\DragAndDropDemo\bin\Debug\DragAndDropDemo.exe.config
+C:\Users\dstab\Documents\GitHub\Efficienseat\DragAndDropDemo\DragAndDropDemo\obj\Debug\DragAndDropDemo.exe
+C:\Users\dstab\Documents\GitHub\Efficienseat\DragAndDropDemo\DragAndDropDemo\obj\Debug\DragAndDropDemo.pdb

@@ -23,3 +23,16 @@ C:\Users\dstab\Downloads\UI_Design\UI_Design\UI_Design\obj\Debug\UI_Design.Prope
 C:\Users\dstab\Downloads\UI_Design\UI_Design\UI_Design\obj\Debug\UI_Design.TableAssignments.resources
 C:\Users\dstab\Downloads\UI_Design\UI_Design\UI_Design\obj\Debug\UI_Design.csproj.GenerateResource.Cache
 C:\Users\dstab\Downloads\UI_Design\UI_Design\UI_Design\obj\Debug\UI_Design.Play_With_MDI.resources
+C:\Users\dstab\Documents\GitHub\Efficienseat\UI_Design\UI_Design\UI_Design\bin\Debug\UI_Design.exe.config
+C:\Users\dstab\Documents\GitHub\Efficienseat\UI_Design\UI_Design\UI_Design\obj\Debug\UI_Design.exe
+C:\Users\dstab\Documents\GitHub\Efficienseat\UI_Design\UI_Design\UI_Design\obj\Debug\UI_Design.pdb
+C:\Users\dstab\Documents\GitHub\Efficienseat\UI_Design\UI_Design\UI_Design\bin\Debug\UI_Design.exe
+C:\Users\dstab\Documents\GitHub\Efficienseat\UI_Design\UI_Design\UI_Design\bin\Debug\UI_Design.pdb
+C:\Users\dstab\Documents\GitHub\Efficienseat\UI_Design\UI_Design\UI_Design\obj\Debug\UI_Design.csprojResolveAssemblyReference.cache
+C:\Users\dstab\Documents\GitHub\Efficienseat\UI_Design\UI_Design\UI_Design\obj\Debug\UI_Design.Attendee_List.resources
+C:\Users\dstab\Documents\GitHub\Efficienseat\UI_Design\UI_Design\UI_Design\obj\Debug\UI_Design.DataEntryForm.resources
+C:\Users\dstab\Documents\GitHub\Efficienseat\UI_Design\UI_Design\UI_Design\obj\Debug\UI_Design.Play_With_MDI.resources
+C:\Users\dstab\Documents\GitHub\Efficienseat\UI_Design\UI_Design\UI_Design\obj\Debug\UI_Design.StartupForm.resources
+C:\Users\dstab\Documents\GitHub\Efficienseat\UI_Design\UI_Design\UI_Design\obj\Debug\UI_Design.Properties.Resources.resources
+C:\Users\dstab\Documents\GitHub\Efficienseat\UI_Design\UI_Design\UI_Design\obj\Debug\UI_Design.TableAssignments.resources
+C:\Users\dstab\Documents\GitHub\Efficienseat\UI_Design\UI_Design\UI_Design\obj\Debug\UI_Design.csproj.GenerateResource.Cache

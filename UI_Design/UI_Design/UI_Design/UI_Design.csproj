@@ -96,6 +96,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="TableAssignments.resx">
       <DependentUpon>TableAssignments.cs</DependentUpon>
@@ -112,6 +113,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SplashTable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SplashTable2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SplashLogoSmaller.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
