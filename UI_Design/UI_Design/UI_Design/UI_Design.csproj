@@ -115,13 +115,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\SplashTable.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\SplashTable2.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\SplashLogoSmaller.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WoodFine0003_S1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WrinklesHomogeneous0044_M.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WrinklesHomogeneous0044_M2.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

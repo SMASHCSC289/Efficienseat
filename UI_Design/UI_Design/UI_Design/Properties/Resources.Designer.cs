@@ -73,9 +73,9 @@ namespace UI_Design.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SplashTable {
+        internal static System.Drawing.Bitmap WoodFine0003_S {
             get {
-                object obj = ResourceManager.GetObject("SplashTable", resourceCulture);
+                object obj = ResourceManager.GetObject("WoodFine0003_S", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,19 @@ namespace UI_Design.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SplashTable2 {
+        internal static System.Drawing.Bitmap WrinklesHomogeneous0044_M {
             get {
-                object obj = ResourceManager.GetObject("SplashTable2", resourceCulture);
+                object obj = ResourceManager.GetObject("WrinklesHomogeneous0044_M", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WrinklesHomogeneous0044_M2 {
+            get {
+                object obj = ResourceManager.GetObject("WrinklesHomogeneous0044_M2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
