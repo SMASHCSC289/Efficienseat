@@ -116,6 +116,11 @@ namespace UI_Design
             return Math.PI * (degrees - 90) / 180.0;
         }
 
+        private void TableAssignments_Resize(object sender, EventArgs e)
+        {
+            this.Refresh();
+        }
+
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
             this.Refresh();

@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Unassigned", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Table 1", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Table 2", System.Windows.Forms.HorizontalAlignment.Left);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Attendee_List));
             this.listView1 = new System.Windows.Forms.ListView();
             this.Guest_Name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -54,6 +57,16 @@
             this.Comments});
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
+            listViewGroup1.Header = "Unassigned";
+            listViewGroup1.Name = "unassigned";
+            listViewGroup2.Header = "Table 1";
+            listViewGroup2.Name = "table1";
+            listViewGroup3.Header = "Table 2";
+            listViewGroup3.Name = "table2";
+            this.listView1.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
+            listViewGroup1,
+            listViewGroup2,
+            listViewGroup3});
             this.listView1.Location = new System.Drawing.Point(12, 41);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(439, 466);
@@ -100,8 +113,9 @@
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "TN1.png");
-            this.imageList1.Images.SetKeyName(1, "tn2.png");
+            this.imageList1.Images.SetKeyName(0, "TNno.png");
+            this.imageList1.Images.SetKeyName(1, "TN1.png");
+            this.imageList1.Images.SetKeyName(2, "tn2.png");
             // 
             // button3
             // 
@@ -125,7 +139,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "Attendee_List";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Attendee_List";
+            this.Text = "Attendee List";
             this.Load += new System.EventHandler(this.Attendee_List_Load);
             this.ResumeLayout(false);
 

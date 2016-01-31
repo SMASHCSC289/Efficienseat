@@ -121,7 +121,8 @@
             this.Controls.Add(this.listBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "TableAssignments";
-            this.Text = "TableAssignments";
+            this.Text = "Table Assignments";
+            this.Resize += new System.EventHandler(this.TableAssignments_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
 

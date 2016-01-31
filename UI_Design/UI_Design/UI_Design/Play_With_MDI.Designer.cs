@@ -316,7 +316,8 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Play_With_MDI";
-            this.Text = "Play_With_MDI";
+            this.ShowIcon = false;
+            this.Text = "Efficienseat";
             this.Load += new System.EventHandler(this.Play_With_MDI_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
