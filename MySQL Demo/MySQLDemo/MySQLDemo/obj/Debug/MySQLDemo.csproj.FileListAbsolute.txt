@@ -1,0 +1,10 @@
+D:\Mark\School\CSC 289\MySQL Demo\MySQLDemo\MySQLDemo\bin\Debug\MySQLDemo.exe.config
+D:\Mark\School\CSC 289\MySQL Demo\MySQLDemo\MySQLDemo\bin\Debug\MySQLDemo.exe
+D:\Mark\School\CSC 289\MySQL Demo\MySQLDemo\MySQLDemo\bin\Debug\MySQLDemo.pdb
+D:\Mark\School\CSC 289\MySQL Demo\MySQLDemo\MySQLDemo\bin\Debug\MySql.Data.dll
+D:\Mark\School\CSC 289\MySQL Demo\MySQLDemo\MySQLDemo\obj\Debug\MySQLDemo.csprojResolveAssemblyReference.cache
+D:\Mark\School\CSC 289\MySQL Demo\MySQLDemo\MySQLDemo\obj\Debug\MySQLDemo.Form1.resources
+D:\Mark\School\CSC 289\MySQL Demo\MySQLDemo\MySQLDemo\obj\Debug\MySQLDemo.Properties.Resources.resources
+D:\Mark\School\CSC 289\MySQL Demo\MySQLDemo\MySQLDemo\obj\Debug\MySQLDemo.csproj.GenerateResource.Cache
+D:\Mark\School\CSC 289\MySQL Demo\MySQLDemo\MySQLDemo\obj\Debug\MySQLDemo.exe
+D:\Mark\School\CSC 289\MySQL Demo\MySQLDemo\MySQLDemo\obj\Debug\MySQLDemo.pdb
