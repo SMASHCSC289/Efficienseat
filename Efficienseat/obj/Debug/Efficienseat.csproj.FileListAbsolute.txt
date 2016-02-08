@@ -1,0 +1,57 @@
+C:\Users\Broadwind\Desktop\Efficienseat\UI_Design\UI_Design\UI_Design\obj\Debug\Efficienseat.csprojResolveAssemblyReference.cache
+C:\Users\Broadwind\Desktop\Efficienseat\UI_Design\UI_Design\UI_Design\obj\Debug\Efficienseat.csproj.GenerateResource.Cache
+C:\Users\Broadwind\Desktop\Efficienseat\UI_Design\UI_Design\UI_Design\bin\Debug\Efficienseat.exe.config
+C:\Users\Broadwind\Desktop\Efficienseat\UI_Design\UI_Design\UI_Design\bin\Debug\Efficienseat.exe
+C:\Users\Broadwind\Desktop\Efficienseat\UI_Design\UI_Design\UI_Design\bin\Debug\Efficienseat.pdb
+C:\Users\Broadwind\Desktop\Efficienseat\UI_Design\UI_Design\UI_Design\obj\Debug\Efficienseat.Attendee_List.resources
+C:\Users\Broadwind\Desktop\Efficienseat\UI_Design\UI_Design\UI_Design\obj\Debug\Efficienseat.DataEntryForm.resources
+C:\Users\Broadwind\Desktop\Efficienseat\UI_Design\UI_Design\UI_Design\obj\Debug\Efficienseat.Play_With_MDI.resources
+C:\Users\Broadwind\Desktop\Efficienseat\UI_Design\UI_Design\UI_Design\obj\Debug\Efficienseat.StartupForm.resources
+C:\Users\Broadwind\Desktop\Efficienseat\UI_Design\UI_Design\UI_Design\obj\Debug\Efficienseat.Properties.Resources.resources
+C:\Users\Broadwind\Desktop\Efficienseat\UI_Design\UI_Design\UI_Design\obj\Debug\Efficienseat.TableAssignments.resources
+C:\Users\Broadwind\Desktop\Efficienseat\UI_Design\UI_Design\UI_Design\obj\Debug\Efficienseat.exe
+C:\Users\Broadwind\Desktop\Efficienseat\UI_Design\UI_Design\UI_Design\obj\Debug\Efficienseat.pdb
+C:\Users\Broadwind\Desktop\Efficienseat\UI_Design\bin\Debug\Efficienseat.exe.config
+C:\Users\Broadwind\Desktop\Efficienseat\UI_Design\obj\Debug\Efficienseat.exe
+C:\Users\Broadwind\Desktop\Efficienseat\UI_Design\obj\Debug\Efficienseat.pdb
+C:\Users\Broadwind\Desktop\asdf\UI_Design\bin\Debug\Efficienseat.exe.config
+C:\Users\Broadwind\Desktop\asdf\UI_Design\obj\Debug\Efficienseat.exe
+C:\Users\Broadwind\Desktop\asdf\UI_Design\obj\Debug\Efficienseat.pdb
+C:\Users\Broadwind\Desktop\asdf\Efficienseat\bin\Debug\Efficienseat.exe.config
+C:\Users\Broadwind\Desktop\asdf\Efficienseat\obj\Debug\Efficienseat.exe
+C:\Users\Broadwind\Desktop\asdf\Efficienseat\obj\Debug\Efficienseat.pdb
+C:\Users\Broadwind\Desktop\asdf\Efficienseat\bin\Debug\Efficienseat.exe
+C:\Users\Broadwind\Desktop\asdf\Efficienseat\bin\Debug\Efficienseat.pdb
+C:\Users\Broadwind\Desktop\asdf\Efficienseat\obj\Debug\Efficienseat.csprojResolveAssemblyReference.cache
+C:\Users\Broadwind\Desktop\asdf\Efficienseat\obj\Debug\Efficienseat.Attendee_List.resources
+C:\Users\Broadwind\Desktop\asdf\Efficienseat\obj\Debug\Efficienseat.DataEntryForm.resources
+C:\Users\Broadwind\Desktop\asdf\Efficienseat\obj\Debug\Efficienseat.Play_With_MDI.resources
+C:\Users\Broadwind\Desktop\asdf\Efficienseat\obj\Debug\Efficienseat.StartupForm.resources
+C:\Users\Broadwind\Desktop\asdf\Efficienseat\obj\Debug\Efficienseat.Properties.Resources.resources
+C:\Users\Broadwind\Desktop\asdf\Efficienseat\obj\Debug\Efficienseat.TableAssignments.resources
+C:\Users\Broadwind\Desktop\asdf\Efficienseat\obj\Debug\Efficienseat.csproj.GenerateResource.Cache
+C:\Users\Broadwind\Desktop\Efficienseat\Efficienseat\bin\Debug\Efficienseat.exe.config
+C:\Users\Broadwind\Desktop\Efficienseat\Efficienseat\obj\Debug\Efficienseat.exe
+C:\Users\Broadwind\Desktop\Efficienseat\Efficienseat\obj\Debug\Efficienseat.pdb
+C:\Users\Broadwind\Desktop\Efficienseat\Efficienseat\bin\Debug\Efficienseat.exe
+C:\Users\Broadwind\Desktop\Efficienseat\Efficienseat\bin\Debug\Efficienseat.pdb
+C:\Users\Broadwind\Desktop\Efficienseat\Efficienseat\obj\Debug\Efficienseat.Attendee_List.resources
+C:\Users\Broadwind\Desktop\Efficienseat\Efficienseat\obj\Debug\Efficienseat.DataEntryForm.resources
+C:\Users\Broadwind\Desktop\Efficienseat\Efficienseat\obj\Debug\Efficienseat.StartupForm.resources
+C:\Users\Broadwind\Desktop\Efficienseat\Efficienseat\obj\Debug\Efficienseat.Properties.Resources.resources
+C:\Users\Broadwind\Desktop\Efficienseat\Efficienseat\obj\Debug\Efficienseat.TableAssignments.resources
+C:\Users\Broadwind\Desktop\Efficienseat\Efficienseat\obj\Debug\Efficienseat.csproj.GenerateResource.Cache
+C:\Users\Broadwind\Desktop\Efficienseat\Efficienseat\obj\Debug\Efficienseat.Main_Window.resources
+C:\Users\Broadwind\Desktop\New folder\Efficienseat\bin\Debug\Efficienseat.exe.config
+C:\Users\Broadwind\Desktop\New folder\Efficienseat\obj\Debug\Efficienseat.exe
+C:\Users\Broadwind\Desktop\New folder\Efficienseat\obj\Debug\Efficienseat.pdb
+C:\Users\Broadwind\Desktop\New folder\Efficienseat\bin\Debug\Efficienseat.exe
+C:\Users\Broadwind\Desktop\New folder\Efficienseat\bin\Debug\Efficienseat.pdb
+C:\Users\Broadwind\Desktop\New folder\Efficienseat\obj\Debug\Efficienseat.csprojResolveAssemblyReference.cache
+C:\Users\Broadwind\Desktop\New folder\Efficienseat\obj\Debug\Efficienseat.Attendee_List.resources
+C:\Users\Broadwind\Desktop\New folder\Efficienseat\obj\Debug\Efficienseat.DataEntryForm.resources
+C:\Users\Broadwind\Desktop\New folder\Efficienseat\obj\Debug\Efficienseat.Main_Window.resources
+C:\Users\Broadwind\Desktop\New folder\Efficienseat\obj\Debug\Efficienseat.StartupForm.resources
+C:\Users\Broadwind\Desktop\New folder\Efficienseat\obj\Debug\Efficienseat.Properties.Resources.resources
+C:\Users\Broadwind\Desktop\New folder\Efficienseat\obj\Debug\Efficienseat.TableAssignments.resources
+C:\Users\Broadwind\Desktop\New folder\Efficienseat\obj\Debug\Efficienseat.csproj.GenerateResource.Cache
