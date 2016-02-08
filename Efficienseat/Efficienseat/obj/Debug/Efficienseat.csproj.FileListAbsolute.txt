@@ -68,3 +68,6 @@ C:\Users\dstab\Documents\GitHub\Efficienseat\Efficienseat\obj\Debug\Efficienseat
 C:\Users\dstab\Documents\GitHub\Efficienseat\Efficienseat\obj\Debug\Efficienseat.csproj.GenerateResource.Cache
 C:\Users\dstab\Documents\GitHub\Efficienseat\Efficienseat\bin\Debug\Efficienseat.exe
 C:\Users\dstab\Documents\GitHub\Efficienseat\Efficienseat\bin\Debug\Efficienseat.pdb
+C:\Users\dstab\Documents\GitHub\Efficienseat\Efficienseat\Efficienseat\bin\Debug\Efficienseat.exe.config
+C:\Users\dstab\Documents\GitHub\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.exe
+C:\Users\dstab\Documents\GitHub\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.pdb
