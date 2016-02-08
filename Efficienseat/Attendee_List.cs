@@ -12,6 +12,9 @@ namespace Efficienseat
 {
     public partial class Attendee_List : Form
     {
+
+        private List<Attendee> attendeeList = new List<Attendee>();
+
         public Attendee_List()
         {
             InitializeComponent();
@@ -19,82 +22,109 @@ namespace Efficienseat
 
         private void Attendee_List_Load(object sender, EventArgs e)
         {
-            listView1.LargeImageList = imageList1;
+            // Set list of images for listview
+            lvwAttendee.LargeImageList = imlTableNumbers;
 
-            ListViewItem lv = new ListViewItem(new string[] { "Dan Stabler","Accept","123 Birch Ln.",""});
-            lv.ImageIndex = 2;
-            lv.Group = listView1.Groups[2];
+            // Hide close button
+            this.ControlBox = false;
 
-            ListViewItem lv2 = new ListViewItem(new string[] { "Mark Harriett","Decline","456 Mickey Ln.",""});
-            lv2.ImageIndex = 0;
-            lv2.Group = listView1.Groups[0];
+            attendeeList = populateAttendees();
+        } //END Attendee_List_Load EVENT
 
-            ListViewItem lv3 = new ListViewItem(new string[] { "Diane Mayes", "Accept", "789 Ash Ln.", "" });
-            lv3.ImageIndex = 1;
-            lv3.Group = listView1.Groups[1];
+        // BUTTONS
+        #region FormButtons
 
-            ListViewItem lv4 = new ListViewItem(new string[] { "Nema Abachizadeh", "Decline", "1011 Elm Ln.", "" });
-            lv4.ImageIndex = 0;
-            lv4.Group = listView1.Groups[0];
+        private void btnAddAttendee_Click(object sender, EventArgs e)
+        {
+            addAttendee();   
+        } //END btnAddAttendee_Click EVENT
 
-            ListViewItem lv5 = new ListViewItem(new string[] { "Jonathan Sobota", "Accept", "1213 Oak Ln.", "" });
-            lv5.ImageIndex = 1;
-            lv5.Group = listView1.Groups[1];
+        private void btnChangeView_Click(object sender, EventArgs e)
+        {
+            changeView();
+        } //END btnChangeView_Click EVENT
 
-            listView1.Items.Add(lv);
-            listView1.Items.Add(lv2);
-            listView1.Items.Add(lv3);
-            listView1.Items.Add(lv4);
-            listView1.Items.Add(lv5);
+        private void btnEditEntry_Click(object sender, EventArgs e)
+        {
+
+        } //END btnEditEntry_Click EVENT
+
+        private void btnRemoveAttendee_Click(object sender, EventArgs e)
+        {
+            removeAttendee(lvwAttendee.SelectedItems[0]);
+        } //END btnRemoveAttendee_Click EVENT
+
+        #endregion FormButtons
+
+        // CONTEXT-SHORTCUT MENU
+        #region ListViewContextMenu
+
+        private void tmiRemoveAttendee_Click(object sender, EventArgs e)
+        {
+            // TODO: update to retrieve item under mouse
+            removeAttendee(lvwAttendee.SelectedItems[0]);
         }
 
-
-
-        private void button1_Click(object sender, EventArgs e)
+        private void tmiEdit_Click(object sender, EventArgs e)
         {
-            //button for add entry
+            editEntry();
+        }
+
+        #endregion ListViewContextMenu
+
+        // METHODS
+        #region Methods
+        
+        // Load attendees from DB
+        private List<Attendee> populateAttendees()
+        {
+            List<Attendee> attendees = new List<Attendee>();
+
+            return attendees;
+        }
+        
+        // add item
+        private void addAttendee()
+        {
             //Create edit entry window for data population
             //  Pull data form form rather than passing through
             using (DataEntryForm data = new DataEntryForm())
-            {
-                data.ShowDialog();
-
-                //could use better check for cancel --maybe basic bool value in DataEntryForm?
-                if (data.getFirstName != "")
+            {                
+                if (data.ShowDialog(this) == DialogResult.OK)
                 {
                     string name = data.getFirstName + " " + data.getLastName;
                     string RSVP = data.getRSVP;
                     string address = data.getAddress1 + " " + data.getAddress2 + " " + data.getCity + ", " + data.getState + " " + data.getZIP;
-                    
+
                     ListViewItem newGuest = new ListViewItem(new string[] { name, RSVP, address, "" });
                     newGuest.ImageIndex = 0;
-                    newGuest.Group = listView1.Groups[0];
-                    listView1.Items.Add(newGuest);
+                    newGuest.Group = lvwAttendee.Groups[0];
+                    lvwAttendee.Items.Add(newGuest);
                 }
             }
-
-
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        // change listview visuals
+        private void changeView()
         {
-            if (listView1.View == View.Details)
+            if (lvwAttendee.View == View.Details)
             {
-                listView1.View = View.Tile;
-                listView1.ShowGroups = true;
+                lvwAttendee.View = View.Tile;
+                lvwAttendee.ShowGroups = true;
             }
             else
             {
-                listView1.View = View.Details;
-                listView1.ShowGroups = false;
+                lvwAttendee.View = View.Details;
+                lvwAttendee.ShowGroups = false;
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        // change data in selected item
+        private void editEntry()
         {
             //should populate with selected user data
             //check for a user selection from listView prior to instantiating window
-            if (listView1.SelectedItems.Count == 1)
+            if (lvwAttendee.SelectedItems.Count == 1)
             {
                 //DataEntryForm will need a parameterized constructor to account for pushed data
                 DataEntryForm def = new DataEntryForm();
@@ -102,40 +132,14 @@ namespace Efficienseat
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        // Remove selected item
+        private void removeAttendee(ListViewItem lvi)
         {
-            //button for remove entry
+            lvi.Remove();
+            
+            //use code to remove the entry from the DB
         }
 
-        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
-        {
-
-        }
-
-        private void contextMenuStrip1_Click(object sender, ToolStripItemClickedEventArgs e)
-        {
-            ToolStripItem item = e.ClickedItem;
-            if(item.Name == "editEntryToolStripMenuItem")
-            {
-                //example, should redirect to button3_Click
-                button3_Click(new object(), new EventArgs());
-            }
-            else if(item.Name == "changeViewToolStripMenuItem")
-            {
-                //change view code  -- button2_Click
-                button2_Click(new object(), new EventArgs());
-            }
-            else if (item.Name == "removeAttendeeToolStripMenuItem")
-            {
-                //remove attendee code  -- button4_Click
-                button4_Click(new object(), new EventArgs());
-            }
-            else
-            {
-                //add attendee code  --button1_Click
-                button1_Click(new object(), new EventArgs());
-            }
-        }
-
+        #endregion Methods
     }
 }

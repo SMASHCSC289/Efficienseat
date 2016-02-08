@@ -142,8 +142,8 @@
             // 
             // comboBox1
             // 
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "AL",
@@ -211,8 +211,8 @@
             // 
             // comboBox2
             // 
-            this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
             "Accept",
@@ -233,6 +233,7 @@
             // 
             // button1
             // 
+            this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.button1.Location = new System.Drawing.Point(137, 196);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
@@ -243,6 +244,7 @@
             // 
             // button2
             // 
+            this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button2.Location = new System.Drawing.Point(56, 196);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
