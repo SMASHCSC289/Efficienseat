@@ -38,10 +38,25 @@ namespace Efficienseat
             lvTest.ImageIndex = 0;
             lvwUnseated.Items.Add(lvTest);
 
-            ListViewItem lvTest2 = new ListViewItem(new string[] { "Mark Harriett", "Accept", "123 Birch Ln.", "I have a comment!", "2" });
+            ListViewItem lvTest2 = new ListViewItem(new string[] { "Mark Harriett", "Accept", "123 Birch Ln.", "I have a comment! :)", "2" });
             lvTest2.ToolTipText = "I have a comment! :)";
             lvTest2.ImageIndex = 1;
             lvwUnseated.Items.Add(lvTest2);
+
+            ListViewItem lvTest3 = new ListViewItem(new string[] { "Diane Mayes", "Accept", "123 Birch Ln.", "", "3" });
+            lvTest3.ToolTipText = "I don't have a comment. :(";
+            lvTest3.ImageIndex = 0;
+            lvwUnseated.Items.Add(lvTest3);
+
+            ListViewItem lvTest4 = new ListViewItem(new string[] { "Jonathan Sobota", "Accept", "123 Birch Ln.", "I have a comment!", "4" });
+            lvTest4.ToolTipText = "I have a comment! :)";
+            lvTest4.ImageIndex = 1;
+            lvwUnseated.Items.Add(lvTest4);
+
+            ListViewItem lvTest5 = new ListViewItem(new string[] { "Nema Abachizadeh", "Accept", "123 Birch Ln.", "", "5" });
+            lvTest5.ToolTipText = "I don't have a comment. :(";
+            lvTest5.ImageIndex = 0;
+            lvwUnseated.Items.Add(lvTest5);
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
