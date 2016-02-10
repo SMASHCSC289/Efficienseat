@@ -28,8 +28,13 @@ namespace Efficienseat
             rectSide = panel1.Width - (panel1.Width / 2);
             rectSide2 = rectSide;
 
-        listviews = new List<ListView>() { lvwSeat1, lvwSeat2, lvwSeat3, lvwSeat4, lvwSeat5, lvwSeat6, lvwSeat7, lvwSeat8, lvwSeat9, lvwSeat10 };
-    }
+            listviews = new List<ListView>() { lvwSeat1, lvwSeat2, lvwSeat3, lvwSeat4, lvwSeat5, lvwSeat6, lvwSeat7, lvwSeat8, lvwSeat9, lvwSeat10 };
+            foreach (ListView view in listviews)
+            {
+                view.Enabled = false;
+                view.Visible = false;
+            }
+        }
 
         private void TableAssignments_Load(object sender, EventArgs e)
         {
