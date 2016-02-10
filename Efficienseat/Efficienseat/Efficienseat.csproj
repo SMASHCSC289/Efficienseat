@@ -51,6 +51,9 @@
     <Compile Include="Attendee_List.Designer.cs">
       <DependentUpon>Attendee_List.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DataEntryForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -13,15 +13,35 @@ namespace Efficienseat
     public partial class TableAssignments : Form
     {
         Graphics Table;
-        private int shapeType = 0;
+        private int shapeType = -1;
         int rectSide, rectSide2;
         Image image = new Bitmap(Efficienseat.Properties.Resources.WrinklesHomogeneous0044_M2);
+
+        Mysource dragSource = new Mysource();
+
+        List<CustomPanel> panels = new List<CustomPanel>();
+        List<ListView> listviews;
 
         public TableAssignments()
         {
             InitializeComponent();
             rectSide = panel1.Width - (panel1.Width / 2);
             rectSide2 = rectSide;
+
+        listviews = new List<ListView>() { lvwSeat1, lvwSeat2, lvwSeat3, lvwSeat4, lvwSeat5, lvwSeat6, lvwSeat7, lvwSeat8, lvwSeat9, lvwSeat10 };
+    }
+
+        private void TableAssignments_Load(object sender, EventArgs e)
+        {
+            ListViewItem lvTest = new ListViewItem(new string[] { "Dan Stabler", "Accept", "123 Birch Ln.", "", "1" });
+            lvTest.ToolTipText = "I don't have a comment. :(";
+            lvTest.ImageIndex = 0;
+            lvwUnseated.Items.Add(lvTest);
+
+            ListViewItem lvTest2 = new ListViewItem(new string[] { "Mark Harriett", "Accept", "123 Birch Ln.", "I have a comment!", "2" });
+            lvTest2.ToolTipText = "I have a comment! :)";
+            lvTest2.ImageIndex = 1;
+            lvwUnseated.Items.Add(lvTest2);
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -32,7 +52,7 @@ namespace Efficienseat
         private void comboBox2_SelectionChangeCommitted(object sender, EventArgs e)
         {
             shapeType = comboBox2.SelectedIndex;
-            this.Refresh();
+            Refresh();
         }
 
         private void drawShape(int num, int numPoints)
@@ -105,9 +125,27 @@ namespace Efficienseat
 
                 Table.DrawRectangle(p2, (float) x, (float) y, 2, 2);
 
+                listviews[i].Location = new Point((int) x - (listviews[i].Width / 2), (int) y - (listviews[i].Height / 2));
+                listviews[i].Enabled = true;
+                listviews[i].Visible = true;
+
                 //MessageBox.Show(  "Point : (" + x.ToString() + "," + y.ToString() + ")" + Environment.NewLine +
                 //                 "Angle : " + (angle * i) + " Degrees | " + degToRad((angle * i)) + " Radians" 
                 //               );
+            }
+
+            for (int i = (int)numericUpDown1.Value; i < 10; i++)
+            {
+                listviews[i].Location = new Point(3, 3);
+                listviews[i].Enabled = false;
+                listviews[i].Visible = false;
+
+                if (listviews[i].Items.Count > 0)
+                {
+                    ListViewItem lvi = listviews[i].Items[0];
+                    removeItemFromAll(lvi);
+                    lvwUnseated.Items.Add(lvi);
+                }
             }
         }
 
@@ -118,13 +156,112 @@ namespace Efficienseat
 
         private void TableAssignments_Resize(object sender, EventArgs e)
         {
-            this.Refresh();
+            Refresh();
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            this.Refresh();
+            Refresh();
+        }
+        
+        #region ListViewHandling
+
+        private void listView_DragEnter(object sender, DragEventArgs e)
+        {
+            // Check for the custom DataFormat ListViewItem array.
+
+            {
+                if (e.Data.GetDataPresent("ListViewItem"))
+                {
+                    e.Effect = DragDropEffects.Move;
+                }
+                else {
+                    e.Effect = DragDropEffects.None;
+                }
+            }
         }
 
+        private void listView_ItemDrag(object sender, ItemDragEventArgs e)
+        {            
+            ListView lv = sender as ListView;
+            ListViewItem myItem = lv.SelectedItems[0]/*.Clone()*/ as ListViewItem;
+                        
+            lv.DoDragDrop(new DataObject("ListViewItem", myItem), DragDropEffects.Move);
+            //lv.SelectedItems[0].Remove();
+        }
+
+        private void listView_DragDrop(object sender, DragEventArgs e)
+        {
+            ListView lv = (ListView) sender;
+            ListViewItem myItem = e.Data.GetData("ListViewItem") as ListViewItem;            
+
+            // always accept dragged items into unseated listview
+            if (lv == lvwUnseated)
+            {
+                // Insert drag item
+                removeItemFromAll(myItem);
+                lv.Items.Add(myItem);
+                lvwUnseated.Sort();
+            }
+            // If it's not the unseated listview, and it's empty
+            else if (lv != lvwUnseated && lv.Items.Count == 0)
+            {
+                // Insert drag item
+                removeItemFromAll(myItem);
+                lv.Items.Add(myItem);                                
+            }
+            // If the seat listview is already filled, ask if user wants to swap
+            else
+            {
+                if (MessageBox.Show("This seat is already filled.  Replace?","Question",MessageBoxButtons.YesNo,MessageBoxIcon.Exclamation) == DialogResult.Yes)
+                {
+                    ListView lvOld = dragSource.source as ListView;
+
+                    // Move current item back to unassigned
+                    ListViewItem lvi = lv.Items[0];
+                    removeItemFromAll(lvi);
+                    lvwUnseated.Items.Add(lvi);
+                    lvwUnseated.Sort();                  
+
+                    // Insert drag item
+                    removeItemFromAll(myItem);
+                    lv.Items.Add(myItem);
+                }
+            }
+
+            dragSource.source = null;     
+        }
+
+        private void listView_DragLeave(object sender, EventArgs e)
+        {
+            dragSource.source = sender;
+        }
+
+        private void enableListViewSmall(ListView lv, int seatNumber)
+        {
+
+        }
+
+        private void removeItemFromAll(ListViewItem _li)
+        {
+            foreach (Control c in panel1.Controls)
+            {
+                if (c is ListView)
+                {
+                    ListView _lv = c as ListView;
+                    _lv.Items.Remove(_li);
+                }
+            }
+
+            lvwUnseated.Items.Remove(_li);
+        }
+
+        public class Mysource
+        {
+            public object source { get; set; }
+            Control control { get; set; }
+        }
+
+        #endregion ListViewHandling
     }
 }
