@@ -55,6 +55,7 @@
             this.lvwSeat3 = new System.Windows.Forms.ListView();
             this.lvwSeat2 = new System.Windows.Forms.ListView();
             this.lvwSeat1 = new System.Windows.Forms.ListView();
+            this.imageList_Seat_32 = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -115,6 +116,7 @@
             this.imageList_32.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList_32.Images.SetKeyName(0, "jumping28_Blk_32.png");
             this.imageList_32.Images.SetKeyName(1, "jumping28_Red_32.png");
+            this.imageList_32.Images.SetKeyName(2, "dining5_Blk.png");
             // 
             // imageList_16
             // 
@@ -224,10 +226,10 @@
             this.lvwSeat7.Alignment = System.Windows.Forms.ListViewAlignment.Default;
             this.lvwSeat7.AllowDrop = true;
             this.lvwSeat7.BackColor = System.Drawing.Color.White;
-            this.lvwSeat7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lvwSeat7.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lvwSeat7.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.lvwSeat7.LargeImageList = this.imageList_32;
-            this.lvwSeat7.Location = new System.Drawing.Point(3, 3);
+            this.lvwSeat7.LargeImageList = this.imageList_Seat_32;
+            this.lvwSeat7.Location = new System.Drawing.Point(79, 3);
             this.lvwSeat7.MultiSelect = false;
             this.lvwSeat7.Name = "lvwSeat7";
             this.lvwSeat7.Scrollable = false;
@@ -236,7 +238,6 @@
             this.lvwSeat7.SmallImageList = this.imageList_16;
             this.lvwSeat7.TabIndex = 9;
             this.lvwSeat7.UseCompatibleStateImageBehavior = false;
-            this.lvwSeat7.View = System.Windows.Forms.View.List;
             this.lvwSeat7.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.listView_ItemDrag);
             this.lvwSeat7.DragDrop += new System.Windows.Forms.DragEventHandler(this.listView_DragDrop);
             this.lvwSeat7.DragEnter += new System.Windows.Forms.DragEventHandler(this.listView_DragEnter);
@@ -246,10 +247,10 @@
             // 
             this.lvwSeat8.AllowDrop = true;
             this.lvwSeat8.BackColor = System.Drawing.Color.White;
-            this.lvwSeat8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lvwSeat8.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lvwSeat8.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.lvwSeat8.LargeImageList = this.imageList_32;
-            this.lvwSeat8.Location = new System.Drawing.Point(79, 3);
+            this.lvwSeat8.LargeImageList = this.imageList_Seat_32;
+            this.lvwSeat8.Location = new System.Drawing.Point(79, 74);
             this.lvwSeat8.MultiSelect = false;
             this.lvwSeat8.Name = "lvwSeat8";
             this.lvwSeat8.Scrollable = false;
@@ -267,10 +268,10 @@
             // 
             this.lvwSeat9.AllowDrop = true;
             this.lvwSeat9.BackColor = System.Drawing.Color.White;
-            this.lvwSeat9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lvwSeat9.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lvwSeat9.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.lvwSeat9.LargeImageList = this.imageList_32;
-            this.lvwSeat9.Location = new System.Drawing.Point(79, 74);
+            this.lvwSeat9.LargeImageList = this.imageList_Seat_32;
+            this.lvwSeat9.Location = new System.Drawing.Point(79, 145);
             this.lvwSeat9.MultiSelect = false;
             this.lvwSeat9.Name = "lvwSeat9";
             this.lvwSeat9.Scrollable = false;
@@ -288,10 +289,10 @@
             // 
             this.lvwSeat10.AllowDrop = true;
             this.lvwSeat10.BackColor = System.Drawing.Color.White;
-            this.lvwSeat10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lvwSeat10.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lvwSeat10.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.lvwSeat10.LargeImageList = this.imageList_32;
-            this.lvwSeat10.Location = new System.Drawing.Point(79, 145);
+            this.lvwSeat10.LargeImageList = this.imageList_Seat_32;
+            this.lvwSeat10.Location = new System.Drawing.Point(79, 216);
             this.lvwSeat10.MultiSelect = false;
             this.lvwSeat10.Name = "lvwSeat10";
             this.lvwSeat10.Scrollable = false;
@@ -309,10 +310,10 @@
             // 
             this.lvwSeat4.AllowDrop = true;
             this.lvwSeat4.BackColor = System.Drawing.Color.White;
-            this.lvwSeat4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lvwSeat4.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lvwSeat4.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.lvwSeat4.LargeImageList = this.imageList_32;
-            this.lvwSeat4.Location = new System.Drawing.Point(79, 216);
+            this.lvwSeat4.LargeImageList = this.imageList_Seat_32;
+            this.lvwSeat4.Location = new System.Drawing.Point(3, 216);
             this.lvwSeat4.MultiSelect = false;
             this.lvwSeat4.Name = "lvwSeat4";
             this.lvwSeat4.Scrollable = false;
@@ -330,10 +331,10 @@
             // 
             this.lvwSeat5.AllowDrop = true;
             this.lvwSeat5.BackColor = System.Drawing.Color.White;
-            this.lvwSeat5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lvwSeat5.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lvwSeat5.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.lvwSeat5.LargeImageList = this.imageList_32;
-            this.lvwSeat5.Location = new System.Drawing.Point(2, 216);
+            this.lvwSeat5.LargeImageList = this.imageList_Seat_32;
+            this.lvwSeat5.Location = new System.Drawing.Point(3, 287);
             this.lvwSeat5.MultiSelect = false;
             this.lvwSeat5.Name = "lvwSeat5";
             this.lvwSeat5.Scrollable = false;
@@ -351,10 +352,10 @@
             // 
             this.lvwSeat6.AllowDrop = true;
             this.lvwSeat6.BackColor = System.Drawing.Color.White;
-            this.lvwSeat6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lvwSeat6.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lvwSeat6.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.lvwSeat6.LargeImageList = this.imageList_32;
-            this.lvwSeat6.Location = new System.Drawing.Point(3, 145);
+            this.lvwSeat6.LargeImageList = this.imageList_Seat_32;
+            this.lvwSeat6.Location = new System.Drawing.Point(4, 358);
             this.lvwSeat6.MultiSelect = false;
             this.lvwSeat6.Name = "lvwSeat6";
             this.lvwSeat6.Scrollable = false;
@@ -372,10 +373,10 @@
             // 
             this.lvwSeat3.AllowDrop = true;
             this.lvwSeat3.BackColor = System.Drawing.Color.White;
-            this.lvwSeat3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lvwSeat3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lvwSeat3.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.lvwSeat3.LargeImageList = this.imageList_32;
-            this.lvwSeat3.Location = new System.Drawing.Point(3, 74);
+            this.lvwSeat3.LargeImageList = this.imageList_Seat_32;
+            this.lvwSeat3.Location = new System.Drawing.Point(3, 145);
             this.lvwSeat3.MultiSelect = false;
             this.lvwSeat3.Name = "lvwSeat3";
             this.lvwSeat3.Scrollable = false;
@@ -393,10 +394,10 @@
             // 
             this.lvwSeat2.AllowDrop = true;
             this.lvwSeat2.BackColor = System.Drawing.Color.White;
-            this.lvwSeat2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lvwSeat2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lvwSeat2.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.lvwSeat2.LargeImageList = this.imageList_32;
-            this.lvwSeat2.Location = new System.Drawing.Point(3, 287);
+            this.lvwSeat2.LargeImageList = this.imageList_Seat_32;
+            this.lvwSeat2.Location = new System.Drawing.Point(3, 74);
             this.lvwSeat2.MultiSelect = false;
             this.lvwSeat2.Name = "lvwSeat2";
             this.lvwSeat2.Scrollable = false;
@@ -414,11 +415,11 @@
             // 
             this.lvwSeat1.AllowDrop = true;
             this.lvwSeat1.BackColor = System.Drawing.Color.White;
-            this.lvwSeat1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lvwSeat1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lvwSeat1.ForeColor = System.Drawing.SystemColors.WindowText;
             this.lvwSeat1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.lvwSeat1.LargeImageList = this.imageList_32;
-            this.lvwSeat1.Location = new System.Drawing.Point(79, 287);
+            this.lvwSeat1.LargeImageList = this.imageList_Seat_32;
+            this.lvwSeat1.Location = new System.Drawing.Point(3, 3);
             this.lvwSeat1.MultiSelect = false;
             this.lvwSeat1.Name = "lvwSeat1";
             this.lvwSeat1.Scrollable = false;
@@ -431,6 +432,14 @@
             this.lvwSeat1.DragDrop += new System.Windows.Forms.DragEventHandler(this.listView_DragDrop);
             this.lvwSeat1.DragEnter += new System.Windows.Forms.DragEventHandler(this.listView_DragEnter);
             this.lvwSeat1.DragLeave += new System.EventHandler(this.listView_DragLeave);
+            // 
+            // imageList_Seat_32
+            // 
+            this.imageList_Seat_32.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList_Seat_32.ImageStream")));
+            this.imageList_Seat_32.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList_Seat_32.Images.SetKeyName(0, "seated_32_blk.png");
+            this.imageList_Seat_32.Images.SetKeyName(1, "seated_32_red.png");
+            this.imageList_Seat_32.Images.SetKeyName(2, "chair_32_blk.png");
             // 
             // TableAssignments
             // 
@@ -483,5 +492,6 @@
         private System.Windows.Forms.ListView lvwSeat4;
         private System.Windows.Forms.ListView lvwSeat5;
         private System.Windows.Forms.ListView lvwSeat6;
+        private System.Windows.Forms.ImageList imageList_Seat_32;
     }
 }

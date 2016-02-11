@@ -22,22 +22,32 @@ namespace Efficienseat
         List<CustomPanel> panels = new List<CustomPanel>();
         List<ListView> listviews;
 
+        ListViewItem empty = new ListViewItem("Empty");        
+
         public TableAssignments()
         {
             InitializeComponent();
             rectSide = panel1.Width - (panel1.Width / 2);
             rectSide2 = rectSide;
 
+            empty.ImageIndex = 2;
+
             listviews = new List<ListView>() { lvwSeat1, lvwSeat2, lvwSeat3, lvwSeat4, lvwSeat5, lvwSeat6, lvwSeat7, lvwSeat8, lvwSeat9, lvwSeat10 };
             foreach (ListView view in listviews)
             {
-                view.Enabled = false;
+                //view.Enabled = false;
                 view.Visible = false;
             }
         }
 
         private void TableAssignments_Load(object sender, EventArgs e)
         {
+            foreach (ListView l in listviews)
+            {
+                ListViewItem emp = empty.Clone() as ListViewItem;
+                l.Items.Add(emp);
+            }
+
             ListViewItem lvTest = new ListViewItem(new string[] { "Dan Stabler", "Accept", "123 Birch Ln.", "", "1" });
             lvTest.ToolTipText = "I don't have a comment. :(";
             lvTest.ImageIndex = 0;
@@ -62,11 +72,12 @@ namespace Efficienseat
             lvTest5.ToolTipText = "I don't have a comment. :(";
             lvTest5.ImageIndex = 0;
             lvwUnseated.Items.Add(lvTest5);
+
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            drawShape(shapeType, (int) numericUpDown1.Value);
+            drawShape(shapeType, (int) numericUpDown1.Value);            
         }
 
         private void comboBox2_SelectionChangeCommitted(object sender, EventArgs e)
@@ -86,7 +97,7 @@ namespace Efficienseat
                 Table.FillEllipse(tbrush, new Rectangle((panel1.Width / 2) - (rectSide / 2), (panel1.Height / 2) - (rectSide2 / 2), rectSide, rectSide2));
                 //Pen p = new Pen(Color.Black);
                 //Table.DrawEllipse(p, (panel1.Width / 2) - (rectSide / 2), (panel1.Height / 2) - (rectSide2 / 2), rectSide, rectSide2);
-                drawPoints(numPoints, rectSide);
+                drawPoints(numPoints, rectSide);                
             }
 
             // Square
@@ -146,27 +157,15 @@ namespace Efficienseat
                 Table.DrawRectangle(p2, (float) x, (float) y, 2, 2);
 
                 listviews[i].Location = new Point((int) x - (listviews[i].Width / 2), (int) y - (listviews[i].Height / 2));
-                listviews[i].Enabled = true;
+                //listviews[i].Enabled = true;
                 listviews[i].Visible = true;
+
+                
 
                 //MessageBox.Show(  "Point : (" + x.ToString() + "," + y.ToString() + ")" + Environment.NewLine +
                 //                 "Angle : " + (angle * i) + " Degrees | " + degToRad((angle * i)) + " Radians" 
                 //               );
-            }
-
-            for (int i = (int)numericUpDown1.Value; i < 10; i++)
-            {
-                listviews[i].Location = new Point(3, 3);
-                listviews[i].Enabled = false;
-                listviews[i].Visible = false;
-
-                if (listviews[i].Items.Count > 0)
-                {
-                    ListViewItem lvi = listviews[i].Items[0];
-                    removeItemFromAll(lvi);
-                    lvwUnseated.Items.Add(lvi);
-                }
-            }
+            }            
         }
 
         private double degToRad(double degrees)
@@ -181,7 +180,7 @@ namespace Efficienseat
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            Refresh();
+            updateSeatListViews();           
         }
         
         #region ListViewHandling
@@ -206,37 +205,47 @@ namespace Efficienseat
             ListView lv = sender as ListView;
             ListViewItem myItem = lv.SelectedItems[0]/*.Clone()*/ as ListViewItem;
                         
-            lv.DoDragDrop(new DataObject("ListViewItem", myItem), DragDropEffects.Move);
-            //lv.SelectedItems[0].Remove();
+            lv.DoDragDrop(new DataObject("ListViewItem", myItem), DragDropEffects.Move);            
         }
 
         private void listView_DragDrop(object sender, DragEventArgs e)
         {
             ListView lv = (ListView) sender;
-            ListViewItem myItem = e.Data.GetData("ListViewItem") as ListViewItem;            
+            ListViewItem myItem = e.Data.GetData("ListViewItem") as ListViewItem;
+            ListView lvOld = dragSource.source as ListView;
+
+            //MessageBox.Show(lvOld.Name.ToString() + " ---> " + lv.Name.ToString());
 
             // always accept dragged items into unseated listview
             if (lv == lvwUnseated)
             {
+                if (myItem.Text != "Empty")
+                {
+                    // Insert drag item
+                    removeItemFromAll(myItem);
+                    lv.Items.Add(myItem);
+                    lvwUnseated.Sort();
+                }
+
+                updateSeatListViews();
+            }
+            // If it's not the unseated listview, and it's empty
+            else if (lv != lvwUnseated && lv.Items[0].Text == "Empty")
+            {
+                // Remove empty item
+                lv.Items[0].Remove();
+
                 // Insert drag item
                 removeItemFromAll(myItem);
                 lv.Items.Add(myItem);
-                lvwUnseated.Sort();
-            }
-            // If it's not the unseated listview, and it's empty
-            else if (lv != lvwUnseated && lv.Items.Count == 0)
-            {
-                // Insert drag item
-                removeItemFromAll(myItem);
-                lv.Items.Add(myItem);                                
+
+                updateSeatListViews();
             }
             // If the seat listview is already filled, ask if user wants to swap
             else
             {
                 if (MessageBox.Show("This seat is already filled.  Replace?","Question",MessageBoxButtons.YesNo,MessageBoxIcon.Exclamation) == DialogResult.Yes)
-                {
-                    ListView lvOld = dragSource.source as ListView;
-
+                { 
                     // Move current item back to unassigned
                     ListViewItem lvi = lv.Items[0];
                     removeItemFromAll(lvi);
@@ -246,7 +255,15 @@ namespace Efficienseat
                     // Insert drag item
                     removeItemFromAll(myItem);
                     lv.Items.Add(myItem);
+
+                    updateSeatListViews();
                 }
+            }
+
+            if (lv.Items.Count == 0 && lv != lvwUnseated)
+            {
+                ListViewItem emp = empty.Clone() as ListViewItem;
+                lvOld.Items.Add(emp);
             }
 
             dragSource.source = null;     
@@ -255,11 +272,6 @@ namespace Efficienseat
         private void listView_DragLeave(object sender, EventArgs e)
         {
             dragSource.source = sender;
-        }
-
-        private void enableListViewSmall(ListView lv, int seatNumber)
-        {
-
         }
 
         private void removeItemFromAll(ListViewItem _li)
@@ -274,6 +286,36 @@ namespace Efficienseat
             }
 
             lvwUnseated.Items.Remove(_li);
+        }
+
+        private void updateSeatListViews()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                //MessageBox.Show(listviews[i].Name + " : " + listviews[i].Items.Count.ToString());
+
+                listviews[i].Location = new Point(3, 3);
+                listviews[i].Visible = false;
+
+                if (i >= (int)numericUpDown1.Value && listviews[i].Items.Count > 0 && listviews[i].Items[0].Text != "Empty")
+                {
+                    ListViewItem lvi = listviews[i].Items[0];
+                    removeItemFromAll(lvi);
+                    lvwUnseated.Items.Add(lvi);
+
+                    ListViewItem emp = empty.Clone() as ListViewItem;
+                    listviews[i].Items.Add(emp);
+                }
+                else if (listviews[i].Items.Count == 0)
+                {
+                    //MessageBox.Show("Updating " + listviews[i].Name);
+
+                    ListViewItem emp = empty.Clone() as ListViewItem;
+                    listviews[i].Items.Add(emp);
+                }
+            }
+
+            Refresh();
         }
 
         public class Mysource
