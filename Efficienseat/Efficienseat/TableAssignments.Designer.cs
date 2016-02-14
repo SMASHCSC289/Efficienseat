@@ -46,6 +46,7 @@
             this.Guest_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1 = new System.Windows.Forms.Panel();
             this.lvwSeat7 = new System.Windows.Forms.ListView();
+            this.imageList_Seat_32 = new System.Windows.Forms.ImageList(this.components);
             this.lvwSeat8 = new System.Windows.Forms.ListView();
             this.lvwSeat9 = new System.Windows.Forms.ListView();
             this.lvwSeat10 = new System.Windows.Forms.ListView();
@@ -55,7 +56,8 @@
             this.lvwSeat3 = new System.Windows.Forms.ListView();
             this.lvwSeat2 = new System.Windows.Forms.ListView();
             this.lvwSeat1 = new System.Windows.Forms.ListView();
-            this.imageList_Seat_32 = new System.Windows.Forms.ImageList(this.components);
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -69,7 +71,7 @@
             "Table 3",
             "Table 4",
             "Table 5"});
-            this.comboBox1.Location = new System.Drawing.Point(11, 28);
+            this.comboBox1.Location = new System.Drawing.Point(83, 6);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(200, 21);
             this.comboBox1.TabIndex = 2;
@@ -81,7 +83,7 @@
             "Circle",
             "Square",
             "Rectangle"});
-            this.comboBox2.Location = new System.Drawing.Point(217, 28);
+            this.comboBox2.Location = new System.Drawing.Point(83, 33);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(200, 21);
             this.comboBox2.TabIndex = 3;
@@ -89,7 +91,7 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(423, 29);
+            this.numericUpDown1.Location = new System.Drawing.Point(386, 7);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             10,
             0,
@@ -101,7 +103,7 @@
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(86, 20);
+            this.numericUpDown1.Size = new System.Drawing.Size(124, 20);
             this.numericUpDown1.TabIndex = 4;
             this.numericUpDown1.Value = new decimal(new int[] {
             1,
@@ -114,16 +116,15 @@
             // 
             this.imageList_32.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList_32.ImageStream")));
             this.imageList_32.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList_32.Images.SetKeyName(0, "jumping28_Blk_32.png");
-            this.imageList_32.Images.SetKeyName(1, "jumping28_Red_32.png");
-            this.imageList_32.Images.SetKeyName(2, "dining5_Blk.png");
+            this.imageList_32.Images.SetKeyName(0, "man13_blk.png");
+            this.imageList_32.Images.SetKeyName(1, "man13_red.png");
             // 
             // imageList_16
             // 
             this.imageList_16.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList_16.ImageStream")));
             this.imageList_16.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList_16.Images.SetKeyName(0, "jumping28_Blk_16.png");
-            this.imageList_16.Images.SetKeyName(1, "jumping28_Red_16.png");
+            this.imageList_16.Images.SetKeyName(0, "man13_blk.png");
+            this.imageList_16.Images.SetKeyName(1, "man13_red.png");
             // 
             // label1
             // 
@@ -137,7 +138,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(217, 8);
+            this.label2.Location = new System.Drawing.Point(8, 36);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 13);
             this.label2.TabIndex = 6;
@@ -146,7 +147,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(420, 8);
+            this.label3.Location = new System.Drawing.Point(293, 9);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(86, 13);
             this.label3.TabIndex = 7;
@@ -155,9 +156,6 @@
             // lvwUnseated
             // 
             this.lvwUnseated.AllowDrop = true;
-            this.lvwUnseated.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.lvwUnseated.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lvwUnseated.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Guest_Name,
@@ -168,11 +166,11 @@
             this.lvwUnseated.FullRowSelect = true;
             this.lvwUnseated.GridLines = true;
             this.lvwUnseated.LargeImageList = this.imageList_32;
-            this.lvwUnseated.Location = new System.Drawing.Point(386, 64);
+            this.lvwUnseated.Location = new System.Drawing.Point(386, 60);
             this.lvwUnseated.MultiSelect = false;
             this.lvwUnseated.Name = "lvwUnseated";
             this.lvwUnseated.ShowItemToolTips = true;
-            this.lvwUnseated.Size = new System.Drawing.Size(124, 446);
+            this.lvwUnseated.Size = new System.Drawing.Size(124, 409);
             this.lvwUnseated.SmallImageList = this.imageList_16;
             this.lvwUnseated.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.lvwUnseated.TabIndex = 8;
@@ -201,8 +199,6 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.lvwSeat7);
@@ -215,9 +211,9 @@
             this.panel1.Controls.Add(this.lvwSeat3);
             this.panel1.Controls.Add(this.lvwSeat2);
             this.panel1.Controls.Add(this.lvwSeat1);
-            this.panel1.Location = new System.Drawing.Point(12, 64);
+            this.panel1.Location = new System.Drawing.Point(11, 60);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(368, 446);
+            this.panel1.Size = new System.Drawing.Size(368, 409);
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -242,6 +238,14 @@
             this.lvwSeat7.DragDrop += new System.Windows.Forms.DragEventHandler(this.listView_DragDrop);
             this.lvwSeat7.DragEnter += new System.Windows.Forms.DragEventHandler(this.listView_DragEnter);
             this.lvwSeat7.DragLeave += new System.EventHandler(this.listView_DragLeave);
+            // 
+            // imageList_Seat_32
+            // 
+            this.imageList_Seat_32.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList_Seat_32.ImageStream")));
+            this.imageList_Seat_32.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList_Seat_32.Images.SetKeyName(0, "seated_32_blk.png");
+            this.imageList_Seat_32.Images.SetKeyName(1, "seated_32_red.png");
+            this.imageList_Seat_32.Images.SetKeyName(2, "chair_32_blk.png");
             // 
             // lvwSeat8
             // 
@@ -433,19 +437,33 @@
             this.lvwSeat1.DragEnter += new System.Windows.Forms.DragEventHandler(this.listView_DragEnter);
             this.lvwSeat1.DragLeave += new System.EventHandler(this.listView_DragLeave);
             // 
-            // imageList_Seat_32
+            // btnSave
             // 
-            this.imageList_Seat_32.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList_Seat_32.ImageStream")));
-            this.imageList_Seat_32.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList_Seat_32.Images.SetKeyName(0, "seated_32_blk.png");
-            this.imageList_Seat_32.Images.SetKeyName(1, "seated_32_red.png");
-            this.imageList_Seat_32.Images.SetKeyName(2, "chair_32_blk.png");
+            this.btnSave.Location = new System.Drawing.Point(402, 33);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(108, 23);
+            this.btnSave.TabIndex = 9;
+            this.btnSave.Text = "Save Seating";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(289, 33);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(108, 23);
+            this.btnReset.TabIndex = 10;
+            this.btnReset.Text = "Reset Seats";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // TableAssignments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(522, 519);
+            this.ClientSize = new System.Drawing.Size(522, 479);
+            this.Controls.Add(this.btnReset);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.lvwUnseated);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -493,5 +511,7 @@
         private System.Windows.Forms.ListView lvwSeat5;
         private System.Windows.Forms.ListView lvwSeat6;
         private System.Windows.Forms.ImageList imageList_Seat_32;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnReset;
     }
 }

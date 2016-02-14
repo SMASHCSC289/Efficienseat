@@ -48,27 +48,27 @@ namespace Efficienseat
                 l.Items.Add(emp);
             }
 
-            ListViewItem lvTest = new ListViewItem(new string[] { "Dan Stabler", "Accept", "123 Birch Ln.", "", "1" });
+            ListViewItem lvTest = new ListViewItem(new string[] { "Dan Stabler", "Accept", "123 Birch Ln.", "", "12" });
             lvTest.ToolTipText = "I don't have a comment. :(";
             lvTest.ImageIndex = 0;
             lvwUnseated.Items.Add(lvTest);
 
-            ListViewItem lvTest2 = new ListViewItem(new string[] { "Mark Harriett", "Accept", "123 Birch Ln.", "I have a comment! :)", "2" });
+            ListViewItem lvTest2 = new ListViewItem(new string[] { "Mark Harriett", "Accept", "123 Birch Ln.", "I have a comment! :)", "34" });
             lvTest2.ToolTipText = "I have a comment! :)";
             lvTest2.ImageIndex = 1;
             lvwUnseated.Items.Add(lvTest2);
 
-            ListViewItem lvTest3 = new ListViewItem(new string[] { "Diane Mayes", "Accept", "123 Birch Ln.", "", "3" });
+            ListViewItem lvTest3 = new ListViewItem(new string[] { "Diane Mayes", "Accept", "123 Birch Ln.", "", "56" });
             lvTest3.ToolTipText = "I don't have a comment. :(";
             lvTest3.ImageIndex = 0;
             lvwUnseated.Items.Add(lvTest3);
 
-            ListViewItem lvTest4 = new ListViewItem(new string[] { "Jonathan Sobota", "Accept", "123 Birch Ln.", "I have a comment!", "4" });
+            ListViewItem lvTest4 = new ListViewItem(new string[] { "Jonathan Sobota", "Accept", "123 Birch Ln.", "I have a comment!", "78" });
             lvTest4.ToolTipText = "I have a comment! :)";
             lvTest4.ImageIndex = 1;
             lvwUnseated.Items.Add(lvTest4);
 
-            ListViewItem lvTest5 = new ListViewItem(new string[] { "Nema Abachizadeh", "Accept", "123 Birch Ln.", "", "5" });
+            ListViewItem lvTest5 = new ListViewItem(new string[] { "Nema Abachizadeh", "Accept", "123 Birch Ln.", "", "90" });
             lvTest5.ToolTipText = "I don't have a comment. :(";
             lvTest5.ImageIndex = 0;
             lvwUnseated.Items.Add(lvTest5);
@@ -182,9 +182,18 @@ namespace Efficienseat
         {
             updateSeatListViews();           
         }
-        
-        #region ListViewHandling
 
+        // 
+        #region ListViewHandling
+        
+        // holds the last item moved
+        public class Mysource
+        {
+            public object source { get; set; }
+            Control control { get; set; }
+        }
+
+        // triggered when a listview item drag first enters a listview
         private void listView_DragEnter(object sender, DragEventArgs e)
         {
             // Check for the custom DataFormat ListViewItem array.
@@ -200,14 +209,16 @@ namespace Efficienseat
             }
         }
 
+
         private void listView_ItemDrag(object sender, ItemDragEventArgs e)
         {            
             ListView lv = sender as ListView;
             ListViewItem myItem = lv.SelectedItems[0]/*.Clone()*/ as ListViewItem;
-                        
-            lv.DoDragDrop(new DataObject("ListViewItem", myItem), DragDropEffects.Move);            
+
+            lv.DoDragDrop(new DataObject("ListViewItem", myItem), DragDropEffects.Move);         
         }
 
+        // triggered when mouse button is released
         private void listView_DragDrop(object sender, DragEventArgs e)
         {
             ListView lv = (ListView) sender;
@@ -238,8 +249,11 @@ namespace Efficienseat
                 // Insert drag item
                 removeItemFromAll(myItem);
                 lv.Items.Add(myItem);
-
+                
                 updateSeatListViews();
+
+                //TESTING
+                //MessageBox.Show("I'm " + myItem.Text + ", attendee number " + myItem.SubItems[4].Text);
             }
             // If the seat listview is already filled, ask if user wants to swap
             else
@@ -256,7 +270,7 @@ namespace Efficienseat
                     removeItemFromAll(myItem);
                     lv.Items.Add(myItem);
 
-                    updateSeatListViews();
+                    updateSeatListViews();                                       
                 }
             }
 
@@ -269,11 +283,13 @@ namespace Efficienseat
             dragSource.source = null;     
         }
 
+        // triggered when listviewitem is drug out of the listview
         private void listView_DragLeave(object sender, EventArgs e)
         {
             dragSource.source = sender;
         }
 
+        // remove specific listview item from all listviews in the form
         private void removeItemFromAll(ListViewItem _li)
         {
             foreach (Control c in panel1.Controls)
@@ -287,7 +303,8 @@ namespace Efficienseat
 
             lvwUnseated.Items.Remove(_li);
         }
-
+        
+        // update all seat listview
         private void updateSeatListViews()
         {
             for (int i = 0; i < 10; i++)
@@ -318,12 +335,56 @@ namespace Efficienseat
             Refresh();
         }
 
-        public class Mysource
+        #endregion ListViewHandling
+
+        private void saveSeating()
         {
-            public object source { get; set; }
-            Control control { get; set; }
+            // TEST OUTPUT
+            string testOutput = "";
+
+            for (int i = 0; i < (int)numericUpDown1.Value; i++)
+            {
+                int seat = i + 1;
+
+                if (!listviews[i].Items[0].Text.ToUpper().Contains("EMPTY"))
+                {
+                    testOutput += String.Format("{0}\tAttendee {1}\tSeat {2}", listviews[i].Items[0].Text,
+                        listviews[i].Items[0].SubItems[4].Text, seat.ToString()) + Environment.NewLine;
+
+                    //listviews[i].Items[0].Text + 
+                    //        " | Attendee " + listviews[i].Items[0].SubItems[4].Text +
+                    //        " | Seat " + seat.ToString() + Environment.NewLine;
+                }
+
+            }
+
+            MessageBox.Show(testOutput);
+            // END TEST OUTPUT
         }
 
-        #endregion ListViewHandling
+        private void resetSeating()
+        {
+            foreach (ListView lv in listviews)
+            {
+                if (!lv.Items[0].Text.ToUpper().Contains("EMPTY"))
+                {
+                    ListViewItem lvi = lv.Items[0];
+                    removeItemFromAll(lvi);
+                    lvwUnseated.Items.Add(lvi);
+                }
+            }
+
+            updateSeatListViews();
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            resetSeating();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            saveSeating();
+        }
     }
 }
