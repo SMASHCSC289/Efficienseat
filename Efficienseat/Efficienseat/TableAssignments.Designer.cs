@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TableAssignments));
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cbxTableName = new System.Windows.Forms.ComboBox();
+            this.cbxTableShape = new System.Windows.Forms.ComboBox();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.imageList_32 = new System.Windows.Forms.ImageList(this.components);
             this.imageList_16 = new System.Windows.Forms.ImageList(this.components);
@@ -58,40 +58,41 @@
             this.lvwSeat1 = new System.Windows.Forms.ListView();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
+            this.cbEndSeats = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // cbxTableName
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cbxTableName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxTableName.Items.AddRange(new object[] {
             "Table 1",
             "Table 2",
             "Table 3",
             "Table 4",
             "Table 5"});
-            this.comboBox1.Location = new System.Drawing.Point(83, 6);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(200, 21);
-            this.comboBox1.TabIndex = 2;
+            this.cbxTableName.Location = new System.Drawing.Point(83, 6);
+            this.cbxTableName.Name = "cbxTableName";
+            this.cbxTableName.Size = new System.Drawing.Size(194, 21);
+            this.cbxTableName.TabIndex = 2;
             // 
-            // comboBox2
+            // cbxTableShape
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.cbxTableShape.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxTableShape.Items.AddRange(new object[] {
             "Circle",
             "Square",
             "Rectangle"});
-            this.comboBox2.Location = new System.Drawing.Point(83, 33);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(200, 21);
-            this.comboBox2.TabIndex = 3;
-            this.comboBox2.SelectionChangeCommitted += new System.EventHandler(this.comboBox2_SelectionChangeCommitted);
+            this.cbxTableShape.Location = new System.Drawing.Point(83, 33);
+            this.cbxTableShape.Name = "cbxTableShape";
+            this.cbxTableShape.Size = new System.Drawing.Size(107, 21);
+            this.cbxTableShape.TabIndex = 3;
+            this.cbxTableShape.SelectionChangeCommitted += new System.EventHandler(this.cbxTableShape_SelectionChangeCommitted);
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(386, 7);
+            this.numericUpDown1.Location = new System.Drawing.Point(302, 28);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             10,
             0,
@@ -103,7 +104,7 @@
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(124, 20);
+            this.numericUpDown1.Size = new System.Drawing.Size(83, 20);
             this.numericUpDown1.TabIndex = 4;
             this.numericUpDown1.Value = new decimal(new int[] {
             1,
@@ -147,7 +148,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(293, 9);
+            this.label3.Location = new System.Drawing.Point(299, 12);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(86, 13);
             this.label3.TabIndex = 7;
@@ -225,7 +226,7 @@
             this.lvwSeat7.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lvwSeat7.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.lvwSeat7.LargeImageList = this.imageList_Seat_32;
-            this.lvwSeat7.Location = new System.Drawing.Point(79, 3);
+            this.lvwSeat7.Location = new System.Drawing.Point(79, 74);
             this.lvwSeat7.MultiSelect = false;
             this.lvwSeat7.Name = "lvwSeat7";
             this.lvwSeat7.Scrollable = false;
@@ -254,7 +255,7 @@
             this.lvwSeat8.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lvwSeat8.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.lvwSeat8.LargeImageList = this.imageList_Seat_32;
-            this.lvwSeat8.Location = new System.Drawing.Point(79, 74);
+            this.lvwSeat8.Location = new System.Drawing.Point(79, 145);
             this.lvwSeat8.MultiSelect = false;
             this.lvwSeat8.Name = "lvwSeat8";
             this.lvwSeat8.Scrollable = false;
@@ -275,7 +276,7 @@
             this.lvwSeat9.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lvwSeat9.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.lvwSeat9.LargeImageList = this.imageList_Seat_32;
-            this.lvwSeat9.Location = new System.Drawing.Point(79, 145);
+            this.lvwSeat9.Location = new System.Drawing.Point(79, 216);
             this.lvwSeat9.MultiSelect = false;
             this.lvwSeat9.Name = "lvwSeat9";
             this.lvwSeat9.Scrollable = false;
@@ -296,7 +297,7 @@
             this.lvwSeat10.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lvwSeat10.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.lvwSeat10.LargeImageList = this.imageList_Seat_32;
-            this.lvwSeat10.Location = new System.Drawing.Point(79, 216);
+            this.lvwSeat10.Location = new System.Drawing.Point(79, 287);
             this.lvwSeat10.MultiSelect = false;
             this.lvwSeat10.Name = "lvwSeat10";
             this.lvwSeat10.Scrollable = false;
@@ -359,7 +360,7 @@
             this.lvwSeat6.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lvwSeat6.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.lvwSeat6.LargeImageList = this.imageList_Seat_32;
-            this.lvwSeat6.Location = new System.Drawing.Point(4, 358);
+            this.lvwSeat6.Location = new System.Drawing.Point(79, 3);
             this.lvwSeat6.MultiSelect = false;
             this.lvwSeat6.Name = "lvwSeat6";
             this.lvwSeat6.Scrollable = false;
@@ -439,7 +440,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(402, 33);
+            this.btnSave.Location = new System.Drawing.Point(402, 31);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(108, 23);
             this.btnSave.TabIndex = 9;
@@ -449,7 +450,7 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(289, 33);
+            this.btnReset.Location = new System.Drawing.Point(402, 4);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(108, 23);
             this.btnReset.TabIndex = 10;
@@ -457,11 +458,26 @@
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
+            // cbEndSeats
+            // 
+            this.cbEndSeats.AutoSize = true;
+            this.cbEndSeats.Checked = true;
+            this.cbEndSeats.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbEndSeats.Enabled = false;
+            this.cbEndSeats.Location = new System.Drawing.Point(201, 35);
+            this.cbEndSeats.Name = "cbEndSeats";
+            this.cbEndSeats.Size = new System.Drawing.Size(81, 17);
+            this.cbEndSeats.TabIndex = 11;
+            this.cbEndSeats.Text = "End Seats?";
+            this.cbEndSeats.UseVisualStyleBackColor = true;
+            this.cbEndSeats.CheckedChanged += new System.EventHandler(this.cbEndSeats_CheckedChanged);
+            // 
             // TableAssignments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(522, 479);
+            this.Controls.Add(this.cbEndSeats);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.lvwUnseated);
@@ -469,8 +485,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbxTableShape);
+            this.Controls.Add(this.cbxTableName);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "TableAssignments";
@@ -485,8 +501,8 @@
         }
 
         #endregion
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cbxTableName;
+        private System.Windows.Forms.ComboBox cbxTableShape;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -513,5 +529,6 @@
         private System.Windows.Forms.ImageList imageList_Seat_32;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.CheckBox cbEndSeats;
     }
 }

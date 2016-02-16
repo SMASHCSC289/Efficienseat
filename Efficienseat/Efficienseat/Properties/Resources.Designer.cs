@@ -93,6 +93,16 @@ namespace Efficienseat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Tablecloth {
+            get {
+                object obj = ResourceManager.GetObject("Tablecloth", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap WoodFine0003_S {
             get {
                 object obj = ResourceManager.GetObject("WoodFine0003_S", resourceCulture);
