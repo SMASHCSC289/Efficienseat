@@ -63,9 +63,39 @@ namespace Efficienseat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap dining5_Blk {
+            get {
+                object obj = ResourceManager.GetObject("dining5_Blk", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap dining5_Blk_64 {
+            get {
+                object obj = ResourceManager.GetObject("dining5_Blk_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap SplashLogoSmaller {
             get {
                 object obj = ResourceManager.GetObject("SplashLogoSmaller", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tablecloth {
+            get {
+                object obj = ResourceManager.GetObject("Tablecloth", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

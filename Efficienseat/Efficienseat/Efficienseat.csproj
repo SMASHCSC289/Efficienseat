@@ -51,6 +51,9 @@
     <Compile Include="Attendee_List.Designer.cs">
       <DependentUpon>Attendee_List.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DataEntryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +129,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\WrinklesHomogeneous0044_M2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dining5_Blk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dining5_Blk_64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tablecloth.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tablecloth.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
