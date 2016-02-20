@@ -48,5 +48,11 @@ namespace Efficienseat
 
             ta.Show();
         }
+
+        private void importToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Attendee_List al = (Attendee_List) this.MdiChildren[0];
+            al.importAttendees();
+        }
     }
 }

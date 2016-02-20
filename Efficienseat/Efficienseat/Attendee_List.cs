@@ -52,8 +52,10 @@ namespace Efficienseat
 
         private void btnRemoveAttendee_Click(object sender, EventArgs e)
         {
-            //To fix: Throws ArgumentOutOfRangeException if no guest selected
-            removeAttendee(lvwAttendee.SelectedItems[0]);
+            if (lvwAttendee.SelectedItems.Count == 1)
+            {
+                removeAttendee(lvwAttendee.SelectedItems[0]);
+            }
         } //END btnRemoveAttendee_Click EVENT
 
         #endregion FormButtons
@@ -143,12 +145,10 @@ namespace Efficienseat
         private void removeAttendee(ListViewItem lvi)
         {
             lvi.Remove();
-            
-            //use code to remove the entry from the DB
         }
 
         //import attendees from text file
-        private void importAttendees()
+        public void importAttendees()
         {
             string absolutePath = null;
             string line = null;
@@ -163,53 +163,52 @@ namespace Efficienseat
             openFileDialog.Multiselect = false;
 
             //if user selects file and hits confirms
-            if(openFileDialog.ShowDialog() == DialogResult.OK)
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 absolutePath = openFileDialog.FileName;
-            }
-            openFileDialog.Dispose();
 
-            //open file and parse by line
-            try
-            {
-                StreamReader filestream = new StreamReader(absolutePath);
-
-                //iterate through file line by line
-                while((line = filestream.ReadLine()) != null)
+                //open file and parse by line
+                try
                 {
-                    //control for item equality
-                    bool equal = false;
+                    StreamReader filestream = new StreamReader(absolutePath);
 
-                    //iterate through listviewitems to compare with current line from txt file
-                    //  sloppy as it iterates through the entire listview for each line item
-                    //  --Potentially faster to check txt file for duplicates first and then only
-                    //      check existing listviewitems for equality?
-                    foreach(ListViewItem lvi in lvwAttendee.Items)
+                    //iterate through file line by line
+                    while ((line = filestream.ReadLine()) != null)
                     {
-                        //if names are equal, do not add and break from search
-                        if (line.Equals(lvi.SubItems[0].Text))
+                        //control for item equality
+                        bool equal = false;
+
+                        //iterate through listviewitems to compare with current line from txt file
+                        //  sloppy as it iterates through the entire listview for each line item
+                        //  --Potentially faster to check txt file for duplicates first and then only
+                        //      check existing listviewitems for equality?
+                        foreach (ListViewItem lvi in lvwAttendee.Items)
                         {
-                            equal = true;
-                            break;
+                            //if names are equal, do not add and break from search
+                            if (line.Equals(lvi.SubItems[0].Text))
+                            {
+                                equal = true;
+                                break;
+                            }
+                        }
+                        //if name does not already exist, add item to ListView
+                        if (!equal)
+                        {
+                            ListViewItem newGuest = new ListViewItem(new string[] { line, "", "", "" });
+                            newGuest.ImageIndex = 0;
+                            newGuest.Group = lvwAttendee.Groups[0];
+                            lvwAttendee.Items.Add(newGuest);
                         }
                     }
-                    //if name does not already exist, add item to ListView
-                    if (!equal)
-                    {
-                        ListViewItem newGuest = new ListViewItem(new string[] { line, "", "", "" });
-                        newGuest.ImageIndex = 0;
-                        newGuest.Group = lvwAttendee.Groups[0];
-                        lvwAttendee.Items.Add(newGuest);
-                    }
+                    //close open stream
+                    filestream.Dispose();
                 }
-                //close open stream
-                filestream.Dispose();
+                catch (Exception e)
+                {
+                    MessageBox.Show("Error: could not open file.\n Message: " + e.ToString());
+                }
             }
-            catch(Exception e)
-            {
-                MessageBox.Show("Error: could not open file.\n Message: " + e.ToString());
-            }
-
+            openFileDialog.Dispose();
         }
 
         #endregion Methods
