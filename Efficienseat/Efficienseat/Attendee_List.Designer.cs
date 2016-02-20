@@ -46,6 +46,7 @@
             this.imlTableNumbers = new System.Windows.Forms.ImageList(this.components);
             this.btnEditEntry = new System.Windows.Forms.Button();
             this.btnRemoveAttendee = new System.Windows.Forms.Button();
+            this.tmiImport = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsAttendee.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,9 +101,10 @@
             // 
             this.cmsAttendee.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tmiRemoveAttendee,
-            this.tmiEdit});
+            this.tmiEdit,
+            this.tmiImport});
             this.cmsAttendee.Name = "contextMenuStrip1";
-            this.cmsAttendee.Size = new System.Drawing.Size(153, 70);
+            this.cmsAttendee.Size = new System.Drawing.Size(153, 92);
             // 
             // tmiRemoveAttendee
             // 
@@ -117,6 +119,13 @@
             this.tmiEdit.Size = new System.Drawing.Size(152, 22);
             this.tmiEdit.Text = "Edit";
             this.tmiEdit.Click += new System.EventHandler(this.tmiEdit_Click);
+            // 
+            // importToolStripMenuItem
+            // 
+            this.tmiImport.Name = "importToolStripMenuItem";
+            this.tmiImport.Size = new System.Drawing.Size(152, 22);
+            this.tmiImport.Text = "Import";
+            this.tmiImport.Click += new System.EventHandler(this.tmiImport_Click);
             // 
             // btnAddAtendee
             // 
@@ -201,5 +210,6 @@
         private System.Windows.Forms.ContextMenuStrip cmsAttendee;
         private System.Windows.Forms.ToolStripMenuItem tmiRemoveAttendee;
         private System.Windows.Forms.ToolStripMenuItem tmiEdit;
+        private System.Windows.Forms.ToolStripMenuItem tmiImport;
     }
 }

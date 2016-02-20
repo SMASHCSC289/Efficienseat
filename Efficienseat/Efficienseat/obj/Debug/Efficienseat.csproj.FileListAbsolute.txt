@@ -81,3 +81,16 @@ C:\Users\dstab\Documents\GitHub\Efficienseat\Efficienseat\Efficienseat\obj\Debug
 C:\Users\dstab\Documents\GitHub\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.csproj.GenerateResource.Cache
 C:\Users\dstab\Documents\GitHub\Efficienseat\Efficienseat\Efficienseat\bin\Debug\Efficienseat.exe
 C:\Users\dstab\Documents\GitHub\Efficienseat\Efficienseat\Efficienseat\bin\Debug\Efficienseat.pdb
+C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\bin\Debug\Efficienseat.exe.config
+C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.exe
+C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.pdb
+C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\bin\Debug\Efficienseat.exe
+C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\bin\Debug\Efficienseat.pdb
+C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.csprojResolveAssemblyReference.cache
+C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.Attendee_List.resources
+C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.DataEntryForm.resources
+C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.Main_Window.resources
+C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.StartupForm.resources
+C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.Properties.Resources.resources
+C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.TableAssignments.resources
+C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.csproj.GenerateResource.Cache
