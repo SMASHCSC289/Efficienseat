@@ -75,7 +75,7 @@ namespace Efficienseat
         {
             try
             {
-                DBConnection = new SQLiteConnection("Data Source=D:\\Mark\\School\\CSC 289\\SQLite DB\\Efficienseat.sqlite;Version=3;");
+                DBConnection = new SQLiteConnection(@"Data Source=|DataDirectory|\Efficienseat.sqlite;Version=3;");
                 DBConnection.Open();
             }
             catch (SQLiteException Error)

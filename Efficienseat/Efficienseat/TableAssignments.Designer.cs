@@ -41,7 +41,6 @@
             this.lvwUnseated = new System.Windows.Forms.ListView();
             this.Guest_Name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Response = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Address = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Comments = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Guest_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1 = new System.Windows.Forms.Panel();
@@ -59,8 +58,10 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.cbEndSeats = new System.Windows.Forms.CheckBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // cbxTableName
@@ -161,7 +162,6 @@
             this.lvwUnseated.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Guest_Name,
             this.Response,
-            this.Address,
             this.Comments,
             this.Guest_ID});
             this.lvwUnseated.FullRowSelect = true;
@@ -189,10 +189,6 @@
             // Response
             // 
             this.Response.Text = "Response";
-            // 
-            // Address
-            // 
-            this.Address.Text = "Address";
             // 
             // Comments
             // 
@@ -472,11 +468,20 @@
             this.cbEndSeats.UseVisualStyleBackColor = true;
             this.cbEndSeats.CheckedChanged += new System.EventHandler(this.cbEndSeats_CheckedChanged);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(11, 476);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(499, 132);
+            this.dataGridView1.TabIndex = 12;
+            // 
             // TableAssignments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(522, 479);
+            this.ClientSize = new System.Drawing.Size(522, 620);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.cbEndSeats);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnSave);
@@ -495,6 +500,7 @@
             this.Resize += new System.EventHandler(this.TableAssignments_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -510,7 +516,6 @@
         private System.Windows.Forms.ListView lvwUnseated;
         private System.Windows.Forms.ColumnHeader Guest_Name;
         private System.Windows.Forms.ColumnHeader Response;
-        private System.Windows.Forms.ColumnHeader Address;
         private System.Windows.Forms.ColumnHeader Comments;
         private System.Windows.Forms.ImageList imageList_32;
         private System.Windows.Forms.ImageList imageList_16;
@@ -530,5 +535,6 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.CheckBox cbEndSeats;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

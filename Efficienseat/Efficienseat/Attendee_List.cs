@@ -93,15 +93,21 @@ namespace Efficienseat
             for (int i = 0; i < AttendeeDT.Rows.Count; i++)
             {
                 DataRow dr = AttendeeDT.Rows[i];
-                ListViewItem listitem = new ListViewItem(dr["FIRST_NAME"].ToString());
-                listitem.SubItems.Add(dr["LAST_NAME"].ToString());
-                listitem.SubItems.Add(dr["GUEST_ID"].ToString());
-                listitem.SubItems.Add(dr["RSVP"].ToString());
+                ListViewItem listitem = new ListViewItem(dr["FIRST_NAME"].ToString() + " " + dr["LAST_NAME"].ToString());
+                //listitem.SubItems.Add(dr["LAST_NAME"].ToString());
+                if (dr["RSVP"] == null || dr["RSVP"] == "")
+                {
+                    listitem.SubItems.Add("Unknown");
+                }
+                else
+                {
+                    listitem.SubItems.Add(dr["RSVP"].ToString());
+                }
+                listitem.SubItems.Add(dr["GUEST_ID"].ToString());                
                 listitem.SubItems.Add(dr["FOOD_ALLERGY"].ToString());
                 listitem.SubItems.Add(dr["COMMENTS"].ToString());
                 lvwAttendee.Items.Add(listitem);
             }
-
         }
 
         // add item
@@ -160,11 +166,11 @@ namespace Efficienseat
         {
             using (DataEntryForm data = new DataEntryForm())
             {
-                data.FirstName = lvi.Text;
-                data.LastName = lvi.SubItems[1].Text;
-                data.RSVP = lvi.SubItems[3].Text;
-                data.FoodAllergy = lvi.SubItems[4].Text;
-                data.Comments = lvi.SubItems[5].Text;
+                data.FirstName = lvi.Text;                  // <== This needs to be changed - we have to combine first and last name in li.Text to get the RSVP in the second line
+                data.LastName = lvi.SubItems[1].Text;       // <== This needs to be changed - we have to combine first and last name in li.Text to get the RSVP in the second line
+                data.RSVP = lvi.SubItems[3].Text;           // This would become SubItems[2]
+                data.FoodAllergy = lvi.SubItems[4].Text;    // This would become SubItems[3]
+                data.Comments = lvi.SubItems[5].Text;       // This would become SubItems[4]
 
                 if (data.ShowDialog(this) == DialogResult.OK)
                 {
@@ -183,7 +189,6 @@ namespace Efficienseat
                     }
                 }
             }
-
         }
 
         // Remove selected item
