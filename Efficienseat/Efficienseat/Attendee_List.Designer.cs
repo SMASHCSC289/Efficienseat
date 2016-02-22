@@ -34,19 +34,21 @@
             System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Table 2", System.Windows.Forms.HorizontalAlignment.Left);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Attendee_List));
             this.lvwAttendee = new System.Windows.Forms.ListView();
-            this.Guest_Name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.First_Name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Response = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Address = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.FoodAllergy = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Comments = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cmsAttendee = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tmiRemoveAttendee = new System.Windows.Forms.ToolStripMenuItem();
             this.tmiEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tmiImport = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAddAtendee = new System.Windows.Forms.Button();
             this.btnChangeView = new System.Windows.Forms.Button();
             this.imlTableNumbers = new System.Windows.Forms.ImageList(this.components);
             this.btnEditEntry = new System.Windows.Forms.Button();
             this.btnRemoveAttendee = new System.Windows.Forms.Button();
-            this.tmiImport = new System.Windows.Forms.ToolStripMenuItem();
+            this.Last_Name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Guest_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cmsAttendee.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,9 +59,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lvwAttendee.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lvwAttendee.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.Guest_Name,
+            this.First_Name,
+            this.Last_Name,
+            this.Guest_ID,
             this.Response,
-            this.Address,
+            this.FoodAllergy,
             this.Comments});
             this.lvwAttendee.ContextMenuStrip = this.cmsAttendee;
             this.lvwAttendee.FullRowSelect = true;
@@ -81,17 +85,17 @@
             this.lvwAttendee.UseCompatibleStateImageBehavior = false;
             this.lvwAttendee.View = System.Windows.Forms.View.Tile;
             // 
-            // Guest_Name
+            // First_Name
             // 
-            this.Guest_Name.Text = "Guest Name";
+            this.First_Name.Text = "First_Name";
             // 
             // Response
             // 
             this.Response.Text = "Response";
             // 
-            // Address
+            // FoodAllergy
             // 
-            this.Address.Text = "Address";
+            this.FoodAllergy.Text = "Food Allergy";
             // 
             // Comments
             // 
@@ -104,26 +108,26 @@
             this.tmiEdit,
             this.tmiImport});
             this.cmsAttendee.Name = "contextMenuStrip1";
-            this.cmsAttendee.Size = new System.Drawing.Size(153, 92);
+            this.cmsAttendee.Size = new System.Drawing.Size(114, 70);
             // 
             // tmiRemoveAttendee
             // 
             this.tmiRemoveAttendee.Name = "tmiRemoveAttendee";
-            this.tmiRemoveAttendee.Size = new System.Drawing.Size(152, 22);
+            this.tmiRemoveAttendee.Size = new System.Drawing.Size(113, 22);
             this.tmiRemoveAttendee.Text = "Remove";
             this.tmiRemoveAttendee.Click += new System.EventHandler(this.tmiRemoveAttendee_Click);
             // 
             // tmiEdit
             // 
             this.tmiEdit.Name = "tmiEdit";
-            this.tmiEdit.Size = new System.Drawing.Size(152, 22);
+            this.tmiEdit.Size = new System.Drawing.Size(113, 22);
             this.tmiEdit.Text = "Edit";
             this.tmiEdit.Click += new System.EventHandler(this.tmiEdit_Click);
             // 
-            // importToolStripMenuItem
+            // tmiImport
             // 
-            this.tmiImport.Name = "importToolStripMenuItem";
-            this.tmiImport.Size = new System.Drawing.Size(152, 22);
+            this.tmiImport.Name = "tmiImport";
+            this.tmiImport.Size = new System.Drawing.Size(113, 22);
             this.tmiImport.Text = "Import";
             this.tmiImport.Click += new System.EventHandler(this.tmiImport_Click);
             // 
@@ -175,6 +179,14 @@
             this.btnRemoveAttendee.UseVisualStyleBackColor = true;
             this.btnRemoveAttendee.Click += new System.EventHandler(this.btnRemoveAttendee_Click);
             // 
+            // Last_Name
+            // 
+            this.Last_Name.Text = "Last Name";
+            // 
+            // Guest_ID
+            // 
+            this.Guest_ID.Text = "Guest_ID";
+            // 
             // Attendee_List
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -199,9 +211,9 @@
 
         private System.Windows.Forms.ListView lvwAttendee;
         private System.Windows.Forms.Button btnAddAtendee;
-        private System.Windows.Forms.ColumnHeader Guest_Name;
+        private System.Windows.Forms.ColumnHeader First_Name;
         private System.Windows.Forms.ColumnHeader Response;
-        private System.Windows.Forms.ColumnHeader Address;
+        private System.Windows.Forms.ColumnHeader FoodAllergy;
         private System.Windows.Forms.ColumnHeader Comments;
         private System.Windows.Forms.Button btnChangeView;
         private System.Windows.Forms.ImageList imlTableNumbers;
@@ -211,5 +223,7 @@
         private System.Windows.Forms.ToolStripMenuItem tmiRemoveAttendee;
         private System.Windows.Forms.ToolStripMenuItem tmiEdit;
         private System.Windows.Forms.ToolStripMenuItem tmiImport;
+        private System.Windows.Forms.ColumnHeader Last_Name;
+        private System.Windows.Forms.ColumnHeader Guest_ID;
     }
 }

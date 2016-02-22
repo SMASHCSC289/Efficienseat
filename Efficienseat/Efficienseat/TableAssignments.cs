@@ -16,6 +16,7 @@ namespace Efficienseat
         private int shapeType = -1;
         int rectSide, rectSide2;
         Image image = new Bitmap(Efficienseat.Properties.Resources.Tablecloth);
+        public DataTable AttendeeDT;
 
         Mysource dragSource = new Mysource();
 
@@ -479,6 +480,12 @@ namespace Efficienseat
         }
 
         #endregion ListViewHandling
+
+        public void LoadListView()
+        {
+          // Implement code here to Load the ListView from the DataTable
+
+        }
 
         private void saveSeating()
         {

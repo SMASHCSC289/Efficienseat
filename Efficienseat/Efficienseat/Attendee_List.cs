@@ -13,8 +13,7 @@ namespace Efficienseat
 {
     public partial class Attendee_List : Form
     {
-
-        private List<Attendee> attendeeList = new List<Attendee>();
+        public DataTable AttendeeDT;
 
         public Attendee_List()
         {
@@ -28,8 +27,6 @@ namespace Efficienseat
 
             // Hide close button
             this.ControlBox = false;
-
-            attendeeList = populateAttendees();
         } //END Attendee_List_Load EVENT
 
         // BUTTONS
@@ -47,7 +44,10 @@ namespace Efficienseat
 
         private void btnEditEntry_Click(object sender, EventArgs e)
         {
-
+            if (lvwAttendee.SelectedItems.Count == 1)
+            {
+                editAttendee(lvwAttendee.SelectedItems[0]);
+            }
         } //END btnEditEntry_Click EVENT
 
         private void btnRemoveAttendee_Click(object sender, EventArgs e)
@@ -71,7 +71,10 @@ namespace Efficienseat
 
         private void tmiEdit_Click(object sender, EventArgs e)
         {
-            editEntry();
+            if (lvwAttendee.SelectedItems.Count == 1)
+            {
+                editAttendee(lvwAttendee.SelectedItems[0]);
+            }
         }
 
         private void tmiImport_Click(object sender, EventArgs e)
@@ -83,32 +86,50 @@ namespace Efficienseat
 
         // METHODS
         #region Methods
-        
-        // Load attendees from DB
-        private List<Attendee> populateAttendees()
-        {
-            List<Attendee> attendees = new List<Attendee>();
 
-            return attendees;
+        // Load attendees from DB
+        public void LoadListView()
+        {
+            for (int i = 0; i < AttendeeDT.Rows.Count; i++)
+            {
+                DataRow dr = AttendeeDT.Rows[i];
+                ListViewItem listitem = new ListViewItem(dr["FIRST_NAME"].ToString());
+                listitem.SubItems.Add(dr["LAST_NAME"].ToString());
+                listitem.SubItems.Add(dr["GUEST_ID"].ToString());
+                listitem.SubItems.Add(dr["RSVP"].ToString());
+                listitem.SubItems.Add(dr["FOOD_ALLERGY"].ToString());
+                listitem.SubItems.Add(dr["COMMENTS"].ToString());
+                lvwAttendee.Items.Add(listitem);
+            }
+
         }
-        
+
         // add item
         private void addAttendee()
         {
             //Create edit entry window for data population
             //  Pull data form form rather than passing through
             using (DataEntryForm data = new DataEntryForm())
-            {                
+            {
                 if (data.ShowDialog(this) == DialogResult.OK)
                 {
-                    string name = data.getFirstName + " " + data.getLastName;
-                    string RSVP = data.getRSVP;
-                    string address = data.getAddress1 + " " + data.getAddress2 + " " + data.getCity + ", " + data.getState + " " + data.getZIP;
+                    string name = data.FirstName + " " + data.LastName;
+                    string RSVP = data.RSVP;
 
-                    ListViewItem newGuest = new ListViewItem(new string[] { name, RSVP, address, "" });
+
+                    ListViewItem newGuest = new ListViewItem(new string[] { name, RSVP, "", "" });
                     newGuest.ImageIndex = 0;
                     newGuest.Group = lvwAttendee.Groups[0];
                     lvwAttendee.Items.Add(newGuest);
+
+                    //add new row to DataTable
+                    DataRow newRow = AttendeeDT.NewRow();
+                    newRow["FIRST_NAME"] = data.FirstName;
+                    newRow["LAST_NAME"] = data.LastName;
+                    newRow["RSVP"] = data.RSVP;
+                    newRow["GUEST_ID"] = Convert.ToInt32(AttendeeDT.Compute("max(GUEST_ID)", string.Empty)) + 1;
+                    newRow["WED_ID"] = AttendeeDT.Rows[0]["WED_ID"];
+                    AttendeeDT.Rows.Add(newRow);
                 }
             }
         }
@@ -125,26 +146,59 @@ namespace Efficienseat
             {
                 lvwAttendee.View = View.Details;
                 lvwAttendee.ShowGroups = false;
+                lvwAttendee.AutoResizeColumn(0, ColumnHeaderAutoResizeStyle.HeaderSize);
+                lvwAttendee.AutoResizeColumn(1, ColumnHeaderAutoResizeStyle.HeaderSize);
+                lvwAttendee.AutoResizeColumn(2, ColumnHeaderAutoResizeStyle.HeaderSize);
+                lvwAttendee.AutoResizeColumn(3, ColumnHeaderAutoResizeStyle.HeaderSize);
+                lvwAttendee.AutoResizeColumn(4, ColumnHeaderAutoResizeStyle.HeaderSize);
+                lvwAttendee.AutoResizeColumn(5, ColumnHeaderAutoResizeStyle.HeaderSize);
             }
         }
 
         // change data in selected item
-        private void editEntry()
+        private void editAttendee(ListViewItem lvi)
         {
-            //should populate with selected user data
-            //check for a user selection from listView prior to instantiating window
-            if (lvwAttendee.SelectedItems.Count == 1)
+            using (DataEntryForm data = new DataEntryForm())
             {
-                //DataEntryForm will need a parameterized constructor to account for pushed data
-                DataEntryForm def = new DataEntryForm();
-                def.ShowDialog();
+                data.FirstName = lvi.Text;
+                data.LastName = lvi.SubItems[1].Text;
+                data.RSVP = lvi.SubItems[3].Text;
+                data.FoodAllergy = lvi.SubItems[4].Text;
+                data.Comments = lvi.SubItems[5].Text;
+
+                if (data.ShowDialog(this) == DialogResult.OK)
+                {
+                    int guestID = Convert.ToInt32(lvi.SubItems[2].Text);
+
+                    // find row in Datatable using GUEST_ID
+                    DataRow[] updateRow = AttendeeDT.Select("GUEST_ID = " + guestID.ToString());
+                    if (updateRow.Length > 0)
+                    {
+                        updateRow[0]["FIRST_NAME"] = data.FirstName;
+                        updateRow[0]["LAST_NAME"] = data.LastName;
+                        updateRow[0]["RSVP"] = data.RSVP;
+                        updateRow[0]["FOOD_ALLERGY"] = data.FoodAllergy;
+                        updateRow[0]["COMMENTS"] = data.Comments;
+                        AttendeeDT.AcceptChanges();
+                    }
+                }
             }
+
         }
 
         // Remove selected item
         private void removeAttendee(ListViewItem lvi)
         {
+            int guestID = Convert.ToInt32(lvi.SubItems[2].Text);
             lvi.Remove();
+
+            // find row in Datatable using GUEST_ID
+            DataRow[] removeRow = AttendeeDT.Select("GUEST_ID = " + guestID.ToString());
+            if (removeRow.Length > 0)
+            {
+                int SelectedIndex = AttendeeDT.Rows.IndexOf(removeRow[0]);
+                AttendeeDT.Rows.RemoveAt(SelectedIndex);
+            }
         }
 
         //import attendees from text file

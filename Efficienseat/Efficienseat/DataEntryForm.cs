@@ -35,62 +35,52 @@ namespace Efficienseat
             Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        public string FirstName
+        {
+            get { return txtFirstName.Text; }
+
+            set { txtFirstName.Text = value; }
+        }
+
+        public string LastName
+        {
+            get { return txtLastName.Text; }
+
+            set { txtLastName.Text = value; }
+        }
+
+        public string RSVP
+        {
+            get { return cbRSVP.Text; }
+
+            set { cbRSVP.Text = value; }
+        }
+
+        public string FoodAllergy
+        {
+            get { return cbFoodAllergy.Text; }
+
+            set { cbFoodAllergy.Text = value; }
+        }
+
+        public string Comments
+        {
+            get { return txtComments.Text; }
+
+            set { txtComments.Text = value; }
+        }
+
+
+        private void btnCancel_Click(object sender, EventArgs e)
         {
             //button for cancel
             //  Sure there is an easier way to do this, wipe data fields and close window
-            textBox1.Text = "";
-            textBox2.Text = "";
-            textBox3.Text = "";
-            textBox4.Text = "";
-            textBox5.Text = "";
-            textBox6.Text = "";
-            comboBox1.Text = "";
-            comboBox2.Text = "";
+            txtFirstName.Text = "";
+            txtLastName.Text = "";
+            cbFoodAllergy.Text = "";
+            cbRSVP.Text = "";
+            txtComments.Text = "";
             Close();
         }
-
-        public string getFirstName
-        {
-            get { return textBox1.Text; }
-        }
-
-        public string getLastName
-        {
-            get { return textBox2.Text; }
-        }
-
-        public string getAddress1
-        {
-            get {  return textBox3.Text; }
-        }
-
-        public string getAddress2
-        {
-            get { return textBox4.Text; }
-        }
-
-        public string getCity
-        {
-            get { return textBox5.Text; }
-        }
-
-        public string getState
-        {
-            get { return comboBox1.Text; }
-        }
-
-        public string getZIP
-        {
-            get { return textBox6.Text; }
-        }
-
-        public string getRSVP
-        {
-            //check for data, ensure validity
-            //  Some way to lock comboBox to prevent manual entry?
-            get { return comboBox2.Text; }
-        }
-
     }
 }
