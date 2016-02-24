@@ -67,12 +67,6 @@
             // cbxTableName
             // 
             this.cbxTableName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxTableName.Items.AddRange(new object[] {
-            "Table 1",
-            "Table 2",
-            "Table 3",
-            "Table 4",
-            "Table 5"});
             this.cbxTableName.Location = new System.Drawing.Point(83, 6);
             this.cbxTableName.Name = "cbxTableName";
             this.cbxTableName.Size = new System.Drawing.Size(194, 21);
@@ -230,6 +224,7 @@
             this.lvwSeat7.Size = new System.Drawing.Size(70, 65);
             this.lvwSeat7.SmallImageList = this.imageList_16;
             this.lvwSeat7.TabIndex = 9;
+            this.lvwSeat7.Tag = "7";
             this.lvwSeat7.UseCompatibleStateImageBehavior = false;
             this.lvwSeat7.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.listView_ItemDrag);
             this.lvwSeat7.DragDrop += new System.Windows.Forms.DragEventHandler(this.listView_DragDrop);
@@ -259,6 +254,7 @@
             this.lvwSeat8.Size = new System.Drawing.Size(70, 65);
             this.lvwSeat8.SmallImageList = this.imageList_16;
             this.lvwSeat8.TabIndex = 8;
+            this.lvwSeat8.Tag = "8";
             this.lvwSeat8.UseCompatibleStateImageBehavior = false;
             this.lvwSeat8.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.listView_ItemDrag);
             this.lvwSeat8.DragDrop += new System.Windows.Forms.DragEventHandler(this.listView_DragDrop);
@@ -280,6 +276,7 @@
             this.lvwSeat9.Size = new System.Drawing.Size(70, 65);
             this.lvwSeat9.SmallImageList = this.imageList_16;
             this.lvwSeat9.TabIndex = 7;
+            this.lvwSeat9.Tag = "9";
             this.lvwSeat9.UseCompatibleStateImageBehavior = false;
             this.lvwSeat9.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.listView_ItemDrag);
             this.lvwSeat9.DragDrop += new System.Windows.Forms.DragEventHandler(this.listView_DragDrop);
@@ -301,6 +298,7 @@
             this.lvwSeat10.Size = new System.Drawing.Size(70, 65);
             this.lvwSeat10.SmallImageList = this.imageList_16;
             this.lvwSeat10.TabIndex = 6;
+            this.lvwSeat10.Tag = "10";
             this.lvwSeat10.UseCompatibleStateImageBehavior = false;
             this.lvwSeat10.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.listView_ItemDrag);
             this.lvwSeat10.DragDrop += new System.Windows.Forms.DragEventHandler(this.listView_DragDrop);
@@ -322,6 +320,7 @@
             this.lvwSeat4.Size = new System.Drawing.Size(70, 65);
             this.lvwSeat4.SmallImageList = this.imageList_16;
             this.lvwSeat4.TabIndex = 5;
+            this.lvwSeat4.Tag = "4";
             this.lvwSeat4.UseCompatibleStateImageBehavior = false;
             this.lvwSeat4.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.listView_ItemDrag);
             this.lvwSeat4.DragDrop += new System.Windows.Forms.DragEventHandler(this.listView_DragDrop);
@@ -343,6 +342,7 @@
             this.lvwSeat5.Size = new System.Drawing.Size(71, 65);
             this.lvwSeat5.SmallImageList = this.imageList_16;
             this.lvwSeat5.TabIndex = 4;
+            this.lvwSeat5.Tag = "5";
             this.lvwSeat5.UseCompatibleStateImageBehavior = false;
             this.lvwSeat5.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.listView_ItemDrag);
             this.lvwSeat5.DragDrop += new System.Windows.Forms.DragEventHandler(this.listView_DragDrop);
@@ -364,6 +364,7 @@
             this.lvwSeat6.Size = new System.Drawing.Size(70, 65);
             this.lvwSeat6.SmallImageList = this.imageList_16;
             this.lvwSeat6.TabIndex = 3;
+            this.lvwSeat6.Tag = "6";
             this.lvwSeat6.UseCompatibleStateImageBehavior = false;
             this.lvwSeat6.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.listView_ItemDrag);
             this.lvwSeat6.DragDrop += new System.Windows.Forms.DragEventHandler(this.listView_DragDrop);
@@ -385,6 +386,7 @@
             this.lvwSeat3.Size = new System.Drawing.Size(70, 65);
             this.lvwSeat3.SmallImageList = this.imageList_16;
             this.lvwSeat3.TabIndex = 2;
+            this.lvwSeat3.Tag = "3";
             this.lvwSeat3.UseCompatibleStateImageBehavior = false;
             this.lvwSeat3.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.listView_ItemDrag);
             this.lvwSeat3.DragDrop += new System.Windows.Forms.DragEventHandler(this.listView_DragDrop);
@@ -406,6 +408,7 @@
             this.lvwSeat2.Size = new System.Drawing.Size(70, 65);
             this.lvwSeat2.SmallImageList = this.imageList_16;
             this.lvwSeat2.TabIndex = 1;
+            this.lvwSeat2.Tag = "2";
             this.lvwSeat2.UseCompatibleStateImageBehavior = false;
             this.lvwSeat2.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.listView_ItemDrag);
             this.lvwSeat2.DragDrop += new System.Windows.Forms.DragEventHandler(this.listView_DragDrop);
@@ -428,6 +431,7 @@
             this.lvwSeat1.Size = new System.Drawing.Size(70, 65);
             this.lvwSeat1.SmallImageList = this.imageList_16;
             this.lvwSeat1.TabIndex = 0;
+            this.lvwSeat1.Tag = "1";
             this.lvwSeat1.UseCompatibleStateImageBehavior = false;
             this.lvwSeat1.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.listView_ItemDrag);
             this.lvwSeat1.DragDrop += new System.Windows.Forms.DragEventHandler(this.listView_DragDrop);

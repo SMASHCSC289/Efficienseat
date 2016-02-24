@@ -52,59 +52,7 @@ namespace Efficienseat
                 l.Items.Add(emp);
             }
 
-            //ListViewItem lvTest = new ListViewItem(new string[] { "Dan Stabler", "Accept", "123 Birch Ln.", "", "12" });
-            //lvTest.ToolTipText = "I don't have a comment. :(";
-            //lvTest.ImageIndex = 0;
-            //lvwUnseated.Items.Add(lvTest);
-
-            //ListViewItem lvTest2 = new ListViewItem(new string[] { "Mark Harriett", "Accept", "123 Birch Ln.", "I have a comment! :)", "34" });
-            //lvTest2.ToolTipText = "I have a comment! :)";
-            //lvTest2.ImageIndex = 1;
-            //lvwUnseated.Items.Add(lvTest2);
-
-            //ListViewItem lvTest3 = new ListViewItem(new string[] { "Diane Mayes", "Accept", "123 Birch Ln.", "", "56" });
-            //lvTest3.ToolTipText = "I don't have a comment. :(";
-            //lvTest3.ImageIndex = 0;
-            //lvwUnseated.Items.Add(lvTest3);
-
-            //ListViewItem lvTest4 = new ListViewItem(new string[] { "Jonathan Sobota", "Accept", "123 Birch Ln.", "I have a comment!", "78" });
-            //lvTest4.ToolTipText = "I have a comment! :)";
-            //lvTest4.ImageIndex = 1;
-            //lvwUnseated.Items.Add(lvTest4);
-
-            //ListViewItem lvTest5 = new ListViewItem(new string[] { "Nema Abachizadeh", "Accept", "123 Birch Ln.", "", "90" });
-            //lvTest5.ToolTipText = "I don't have a comment. :(";
-            //lvTest5.ImageIndex = 0;
-            //lvwUnseated.Items.Add(lvTest5);
-
             dataGridView1.DataSource = AttendeeDT;
-
-            foreach (DataRow dr in AttendeeDT.Rows)
-            {
-                ListViewItem li = new ListViewItem();
-                                
-                if (dr["RSVP"].ToString() == "Accept")
-                {
-                    li.Text = dr["FIRST_NAME"] + " " + dr["LAST_NAME"];
-                    li.SubItems.Add(dr["RSVP"].ToString());
-
-                    if (dr["COMMENTS"].ToString() != "")
-                    {
-                        li.ImageIndex = 1;
-                        li.SubItems.Add(dr["COMMENTS"].ToString());
-                        li.ToolTipText = dr["COMMENTS"].ToString();
-                    }
-                    else
-                    {
-                        li.ImageIndex = 0;
-                        li.SubItems.Add("");
-                    }
-
-                    li.SubItems.Add(dr["GUEST_ID"].ToString());
-
-                    lvwUnseated.Items.Add(li);
-                }
-            }
 
             AttendeeDT.RowDeleted += new DataRowChangeEventHandler(Row_Deleted);
             AttendeeDT.RowChanged += new DataRowChangeEventHandler(Row_Changed);
@@ -361,7 +309,7 @@ namespace Efficienseat
             updateSeatListViews();           
         }
 
-        // 
+        // ListView Methods
         #region ListViewHandling
         
         // holds the last item moved
@@ -429,9 +377,6 @@ namespace Efficienseat
                 lv.Items.Add(myItem);
                 
                 updateSeatListViews();
-
-                //TESTING
-                //MessageBox.Show("I'm " + myItem.Text + ", attendee number " + myItem.SubItems[4].Text);
             }
             // If the seat listview is already filled, ask if user wants to swap
             else
@@ -515,9 +460,41 @@ namespace Efficienseat
 
         #endregion ListViewHandling
 
+        public void updateAttendee(string seatNumber = "", string TableName = "")
+        {
+            // write LINQ query to pull out user
+            // update user information (just table and seat)
+        }
+
         public void LoadListView()
         {
-          // Implement code here to Load the ListView from the DataTable
+            // Implement code here to Load the ListView from the DataTable
+            foreach (DataRow dr in AttendeeDT.Rows)
+            {
+                ListViewItem li = new ListViewItem();
+
+                if (dr["RSVP"].ToString() == "Accept")
+                {
+                    li.Text = dr["FIRST_NAME"] + " " + dr["LAST_NAME"];
+                    li.SubItems.Add(dr["RSVP"].ToString());
+
+                    if (dr["COMMENTS"].ToString() != "")
+                    {
+                        li.ImageIndex = 1;
+                        li.SubItems.Add(dr["COMMENTS"].ToString());
+                        li.ToolTipText = dr["COMMENTS"].ToString();
+                    }
+                    else
+                    {
+                        li.ImageIndex = 0;
+                        li.SubItems.Add("");
+                    }
+
+                    li.SubItems.Add(dr["GUEST_ID"].ToString());
+
+                    lvwUnseated.Items.Add(li);
+                }
+            }
 
         }
 
@@ -575,7 +552,7 @@ namespace Efficienseat
         {
             resetSeating();
         }
-        
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             saveSeating();
