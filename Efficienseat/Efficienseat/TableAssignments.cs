@@ -335,7 +335,6 @@ namespace Efficienseat
             }
         }
 
-
         private void listView_ItemDrag(object sender, ItemDragEventArgs e)
         {            
             ListView lv = sender as ListView;
@@ -364,6 +363,8 @@ namespace Efficienseat
                     lvwUnseated.Sort();
                 }
 
+                updateAttendee(Convert.ToInt32(myItem.SubItems[3].Text));
+
                 updateSeatListViews();
             }
             // If it's not the unseated listview, and it's empty
@@ -375,7 +376,13 @@ namespace Efficienseat
                 // Insert drag item
                 removeItemFromAll(myItem);
                 lv.Items.Add(myItem);
-                
+
+                MessageBox.Show("'" + myItem.SubItems[3].Text + "'" + Environment.NewLine +
+                                "'" + lv.Tag + "'" + Environment.NewLine +
+                                "'" + cbxTableName.SelectedIndex + "'");
+
+                updateAttendee(Convert.ToInt32(myItem.SubItems[3].Text), Convert.ToInt32(lv.Tag), cbxTableName.SelectedIndex);
+
                 updateSeatListViews();
             }
             // If the seat listview is already filled, ask if user wants to swap
@@ -460,10 +467,19 @@ namespace Efficienseat
 
         #endregion ListViewHandling
 
-        public void updateAttendee(string seatNumber = "", string TableName = "")
+        public void updateAttendee(int attendeeNum, int seatNumber = 0, int tableNumber = 0)
         {
             // write LINQ query to pull out user
+            var result = from DataRow row in AttendeeDT.Rows
+                         where Convert.ToInt32(row[1]) == attendeeNum
+                         select row;
+
             // update user information (just table and seat)
+            foreach (DataRow row in result)
+            {
+                row.SetField("TABLE_ID", tableNumber);
+                row.SetField("SEAT_NUM", seatNumber);
+            }
         }
 
         public void LoadListView()
@@ -475,7 +491,7 @@ namespace Efficienseat
 
                 if (dr["RSVP"].ToString() == "Accept")
                 {
-                    li.Text = dr["FIRST_NAME"] + " " + dr["LAST_NAME"];
+                    li.Text = dr["LAST_NAME"] + ", " + dr["FIRST_NAME"];
                     li.SubItems.Add(dr["RSVP"].ToString());
 
                     if (dr["COMMENTS"].ToString() != "")
@@ -495,42 +511,6 @@ namespace Efficienseat
                     lvwUnseated.Items.Add(li);
                 }
             }
-
-        }
-
-        private void Row_Deleted(object sender, DataRowChangeEventArgs e)
-        {
-
-        }
-
-        private void Row_Changed(object sender, DataRowChangeEventArgs e)
-        {
-
-        }
-        
-        private void saveSeating()
-        {
-            // TEST OUTPUT
-            string testOutput = "";
-
-            for (int i = 0; i < (int)numericUpDown1.Value; i++)
-            {
-                int seat = i + 1;
-
-                if (!listviews[i].Items[0].Text.ToUpper().Contains("EMPTY"))
-                {
-                    testOutput += String.Format("{0}\tAttendee {1}\tSeat {2}", listviews[i].Items[0].Text,
-                        listviews[i].Items[0].SubItems[3].Text, seat.ToString()) + Environment.NewLine;
-
-                    //listviews[i].Items[0].Text + 
-                    //        " | Attendee " + listviews[i].Items[0].SubItems[4].Text +
-                    //        " | Seat " + seat.ToString() + Environment.NewLine;
-                }
-
-            }
-
-            MessageBox.Show(testOutput);
-            // END TEST OUTPUT
         }
 
         private void resetSeating()
@@ -553,9 +533,20 @@ namespace Efficienseat
             resetSeating();
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void btnAddTable_Click(object sender, EventArgs e)
         {
-            saveSeating();
+
+        }
+
+        // Attendee DataTable Change Events
+        private void Row_Deleted(object sender, DataRowChangeEventArgs e)
+        {
+
+        }
+
+        private void Row_Changed(object sender, DataRowChangeEventArgs e)
+        {
+
         }
     }
 }

@@ -55,10 +55,10 @@
             this.lvwSeat3 = new System.Windows.Forms.ListView();
             this.lvwSeat2 = new System.Windows.Forms.ListView();
             this.lvwSeat1 = new System.Windows.Forms.ListView();
-            this.btnSave = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.cbEndSeats = new System.Windows.Forms.CheckBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnAddTable = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -67,9 +67,11 @@
             // cbxTableName
             // 
             this.cbxTableName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxTableName.Items.AddRange(new object[] {
+            "Table 1"});
             this.cbxTableName.Location = new System.Drawing.Point(83, 6);
             this.cbxTableName.Name = "cbxTableName";
-            this.cbxTableName.Size = new System.Drawing.Size(194, 21);
+            this.cbxTableName.Size = new System.Drawing.Size(151, 21);
             this.cbxTableName.TabIndex = 2;
             // 
             // cbxTableShape
@@ -87,7 +89,7 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(302, 28);
+            this.numericUpDown1.Location = new System.Drawing.Point(296, 26);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             10,
             0,
@@ -143,7 +145,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(299, 12);
+            this.label3.Location = new System.Drawing.Point(294, 8);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(86, 13);
             this.label3.TabIndex = 7;
@@ -169,6 +171,7 @@
             this.lvwUnseated.SmallImageList = this.imageList_16;
             this.lvwUnseated.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.lvwUnseated.TabIndex = 8;
+            this.lvwUnseated.Tag = "0";
             this.lvwUnseated.UseCompatibleStateImageBehavior = false;
             this.lvwUnseated.View = System.Windows.Forms.View.SmallIcon;
             this.lvwUnseated.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.listView_ItemDrag);
@@ -438,21 +441,11 @@
             this.lvwSeat1.DragEnter += new System.Windows.Forms.DragEventHandler(this.listView_DragEnter);
             this.lvwSeat1.DragLeave += new System.EventHandler(this.listView_DragLeave);
             // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(402, 31);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(108, 23);
-            this.btnSave.TabIndex = 9;
-            this.btnSave.Text = "Save Seating";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(402, 4);
+            this.btnReset.Location = new System.Drawing.Point(386, 16);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(108, 23);
+            this.btnReset.Size = new System.Drawing.Size(124, 23);
             this.btnReset.TabIndex = 10;
             this.btnReset.Text = "Reset Seats";
             this.btnReset.UseVisualStyleBackColor = true;
@@ -474,21 +467,34 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(11, 476);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(499, 132);
             this.dataGridView1.TabIndex = 12;
             // 
+            // btnAddTable
+            // 
+            this.btnAddTable.Location = new System.Drawing.Point(240, 6);
+            this.btnAddTable.Name = "btnAddTable";
+            this.btnAddTable.Size = new System.Drawing.Size(42, 23);
+            this.btnAddTable.TabIndex = 13;
+            this.btnAddTable.Text = "Add";
+            this.btnAddTable.UseVisualStyleBackColor = true;
+            this.btnAddTable.Click += new System.EventHandler(this.btnAddTable_Click);
+            // 
             // TableAssignments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(522, 620);
+            this.Controls.Add(this.btnAddTable);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.cbEndSeats);
             this.Controls.Add(this.btnReset);
-            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.lvwUnseated);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -536,9 +542,9 @@
         private System.Windows.Forms.ListView lvwSeat5;
         private System.Windows.Forms.ListView lvwSeat6;
         private System.Windows.Forms.ImageList imageList_Seat_32;
-        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.CheckBox cbEndSeats;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnAddTable;
     }
 }
