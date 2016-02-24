@@ -103,6 +103,7 @@ namespace Efficienseat
                 {
                     listitem.SubItems.Add(dr["RSVP"].ToString());
                 }
+
                 listitem.SubItems.Add(dr["GUEST_ID"].ToString());                
                 listitem.SubItems.Add(dr["FOOD_ALLERGY"].ToString());
                 listitem.SubItems.Add(dr["COMMENTS"].ToString());

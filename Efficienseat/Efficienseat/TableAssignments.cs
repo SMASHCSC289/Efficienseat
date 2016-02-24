@@ -97,6 +97,7 @@ namespace Efficienseat
                     else
                     {
                         li.ImageIndex = 0;
+                        li.SubItems.Add("");
                     }
 
                     li.SubItems.Add(dr["GUEST_ID"].ToString());
