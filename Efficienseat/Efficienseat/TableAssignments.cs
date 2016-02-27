@@ -12,18 +12,22 @@ namespace Efficienseat
 {
     public partial class TableAssignments : Form
     {
+        public DataTable TableDT;
         Graphics Table;
         private int shapeType = -1;
         int rectSide, rectSide2;
         Image image = new Bitmap(Efficienseat.Properties.Resources.Tablecloth);
         public DataTable AttendeeDT;
-
         Mysource dragSource = new Mysource();
-
-        List<CustomPanel> panels = new List<CustomPanel>();
         List<ListView> listviews;
+        ListViewItem empty = new ListViewItem("Empty");
 
-        ListViewItem empty = new ListViewItem("Empty");        
+        private int wedID;
+
+        public int WeddingID
+        {
+            set { wedID = value; }
+        }
 
         public TableAssignments()
         {
@@ -52,10 +56,10 @@ namespace Efficienseat
                 l.Items.Add(emp);
             }
 
-            dataGridView1.DataSource = AttendeeDT;
+            dataGridView1.DataSource = TableDT;            
 
             AttendeeDT.RowDeleted += new DataRowChangeEventHandler(Row_Deleted);
-            AttendeeDT.RowChanged += new DataRowChangeEventHandler(Row_Changed);
+            AttendeeDT.RowChanged += new DataRowChangeEventHandler(Row_Changed);            
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -74,6 +78,9 @@ namespace Efficienseat
             {
                 cbEndSeats.Enabled = false;
             }
+
+            updateTable(cbxTableName.SelectedIndex, cbxTableShape.Text, (int) numericUpDown1.Value);
+
             Refresh();
         }
 
@@ -306,7 +313,8 @@ namespace Efficienseat
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            updateSeatListViews();           
+            updateSeatListViews();
+            updateTable(cbxTableName.SelectedIndex, cbxTableShape.Text, (int) numericUpDown1.Value);         
         }
 
         // ListView Methods
@@ -352,59 +360,70 @@ namespace Efficienseat
 
             //MessageBox.Show(lvOld.Name.ToString() + " ---> " + lv.Name.ToString());
 
-            // always accept dragged items into unseated listview
-            if (lv == lvwUnseated)
+            if (cbxTableName.SelectedIndex != -1 && cbxTableShape.SelectedIndex != -1)
             {
-                if (myItem.Text != "Empty")
+                // always accept dragged items into unseated listview
+                if (lv == lvwUnseated)
                 {
-                    // Insert drag item
-                    removeItemFromAll(myItem);
-                    lv.Items.Add(myItem);
-                    lvwUnseated.Sort();
+                    if (myItem.Text != "Empty")
+                    {
+                        // Insert drag item
+                        removeItemFromAll(myItem);
+                        lv.Items.Add(myItem);
+                        lvwUnseated.Sort();
+                    }
+
+                    updateAttendee(Convert.ToInt32(myItem.SubItems[3].Text));
+
+                    updateSeatListViews();
                 }
-
-                updateAttendee(Convert.ToInt32(myItem.SubItems[3].Text));
-
-                updateSeatListViews();
-            }
-            // If it's not the unseated listview, and it's empty
-            else if (lv != lvwUnseated && lv.Items[0].Text == "Empty")
-            {
-                // Remove empty item
-                lv.Items[0].Remove();
-
-                // Insert drag item
-                removeItemFromAll(myItem);
-                lv.Items.Add(myItem);
-
-                MessageBox.Show("'" + myItem.SubItems[3].Text + "'" + Environment.NewLine +
-                                "'" + lv.Tag + "'" + Environment.NewLine +
-                                "'" + cbxTableName.SelectedIndex + "'");
-
-                updateAttendee(Convert.ToInt32(myItem.SubItems[3].Text), Convert.ToInt32(lv.Tag), cbxTableName.SelectedIndex);
-
-                updateSeatListViews();
-            }
-            // If the seat listview is already filled, ask if user wants to swap
-            else
-            {
-                if (MessageBox.Show("This seat is already filled.  Replace?","Question",MessageBoxButtons.YesNo,MessageBoxIcon.Exclamation) == DialogResult.Yes)
-                { 
-                    // Move current item back to unassigned
-                    ListViewItem lvi = lv.Items[0];
-                    removeItemFromAll(lvi);
-                    lvwUnseated.Items.Add(lvi);
-                    lvwUnseated.Sort();                  
+                // If it's not the unseated listview, and it's empty
+                else if (lv != lvwUnseated && lv.Items[0].Text == "Empty")
+                {
+                    // Remove empty item
+                    lv.Items[0].Remove();
 
                     // Insert drag item
                     removeItemFromAll(myItem);
                     lv.Items.Add(myItem);
 
-                    updateSeatListViews();                                       
+                    MessageBox.Show("'" + myItem.SubItems[3].Text + "'" + Environment.NewLine +
+                                    "'" + lv.Tag + "'" + Environment.NewLine +
+                                    "'" + cbxTableName.SelectedIndex + "'");
+
+                    updateAttendee(Convert.ToInt32(myItem.SubItems[3].Text), Convert.ToInt32(lv.Tag), cbxTableName.SelectedIndex);
+
+                    updateSeatListViews();
+                }
+                // If the seat listview is already filled, ask if user wants to swap
+                else
+                {
+                    if (MessageBox.Show("This seat is already filled.  Replace?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+                    {
+                        // Move current item back to unassigned
+                        ListViewItem lvi = lv.Items[0];
+                        removeItemFromAll(lvi);
+                        lvwUnseated.Items.Add(lvi);
+                        lvwUnseated.Sort();
+
+                        // Insert drag item
+                        removeItemFromAll(myItem);
+                        lv.Items.Add(myItem);
+
+                        updateSeatListViews();
+                    }
                 }
             }
+            else if (cbxTableName.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a table.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
+            else if (cbxTableShape.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please set the shape of the table.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
 
-            if (lv.Items.Count == 0 && lv != lvwUnseated)
+                if (lv.Items.Count == 0 && lv != lvwUnseated)
             {
                 ListViewItem emp = empty.Clone() as ListViewItem;
                 lvOld.Items.Add(emp);
@@ -477,8 +496,16 @@ namespace Efficienseat
             // update user information (just table and seat)
             foreach (DataRow row in result)
             {
-                row.SetField("TABLE_ID", tableNumber);
-                row.SetField("SEAT_NUM", seatNumber);
+                if (seatNumber == 0 && tableNumber == 0)
+                {
+                    row.SetField("TABLE_ID", DBNull.Value);
+                    row.SetField("SEAT_NUM", DBNull.Value);
+                }
+                else
+                {
+                    row.SetField("TABLE_ID", tableNumber);
+                    row.SetField("SEAT_NUM", seatNumber);
+                }                
             }
         }
 
@@ -535,7 +562,67 @@ namespace Efficienseat
 
         private void btnAddTable_Click(object sender, EventArgs e)
         {
+            using (TableCreateForm tcf = new TableCreateForm())
+            {
+                if (tcf.ShowDialog(this) == DialogResult.OK)
+                {
+                    if (tcf.Name != null || tcf.Shape != null)
+                    {
+                        addTable(tcf.Name, tcf.Shape, tcf.NumberOfSeats);
+                    }
+                    else if (tcf.Name == null)
+                    {
+                        MessageBox.Show("Table name cannot be empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                    }
+                    else if (tcf.Shape == null)
+                    {
+                        MessageBox.Show("Table must have a shape.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                    }
+                }                
+            }
+        }
 
+        private void addTable(string tableName, string tableShape, int numSeats)
+        {
+            int newTableID;
+
+            if (TableDT.Rows.Count == 0)
+            {
+                newTableID = 0;
+            }
+            else
+            {
+                newTableID = Convert.ToInt32(TableDT.Compute("max(TABLE_ID)", string.Empty)) + 1;
+            }
+
+            MessageBox.Show(newTableID.ToString());
+
+            //Create and fill a new DataRow based on TableDT
+            DataRow row = TableDT.NewRow();
+            row.SetField("WED_ID", wedID);
+            row.SetField("TABLE_ID", newTableID);
+            row.SetField("TABLE_NAME", tableName);
+            row.SetField("NUM_OF_SEATS", numSeats);
+            row.SetField("TABLE_TYPE", tableShape);
+
+            //Add newly created row to TableDT
+            TableDT.Rows.Add(row);
+
+            //Add table to cbxTableName
+            cbxTableName.Items.Add(tableName);
+        }
+
+        private void updateTable(int tableID, string tableShape, int numSeats)
+        {
+            var result = from row in TableDT.AsEnumerable()
+                         where Convert.ToInt32(row[0]) == wedID && Convert.ToInt32(row[1]) == tableID
+                         select row;
+
+            foreach (DataRow row in result)
+            {
+                row.SetField("TABLE_TYPE", tableShape);
+                row.SetField("NUM_OF_SEATS", numSeats);
+            }
         }
 
         // Attendee DataTable Change Events

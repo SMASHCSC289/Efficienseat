@@ -123,3 +123,4 @@ C:\Projects\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.Startu
 C:\Projects\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.Properties.Resources.resources
 C:\Projects\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.TableAssignments.resources
 C:\Projects\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.csproj.GenerateResource.Cache
+C:\Users\dstab\Documents\GitHub\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.TableCreateForm.resources

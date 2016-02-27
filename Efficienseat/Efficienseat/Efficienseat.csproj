@@ -103,6 +103,12 @@
     <Compile Include="TableAssignments.Designer.cs">
       <DependentUpon>TableAssignments.cs</DependentUpon>
     </Compile>
+    <Compile Include="TableCreateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TableCreateForm.Designer.cs">
+      <DependentUpon>TableCreateForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Attendee_List.resx">
       <DependentUpon>Attendee_List.cs</DependentUpon>
     </EmbeddedResource>
@@ -127,6 +133,9 @@
     </Compile>
     <EmbeddedResource Include="TableAssignments.resx">
       <DependentUpon>TableAssignments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TableCreateForm.resx">
+      <DependentUpon>TableCreateForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

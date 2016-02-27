@@ -14,11 +14,12 @@ namespace Efficienseat
     public partial class Main_Window : Form
     {
         Attendee_List al;
-        DataTable DT;
+        DataTable AttendeeDT;
+        DataTable TableDT;
         SQLiteConnection DBConnection;
         SQLiteDataAdapter sda;
         SQLiteCommandBuilder cmdBuilder;
-
+        private int loadedWedID = 0;
 
         public Main_Window()
         {
@@ -31,20 +32,10 @@ namespace Efficienseat
             al.MdiParent = this;
             al.StartPosition = FormStartPosition.Manual;
             al.Location = new Point(0, 0);
-            //al.Height = this.ClientSize.Height - (al.Height - al.ClientSize.Height);
-
             al.Show();
 
-            //TableAssignments ta = new TableAssignments();
-            //ta.MdiParent = this;
-            //ta.StartPosition = FormStartPosition.Manual;
-            //ta.Location = new Point(al.Location.X + al.Width + 5,
-            //                        al.Location.Y);
-
-            //ta.Show();
-
             OpenDatabase();
-            GetData();
+            GetData(54321);
         }
 
         private void showTableEditorToolStripMenuItem_Click(object sender, EventArgs e)
@@ -57,8 +48,10 @@ namespace Efficienseat
             ta.Location = new Point(al.Location.X + al.Width + 5,
                                     al.Location.Y);
 
-            ta.AttendeeDT = DT;
+            ta.AttendeeDT = AttendeeDT;
+            ta.TableDT = TableDT;
             ta.LoadListView();
+            ta.WeddingID = loadedWedID;
 
             ta.Show();
         }
@@ -84,19 +77,30 @@ namespace Efficienseat
             }
         }
 
-        private void GetData()
+        private void GetData(int weddingNumber)
         {
-            string sql = "SELECT * FROM WED_GUEST WHERE WED_ID = 54321";
-            SQLiteCommand command = new SQLiteCommand(sql, DBConnection);
+            string attendeeSQL = "SELECT * FROM WED_GUEST WHERE WED_ID = " + weddingNumber;
+            SQLiteCommand command = new SQLiteCommand(attendeeSQL, DBConnection);
             sda = new SQLiteDataAdapter(command);
-            DT = new DataTable();
-            sda.Fill(DT);
+            AttendeeDT = new DataTable();
+            sda.Fill(AttendeeDT);
 
-            DT.RowDeleted += Row_Deleted;
-            DT.RowChanged += Row_Changed;
+            AttendeeDT.RowDeleted += Row_Deleted;
+            AttendeeDT.RowChanged += Row_Changed;
 
-            al.AttendeeDT = DT;
+            string tableSQL = "SELECT * FROM WED_TABLES WHERE WED_ID = " + weddingNumber;
+            SQLiteCommand tableCommand = new SQLiteCommand(tableSQL, DBConnection);
+            sda = new SQLiteDataAdapter(tableCommand);
+            TableDT = new DataTable();
+            sda.Fill(TableDT);
+
+            TableDT.RowDeleted += Table_Row_Deleted;
+            TableDT.RowChanged += Table_Row_Changed;
+
+            al.AttendeeDT = AttendeeDT;
             al.LoadListView();
+
+            loadedWedID = weddingNumber;
         }
         #endregion
 
@@ -107,7 +111,7 @@ namespace Efficienseat
             try
             {
                 cmdBuilder = new SQLiteCommandBuilder(sda);
-                sda.Update(DT);
+                sda.Update(AttendeeDT);
             }
             catch (Exception ex)
             {
@@ -120,13 +124,40 @@ namespace Efficienseat
             try
             {
                 cmdBuilder = new SQLiteCommandBuilder(sda);
-                sda.Update(DT);
+                sda.Update(AttendeeDT);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void Table_Row_Deleted(object sender, DataRowChangeEventArgs e)
+        {
+            try
+            {
+                cmdBuilder = new SQLiteCommandBuilder(sda);
+                sda.Update(TableDT);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        private void Table_Row_Changed(object sender, DataRowChangeEventArgs e)
+        {
+            try
+            {
+                cmdBuilder = new SQLiteCommandBuilder(sda);
+                sda.Update(TableDT);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        
         #endregion
     }
 }

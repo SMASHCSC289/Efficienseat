@@ -67,8 +67,6 @@
             // cbxTableName
             // 
             this.cbxTableName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxTableName.Items.AddRange(new object[] {
-            "Table 1"});
             this.cbxTableName.Location = new System.Drawing.Point(83, 6);
             this.cbxTableName.Name = "cbxTableName";
             this.cbxTableName.Size = new System.Drawing.Size(151, 21);
