@@ -32,9 +32,19 @@
             System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Unassigned", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Table 1", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Table 2", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Table 3", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Table 4", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("Table 5", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup7 = new System.Windows.Forms.ListViewGroup("Table 6", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup8 = new System.Windows.Forms.ListViewGroup("Table 7", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup9 = new System.Windows.Forms.ListViewGroup("Table 8", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup10 = new System.Windows.Forms.ListViewGroup("Table 9", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup11 = new System.Windows.Forms.ListViewGroup("Table 10", System.Windows.Forms.HorizontalAlignment.Left);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Attendee_List));
             this.lvwAttendee = new System.Windows.Forms.ListView();
             this.First_Name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Last_Name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Guest_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Response = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.FoodAllergy = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Comments = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -47,8 +57,6 @@
             this.imlTableNumbers = new System.Windows.Forms.ImageList(this.components);
             this.btnEditEntry = new System.Windows.Forms.Button();
             this.btnRemoveAttendee = new System.Windows.Forms.Button();
-            this.Last_Name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Guest_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cmsAttendee.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -74,20 +82,53 @@
             listViewGroup2.Name = "table1";
             listViewGroup3.Header = "Table 2";
             listViewGroup3.Name = "table2";
+            listViewGroup4.Header = "Table 3";
+            listViewGroup4.Name = "table3";
+            listViewGroup5.Header = "Table 4";
+            listViewGroup5.Name = "table4";
+            listViewGroup6.Header = "Table 5";
+            listViewGroup6.Name = "table5";
+            listViewGroup7.Header = "Table 6";
+            listViewGroup7.Name = "table6";
+            listViewGroup8.Header = "Table 7";
+            listViewGroup8.Name = "table7";
+            listViewGroup9.Header = "Table 8";
+            listViewGroup9.Name = "table8";
+            listViewGroup10.Header = "Table 9";
+            listViewGroup10.Name = "table9";
+            listViewGroup11.Header = "Table 10";
+            listViewGroup11.Name = "table10";
             this.lvwAttendee.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
             listViewGroup1,
             listViewGroup2,
-            listViewGroup3});
+            listViewGroup3,
+            listViewGroup4,
+            listViewGroup5,
+            listViewGroup6,
+            listViewGroup7,
+            listViewGroup8,
+            listViewGroup9,
+            listViewGroup10,
+            listViewGroup11});
             this.lvwAttendee.Location = new System.Drawing.Point(12, 41);
             this.lvwAttendee.Name = "lvwAttendee";
             this.lvwAttendee.Size = new System.Drawing.Size(483, 466);
             this.lvwAttendee.TabIndex = 0;
             this.lvwAttendee.UseCompatibleStateImageBehavior = false;
             this.lvwAttendee.View = System.Windows.Forms.View.Tile;
+            this.lvwAttendee.ItemMouseHover += new System.Windows.Forms.ListViewItemMouseHoverEventHandler(this.lvwAttendee_ItemMouseHover);
             // 
             // First_Name
             // 
             this.First_Name.Text = "First_Name";
+            // 
+            // Last_Name
+            // 
+            this.Last_Name.Text = "Last Name";
+            // 
+            // Guest_ID
+            // 
+            this.Guest_ID.Text = "Guest_ID";
             // 
             // Response
             // 
@@ -178,14 +219,6 @@
             this.btnRemoveAttendee.Text = "Remove Attendee";
             this.btnRemoveAttendee.UseVisualStyleBackColor = true;
             this.btnRemoveAttendee.Click += new System.EventHandler(this.btnRemoveAttendee_Click);
-            // 
-            // Last_Name
-            // 
-            this.Last_Name.Text = "Last Name";
-            // 
-            // Guest_ID
-            // 
-            this.Guest_ID.Text = "Guest_ID";
             // 
             // Attendee_List
             // 

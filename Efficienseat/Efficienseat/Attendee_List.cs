@@ -14,6 +14,7 @@ namespace Efficienseat
     public partial class Attendee_List : Form
     {
         public DataTable AttendeeDT;
+        public DataTable TableDT;
 
         public Attendee_List()
         {
@@ -88,16 +89,41 @@ namespace Efficienseat
         #region Methods
 
         // Load attendees from DB
+
+        public void LoadTableNames()
+        {
+            for (int i = 0; i < TableDT.Rows.Count; i++)
+            {
+                DataRow dr = TableDT.Rows[i];
+                lvwAttendee.Groups[i+1].Header = dr["TABLE_NAME"].ToString();
+            }
+
+        }
+
         public void LoadListView()
         {
             for (int i = 0; i < AttendeeDT.Rows.Count; i++)
             {
                 DataRow dr = AttendeeDT.Rows[i];
-                ListViewItem listitem = new ListViewItem(dr["FIRST_NAME"].ToString() + " " + dr["LAST_NAME"].ToString());
-                //listitem.SubItems.Add(dr["LAST_NAME"].ToString());
-                if (dr["RSVP"] == null || dr["RSVP"] == "")
+                ListViewItem listitem = new ListViewItem(dr["LAST_NAME"].ToString() + ", " + dr["FIRST_NAME"].ToString());
+                if (dr["RSVP"] == null || dr["RSVP"].ToString() == "")
                 {
                     listitem.SubItems.Add("Unknown");
+                    listitem.ImageIndex = 0;
+                    listitem.Group = lvwAttendee.Groups[0];
+                }
+                else if (dr["RSVP"].ToString() == "Accept" && dr["TABLE_ID"].ToString() == "")
+                {
+                    listitem.SubItems.Add(dr["RSVP"].ToString());
+                    listitem.ImageIndex = 0;
+                    listitem.Group = lvwAttendee.Groups[0];
+                }
+                else if (dr["RSVP"].ToString() == "Accept" && dr["TABLE_ID"].ToString() != "")
+                {
+                    int index = Convert.ToInt32(dr["TABLE_ID"]);
+                    listitem.SubItems.Add(dr["RSVP"].ToString());
+                    listitem.ImageIndex = index;
+                    listitem.Group = lvwAttendee.Groups[index];
                 }
                 else
                 {
@@ -120,23 +146,31 @@ namespace Efficienseat
             {
                 if (data.ShowDialog(this) == DialogResult.OK)
                 {
-                    string name = data.FirstName + " " + data.LastName;
+                    string name = data.LastName + "," + data.FirstName;
                     string RSVP = data.RSVP;
-
-
-                    ListViewItem newGuest = new ListViewItem(new string[] { name, RSVP, "", "" });
-                    newGuest.ImageIndex = 0;
-                    newGuest.Group = lvwAttendee.Groups[0];
-                    lvwAttendee.Items.Add(newGuest);
 
                     //add new row to DataTable
                     DataRow newRow = AttendeeDT.NewRow();
                     newRow["FIRST_NAME"] = data.FirstName;
                     newRow["LAST_NAME"] = data.LastName;
-                    newRow["RSVP"] = data.RSVP;
+                    if (data.RSVP.ToString() == "")
+                        newRow["RSVP"] = "Unknown";
+                    else
+                        newRow["RSVP"] = data.RSVP;
                     newRow["GUEST_ID"] = Convert.ToInt32(AttendeeDT.Compute("max(GUEST_ID)", string.Empty)) + 1;
                     newRow["WED_ID"] = AttendeeDT.Rows[0]["WED_ID"];
                     AttendeeDT.Rows.Add(newRow);
+
+
+                    //ListViewItem [0] = NAME
+                    //ListViewItem [1] = RSVP
+                    //ListViewItem [2] = GUEST_ID
+                    //ListViewItem [3] = FOOD_ALLERGY
+                    //ListViewItem [4] = COMMENTS
+                    ListViewItem newGuest = new ListViewItem(new string[] { name, RSVP, newRow["GUEST_ID"].ToString(), newRow["FOOD_ALLERGY"].ToString(), newRow["COMMENTS"].ToString() });
+                    newGuest.ImageIndex = 0;
+                    newGuest.Group = lvwAttendee.Groups[0];
+                    lvwAttendee.Items.Add(newGuest);
                 }
             }
         }
@@ -167,18 +201,19 @@ namespace Efficienseat
         {
             using (DataEntryForm data = new DataEntryForm())
             {
-                data.FirstName = lvi.Text;                  // <== This needs to be changed - we have to combine first and last name in li.Text to get the RSVP in the second line
-                data.LastName = lvi.SubItems[1].Text;       // <== This needs to be changed - we have to combine first and last name in li.Text to get the RSVP in the second line
-                data.RSVP = lvi.SubItems[3].Text;           // This would become SubItems[2]
-                data.FoodAllergy = lvi.SubItems[4].Text;    // This would become SubItems[3]
-                data.Comments = lvi.SubItems[5].Text;       // This would become SubItems[4]
+                DataRow[] updateRow = AttendeeDT.Select("GUEST_ID = " + lvi.SubItems[2].Text.ToString());
+                if (updateRow.Length > 0)
+                {
+                    data.FirstName = updateRow[0]["FIRST_NAME"].ToString();
+                    data.LastName = updateRow[0]["LAST_NAME"].ToString();
+                    data.RSVP = updateRow[0]["RSVP"].ToString();
+                    data.FoodAllergy = updateRow[0]["FOOD_ALLERGY"].ToString();
+                    data.Comments = updateRow[0]["COMMENTS"].ToString();
+                }
+   
 
                 if (data.ShowDialog(this) == DialogResult.OK)
                 {
-                    int guestID = Convert.ToInt32(lvi.SubItems[2].Text);
-
-                    // find row in Datatable using GUEST_ID
-                    DataRow[] updateRow = AttendeeDT.Select("GUEST_ID = " + guestID.ToString());
                     if (updateRow.Length > 0)
                     {
                         updateRow[0]["FIRST_NAME"] = data.FirstName;
@@ -187,6 +222,11 @@ namespace Efficienseat
                         updateRow[0]["FOOD_ALLERGY"] = data.FoodAllergy;
                         updateRow[0]["COMMENTS"] = data.Comments;
                         AttendeeDT.AcceptChanges();
+
+                        lvi.Text = data.LastName + ", " + data.FirstName;
+                        lvi.SubItems[1].Text = data.RSVP;
+                        lvi.SubItems[2].Text = data.FoodAllergy;
+                        lvi.SubItems[3].Text = data.Comments;
                     }
                 }
             }
@@ -237,7 +277,8 @@ namespace Efficienseat
                     {
                         //control for item equality
                         bool equal = false;
-
+                        string[] name;
+                        char delimiter = ',';
                         //iterate through listviewitems to compare with current line from txt file
                         //  sloppy as it iterates through the entire listview for each line item
                         //  --Potentially faster to check txt file for duplicates first and then only
@@ -254,9 +295,22 @@ namespace Efficienseat
                         //if name does not already exist, add item to ListView
                         if (!equal)
                         {
-                            ListViewItem newGuest = new ListViewItem(new string[] { line, "", "", "" });
-                            newGuest.ImageIndex = 0;
-                            newGuest.Group = lvwAttendee.Groups[0];
+                            name = line.Split(delimiter);
+
+                            DataRow newRow = AttendeeDT.NewRow();
+                            newRow["FIRST_NAME"] = name[1].ToString().Trim();
+                            newRow["LAST_NAME"] = name[0].ToString().Trim();
+                            newRow["RSVP"] = "Unknown";
+                            newRow["GUEST_ID"] = Convert.ToInt32(AttendeeDT.Compute("max(GUEST_ID)", string.Empty)) + 1;
+                            newRow["WED_ID"] = AttendeeDT.Rows[0]["WED_ID"];
+                            AttendeeDT.Rows.Add(newRow);
+
+                            //ListViewItem [0] = NAME
+                            //ListViewItem [1] = RSVP
+                            //ListViewItem [2] = GUEST_ID
+                            //ListViewItem [3] = FOOD_ALLERGY
+                            //ListViewItem [4] = COMMENTS
+                            ListViewItem newGuest = new ListViewItem(new string[] { line, "Unknown", newRow["GUEST_ID"].ToString(), "", "" });
                             lvwAttendee.Items.Add(newGuest);
                         }
                     }
@@ -272,5 +326,13 @@ namespace Efficienseat
         }
 
         #endregion Methods
+
+        private void lvwAttendee_ItemMouseHover(object sender, ListViewItemMouseHoverEventArgs e)
+        {
+           // System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
+            //messageBoxCS.AppendFormat("{0} = {1}", "Item", e.Item);
+            //messageBoxCS.AppendLine();
+            
+        }
     }
 }

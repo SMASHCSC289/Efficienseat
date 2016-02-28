@@ -17,7 +17,8 @@ namespace Efficienseat
         DataTable AttendeeDT;
         DataTable TableDT;
         SQLiteConnection DBConnection;
-        SQLiteDataAdapter sda;
+        SQLiteDataAdapter sdaAttendee;
+        SQLiteDataAdapter sdaTable;
         SQLiteCommandBuilder cmdBuilder;
         private int loadedWedID = 0;
 
@@ -79,25 +80,27 @@ namespace Efficienseat
 
         private void GetData(int weddingNumber)
         {
-            string attendeeSQL = "SELECT * FROM WED_GUEST WHERE WED_ID = " + weddingNumber;
+            string attendeeSQL = "SELECT * FROM WED_GUEST WHERE WED_ID = " + weddingNumber + " ORDER BY LAST_NAME, FIRST_NAME";
             SQLiteCommand command = new SQLiteCommand(attendeeSQL, DBConnection);
-            sda = new SQLiteDataAdapter(command);
+            sdaAttendee = new SQLiteDataAdapter(command);
             AttendeeDT = new DataTable();
-            sda.Fill(AttendeeDT);
+            sdaAttendee.Fill(AttendeeDT);
 
             AttendeeDT.RowDeleted += Row_Deleted;
             AttendeeDT.RowChanged += Row_Changed;
 
             string tableSQL = "SELECT * FROM WED_TABLES WHERE WED_ID = " + weddingNumber;
             SQLiteCommand tableCommand = new SQLiteCommand(tableSQL, DBConnection);
-            sda = new SQLiteDataAdapter(tableCommand);
+            sdaTable = new SQLiteDataAdapter(tableCommand);
             TableDT = new DataTable();
-            sda.Fill(TableDT);
+            sdaTable.Fill(TableDT);
 
             TableDT.RowDeleted += Table_Row_Deleted;
             TableDT.RowChanged += Table_Row_Changed;
 
             al.AttendeeDT = AttendeeDT;
+            al.TableDT = TableDT;
+            al.LoadTableNames();
             al.LoadListView();
 
             loadedWedID = weddingNumber;
@@ -110,8 +113,8 @@ namespace Efficienseat
         {
             try
             {
-                cmdBuilder = new SQLiteCommandBuilder(sda);
-                sda.Update(AttendeeDT);
+                cmdBuilder = new SQLiteCommandBuilder(sdaAttendee);
+                sdaAttendee.Update(AttendeeDT);
             }
             catch (Exception ex)
             {
@@ -123,8 +126,8 @@ namespace Efficienseat
         {
             try
             {
-                cmdBuilder = new SQLiteCommandBuilder(sda);
-                sda.Update(AttendeeDT);
+                cmdBuilder = new SQLiteCommandBuilder(sdaAttendee);
+                sdaAttendee.Update(AttendeeDT);
             }
             catch (Exception ex)
             {
@@ -136,8 +139,8 @@ namespace Efficienseat
         {
             try
             {
-                cmdBuilder = new SQLiteCommandBuilder(sda);
-                sda.Update(TableDT);
+                cmdBuilder = new SQLiteCommandBuilder(sdaTable);
+                sdaTable.Update(TableDT);
             }
             catch (Exception ex)
             {
@@ -149,8 +152,8 @@ namespace Efficienseat
         {
             try
             {
-                cmdBuilder = new SQLiteCommandBuilder(sda);
-                sda.Update(TableDT);
+                cmdBuilder = new SQLiteCommandBuilder(sdaTable);
+                sdaTable.Update(TableDT);
             }
             catch (Exception ex)
             {

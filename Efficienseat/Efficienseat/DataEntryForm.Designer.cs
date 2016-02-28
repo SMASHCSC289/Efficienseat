@@ -104,6 +104,7 @@
             this.cbRSVP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbRSVP.FormattingEnabled = true;
             this.cbRSVP.Items.AddRange(new object[] {
+            "Unknown",
             "Accept",
             "Decline"});
             this.cbRSVP.Location = new System.Drawing.Point(111, 105);
