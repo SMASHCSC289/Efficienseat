@@ -59,34 +59,18 @@ namespace Efficienseat
             dataGridView1.DataSource = TableDT;            
 
             AttendeeDT.RowDeleted += new DataRowChangeEventHandler(Row_Deleted);
-            AttendeeDT.RowChanged += new DataRowChangeEventHandler(Row_Changed);            
+            AttendeeDT.RowChanged += new DataRowChangeEventHandler(Row_Changed);     
+            
+            // Load tables from DB
+            foreach (DataRow row in TableDT.Rows)
+            {
+                cbxTableName.Items.Add(row.Field<string>("TABLE_NAME"));
+            }       
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
             drawShape(shapeType, (int) numericUpDown1.Value);            
-        }
-
-        private void cbxTableShape_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            shapeType = cbxTableShape.SelectedIndex;
-            if (cbxTableShape.Text == "Rectangle")
-            {
-                cbEndSeats.Enabled = true;
-            }
-            else
-            {
-                cbEndSeats.Enabled = false;
-            }
-
-            updateTable(cbxTableName.SelectedIndex, cbxTableShape.Text, (int) numericUpDown1.Value);
-
-            Refresh();
-        }
-
-        private void cbEndSeats_CheckedChanged(object sender, EventArgs e)
-        {
-            Refresh();
         }
 
         private void drawShape(int num, int numPoints)
@@ -313,13 +297,37 @@ namespace Efficienseat
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            updateSeatListViews();
-            updateTable(cbxTableName.SelectedIndex, cbxTableShape.Text, (int) numericUpDown1.Value);         
+            updateSeatListViews();                   
+        }
+
+        private void cbxTableShape_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            doTableStuff();
+        }
+
+        private void doTableStuff()
+        {
+            shapeType = cbxTableShape.SelectedIndex;
+            if (cbxTableShape.Text == "Rectangle")
+            {
+                cbEndSeats.Enabled = true;
+            }
+            else
+            {
+                cbEndSeats.Enabled = false;
+            }
+
+            Refresh();
+        }
+
+        private void cbEndSeats_CheckedChanged(object sender, EventArgs e)
+        {
+            Refresh();
         }
 
         // ListView Methods
         #region ListViewHandling
-        
+
         // holds the last item moved
         public class Mysource
         {
@@ -560,6 +568,11 @@ namespace Efficienseat
             resetSeating();
         }
 
+        private void btnSaveChanges_Click(object sender, EventArgs e)
+        {
+            updateTable(cbxTableName.SelectedIndex + 1, cbxTableShape.Text, (int)numericUpDown1.Value);
+        }
+
         private void btnAddTable_Click(object sender, EventArgs e)
         {
             using (TableCreateForm tcf = new TableCreateForm())
@@ -588,7 +601,7 @@ namespace Efficienseat
 
             if (TableDT.Rows.Count == 0)
             {
-                newTableID = 0;
+                newTableID = 1;
             }
             else
             {
@@ -625,6 +638,26 @@ namespace Efficienseat
             }
         }
 
+        private void cbxTableName_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            loadTable(cbxTableName.SelectedIndex + 1);
+        }
+
+        private void loadTable(int index)
+        {
+            var result = from row in TableDT.AsEnumerable()
+                         where Convert.ToInt32(row[0]) == wedID && Convert.ToInt32(row[1]) == index
+                         select row;
+
+            foreach (DataRow row in result)
+            {
+                cbxTableShape.SelectedIndex = cbxTableShape.Items.IndexOf(row[4]);
+                numericUpDown1.Value = Convert.ToDecimal(row[3]);
+            }
+
+            doTableStuff();
+        }
+
         // Attendee DataTable Change Events
         private void Row_Deleted(object sender, DataRowChangeEventArgs e)
         {
@@ -635,5 +668,9 @@ namespace Efficienseat
         {
 
         }
+
+
+
+
     }
 }
