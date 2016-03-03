@@ -24,7 +24,7 @@ namespace Efficienseat
         private void Attendee_List_Load(object sender, EventArgs e)
         {
             // Set list of images for listview
-            lvwAttendee.LargeImageList = imlTableNumbers;
+           // lvwAttendee.LargeImageList = imlTableNumbers;
 
             // Hide close button
             this.ControlBox = false;

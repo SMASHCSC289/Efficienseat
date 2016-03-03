@@ -35,16 +35,17 @@ namespace Efficienseat
         private void TimerEventProcessor(Object myObject,
                                            EventArgs myEventArgs)
         {
-            loadMainForm();
+            loadLoadForm();
             timeToLoad.Stop();
             this.Close();
         }
 
-        private void loadMainForm()
+        private void loadLoadForm()
         {
-            Main_Window pmdi = new Main_Window();
-            pmdi.Show();
-
+            LoadForm lw = new LoadForm();
+            lw.Show();
         }
+
+
     }
 }

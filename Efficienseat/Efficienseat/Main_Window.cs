@@ -21,24 +21,52 @@ namespace Efficienseat
         SQLiteDataAdapter sdaTable;
         SQLiteCommandBuilder cmdBuilder;
         private int loadedWedID = 0;
+        private char selection;
 
-        public Main_Window()
+        public Main_Window(SQLiteConnection c, int w, char s)
         {
             InitializeComponent();
+            loadedWedID = w;
+            selection = s;
+            DBConnection = c;
         }
 
         private void Play_With_MDI_Load(object sender, EventArgs e)
+        {
+
+            loadAttendeeList();
+
+        }
+
+        private void LoadLoadForm()
+        {   
+            
+           
+        }
+
+        private void loadAttendeeList()
         {
             al = new Attendee_List();
             al.MdiParent = this;
             al.StartPosition = FormStartPosition.Manual;
             al.Location = new Point(0, 0);
+            if (selection == 'C')
+            {
+                loadAttendeeList();
+            }
+            else if (selection == 'L')
+            {
+                loadAttendeeList();
+                GetData(loadedWedID);
+            }
+            else if (selection == 'I')
+            {
+                loadAttendeeList();
+                al.importAttendees();
+            }
             al.Show();
-
-            OpenDatabase();
-            GetData(54321);
+            
         }
-
         private void showTableEditorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Attendee_List al = (Attendee_List) this.MdiChildren[0];
@@ -64,19 +92,6 @@ namespace Efficienseat
         }
 
         #region Methods
-
-        private void OpenDatabase()
-        {
-            try
-            {
-                DBConnection = new SQLiteConnection(@"Data Source=|DataDirectory|\Efficienseat.sqlite;Version=3;");
-                DBConnection.Open();
-            }
-            catch (SQLiteException Error)
-            {
-                MessageBox.Show("Error opening SQLite DB.\n" + Error.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
         private void GetData(int weddingNumber)
         {
