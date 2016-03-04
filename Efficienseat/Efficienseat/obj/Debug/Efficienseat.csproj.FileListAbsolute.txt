@@ -146,3 +146,4 @@ C:\Users\Jonathan\Desktop\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Effic
 C:\Users\Jonathan\Desktop\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.TableAssignments.resources
 C:\Users\Jonathan\Desktop\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.TableCreateForm.resources
 C:\Users\Jonathan\Desktop\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.csproj.GenerateResource.Cache
+C:\Users\Jonathan\Desktop\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.csprojResolveAssemblyReference.cache

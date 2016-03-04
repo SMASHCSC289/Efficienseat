@@ -52,16 +52,14 @@ namespace Efficienseat
             al.Location = new Point(0, 0);
             if (selection == 'C')
             {
-                loadAttendeeList();
+                
             }
             else if (selection == 'L')
             {
-                loadAttendeeList();
                 GetData(loadedWedID);
             }
             else if (selection == 'I')
             {
-                loadAttendeeList();
                 al.importAttendees();
             }
             al.Show();
