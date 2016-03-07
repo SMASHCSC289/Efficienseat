@@ -21,12 +21,14 @@ namespace Efficienseat
         SQLiteDataAdapter sdaTable;
         SQLiteCommandBuilder cmdBuilder;
         private int loadedWedID = 0;
+        private string loadedDescription = "";
 
-        public Main_Window(SQLiteConnection c, int w)
+        public Main_Window(SQLiteConnection c, int w, string d)
         {
             InitializeComponent();
             loadedWedID = w;
             DBConnection = c;
+            loadedDescription = d;
         }
 
         private void Play_With_MDI_Load(object sender, EventArgs e)
@@ -44,7 +46,7 @@ namespace Efficienseat
 
         private void loadAttendeeList()
         {
-            al = new Attendee_List();
+            al = new Attendee_List(loadedDescription);
             al.MdiParent = this;
             al.StartPosition = FormStartPosition.Manual;
             al.Location = new Point(0, 0);

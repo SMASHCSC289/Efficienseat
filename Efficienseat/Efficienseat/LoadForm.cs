@@ -15,6 +15,7 @@ namespace Efficienseat
     {
         public char selection = 'Q';
         public int weddingID = 1;
+        string description = "";
         SQLiteConnection connection;
         Main_Window pmdi;
         DataTable wedDT;
@@ -63,7 +64,7 @@ namespace Efficienseat
                 EditWeddingForm editWedding = new EditWeddingForm();
                 editWedding.ShowDialog();
 
-                string description = editWedding.WeddingName + " " + editWedding.WeddingDate;
+                description = editWedding.WeddingName + " " + editWedding.WeddingDate;
 
                 editWedding.Dispose();
 
@@ -76,9 +77,15 @@ namespace Efficienseat
                 stmt = new SQLiteCommand(createNewSQL, connection);
                 stmt.ExecuteScalar();
             }
+            else
+            {
+                string getDescription = "SELECT WED_PARTY_NAME FROM WED_PARTY WHERE WED_ID = " + weddingID;
+                SQLiteCommand stmt = new SQLiteCommand(getDescription, connection);
+                description = (string)stmt.ExecuteScalar();
+            }
 
 
-            pmdi = new Main_Window(connection, weddingID);
+            pmdi = new Main_Window(connection, weddingID, description);
             pmdi.Show();
             connection.Close();
             this.Close();

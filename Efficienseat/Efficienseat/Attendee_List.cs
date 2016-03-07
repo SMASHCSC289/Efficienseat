@@ -16,9 +16,10 @@ namespace Efficienseat
         public DataTable AttendeeDT;
         public DataTable TableDT;
 
-        public Attendee_List()
+        public Attendee_List(string descr)
         {
             InitializeComponent();
+            this.Text = descr;
         }
 
         private void Attendee_List_Load(object sender, EventArgs e)

@@ -157,4 +157,3 @@ C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficiense
 C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.LoadForm.resources
 C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.TableCreateForm.resources
 C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.EditWeddingForm.resources
-C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.csprojResolveAssemblyReference.cache
