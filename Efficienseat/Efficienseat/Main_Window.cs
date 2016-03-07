@@ -21,13 +21,11 @@ namespace Efficienseat
         SQLiteDataAdapter sdaTable;
         SQLiteCommandBuilder cmdBuilder;
         private int loadedWedID = 0;
-        private char selection;
 
-        public Main_Window(SQLiteConnection c, int w, char s)
+        public Main_Window(SQLiteConnection c, int w)
         {
             InitializeComponent();
             loadedWedID = w;
-            selection = s;
             DBConnection = c;
         }
 
@@ -50,14 +48,8 @@ namespace Efficienseat
             al.MdiParent = this;
             al.StartPosition = FormStartPosition.Manual;
             al.Location = new Point(0, 0);
-            if (selection == 'C')
-            {
-                
-            }
-            else if (selection == 'L')
-            {
-                GetData(loadedWedID);
-            }
+
+            GetData(loadedWedID);
 
             al.Show();
             

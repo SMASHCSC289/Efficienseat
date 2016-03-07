@@ -157,6 +157,7 @@ namespace Efficienseat
                         newRow["RSVP"] = "Unknown";
                     else
                         newRow["RSVP"] = data.RSVP;
+
                     newRow["GUEST_ID"] = Convert.ToInt32(AttendeeDT.Compute("max(GUEST_ID)", string.Empty)) + 1;
                     newRow["WED_ID"] = AttendeeDT.Rows[0]["WED_ID"];
                     AttendeeDT.Rows.Add(newRow);

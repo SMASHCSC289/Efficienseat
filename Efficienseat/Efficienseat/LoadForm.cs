@@ -47,7 +47,7 @@ namespace Efficienseat
             }
             else if(LoadRadioButton.Checked == true)
             {
-                MessageBox.Show("No existing weddings found, please select Create or Import");
+                MessageBox.Show("No existing weddings found, please create a new one.");
                 LoadRadioButton.Checked = false;
             }
             
@@ -67,7 +67,7 @@ namespace Efficienseat
 
                 editWedding.Dispose();
 
-                string getMax = "SELECT MAX(WED_ID) FROM WED_PARTY";
+                string getMax = "SELECT COALESCE(MAX(WED_ID),0) FROM WED_PARTY";
                 SQLiteCommand stmt = new SQLiteCommand(getMax, connection);
                 
                 weddingID = Convert.ToInt32(stmt.ExecuteScalar()) + 1;
@@ -78,7 +78,7 @@ namespace Efficienseat
             }
 
 
-            pmdi = new Main_Window(connection, weddingID, selection);
+            pmdi = new Main_Window(connection, weddingID);
             pmdi.Show();
             connection.Close();
             this.Close();
