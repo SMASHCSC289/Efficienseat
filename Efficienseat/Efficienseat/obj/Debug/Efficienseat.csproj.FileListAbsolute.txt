@@ -86,7 +86,6 @@ C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficiense
 C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.pdb
 C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\bin\Debug\Efficienseat.exe
 C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\bin\Debug\Efficienseat.pdb
-C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.csprojResolveAssemblyReference.cache
 C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.Attendee_List.resources
 C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.DataEntryForm.resources
 C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.Main_Window.resources
@@ -147,3 +146,15 @@ C:\Users\Jonathan\Desktop\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Effic
 C:\Users\Jonathan\Desktop\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.TableCreateForm.resources
 C:\Users\Jonathan\Desktop\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.csproj.GenerateResource.Cache
 C:\Users\Jonathan\Desktop\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.csprojResolveAssemblyReference.cache
+C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\bin\Debug\EntityFramework.dll
+C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\bin\Debug\System.Data.SQLite.dll
+C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\bin\Debug\EntityFramework.xml
+C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\bin\Debug\System.Data.SQLite.xml
+C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.LoadForm.resources
+C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.TableCreateForm.resources
+C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.EditWeddingForm.resources
+C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.csprojResolveAssemblyReference.cache

@@ -58,10 +58,7 @@ namespace Efficienseat
             {
                 GetData(loadedWedID);
             }
-            else if (selection == 'I')
-            {
-                al.importAttendees();
-            }
+
             al.Show();
             
         }

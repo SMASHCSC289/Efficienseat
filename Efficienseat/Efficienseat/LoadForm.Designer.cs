@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.CreateRadioButton = new System.Windows.Forms.RadioButton();
-            this.ImportRadioButton = new System.Windows.Forms.RadioButton();
             this.LoadRadioButton = new System.Windows.Forms.RadioButton();
             this.SelectButton = new System.Windows.Forms.Button();
             this.WeddingComboBox = new System.Windows.Forms.ComboBox();
@@ -46,18 +45,6 @@
             this.CreateRadioButton.Text = "Create New Wedding";
             this.CreateRadioButton.UseVisualStyleBackColor = true;
             this.CreateRadioButton.CheckedChanged += new System.EventHandler(this.CreateRadioButton_CheckedChanged);
-            // 
-            // ImportRadioButton
-            // 
-            this.ImportRadioButton.AutoSize = true;
-            this.ImportRadioButton.Location = new System.Drawing.Point(44, 86);
-            this.ImportRadioButton.Name = "ImportRadioButton";
-            this.ImportRadioButton.Size = new System.Drawing.Size(100, 17);
-            this.ImportRadioButton.TabIndex = 1;
-            this.ImportRadioButton.TabStop = true;
-            this.ImportRadioButton.Text = "Import Wedding";
-            this.ImportRadioButton.UseVisualStyleBackColor = true;
-            this.ImportRadioButton.CheckedChanged += new System.EventHandler(this.ImportRadioButton_CheckedChanged);
             // 
             // LoadRadioButton
             // 
@@ -99,7 +86,6 @@
             this.Controls.Add(this.WeddingComboBox);
             this.Controls.Add(this.SelectButton);
             this.Controls.Add(this.LoadRadioButton);
-            this.Controls.Add(this.ImportRadioButton);
             this.Controls.Add(this.CreateRadioButton);
             this.Name = "LoadForm";
             this.Text = "Welcome To Efficienseat";
@@ -112,7 +98,6 @@
         #endregion
 
         private System.Windows.Forms.RadioButton CreateRadioButton;
-        private System.Windows.Forms.RadioButton ImportRadioButton;
         private System.Windows.Forms.RadioButton LoadRadioButton;
         private System.Windows.Forms.Button SelectButton;
         private System.Windows.Forms.ComboBox WeddingComboBox;

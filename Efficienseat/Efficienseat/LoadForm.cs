@@ -38,12 +38,6 @@ namespace Efficienseat
             selection = 'C';
         }
 
-        private void ImportRadioButton_CheckedChanged(object sender, EventArgs e)
-        {
-            WeddingComboBox.Enabled = false;
-            selection = 'I';
-        }
-
         private void LoadRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             if(WeddingComboBox.Items.Count != 0)
@@ -62,6 +56,28 @@ namespace Efficienseat
 
         private void SelectButton_Click(object sender, EventArgs e)
         {
+            //Here -> if creating new wedding, set weddingID to the current max WED_ID + 1
+
+            if (selection == 'C')
+            {
+                EditWeddingForm editWedding = new EditWeddingForm();
+                editWedding.ShowDialog();
+
+                string description = editWedding.WeddingName + " " + editWedding.WeddingDate;
+
+                editWedding.Dispose();
+
+                string getMax = "SELECT MAX(WED_ID) FROM WED_PARTY";
+                SQLiteCommand stmt = new SQLiteCommand(getMax, connection);
+                
+                weddingID = Convert.ToInt32(stmt.ExecuteScalar()) + 1;
+
+                string createNewSQL = "INSERT INTO WED_PARTY (WED_ID, WED_PARTY_NAME) VALUES (" + weddingID + ", '" + description + "')";
+                stmt = new SQLiteCommand(createNewSQL, connection);
+                stmt.ExecuteScalar();
+            }
+
+
             pmdi = new Main_Window(connection, weddingID, selection);
             pmdi.Show();
             connection.Close();
