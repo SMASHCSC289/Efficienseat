@@ -336,7 +336,6 @@
             this.Name = "Main_Window";
             this.ShowIcon = false;
             this.Text = "Efficienseat";
-            this.Load += new System.EventHandler(this.Play_With_MDI_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

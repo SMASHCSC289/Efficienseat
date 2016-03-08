@@ -23,25 +23,30 @@ namespace Efficienseat
         private int loadedWedID = 0;
         private string loadedDescription = "";
 
-        public Main_Window(SQLiteConnection c, int w, string d)
+        public Main_Window()
         {
             InitializeComponent();
-            loadedWedID = w;
-            DBConnection = c;
-            loadedDescription = d;
-        }
-
-        private void Play_With_MDI_Load(object sender, EventArgs e)
-        {
-
+            OpenDatabase();
+            this.Show();
+            LoadForm load = new LoadForm(DBConnection);
+            load.ShowDialog();
+            loadedWedID = load.WeddingID;
+            loadedDescription = load.Description;
+            load.Dispose();
             loadAttendeeList();
-
         }
 
-        private void LoadLoadForm()
-        {   
-            
-           
+        private void OpenDatabase()
+        {
+            try
+            {
+                DBConnection = new SQLiteConnection(@"Data Source=|DataDirectory|\Efficienseat.sqlite;Version=3;");
+                DBConnection.Open();
+            }
+            catch (SQLiteException Error)
+            {
+                MessageBox.Show("Error opening SQLite DB.\n" + Error.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void loadAttendeeList()

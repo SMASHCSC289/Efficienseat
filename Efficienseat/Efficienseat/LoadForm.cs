@@ -17,18 +17,17 @@ namespace Efficienseat
         public int weddingID = 1;
         string description = "";
         SQLiteConnection connection;
-        Main_Window pmdi;
         DataTable wedDT;
         SQLiteDataAdapter wedAdapter;
 
-        public LoadForm()
+        public LoadForm(SQLiteConnection c)
         {
             InitializeComponent();
+            connection = c;
         }
 
         private void LoadForm_Load(object sender, EventArgs e)
         {
-            OpenDatabase();
             GetData();
         }
 
@@ -84,10 +83,6 @@ namespace Efficienseat
                 SQLiteCommand stmt = new SQLiteCommand(getDescription, connection);
                 description = (string)stmt.ExecuteScalar();
             }
-
-
-            pmdi = new Main_Window(connection, weddingID, description);
-            pmdi.Show();
             this.Close();
         }
 
@@ -98,19 +93,6 @@ namespace Efficienseat
                 Int32.TryParse(WeddingComboBox.SelectedValue.ToString(), out weddingID);
             }
 
-        }
-
-        private void OpenDatabase()
-        {
-            try
-            {
-                connection = new SQLiteConnection(@"Data Source=|DataDirectory|\Efficienseat.sqlite;Version=3;");
-                connection.Open();
-            }
-            catch (SQLiteException Error)
-            {
-                MessageBox.Show("Error opening SQLite DB.\n" + Error.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         private void GetData()
@@ -124,5 +106,30 @@ namespace Efficienseat
             WeddingComboBox.DisplayMember = "WED_PARTY_NAME";
             WeddingComboBox.ValueMember = "WED_ID";
         }
+
+        public int WeddingID
+        {
+            get
+            {
+                return weddingID;
+            }
+            set
+            {
+                weddingID = value;
+            }
+        }
+
+        public string Description
+        {
+            get
+            {
+                return description;
+            }
+            set
+            {
+                description = value;
+            }
+        }
+
     }
 }
