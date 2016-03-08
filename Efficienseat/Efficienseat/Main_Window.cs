@@ -80,6 +80,26 @@ namespace Efficienseat
             al.importAttendees();
         }
 
+        private void updateWeddingInfo()
+        {
+            using (EditWeddingForm edit = new EditWeddingForm(loadedDescription))
+            {
+                edit.ShowDialog();
+                loadedDescription = edit.WeddingName + " " + edit.WeddingDate;
+
+            }
+            string updateSQL = "UPDATE WED_PARTY SET WED_PARTY_NAME = '" + loadedDescription + "' WHERE WED_ID = " + loadedWedID;
+            SQLiteCommand stmt = new SQLiteCommand(updateSQL, DBConnection);
+            stmt.ExecuteScalar();
+            al.setWindowTitle(loadedDescription);
+        }
+
+
+        private void editWeddingInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            updateWeddingInfo();
+        }
+
         #region Methods
 
         private void GetData(int weddingNumber)
@@ -164,7 +184,8 @@ namespace Efficienseat
                 MessageBox.Show(ex.Message);
             }
         }
-        
+
         #endregion
+
     }
 }

@@ -20,6 +20,12 @@ namespace Efficienseat
             InitializeComponent();
         }
 
+        public EditWeddingForm(string description)
+        {
+            InitializeComponent();
+            textBox1.Text = description;
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             weddingName = textBox1.Text;

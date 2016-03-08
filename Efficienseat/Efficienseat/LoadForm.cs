@@ -29,7 +29,7 @@ namespace Efficienseat
         private void LoadForm_Load(object sender, EventArgs e)
         {
             OpenDatabase();
-           GetData();
+            GetData();
         }
 
 
@@ -44,6 +44,7 @@ namespace Efficienseat
             if(WeddingComboBox.Items.Count != 0)
             {
                 WeddingComboBox.Enabled = true;
+                
                 selection = 'L';
             }
             else if(LoadRadioButton.Checked == true)
@@ -87,7 +88,6 @@ namespace Efficienseat
 
             pmdi = new Main_Window(connection, weddingID, description);
             pmdi.Show();
-            connection.Close();
             this.Close();
         }
 

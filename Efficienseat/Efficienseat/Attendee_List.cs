@@ -19,7 +19,7 @@ namespace Efficienseat
         public Attendee_List(string descr)
         {
             InitializeComponent();
-            this.Text = descr;
+            setWindowTitle(descr);
         }
 
         private void Attendee_List_Load(object sender, EventArgs e)
@@ -89,6 +89,11 @@ namespace Efficienseat
         // METHODS
         #region Methods
 
+        public void setWindowTitle(string descr)
+        {
+            this.Text = descr;
+        }
+        
         // Load attendees from DB
 
         public void LoadTableNames()
