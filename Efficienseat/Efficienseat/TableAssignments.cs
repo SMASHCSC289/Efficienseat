@@ -518,6 +518,8 @@ namespace Efficienseat
 
         public void loadListView()
         {
+            lvwUnseated.Clear();
+
             // Implement code here to Load the ListView from the DataTable
             foreach (DataRow dr in AttendeeDT.Rows)
             {
@@ -660,7 +662,7 @@ namespace Efficienseat
         // Attendee DataTable Change Events
         private void Row_Deleted(object sender, DataRowChangeEventArgs e)
         {
-
+            loadListView();
         }
 
         private void Row_Changed(object sender, DataRowChangeEventArgs e)
