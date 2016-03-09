@@ -15,18 +15,18 @@ namespace Efficienseat
     {
         public DataTable AttendeeDT;
         public DataTable TableDT;
+        int wedID;
 
-        private int wedID = 0;
-
-        public int WeddingID
-        {
-            set { wedID = value; }
-        }
-
-        public Attendee_List(string descr)
+        public Attendee_List()
         {
             InitializeComponent();
-            setWindowTitle(descr);
+        }
+
+        public int WedID
+        {
+            get { return wedID; }
+
+            set { wedID = value; }
         }
 
         private void Attendee_List_Load(object sender, EventArgs e)
@@ -96,11 +96,6 @@ namespace Efficienseat
         // METHODS
         #region Methods
 
-        public void setWindowTitle(string descr)
-        {
-            this.Text = descr;
-        }
-        
         // Load attendees from DB
 
         public void LoadTableNames()
@@ -170,17 +165,10 @@ namespace Efficienseat
                         newRow["RSVP"] = "Unknown";
                     else
                         newRow["RSVP"] = data.RSVP;
-
-                    if (AttendeeDT.Compute("max(GUEST_ID)", string.Empty) == DBNull.Value)
-                    {
+                    if (AttendeeDT.Rows.Count == 0)
                         newRow["GUEST_ID"] = 1;
-                    }
                     else
-                    {
                         newRow["GUEST_ID"] = Convert.ToInt32(AttendeeDT.Compute("max(GUEST_ID)", string.Empty)) + 1;
-                    }
-
-                    
                     newRow["WED_ID"] = wedID;
                     AttendeeDT.Rows.Add(newRow);
 
@@ -324,8 +312,11 @@ namespace Efficienseat
                             newRow["FIRST_NAME"] = name[1].ToString().Trim();
                             newRow["LAST_NAME"] = name[0].ToString().Trim();
                             newRow["RSVP"] = "Unknown";
-                            newRow["GUEST_ID"] = Convert.ToInt32(AttendeeDT.Compute("max(GUEST_ID)", string.Empty)) + 1;
-                            newRow["WED_ID"] = AttendeeDT.Rows[0]["WED_ID"];
+                            if (AttendeeDT.Rows.Count == 0)
+                                newRow["GUEST_ID"] = 1;
+                            else
+                                newRow["GUEST_ID"] = Convert.ToInt32(AttendeeDT.Compute("max(GUEST_ID)", string.Empty)) + 1;
+                            newRow["WED_ID"] = wedID;
                             AttendeeDT.Rows.Add(newRow);
 
                             //ListViewItem [0] = NAME
