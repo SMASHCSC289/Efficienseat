@@ -31,9 +31,7 @@ namespace Efficienseat
 
         public TableAssignments()
         {
-            InitializeComponent();
-
-            
+            InitializeComponent();            
 
             rectSide = panel1.Width - (panel1.Width / 2);
             rectSide2 = rectSide;
@@ -56,7 +54,8 @@ namespace Efficienseat
                 l.Items.Add(emp);
             }
 
-            dataGridView1.DataSource = TableDT;            
+            dataGridView1.DataSource = TableDT;
+            dataGridView2.DataSource = AttendeeDT;          
 
             AttendeeDT.RowDeleted += new DataRowChangeEventHandler(Row_Deleted);
             AttendeeDT.RowChanged += new DataRowChangeEventHandler(Row_Changed);     
@@ -517,14 +516,14 @@ namespace Efficienseat
             }
         }
 
-        public void LoadListView()
+        public void loadListView()
         {
             // Implement code here to Load the ListView from the DataTable
             foreach (DataRow dr in AttendeeDT.Rows)
             {
                 ListViewItem li = new ListViewItem();
 
-                if (dr["RSVP"].ToString() == "Accept")
+                if (dr["RSVP"].ToString() == "Accept" && dr["TABLE_ID"] == DBNull.Value)
                 {
                     li.Text = dr["LAST_NAME"] + ", " + dr["FIRST_NAME"];
                     li.SubItems.Add(dr["RSVP"].ToString());
@@ -666,11 +665,7 @@ namespace Efficienseat
 
         private void Row_Changed(object sender, DataRowChangeEventArgs e)
         {
-
+            loadListView();
         }
-
-
-
-
     }
 }

@@ -23,6 +23,8 @@ namespace Efficienseat
         SQLiteDataAdapter wedAdapter;
         SQLiteCommandBuilder cmdBuilder;
 
+        private int loadedWedID = 0;
+
         public Main_Window()
         {
             InitializeComponent();
@@ -43,6 +45,7 @@ namespace Efficienseat
             al.Show();
             
         }
+
         private void showTableEditorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Attendee_List al = (Attendee_List) this.MdiChildren[0];
@@ -55,8 +58,8 @@ namespace Efficienseat
 
             ta.AttendeeDT = AttendeeDT;
             ta.TableDT = TableDT;
-            ta.LoadListView();
-            //ta.WeddingID = loadedWedID;
+            ta.loadListView();
+            ta.WeddingID = loadedWedID;
 
             ta.Show();
         }
@@ -98,6 +101,7 @@ namespace Efficienseat
             if (lf.ShowDialog(this) == DialogResult.OK)
             {
                 GetData(lf.WedID);
+                loadedWedID = lf.WedID;
             }
 
         }
@@ -128,7 +132,8 @@ namespace Efficienseat
             al.LoadTableNames();
             al.LoadListView();
         }
-        #endregion
+        
+        #endregion Methods
 
         #region Events
 
@@ -157,7 +162,6 @@ namespace Efficienseat
                 MessageBox.Show(ex.Message);
             }
         }
-
 
         private void Row_Deleted(object sender, DataRowChangeEventArgs e)
         {
@@ -211,7 +215,7 @@ namespace Efficienseat
             }
         }
 
-        #endregion
+        #endregion Events
 
         private void Main_Window_Shown(object sender, EventArgs e)
         {

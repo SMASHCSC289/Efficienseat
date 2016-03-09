@@ -179,6 +179,7 @@
             this.Controls.Add(this.lblFirstName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "DataEntryForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DataEntryForm";
             this.ResumeLayout(false);
             this.PerformLayout();

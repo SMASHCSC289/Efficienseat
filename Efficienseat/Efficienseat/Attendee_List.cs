@@ -105,11 +105,12 @@ namespace Efficienseat
                 DataRow dr = TableDT.Rows[i];
                 lvwAttendee.Groups[i+1].Header = dr["TABLE_NAME"].ToString();
             }
-
         }
 
         public void LoadListView()
         {
+            lvwAttendee.Items.Clear();
+
             for (int i = 0; i < AttendeeDT.Rows.Count; i++)
             {
                 DataRow dr = AttendeeDT.Rows[i];
@@ -155,7 +156,9 @@ namespace Efficienseat
                 if (data.ShowDialog(this) == DialogResult.OK)
                 {
                     string name = data.LastName + "," + data.FirstName;
-                    string RSVP = data.RSVP;
+                    string rsvp = data.RSVP;
+                    string allergy = data.FoodAllergy;
+                    string comment = data.Comments;
 
                     //add new row to DataTable
                     DataRow newRow = AttendeeDT.NewRow();
@@ -170,6 +173,15 @@ namespace Efficienseat
                     else
                         newRow["GUEST_ID"] = Convert.ToInt32(AttendeeDT.Compute("max(GUEST_ID)", string.Empty)) + 1;
                     newRow["WED_ID"] = wedID;
+                    newRow["FOOD_ALLERGY"] = allergy;
+                    if (comment == "")
+                    {
+                        newRow["COMMENTS"] = DBNull.Value;
+                    }
+                    else
+                    {
+                        newRow["COMMENTS"] = comment;
+                    }
                     AttendeeDT.Rows.Add(newRow);
 
 
@@ -178,7 +190,7 @@ namespace Efficienseat
                     //ListViewItem [2] = GUEST_ID
                     //ListViewItem [3] = FOOD_ALLERGY
                     //ListViewItem [4] = COMMENTS
-                    ListViewItem newGuest = new ListViewItem(new string[] { name, RSVP, newRow["GUEST_ID"].ToString(), newRow["FOOD_ALLERGY"].ToString(), newRow["COMMENTS"].ToString() });
+                    ListViewItem newGuest = new ListViewItem(new string[] { name, rsvp, newRow["GUEST_ID"].ToString(), newRow["FOOD_ALLERGY"].ToString(), newRow["COMMENTS"].ToString() });
                     newGuest.ImageIndex = 0;
                     newGuest.Group = lvwAttendee.Groups[0];
                     lvwAttendee.Items.Add(newGuest);
@@ -238,6 +250,8 @@ namespace Efficienseat
                         lvi.SubItems[1].Text = data.RSVP;
                         lvi.SubItems[2].Text = data.FoodAllergy;
                         lvi.SubItems[3].Text = data.Comments;
+
+                        LoadListView();
                     }
                 }
             }
@@ -324,7 +338,7 @@ namespace Efficienseat
                             //ListViewItem [2] = GUEST_ID
                             //ListViewItem [3] = FOOD_ALLERGY
                             //ListViewItem [4] = COMMENTS
-                            ListViewItem newGuest = new ListViewItem(new string[] { line, "Unknown", newRow["GUEST_ID"].ToString(), "", "" });
+                            ListViewItem newGuest = new ListViewItem(new string[] { name[1] + ", " + name[0], "Unknown", newRow["GUEST_ID"].ToString(), "", "" });
                             lvwAttendee.Items.Add(newGuest);
                         }
                     }
