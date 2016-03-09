@@ -32,18 +32,15 @@ namespace Efficienseat
 
         private void Play_With_MDI_Load(object sender, EventArgs e)
         {
-            loadAttendeeList();
+            
         }
-
 
         private void loadAttendeeList()
         {
             al = new Attendee_List();
             al.MdiParent = this;
             al.StartPosition = FormStartPosition.Manual;
-            al.Location = new Point(0, 0);
-            al.Show();
-            
+            al.Location = new Point(0, 0);            
         }
 
         private void showTableEditorToolStripMenuItem_Click(object sender, EventArgs e)
@@ -100,8 +97,10 @@ namespace Efficienseat
             lf.wedDT = wedDT;
             if (lf.ShowDialog(this) == DialogResult.OK)
             {
+                loadAttendeeList();
                 GetData(lf.WedID);
                 loadedWedID = lf.WedID;
+                al.Show();
             }
 
         }
