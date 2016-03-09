@@ -55,6 +55,7 @@ namespace Efficienseat
             al.MdiParent = this;
             al.StartPosition = FormStartPosition.Manual;
             al.Location = new Point(0, 0);
+            al.WeddingID = loadedWedID;
 
             GetData(loadedWedID);
 

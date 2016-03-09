@@ -16,6 +16,13 @@ namespace Efficienseat
         public DataTable AttendeeDT;
         public DataTable TableDT;
 
+        private int wedID = 0;
+
+        public int WeddingID
+        {
+            set { wedID = value; }
+        }
+
         public Attendee_List(string descr)
         {
             InitializeComponent();
@@ -164,8 +171,17 @@ namespace Efficienseat
                     else
                         newRow["RSVP"] = data.RSVP;
 
-                    newRow["GUEST_ID"] = Convert.ToInt32(AttendeeDT.Compute("max(GUEST_ID)", string.Empty)) + 1;
-                    newRow["WED_ID"] = AttendeeDT.Rows[0]["WED_ID"];
+                    if (AttendeeDT.Compute("max(GUEST_ID)", string.Empty) == DBNull.Value)
+                    {
+                        newRow["GUEST_ID"] = 1;
+                    }
+                    else
+                    {
+                        newRow["GUEST_ID"] = Convert.ToInt32(AttendeeDT.Compute("max(GUEST_ID)", string.Empty)) + 1;
+                    }
+
+                    
+                    newRow["WED_ID"] = wedID;
                     AttendeeDT.Rows.Add(newRow);
 
 
