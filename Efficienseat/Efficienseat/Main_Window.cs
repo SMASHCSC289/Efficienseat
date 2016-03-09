@@ -16,49 +16,30 @@ namespace Efficienseat
         Attendee_List al;
         DataTable AttendeeDT;
         DataTable TableDT;
+        DataTable wedDT;
         SQLiteConnection DBConnection;
         SQLiteDataAdapter sdaAttendee;
         SQLiteDataAdapter sdaTable;
+        SQLiteDataAdapter wedAdapter;
         SQLiteCommandBuilder cmdBuilder;
-        private int loadedWedID = 0;
-        private string loadedDescription = "";
 
         public Main_Window()
         {
             InitializeComponent();
-            OpenDatabase();
-            this.Show();
-            LoadForm load = new LoadForm(DBConnection);
-            load.ShowDialog();
-            loadedWedID = load.WeddingID;
-            loadedDescription = load.Description;
-            load.Dispose();
+        }
+
+        private void Play_With_MDI_Load(object sender, EventArgs e)
+        {
             loadAttendeeList();
         }
 
-        private void OpenDatabase()
-        {
-            try
-            {
-                DBConnection = new SQLiteConnection(@"Data Source=|DataDirectory|\Efficienseat.sqlite;Version=3;");
-                DBConnection.Open();
-            }
-            catch (SQLiteException Error)
-            {
-                MessageBox.Show("Error opening SQLite DB.\n" + Error.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
         private void loadAttendeeList()
         {
-            al = new Attendee_List(loadedDescription);
+            al = new Attendee_List();
             al.MdiParent = this;
             al.StartPosition = FormStartPosition.Manual;
             al.Location = new Point(0, 0);
-            al.WeddingID = loadedWedID;
-
-            GetData(loadedWedID);
-
             al.Show();
             
         }
@@ -75,7 +56,7 @@ namespace Efficienseat
             ta.AttendeeDT = AttendeeDT;
             ta.TableDT = TableDT;
             ta.LoadListView();
-            ta.WeddingID = loadedWedID;
+            //ta.WeddingID = loadedWedID;
 
             ta.Show();
         }
@@ -86,27 +67,40 @@ namespace Efficienseat
             al.importAttendees();
         }
 
-        private void updateWeddingInfo()
-        {
-            using (EditWeddingForm edit = new EditWeddingForm(loadedDescription))
-            {
-                edit.ShowDialog();
-                loadedDescription = edit.WeddingName + " " + edit.WeddingDate;
-
-            }
-            string updateSQL = "UPDATE WED_PARTY SET WED_PARTY_NAME = '" + loadedDescription + "' WHERE WED_ID = " + loadedWedID;
-            SQLiteCommand stmt = new SQLiteCommand(updateSQL, DBConnection);
-            stmt.ExecuteScalar();
-            al.setWindowTitle(loadedDescription);
-        }
-
-
-        private void editWeddingInfoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            updateWeddingInfo();
-        }
-
         #region Methods
+
+        private void OpenDatabase()
+        {
+            try
+            {
+                DBConnection = new SQLiteConnection(@"Data Source=|DataDirectory|\Efficienseat.sqlite;Version=3;");
+                DBConnection.Open();
+            }
+            catch (SQLiteException Error)
+            {
+                MessageBox.Show("Error opening SQLite DB.\n" + Error.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void GetWeddingParty()
+        {
+            string weddingQuery = "SELECT * FROM WED_PARTY ORDER BY WED_ID";
+            SQLiteCommand command = new SQLiteCommand(weddingQuery, DBConnection);
+            wedDT = new DataTable();
+            wedAdapter = new SQLiteDataAdapter(command);
+            wedAdapter.Fill(wedDT);
+
+            wedDT.RowDeleted += Party_Row_Deleted;
+            wedDT.RowChanged += Party_Row_Changed;
+
+            LoadForm lf = new LoadForm();
+            lf.wedDT = wedDT;
+            if (lf.ShowDialog(this) == DialogResult.OK)
+            {
+                GetData(lf.WedID);
+            }
+
+        }
 
         private void GetData(int weddingNumber)
         {
@@ -130,14 +124,40 @@ namespace Efficienseat
 
             al.AttendeeDT = AttendeeDT;
             al.TableDT = TableDT;
+            al.WedID = weddingNumber;
             al.LoadTableNames();
             al.LoadListView();
-
-            loadedWedID = weddingNumber;
         }
         #endregion
 
         #region Events
+
+        private void Party_Row_Deleted(object sender, DataRowChangeEventArgs e)
+        {
+            try
+            {
+                cmdBuilder = new SQLiteCommandBuilder(wedAdapter);
+                wedAdapter.Update(wedDT);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        private void Party_Row_Changed(object sender, DataRowChangeEventArgs e)
+        {
+            try
+            {
+                cmdBuilder = new SQLiteCommandBuilder(wedAdapter);
+                wedAdapter.Update(wedDT);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
 
         private void Row_Deleted(object sender, DataRowChangeEventArgs e)
         {
@@ -193,5 +213,10 @@ namespace Efficienseat
 
         #endregion
 
+        private void Main_Window_Shown(object sender, EventArgs e)
+        {
+            OpenDatabase();
+            GetWeddingParty();
+        }
     }
 }
