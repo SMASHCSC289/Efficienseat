@@ -394,11 +394,11 @@ namespace Efficienseat
                     removeItemFromAll(myItem);
                     lv.Items.Add(myItem);
 
-                    MessageBox.Show("'" + myItem.SubItems[3].Text + "'" + Environment.NewLine +
-                                    "'" + lv.Tag + "'" + Environment.NewLine +
-                                    "'" + cbxTableName.SelectedIndex + "'");
+                    //MessageBox.Show("'" + myItem.SubItems[3].Text + "'" + Environment.NewLine +
+                    //                "'" + lv.Tag + "'" + Environment.NewLine +
+                    //                "'" + cbxTableName.SelectedIndex + "'");
 
-                    updateAttendee(Convert.ToInt32(myItem.SubItems[3].Text), Convert.ToInt32(lv.Tag), cbxTableName.SelectedIndex);
+                    updateAttendee(Convert.ToInt32(myItem.SubItems[3].Text), Convert.ToInt32(lv.Tag), cbxTableName.SelectedIndex + 1);
 
                     updateSeatListViews();
                 }
@@ -549,6 +549,45 @@ namespace Efficienseat
             }
         }
 
+        public void loadSeats()
+        {
+            foreach (ListView lv in listviews)
+            {
+                lv.Items.Clear();
+                ListViewItem emp = empty.Clone() as ListViewItem;
+                lv.Items.Add(emp);
+            }
+
+            var result = from DataRow row in AttendeeDT.Rows
+                         where Convert.ToInt32(row[0]) == wedID &&  row[7] != DBNull.Value && Convert.ToInt32(row[7]) == (cbxTableName.SelectedIndex + 1) 
+                         select row;
+
+            foreach (DataRow dr in result)
+            {
+                ListViewItem li = new ListViewItem();                
+                
+                li.Text = dr["LAST_NAME"] + ", " + dr["FIRST_NAME"];
+                li.SubItems.Add(dr["RSVP"].ToString());
+
+                if (dr["COMMENTS"].ToString() != "")
+                {
+                    li.ImageIndex = 1;
+                    li.SubItems.Add(dr["COMMENTS"].ToString());
+                    li.ToolTipText = dr["COMMENTS"].ToString();
+                }
+                else
+                {
+                    li.ImageIndex = 0;
+                    li.SubItems.Add("");
+                }
+
+                li.SubItems.Add(dr["GUEST_ID"].ToString());
+
+                listviews[Convert.ToInt32(dr["SEAT_NUM"]) - 1].Items.Clear();
+                listviews[Convert.ToInt32(dr["SEAT_NUM"]) - 1].Items.Add(li);
+            }
+        }
+
         private void resetSeating()
         {
             foreach (ListView lv in listviews)
@@ -642,6 +681,7 @@ namespace Efficienseat
         private void cbxTableName_SelectionChangeCommitted(object sender, EventArgs e)
         {
             loadTable(cbxTableName.SelectedIndex + 1);
+            loadSeats();
         }
 
         private void loadTable(int index)
