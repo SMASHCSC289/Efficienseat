@@ -43,7 +43,7 @@
             this.Response = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Comments = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Guest_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlWorkspace = new System.Windows.Forms.Panel();
             this.lvwSeat7 = new System.Windows.Forms.ListView();
             this.imageList_Seat_32 = new System.Windows.Forms.ImageList(this.components);
             this.lvwSeat8 = new System.Windows.Forms.ListView();
@@ -55,14 +55,13 @@
             this.lvwSeat3 = new System.Windows.Forms.ListView();
             this.lvwSeat2 = new System.Windows.Forms.ListView();
             this.lvwSeat1 = new System.Windows.Forms.ListView();
-            this.btnReset = new System.Windows.Forms.Button();
             this.cbEndSeats = new System.Windows.Forms.CheckBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnAddTable = new System.Windows.Forms.Button();
             this.btnSaveChanges = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.pnlWorkspace.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -70,7 +69,7 @@
             // cbxTableName
             // 
             this.cbxTableName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxTableName.Location = new System.Drawing.Point(113, 6);
+            this.cbxTableName.Location = new System.Drawing.Point(212, 6);
             this.cbxTableName.Name = "cbxTableName";
             this.cbxTableName.Size = new System.Drawing.Size(151, 21);
             this.cbxTableName.TabIndex = 2;
@@ -83,7 +82,7 @@
             "Circle",
             "Square",
             "Rectangle"});
-            this.cbxTableShape.Location = new System.Drawing.Point(113, 33);
+            this.cbxTableShape.Location = new System.Drawing.Point(212, 33);
             this.cbxTableShape.Name = "cbxTableShape";
             this.cbxTableShape.Size = new System.Drawing.Size(107, 21);
             this.cbxTableShape.TabIndex = 3;
@@ -91,7 +90,7 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(113, 60);
+            this.numericUpDown1.Location = new System.Drawing.Point(212, 60);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             10,
             0,
@@ -130,7 +129,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(33, 9);
+            this.label1.Location = new System.Drawing.Point(132, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 13);
             this.label1.TabIndex = 5;
@@ -139,7 +138,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 36);
+            this.label2.Location = new System.Drawing.Point(129, 36);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 13);
             this.label2.TabIndex = 6;
@@ -148,7 +147,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 62);
+            this.label3.Location = new System.Drawing.Point(111, 62);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(95, 13);
             this.label3.TabIndex = 7;
@@ -194,25 +193,25 @@
             // 
             this.Comments.Text = "Comments";
             // 
-            // panel1
+            // pnlWorkspace
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.lvwSeat7);
-            this.panel1.Controls.Add(this.lvwSeat8);
-            this.panel1.Controls.Add(this.lvwSeat9);
-            this.panel1.Controls.Add(this.lvwSeat10);
-            this.panel1.Controls.Add(this.lvwSeat4);
-            this.panel1.Controls.Add(this.lvwSeat5);
-            this.panel1.Controls.Add(this.lvwSeat6);
-            this.panel1.Controls.Add(this.lvwSeat3);
-            this.panel1.Controls.Add(this.lvwSeat2);
-            this.panel1.Controls.Add(this.lvwSeat1);
-            this.panel1.Location = new System.Drawing.Point(11, 88);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(368, 409);
-            this.panel1.TabIndex = 1;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.pnlWorkspace.BackColor = System.Drawing.Color.White;
+            this.pnlWorkspace.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlWorkspace.Controls.Add(this.lvwSeat7);
+            this.pnlWorkspace.Controls.Add(this.lvwSeat8);
+            this.pnlWorkspace.Controls.Add(this.lvwSeat9);
+            this.pnlWorkspace.Controls.Add(this.lvwSeat10);
+            this.pnlWorkspace.Controls.Add(this.lvwSeat4);
+            this.pnlWorkspace.Controls.Add(this.lvwSeat5);
+            this.pnlWorkspace.Controls.Add(this.lvwSeat6);
+            this.pnlWorkspace.Controls.Add(this.lvwSeat3);
+            this.pnlWorkspace.Controls.Add(this.lvwSeat2);
+            this.pnlWorkspace.Controls.Add(this.lvwSeat1);
+            this.pnlWorkspace.Location = new System.Drawing.Point(11, 88);
+            this.pnlWorkspace.Name = "pnlWorkspace";
+            this.pnlWorkspace.Size = new System.Drawing.Size(368, 409);
+            this.pnlWorkspace.TabIndex = 1;
+            this.pnlWorkspace.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlWorkspace_Paint);
             // 
             // lvwSeat7
             // 
@@ -444,23 +443,13 @@
             this.lvwSeat1.DragEnter += new System.Windows.Forms.DragEventHandler(this.listView_DragEnter);
             this.lvwSeat1.DragLeave += new System.EventHandler(this.listView_DragLeave);
             // 
-            // btnReset
-            // 
-            this.btnReset.Location = new System.Drawing.Point(386, 59);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(124, 23);
-            this.btnReset.TabIndex = 10;
-            this.btnReset.Text = "Reset Seats";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-            // 
             // cbEndSeats
             // 
             this.cbEndSeats.AutoSize = true;
             this.cbEndSeats.Checked = true;
             this.cbEndSeats.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbEndSeats.Enabled = false;
-            this.cbEndSeats.Location = new System.Drawing.Point(226, 35);
+            this.cbEndSeats.Location = new System.Drawing.Point(325, 35);
             this.cbEndSeats.Name = "cbEndSeats";
             this.cbEndSeats.Size = new System.Drawing.Size(81, 17);
             this.cbEndSeats.TabIndex = 11;
@@ -481,7 +470,7 @@
             // 
             // btnAddTable
             // 
-            this.btnAddTable.Location = new System.Drawing.Point(270, 6);
+            this.btnAddTable.Location = new System.Drawing.Point(369, 6);
             this.btnAddTable.Name = "btnAddTable";
             this.btnAddTable.Size = new System.Drawing.Size(42, 23);
             this.btnAddTable.TabIndex = 13;
@@ -491,7 +480,7 @@
             // 
             // btnSaveChanges
             // 
-            this.btnSaveChanges.Location = new System.Drawing.Point(177, 57);
+            this.btnSaveChanges.Location = new System.Drawing.Point(276, 57);
             this.btnSaveChanges.Name = "btnSaveChanges";
             this.btnSaveChanges.Size = new System.Drawing.Size(135, 23);
             this.btnSaveChanges.TabIndex = 14;
@@ -517,7 +506,6 @@
             this.Controls.Add(this.btnAddTable);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.cbEndSeats);
-            this.Controls.Add(this.btnReset);
             this.Controls.Add(this.lvwUnseated);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -525,14 +513,14 @@
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.cbxTableShape);
             this.Controls.Add(this.cbxTableName);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlWorkspace);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "TableAssignments";
             this.Text = "Table Assignments";
             this.Load += new System.EventHandler(this.TableAssignments_Load);
             this.Resize += new System.EventHandler(this.TableAssignments_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            this.panel1.ResumeLayout(false);
+            this.pnlWorkspace.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
@@ -554,7 +542,7 @@
         private System.Windows.Forms.ImageList imageList_32;
         private System.Windows.Forms.ImageList imageList_16;
         private System.Windows.Forms.ColumnHeader Guest_ID;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlWorkspace;
         private System.Windows.Forms.ListView lvwSeat3;
         private System.Windows.Forms.ListView lvwSeat2;
         private System.Windows.Forms.ListView lvwSeat1;
@@ -566,7 +554,6 @@
         private System.Windows.Forms.ListView lvwSeat5;
         private System.Windows.Forms.ListView lvwSeat6;
         private System.Windows.Forms.ImageList imageList_Seat_32;
-        private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.CheckBox cbEndSeats;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnAddTable;

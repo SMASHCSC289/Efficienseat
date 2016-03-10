@@ -21,7 +21,6 @@ namespace Efficienseat
         Mysource dragSource = new Mysource();
         List<ListView> listviews;
         ListViewItem empty = new ListViewItem("Empty");
-
         private int wedID;
 
         public int WeddingID
@@ -33,7 +32,7 @@ namespace Efficienseat
         {
             InitializeComponent();            
 
-            rectSide = panel1.Width - (panel1.Width / 2);
+            rectSide = pnlWorkspace.Width - (pnlWorkspace.Width / 2);
             rectSide2 = rectSide;
 
             empty.ImageIndex = 2;
@@ -67,37 +66,39 @@ namespace Efficienseat
             }       
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        // Hijack Paint event for the panel
+        private void pnlWorkspace_Paint(object sender, PaintEventArgs e)
         {
             drawShape(shapeType, (int) numericUpDown1.Value);            
         }
 
+        // Draw the table in the panel
         private void drawShape(int num, int numPoints)
         {
             // Circle
             if (shapeType == 0)
             {
                 rectSide2 = rectSide;
-                Table = panel1.CreateGraphics();
+                Table = pnlWorkspace.CreateGraphics();
                 TextureBrush tbrush = new TextureBrush(image);                
-                Table.FillEllipse(tbrush, new Rectangle((panel1.Width / 2) - (rectSide / 2), (panel1.Height / 2) - (rectSide2 / 2), rectSide, rectSide2));
+                Table.FillEllipse(tbrush, new Rectangle((pnlWorkspace.Width / 2) - (rectSide / 2), (pnlWorkspace.Height / 2) - (rectSide2 / 2), rectSide, rectSide2));
                 //Pen p = new Pen(Color.Black);
                 //Table.DrawEllipse(p, (panel1.Width / 2) - (rectSide / 2), (panel1.Height / 2) - (rectSide2 / 2), rectSide, rectSide2);
                 numericUpDown1.Maximum = 10;
-                drawPoints(numPoints, rectSide);                
+                calcPoints(numPoints, rectSide);                
             }
 
             // Square
             if (shapeType == 1)
             {
                 rectSide2 = rectSide;
-                Table = panel1.CreateGraphics();
+                Table = pnlWorkspace.CreateGraphics();
                 TextureBrush tbrush = new TextureBrush(image);
-                Table.FillRectangle(tbrush, new Rectangle((panel1.Width / 2) - (rectSide / 2), (panel1.Height / 2) - (rectSide2 / 2), rectSide, rectSide2));
+                Table.FillRectangle(tbrush, new Rectangle((pnlWorkspace.Width / 2) - (rectSide / 2), (pnlWorkspace.Height / 2) - (rectSide2 / 2), rectSide, rectSide2));
                 //Pen p = new Pen(Color.Black);
                 //Table.DrawRectangle(p, (panel1.Width / 2) - (rectSide / 2), (panel1.Height / 2) - (rectSide2 / 2), rectSide, rectSide2);
                 numericUpDown1.Maximum = 8;
-                drawPoints(numPoints, rectSide);
+                calcPoints(numPoints, rectSide);
             }
 
             // Rectangle
@@ -105,15 +106,15 @@ namespace Efficienseat
             {
                 if (cbEndSeats.Checked)
                 {
-                    rectSide2 = panel1.Height - ((listviews[0].Height + 10) * 2);
+                    rectSide2 = pnlWorkspace.Height - ((listviews[0].Height + 10) * 2);
                 }
                 else
                 {
-                    rectSide2 = panel1.Height - 20;
+                    rectSide2 = pnlWorkspace.Height - 20;
                 }
-                Table = panel1.CreateGraphics();
+                Table = pnlWorkspace.CreateGraphics();
                 TextureBrush tbrush = new TextureBrush(image);
-                Table.FillRectangle(tbrush, new Rectangle((panel1.Width / 2) - (rectSide / 2), (panel1.Height / 2) - (rectSide2 / 2), rectSide, rectSide2));
+                Table.FillRectangle(tbrush, new Rectangle((pnlWorkspace.Width / 2) - (rectSide / 2), (pnlWorkspace.Height / 2) - (rectSide2 / 2), rectSide, rectSide2));
                 //Pen p = new Pen(Color.Black);
                 //Table.DrawRectangle(p, (panel1.Width / 2) - (rectSide / 2), (panel1.Height / 2) - (rectSide2 / 2), rectSide, rectSide2);
             }
@@ -122,15 +123,16 @@ namespace Efficienseat
             if (shapeType == 3)
             {
                 rectSide2 = 2 * rectSide;
-                Table = panel1.CreateGraphics();
+                Table = pnlWorkspace.CreateGraphics();
                 TextureBrush tbrush = new TextureBrush(image);
-                Table.FillEllipse(tbrush, new Rectangle((panel1.Width / 2) - (rectSide / 2), (panel1.Height / 2) - (rectSide2 / 2), rectSide, rectSide2));
+                Table.FillEllipse(tbrush, new Rectangle((pnlWorkspace.Width / 2) - (rectSide / 2), (pnlWorkspace.Height / 2) - (rectSide2 / 2), rectSide, rectSide2));
                 //Pen p = new Pen(Color.Black);
                 //Table.DrawEllipse(p, (panel1.Width / 2) - (rectSide / 2), (panel1.Height / 2) - (rectSide2 / 2), rectSide, rectSide2);
             }
         }
 
-        private void drawPoints(int numPoints, int side)
+        // Calculate seating positions in the panel
+        private void calcPoints(int numPoints, int side)
         {
             Pen p = new Pen(Color.Black);
             Pen p2 = new Pen(Color.Red);
@@ -139,42 +141,30 @@ namespace Efficienseat
             if (shapeType == 0)
             {
                 int additionalRad = 60;
-                double angle = 360 / numPoints;
-
-                //Table.DrawEllipse(  p,
-                //                    (panel1.Width / 2) - (rectSide / 2) - additionalRad,
-                //                    (panel1.Height / 2) - (rectSide2 / 2) - additionalRad,
-                //                    rectSide + (additionalRad * 2), 
-                //                    rectSide2 + (additionalRad * 2)
-                //                 );            
+                double angle = 360 / numPoints;     
 
                 for (int i = 0; i < numPoints; i++)
                 {
-                    double x = (panel1.Width / 2) + ((side / 2) + additionalRad) * Math.Cos(degToRad(angle * i));
-                    double y = (panel1.Height / 2) + ((side / 2) + additionalRad) * Math.Sin(degToRad(angle * i));
+                    double x = (pnlWorkspace.Width / 2) + ((side / 2) + additionalRad) * Math.Cos(degToRad(angle * i));
+                    double y = (pnlWorkspace.Height / 2) + ((side / 2) + additionalRad) * Math.Sin(degToRad(angle * i));
 
                     Table.DrawRectangle(p2, (float)x, (float)y, 2, 2);
 
                     listviews[i].Location = new Point((int)x - (listviews[i].Width / 2), (int)y - (listviews[i].Height / 2));
                     listviews[i].Visible = true;
-
-                    //MessageBox.Show(  "Point : (" + x.ToString() + "," + y.ToString() + ")" + Environment.NewLine +
-                    //                 "Angle : " + (angle * i) + " Degrees | " + degToRad((angle * i)) + " Radians" 
-                    //               ); 
                 }
             }
+
             // Square
             else if (shapeType == 1)
             {
                 int additionalSide = 50;
 
-                Rectangle rectSeating = new Rectangle((panel1.Width / 2) - (rectSide / 2) - additionalSide,
-                                        (panel1.Height / 2) - (rectSide2 / 2) - additionalSide,
+                Rectangle rectSeating = new Rectangle((pnlWorkspace.Width / 2) - (rectSide / 2) - additionalSide,
+                                        (pnlWorkspace.Height / 2) - (rectSide2 / 2) - additionalSide,
                                         rectSide + (additionalSide * 2),
                                         rectSide2 + (additionalSide * 2)
                                     );
-
-                //Table.DrawRectangle( p, rectSeating );
 
                 List<Point> sqSeatsLessThanFive = new List<Point>() {
                                                                         new Point(rectSeating.Left + (rectSeating.Width / 2), rectSeating.Top),
@@ -217,8 +207,8 @@ namespace Efficienseat
                                                                 new Point(rectSeating.Right, rectSeating.Top + (rectSeating.Height / 3)*2),     // 4
                                                                 new Point(rectSeating.Left + (rectSeating.Width / 3), rectSeating.Bottom),      // 5
                                                                 new Point(rectSeating.Left + (rectSeating.Width / 3) * 2, rectSeating.Bottom),  // 6
-                                                                new Point(rectSeating.Left, rectSeating.Top + (rectSeating.Height / 3) * 2),
-                                                                new Point(rectSeating.Left, rectSeating.Top + (rectSeating.Height / 3))
+                                                                new Point(rectSeating.Left, rectSeating.Top + (rectSeating.Height / 3) * 2),    // 7
+                                                                new Point(rectSeating.Left, rectSeating.Top + (rectSeating.Height / 3))         // 8
                                                                 
                                                             };
 
@@ -284,6 +274,7 @@ namespace Efficienseat
             }
         }
 
+        // Convert degrees to radians for circle calculations
         private double degToRad(double degrees)
         {
             return Math.PI * (degrees - 90) / 180.0;
@@ -304,6 +295,7 @@ namespace Efficienseat
             doTableStuff();
         }
 
+        // Set shapeType and refresh the panel
         private void doTableStuff()
         {
             shapeType = cbxTableShape.SelectedIndex;
@@ -448,7 +440,7 @@ namespace Efficienseat
         // remove specific listview item from all listviews in the form
         private void removeItemFromAll(ListViewItem _li)
         {
-            foreach (Control c in panel1.Controls)
+            foreach (Control c in pnlWorkspace.Controls)
             {
                 if (c is ListView)
                 {
@@ -474,7 +466,7 @@ namespace Efficienseat
                 {
                     ListViewItem lvi = listviews[i].Items[0];
                     removeItemFromAll(lvi);
-                    lvwUnseated.Items.Add(lvi);
+                    //lvwUnseated.Items.Add(lvi);
 
                     ListViewItem emp = empty.Clone() as ListViewItem;
                     listviews[i].Items.Add(emp);
@@ -491,36 +483,13 @@ namespace Efficienseat
             Refresh();
         }
 
-        #endregion ListViewHandling
-
-        public void updateAttendee(int attendeeNum, int seatNumber = 0, int tableNumber = 0)
-        {
-            // write LINQ query to pull out user
-            var result = from DataRow row in AttendeeDT.Rows
-                         where Convert.ToInt32(row[1]) == attendeeNum
-                         select row;
-
-            // update user information (just table and seat)
-            foreach (DataRow row in result)
-            {
-                if (seatNumber == 0 && tableNumber == 0)
-                {
-                    row.SetField("TABLE_ID", DBNull.Value);
-                    row.SetField("SEAT_NUM", DBNull.Value);
-                }
-                else
-                {
-                    row.SetField("TABLE_ID", tableNumber);
-                    row.SetField("SEAT_NUM", seatNumber);
-                }                
-            }
-        }
-
+        // Load unseated attendees in main list
         public void loadListView()
         {
             lvwUnseated.Clear();
 
-            // Implement code here to Load the ListView from the DataTable
+            // Iterate through all attendees that have accepted and are not seated
+            // Add them to the unseated list
             foreach (DataRow dr in AttendeeDT.Rows)
             {
                 ListViewItem li = new ListViewItem();
@@ -549,8 +518,10 @@ namespace Efficienseat
             }
         }
 
+        // Load attendees in their assigned seats
         public void loadSeats()
         {
+            // On each load, clear out all seats replace them with empty chairs.
             foreach (ListView lv in listviews)
             {
                 lv.Items.Clear();
@@ -558,14 +529,16 @@ namespace Efficienseat
                 lv.Items.Add(emp);
             }
 
+            // Get list of all seated attendees for the selected table
             var result = from DataRow row in AttendeeDT.Rows
-                         where Convert.ToInt32(row[0]) == wedID &&  row[7] != DBNull.Value && Convert.ToInt32(row[7]) == (cbxTableName.SelectedIndex + 1) 
+                         where Convert.ToInt32(row[0]) == wedID && row[7] != DBNull.Value && Convert.ToInt32(row[7]) == (cbxTableName.SelectedIndex + 1)
                          select row;
 
+            // Iterate through the list to create attendee items and seat them
             foreach (DataRow dr in result)
             {
-                ListViewItem li = new ListViewItem();                
-                
+                ListViewItem li = new ListViewItem();
+
                 li.Text = dr["LAST_NAME"] + ", " + dr["FIRST_NAME"];
                 li.SubItems.Add(dr["RSVP"].ToString());
 
@@ -583,31 +556,42 @@ namespace Efficienseat
 
                 li.SubItems.Add(dr["GUEST_ID"].ToString());
 
+                // Have to use SEAT_NUM - 1 to account for 0 indexed list.
                 listviews[Convert.ToInt32(dr["SEAT_NUM"]) - 1].Items.Clear();
                 listviews[Convert.ToInt32(dr["SEAT_NUM"]) - 1].Items.Add(li);
             }
         }
 
-        private void resetSeating()
+        #endregion ListViewHandling
+
+        // Update DB record with new attendee seat assignment
+        public void updateAttendee(int attendeeNum, int seatNumber = 0, int tableNumber = 0)
         {
-            foreach (ListView lv in listviews)
+            // write LINQ query to pull out user
+            var result = from DataRow row in AttendeeDT.Rows
+                         where Convert.ToInt32(row[1]) == attendeeNum
+                         select row;
+
+            // update user information (just table and seat)
+            foreach (DataRow row in result)
             {
-                if (!lv.Items[0].Text.ToUpper().Contains("EMPTY"))
+                // unseated
+                if (seatNumber == 0 && tableNumber == 0)
                 {
-                    ListViewItem lvi = lv.Items[0];
-                    removeItemFromAll(lvi);
-                    lvwUnseated.Items.Add(lvi);
+                    row.SetField("TABLE_ID", DBNull.Value);
+                    row.SetField("SEAT_NUM", DBNull.Value);
                 }
+                // seated
+                else
+                {
+                    row.SetField("TABLE_ID", tableNumber);
+                    row.SetField("SEAT_NUM", seatNumber);
+                }                
             }
-
-            updateSeatListViews();
         }
-
-        private void btnReset_Click(object sender, EventArgs e)
-        {
-            resetSeating();
-        }
-
+        
+        // Update Table attributes in the DB
+        // Implemented due to broken real-time edit changes.
         private void btnSaveChanges_Click(object sender, EventArgs e)
         {
             updateTable(cbxTableName.SelectedIndex + 1, cbxTableShape.Text, (int)numericUpDown1.Value);
@@ -635,6 +619,7 @@ namespace Efficienseat
             }
         }
 
+        // Add new table to the wedding
         private void addTable(string tableName, string tableShape, int numSeats)
         {
             int newTableID;
@@ -665,6 +650,7 @@ namespace Efficienseat
             cbxTableName.Items.Add(tableName);
         }
 
+        // Save changes to the table in the DB
         private void updateTable(int tableID, string tableShape, int numSeats)
         {
             var result = from row in TableDT.AsEnumerable()
@@ -684,6 +670,7 @@ namespace Efficienseat
             loadSeats();
         }
 
+        // Get table from DB and set form controls
         private void loadTable(int index)
         {
             var result = from row in TableDT.AsEnumerable()
