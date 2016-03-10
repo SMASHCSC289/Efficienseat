@@ -17,17 +17,6 @@ namespace Efficienseat
             InitializeComponent();
         }
 
-        public DataEntryForm(string firstName, string lastName, string address1, string address2, string city, string state, string zip, string RSVP)
-        {
-            //parse first from last: first->textBox1 , last->textBox2
-
-            //parse address: street->textBox3, second line->textBox4, city->textBox5, state->comboBox1, zip->textBox6
-
-            //RSVP->comboBox2
-            InitializeComponent();
-        }
-
-
         private void button1_Click(object sender, EventArgs e)
         {
             //button for save data

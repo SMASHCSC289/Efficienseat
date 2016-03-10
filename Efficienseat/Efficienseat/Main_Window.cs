@@ -221,5 +221,37 @@ namespace Efficienseat
             OpenDatabase();
             GetWeddingParty();
         }
+
+        private void editWeddingInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            editWeddingInfo();
+        }
+
+        private void editWeddingInfo()
+        {
+            using (EditWedding ew = new EditWedding())
+            {
+                //pull data from database
+                string query = "SELECT WED_PARTY_NAME FROM WED_PARTY WHERE WED_ID = " + loadedWedID;
+                SQLiteCommand command = new SQLiteCommand(query, DBConnection);
+                string description = command.ExecuteScalar().ToString();
+
+
+                //parse name, month and year then assign
+                ew.WeddingName = description;
+                //ew.WeddingMonth = 
+                //ew.WeddingYear = 
+
+                if(ew.ShowDialog(this) == DialogResult.OK)
+                {
+                    //push update here
+                    string wedPartyName = ew.WeddingName + " " + ew.WeddingMonth + "-" + ew.WeddingYear;
+                    query = "UPDATE WED_PARTY SET WED_PARTY_NAME = '" + wedPartyName + "' WHERE WED_ID = " + loadedWedID;
+                    command = new SQLiteCommand(query, DBConnection);
+                    command.ExecuteScalar();
+                }
+            }
+        }
+
     }
 }

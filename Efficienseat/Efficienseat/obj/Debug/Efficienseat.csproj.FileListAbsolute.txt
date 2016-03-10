@@ -171,3 +171,14 @@ D:\Mark\School\CSC 289\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficien
 D:\Mark\School\CSC 289\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.TableCreateForm.resources
 D:\Mark\School\CSC 289\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.csproj.GenerateResource.Cache
 C:\Users\dstab\Documents\GitHub\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.LoadForm.resources
+C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\bin\Debug\EntityFramework.dll
+C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\bin\Debug\System.Data.SQLite.dll
+C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\bin\Debug\EntityFramework.xml
+C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\bin\Debug\System.Data.SQLite.xml
+C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.EditWedding.resources
+C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.LoadForm.resources
+C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.TableCreateForm.resources

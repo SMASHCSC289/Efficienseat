@@ -83,6 +83,12 @@
     <Compile Include="DataEntryForm.Designer.cs">
       <DependentUpon>DataEntryForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditWedding.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditWedding.designer.cs">
+      <DependentUpon>EditWedding.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoadForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DataEntryForm.resx">
       <DependentUpon>DataEntryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditWedding.resx">
+      <DependentUpon>EditWedding.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoadForm.resx">
       <DependentUpon>LoadForm.cs</DependentUpon>
