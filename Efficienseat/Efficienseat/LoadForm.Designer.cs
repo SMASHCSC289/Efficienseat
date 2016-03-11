@@ -119,7 +119,7 @@
             this.cbMonth.FormattingEnabled = true;
             this.cbMonth.Items.AddRange(new object[] {
             "JANUARY",
-            "FEBURARY",
+            "FEBRUARY",
             "MARCH",
             "APRIL",
             "MAY",

@@ -238,9 +238,30 @@ namespace Efficienseat
 
 
                 //parse name, month and year then assign
+                string[] month = { "JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER" };
+                int monthPos = -1;
+                for(int i = 0; i < 12; i++)
+                {
+                    monthPos = description.IndexOf(month[i]);
+                    if (monthPos != -1)
+                        break;
+                }
+
+                string monthCB = description.Substring(monthPos); 
+                int yearPos = monthCB.IndexOf("-") + 1;
+                string yearCB = monthCB.Substring(yearPos);
+
+                description = description.Substring(0, monthPos - 1);
+
+                MessageBox.Show(monthPos.ToString() + " " + yearPos.ToString(), "Error", MessageBoxButtons.OK);
+                monthCB = monthCB.Substring(0, (yearPos - 1));
+
+
                 ew.WeddingName = description;
-                //ew.WeddingMonth = 
-                //ew.WeddingYear = 
+
+                //SelectedIndex = ComboBox.FindStringExact(month/year/etc)
+                ew.WeddingMonth = monthCB;
+                ew.WeddingYear = yearCB;
 
                 if(ew.ShowDialog(this) == DialogResult.OK)
                 {
