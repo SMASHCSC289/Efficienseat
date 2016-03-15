@@ -182,3 +182,4 @@ C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficiense
 C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.EditWedding.resources
 C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.LoadForm.resources
 C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.TableCreateForm.resources
+C:\Users\dstab\Documents\GitHub\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.EditWedding.resources

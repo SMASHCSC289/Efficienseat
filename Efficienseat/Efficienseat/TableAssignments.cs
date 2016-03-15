@@ -51,10 +51,7 @@ namespace Efficienseat
             {
                 ListViewItem emp = empty.Clone() as ListViewItem;
                 l.Items.Add(emp);
-            }
-
-            dataGridView1.DataSource = TableDT;
-            dataGridView2.DataSource = AttendeeDT;          
+            }       
 
             AttendeeDT.RowDeleted += new DataRowChangeEventHandler(Row_Deleted);
             AttendeeDT.RowChanged += new DataRowChangeEventHandler(Row_Changed);     

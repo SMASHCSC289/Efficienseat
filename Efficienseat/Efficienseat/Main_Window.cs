@@ -53,6 +53,7 @@ namespace Efficienseat
             ta.StartPosition = FormStartPosition.Manual;
             ta.Location = new Point(al.Location.X + al.Width + 5,
                                     al.Location.Y);
+            ta.Height = al.Height;
 
             ta.AttendeeDT = AttendeeDT;
             ta.TableDT = TableDT;

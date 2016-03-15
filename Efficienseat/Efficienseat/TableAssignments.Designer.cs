@@ -56,14 +56,10 @@
             this.lvwSeat2 = new System.Windows.Forms.ListView();
             this.lvwSeat1 = new System.Windows.Forms.ListView();
             this.cbEndSeats = new System.Windows.Forms.CheckBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnAddTable = new System.Windows.Forms.Button();
             this.btnSaveChanges = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.pnlWorkspace.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // cbxTableName
@@ -457,17 +453,6 @@
             this.cbEndSeats.UseVisualStyleBackColor = true;
             this.cbEndSeats.CheckedChanged += new System.EventHandler(this.cbEndSeats_CheckedChanged);
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(10, 503);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(499, 118);
-            this.dataGridView1.TabIndex = 12;
-            // 
             // btnAddTable
             // 
             this.btnAddTable.Location = new System.Drawing.Point(369, 6);
@@ -488,23 +473,13 @@
             this.btnSaveChanges.UseVisualStyleBackColor = true;
             this.btnSaveChanges.Click += new System.EventHandler(this.btnSaveChanges_Click);
             // 
-            // dataGridView2
-            // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(10, 627);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(499, 111);
-            this.dataGridView2.TabIndex = 15;
-            // 
             // TableAssignments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(522, 750);
-            this.Controls.Add(this.dataGridView2);
+            this.ClientSize = new System.Drawing.Size(522, 510);
             this.Controls.Add(this.btnSaveChanges);
             this.Controls.Add(this.btnAddTable);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.cbEndSeats);
             this.Controls.Add(this.lvwUnseated);
             this.Controls.Add(this.label3);
@@ -521,8 +496,6 @@
             this.Resize += new System.EventHandler(this.TableAssignments_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.pnlWorkspace.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -555,9 +528,7 @@
         private System.Windows.Forms.ListView lvwSeat6;
         private System.Windows.Forms.ImageList imageList_Seat_32;
         private System.Windows.Forms.CheckBox cbEndSeats;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnAddTable;
         private System.Windows.Forms.Button btnSaveChanges;
-        private System.Windows.Forms.DataGridView dataGridView2;
     }
 }
