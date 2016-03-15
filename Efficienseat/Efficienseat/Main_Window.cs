@@ -14,6 +14,7 @@ namespace Efficienseat
     public partial class Main_Window : Form
     {
         Attendee_List al;
+        TableAssignments ta;
         DataTable AttendeeDT;
         DataTable TableDT;
         DataTable wedDT;
@@ -47,7 +48,7 @@ namespace Efficienseat
         {
             Attendee_List al = (Attendee_List) this.MdiChildren[0];
 
-            TableAssignments ta = new TableAssignments();
+            ta = new TableAssignments();
             ta.MdiParent = this;
             ta.StartPosition = FormStartPosition.Manual;
             ta.Location = new Point(al.Location.X + al.Width + 5,
@@ -274,5 +275,23 @@ namespace Efficienseat
             }
         }
 
+        private void Main_Window_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //Close DBConnection here
+            DBConnection.Close();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            al.Close();
+            if (ta != null)
+                ta.Close();
+            GetWeddingParty();
+        }
     }
 }
