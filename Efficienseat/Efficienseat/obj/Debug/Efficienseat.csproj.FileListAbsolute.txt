@@ -183,3 +183,27 @@ C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficiense
 C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.LoadForm.resources
 C:\Users\Broadwind\Documents\Visual Studio 2015\Projects\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.TableCreateForm.resources
 C:\Users\dstab\Documents\GitHub\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.EditWedding.resources
+C:\Users\Dan\Documents\GitHub\Efficienseat\Efficienseat\Efficienseat\bin\Debug\Efficienseat.exe.config
+C:\Users\Dan\Documents\GitHub\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.exe
+C:\Users\Dan\Documents\GitHub\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.pdb
+C:\Users\Dan\Documents\GitHub\Efficienseat\Efficienseat\Efficienseat\bin\Debug\Efficienseat.exe
+C:\Users\Dan\Documents\GitHub\Efficienseat\Efficienseat\Efficienseat\bin\Debug\Efficienseat.pdb
+C:\Users\Dan\Documents\GitHub\Efficienseat\Efficienseat\Efficienseat\bin\Debug\EntityFramework.dll
+C:\Users\Dan\Documents\GitHub\Efficienseat\Efficienseat\Efficienseat\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Dan\Documents\GitHub\Efficienseat\Efficienseat\Efficienseat\bin\Debug\System.Data.SQLite.dll
+C:\Users\Dan\Documents\GitHub\Efficienseat\Efficienseat\Efficienseat\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\Dan\Documents\GitHub\Efficienseat\Efficienseat\Efficienseat\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Dan\Documents\GitHub\Efficienseat\Efficienseat\Efficienseat\bin\Debug\EntityFramework.xml
+C:\Users\Dan\Documents\GitHub\Efficienseat\Efficienseat\Efficienseat\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Dan\Documents\GitHub\Efficienseat\Efficienseat\Efficienseat\bin\Debug\System.Data.SQLite.xml
+C:\Users\Dan\Documents\GitHub\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.csprojResolveAssemblyReference.cache
+C:\Users\Dan\Documents\GitHub\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.Attendee_List.resources
+C:\Users\Dan\Documents\GitHub\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.DataEntryForm.resources
+C:\Users\Dan\Documents\GitHub\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.EditWedding.resources
+C:\Users\Dan\Documents\GitHub\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.LoadForm.resources
+C:\Users\Dan\Documents\GitHub\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.Main_Window.resources
+C:\Users\Dan\Documents\GitHub\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.StartupForm.resources
+C:\Users\Dan\Documents\GitHub\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.Properties.Resources.resources
+C:\Users\Dan\Documents\GitHub\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.TableAssignments.resources
+C:\Users\Dan\Documents\GitHub\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.TableCreateForm.resources
+C:\Users\Dan\Documents\GitHub\Efficienseat\Efficienseat\Efficienseat\obj\Debug\Efficienseat.csproj.GenerateResource.Cache

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using System.Data.SqlClient;
 
 namespace Efficienseat
 {
@@ -268,10 +269,12 @@ namespace Efficienseat
                 if(ew.ShowDialog(this) == DialogResult.OK)
                 {
                     //push update here
+                    SQLiteCommand cmd = new SQLiteCommand("UPDATE WED_PARTY SET WED_PARTY_NAME = @wedPartyName WHERE WED_ID = @loadedID", DBConnection);
+
                     string wedPartyName = ew.WeddingName + " " + ew.WeddingMonth + "-" + ew.WeddingYear;
-                    query = "UPDATE WED_PARTY SET WED_PARTY_NAME = '" + wedPartyName + "' WHERE WED_ID = " + loadedWedID;
-                    command = new SQLiteCommand(query, DBConnection);
-                    command.ExecuteScalar();
+                    cmd.Parameters.AddWithValue("@wedPartyName", wedPartyName);
+                    cmd.Parameters.AddWithValue("@loadedID", loadedWedID);
+                    cmd.ExecuteNonQuery();
                 }
             }
         }
