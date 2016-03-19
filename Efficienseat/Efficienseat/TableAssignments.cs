@@ -515,6 +515,32 @@ namespace Efficienseat
             }
         }
 
+        private void removeAttendee()
+        {
+            foreach(ListView lv in listviews)
+            {
+                // Find some way to see if the item is invalid
+                if (lv.Enabled == true)
+                {
+                    if (lv.Items[0].Text != "Empty")
+                    {
+                        //MessageBox.Show(lv.Items[0].SubItems[3].Text);
+
+                        var result = from DataRow row in AttendeeDT.Rows
+                                     where Convert.ToInt32(row[0]) == wedID && Convert.ToInt32(row[1]) == Convert.ToInt32(lv.Items[0].SubItems[3].Text)
+                                     select row;
+
+                        if (!result.Any())
+                        {
+                            lv.Items.Clear();
+                            ListViewItem emp = empty.Clone() as ListViewItem;
+                            lv.Items.Add(emp);
+                        }
+                    }
+                }
+            }
+        }
+
         // Load attendees in their assigned seats
         public void loadSeats()
         {
@@ -530,6 +556,8 @@ namespace Efficienseat
             var result = from DataRow row in AttendeeDT.Rows
                          where Convert.ToInt32(row[0]) == wedID && row[7] != DBNull.Value && Convert.ToInt32(row[7]) == (cbxTableName.SelectedIndex + 1)
                          select row;
+
+
 
             // Iterate through the list to create attendee items and seat them
             foreach (DataRow dr in result)
@@ -686,6 +714,7 @@ namespace Efficienseat
         // Attendee DataTable Change Events
         private void Row_Deleted(object sender, DataRowChangeEventArgs e)
         {
+            removeAttendee();
             loadListView();
         }
 
