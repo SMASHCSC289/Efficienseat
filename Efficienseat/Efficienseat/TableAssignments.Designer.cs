@@ -73,6 +73,7 @@
             // cbxTableShape
             // 
             this.cbxTableShape.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxTableShape.Enabled = false;
             this.cbxTableShape.Items.AddRange(new object[] {
             "Circle",
             "Square",
@@ -85,6 +86,7 @@
             // 
             // numericUpDown1
             // 
+            this.numericUpDown1.Enabled = false;
             this.numericUpDown1.Location = new System.Drawing.Point(187, 60);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             10,
@@ -450,6 +452,7 @@
             // 
             // btnSaveChanges
             // 
+            this.btnSaveChanges.Enabled = false;
             this.btnSaveChanges.Location = new System.Drawing.Point(251, 59);
             this.btnSaveChanges.Name = "btnSaveChanges";
             this.btnSaveChanges.Size = new System.Drawing.Size(87, 23);

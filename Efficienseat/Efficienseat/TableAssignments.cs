@@ -785,6 +785,9 @@ namespace Efficienseat
         private void cbxTableName_SelectionChangeCommitted(object sender, EventArgs e)
         {
             loadTable(cbxTableName.SelectedIndex + 1);
+            cbxTableShape.Enabled = true;
+            numericUpDown1.Enabled = true;
+            btnSaveChanges.Enabled = true;
             loadSeats();
         }
 

@@ -28,56 +28,59 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.CreateRadioButton = new System.Windows.Forms.RadioButton();
-            this.LoadRadioButton = new System.Windows.Forms.RadioButton();
-            this.SelectButton = new System.Windows.Forms.Button();
+            this.rbtnCreate = new System.Windows.Forms.RadioButton();
+            this.rbtnLoad = new System.Windows.Forms.RadioButton();
+            this.btnOK = new System.Windows.Forms.Button();
             this.WeddingComboBox = new System.Windows.Forms.ComboBox();
             this.gbCreate = new System.Windows.Forms.GroupBox();
-            this.gbExisting = new System.Windows.Forms.GroupBox();
-            this.cbMonth = new System.Windows.Forms.ComboBox();
-            this.txtPartyName = new System.Windows.Forms.TextBox();
-            this.cbYear = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbYear = new System.Windows.Forms.ComboBox();
+            this.txtPartyName = new System.Windows.Forms.TextBox();
+            this.cbMonth = new System.Windows.Forms.ComboBox();
+            this.gbExisting = new System.Windows.Forms.GroupBox();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.label_Title = new System.Windows.Forms.Label();
             this.gbCreate.SuspendLayout();
             this.gbExisting.SuspendLayout();
             this.SuspendLayout();
             // 
-            // CreateRadioButton
+            // rbtnCreate
             // 
-            this.CreateRadioButton.AutoSize = true;
-            this.CreateRadioButton.Location = new System.Drawing.Point(31, 25);
-            this.CreateRadioButton.Name = "CreateRadioButton";
-            this.CreateRadioButton.Size = new System.Drawing.Size(127, 17);
-            this.CreateRadioButton.TabIndex = 0;
-            this.CreateRadioButton.TabStop = true;
-            this.CreateRadioButton.Text = "Create New Wedding";
-            this.CreateRadioButton.UseVisualStyleBackColor = true;
-            this.CreateRadioButton.CheckedChanged += new System.EventHandler(this.CreateRadioButton_CheckedChanged);
+            this.rbtnCreate.AutoSize = true;
+            this.rbtnCreate.Location = new System.Drawing.Point(31, 25);
+            this.rbtnCreate.Name = "rbtnCreate";
+            this.rbtnCreate.Size = new System.Drawing.Size(135, 17);
+            this.rbtnCreate.TabIndex = 0;
+            this.rbtnCreate.TabStop = true;
+            this.rbtnCreate.Text = "Create New Wedding";
+            this.rbtnCreate.UseVisualStyleBackColor = true;
+            this.rbtnCreate.CheckedChanged += new System.EventHandler(this.CreateRadioButton_CheckedChanged);
             // 
-            // LoadRadioButton
+            // rbtnLoad
             // 
-            this.LoadRadioButton.AutoSize = true;
-            this.LoadRadioButton.Location = new System.Drawing.Point(19, 33);
-            this.LoadRadioButton.Name = "LoadRadioButton";
-            this.LoadRadioButton.Size = new System.Drawing.Size(134, 17);
-            this.LoadRadioButton.TabIndex = 2;
-            this.LoadRadioButton.TabStop = true;
-            this.LoadRadioButton.Text = "Load Existing Wedding";
-            this.LoadRadioButton.UseVisualStyleBackColor = true;
-            this.LoadRadioButton.CheckedChanged += new System.EventHandler(this.LoadRadioButton_CheckedChanged);
+            this.rbtnLoad.AutoSize = true;
+            this.rbtnLoad.Location = new System.Drawing.Point(19, 33);
+            this.rbtnLoad.Name = "rbtnLoad";
+            this.rbtnLoad.Size = new System.Drawing.Size(144, 17);
+            this.rbtnLoad.TabIndex = 2;
+            this.rbtnLoad.TabStop = true;
+            this.rbtnLoad.Text = "Load Existing Wedding";
+            this.rbtnLoad.UseVisualStyleBackColor = true;
+            this.rbtnLoad.CheckedChanged += new System.EventHandler(this.LoadRadioButton_CheckedChanged);
             // 
-            // SelectButton
+            // btnOK
             // 
-            this.SelectButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.SelectButton.Location = new System.Drawing.Point(176, 279);
-            this.SelectButton.Name = "SelectButton";
-            this.SelectButton.Size = new System.Drawing.Size(98, 23);
-            this.SelectButton.TabIndex = 3;
-            this.SelectButton.Text = "OK";
-            this.SelectButton.UseVisualStyleBackColor = true;
-            this.SelectButton.Click += new System.EventHandler(this.SelectButton_Click);
+            this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnOK.Enabled = false;
+            this.btnOK.Location = new System.Drawing.Point(138, 300);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(98, 23);
+            this.btnOK.TabIndex = 3;
+            this.btnOK.Text = "OK";
+            this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // WeddingComboBox
             // 
@@ -96,52 +99,39 @@
             this.gbCreate.Controls.Add(this.cbYear);
             this.gbCreate.Controls.Add(this.txtPartyName);
             this.gbCreate.Controls.Add(this.cbMonth);
-            this.gbCreate.Controls.Add(this.CreateRadioButton);
-            this.gbCreate.Location = new System.Drawing.Point(13, 12);
+            this.gbCreate.Controls.Add(this.rbtnCreate);
+            this.gbCreate.Location = new System.Drawing.Point(13, 33);
             this.gbCreate.Name = "gbCreate";
             this.gbCreate.Size = new System.Drawing.Size(453, 173);
             this.gbCreate.TabIndex = 5;
             this.gbCreate.TabStop = false;
             // 
-            // gbExisting
+            // label3
             // 
-            this.gbExisting.Controls.Add(this.WeddingComboBox);
-            this.gbExisting.Controls.Add(this.LoadRadioButton);
-            this.gbExisting.Location = new System.Drawing.Point(13, 191);
-            this.gbExisting.Name = "gbExisting";
-            this.gbExisting.Size = new System.Drawing.Size(453, 72);
-            this.gbExisting.TabIndex = 6;
-            this.gbExisting.TabStop = false;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(39, 142);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(27, 13);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Year";
             // 
-            // cbMonth
+            // label2
             // 
-            this.cbMonth.Enabled = false;
-            this.cbMonth.FormattingEnabled = true;
-            this.cbMonth.Items.AddRange(new object[] {
-            "JANUARY",
-            "FEBRUARY",
-            "MARCH",
-            "APRIL",
-            "MAY",
-            "JUNE",
-            "JULY",
-            "AUGUST",
-            "SEPTEMBER",
-            "OCTOBER",
-            "NOVEMBER",
-            "DECEMBER"});
-            this.cbMonth.Location = new System.Drawing.Point(107, 100);
-            this.cbMonth.Name = "cbMonth";
-            this.cbMonth.Size = new System.Drawing.Size(131, 21);
-            this.cbMonth.TabIndex = 5;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(39, 103);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(42, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Month";
             // 
-            // txtPartyName
+            // label1
             // 
-            this.txtPartyName.Enabled = false;
-            this.txtPartyName.Location = new System.Drawing.Point(107, 62);
-            this.txtPartyName.Name = "txtPartyName";
-            this.txtPartyName.Size = new System.Drawing.Size(287, 20);
-            this.txtPartyName.TabIndex = 6;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(39, 65);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(64, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Party Name";
             // 
             // cbYear
             // 
@@ -178,44 +168,87 @@
             this.cbYear.Size = new System.Drawing.Size(93, 21);
             this.cbYear.TabIndex = 7;
             // 
-            // label1
+            // txtPartyName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(39, 65);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 13);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Party Name";
+            this.txtPartyName.Enabled = false;
+            this.txtPartyName.Location = new System.Drawing.Point(107, 62);
+            this.txtPartyName.Name = "txtPartyName";
+            this.txtPartyName.Size = new System.Drawing.Size(287, 22);
+            this.txtPartyName.TabIndex = 6;
             // 
-            // label2
+            // cbMonth
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(39, 103);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 13);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Month";
+            this.cbMonth.Enabled = false;
+            this.cbMonth.FormattingEnabled = true;
+            this.cbMonth.Items.AddRange(new object[] {
+            "JANUARY",
+            "FEBRUARY",
+            "MARCH",
+            "APRIL",
+            "MAY",
+            "JUNE",
+            "JULY",
+            "AUGUST",
+            "SEPTEMBER",
+            "OCTOBER",
+            "NOVEMBER",
+            "DECEMBER"});
+            this.cbMonth.Location = new System.Drawing.Point(107, 100);
+            this.cbMonth.Name = "cbMonth";
+            this.cbMonth.Size = new System.Drawing.Size(131, 21);
+            this.cbMonth.TabIndex = 5;
             // 
-            // label3
+            // gbExisting
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(39, 142);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 13);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Year";
+            this.gbExisting.Controls.Add(this.WeddingComboBox);
+            this.gbExisting.Controls.Add(this.rbtnLoad);
+            this.gbExisting.Location = new System.Drawing.Point(13, 212);
+            this.gbExisting.Name = "gbExisting";
+            this.gbExisting.Size = new System.Drawing.Size(453, 72);
+            this.gbExisting.TabIndex = 6;
+            this.gbExisting.TabStop = false;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.Location = new System.Drawing.Point(242, 300);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(98, 23);
+            this.btnCancel.TabIndex = 7;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            // 
+            // label_Title
+            // 
+            this.label_Title.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label_Title.BackColor = System.Drawing.Color.White;
+            this.label_Title.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Title.Location = new System.Drawing.Point(1, 1);
+            this.label_Title.Name = "label_Title";
+            this.label_Title.Size = new System.Drawing.Size(476, 32);
+            this.label_Title.TabIndex = 8;
+            this.label_Title.Text = "    Welcome to Efficienseat";
+            this.label_Title.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // LoadForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(478, 314);
+            this.ClientSize = new System.Drawing.Size(478, 335);
+            this.ControlBox = false;
+            this.Controls.Add(this.label_Title);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.gbExisting);
             this.Controls.Add(this.gbCreate);
-            this.Controls.Add(this.SelectButton);
+            this.Controls.Add(this.btnOK);
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "LoadForm";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Welcome To Efficienseat";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoadForm_FormClosing);
             this.Load += new System.EventHandler(this.LoadForm_Load);
             this.Shown += new System.EventHandler(this.LoadForm_Shown);
             this.gbCreate.ResumeLayout(false);
@@ -228,9 +261,9 @@
 
         #endregion
 
-        private System.Windows.Forms.RadioButton CreateRadioButton;
-        private System.Windows.Forms.RadioButton LoadRadioButton;
-        private System.Windows.Forms.Button SelectButton;
+        private System.Windows.Forms.RadioButton rbtnCreate;
+        private System.Windows.Forms.RadioButton rbtnLoad;
+        private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.ComboBox WeddingComboBox;
         private System.Windows.Forms.GroupBox gbCreate;
         private System.Windows.Forms.Label label3;
@@ -240,5 +273,7 @@
         private System.Windows.Forms.TextBox txtPartyName;
         private System.Windows.Forms.ComboBox cbMonth;
         private System.Windows.Forms.GroupBox gbExisting;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Label label_Title;
     }
 }
