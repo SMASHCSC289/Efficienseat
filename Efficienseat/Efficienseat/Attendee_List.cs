@@ -99,7 +99,7 @@ namespace Efficienseat
         {
             // Rectangle formBorder = this.DisplayRectangle;
             Rectangle formBorder = new Rectangle(0, 0, this.DisplayRectangle.Width - 1, this.DisplayRectangle.Height - 1);
-            e.Graphics.DrawRectangle(new Pen(Color.White, 1),
+            e.Graphics.DrawRectangle(new Pen(Color.DarkSlateGray, 1),
                                      formBorder);
         }
 

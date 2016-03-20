@@ -57,6 +57,8 @@
             this.lvwSeat1 = new System.Windows.Forms.ListView();
             this.btnAddTable = new System.Windows.Forms.Button();
             this.btnSaveChanges = new System.Windows.Forms.Button();
+            this.label_Title = new System.Windows.Forms.Label();
+            this.btnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.pnlWorkspace.SuspendLayout();
             this.SuspendLayout();
@@ -64,7 +66,7 @@
             // cbxTableName
             // 
             this.cbxTableName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxTableName.Location = new System.Drawing.Point(187, 6);
+            this.cbxTableName.Location = new System.Drawing.Point(188, 45);
             this.cbxTableName.Name = "cbxTableName";
             this.cbxTableName.Size = new System.Drawing.Size(151, 21);
             this.cbxTableName.TabIndex = 2;
@@ -78,7 +80,7 @@
             "Circle",
             "Square",
             "Rectangle"});
-            this.cbxTableShape.Location = new System.Drawing.Point(187, 33);
+            this.cbxTableShape.Location = new System.Drawing.Point(188, 72);
             this.cbxTableShape.Name = "cbxTableShape";
             this.cbxTableShape.Size = new System.Drawing.Size(151, 21);
             this.cbxTableShape.TabIndex = 3;
@@ -87,7 +89,7 @@
             // numericUpDown1
             // 
             this.numericUpDown1.Enabled = false;
-            this.numericUpDown1.Location = new System.Drawing.Point(187, 60);
+            this.numericUpDown1.Location = new System.Drawing.Point(188, 99);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             10,
             0,
@@ -126,7 +128,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(107, 9);
+            this.label1.Location = new System.Drawing.Point(108, 48);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 13);
             this.label1.TabIndex = 5;
@@ -135,7 +137,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(104, 36);
+            this.label2.Location = new System.Drawing.Point(105, 75);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 13);
             this.label2.TabIndex = 6;
@@ -144,7 +146,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(86, 62);
+            this.label3.Location = new System.Drawing.Point(87, 101);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(95, 13);
             this.label3.TabIndex = 7;
@@ -162,7 +164,7 @@
             this.lvwUnseated.FullRowSelect = true;
             this.lvwUnseated.GridLines = true;
             this.lvwUnseated.LargeImageList = this.imageList_32;
-            this.lvwUnseated.Location = new System.Drawing.Point(385, 88);
+            this.lvwUnseated.Location = new System.Drawing.Point(386, 127);
             this.lvwUnseated.MultiSelect = false;
             this.lvwUnseated.Name = "lvwUnseated";
             this.lvwUnseated.ShowItemToolTips = true;
@@ -204,7 +206,7 @@
             this.pnlWorkspace.Controls.Add(this.lvwSeat3);
             this.pnlWorkspace.Controls.Add(this.lvwSeat2);
             this.pnlWorkspace.Controls.Add(this.lvwSeat1);
-            this.pnlWorkspace.Location = new System.Drawing.Point(11, 88);
+            this.pnlWorkspace.Location = new System.Drawing.Point(12, 127);
             this.pnlWorkspace.Name = "pnlWorkspace";
             this.pnlWorkspace.Size = new System.Drawing.Size(368, 409);
             this.pnlWorkspace.TabIndex = 1;
@@ -442,7 +444,7 @@
             // 
             // btnAddTable
             // 
-            this.btnAddTable.Location = new System.Drawing.Point(344, 5);
+            this.btnAddTable.Location = new System.Drawing.Point(345, 44);
             this.btnAddTable.Name = "btnAddTable";
             this.btnAddTable.Size = new System.Drawing.Size(93, 23);
             this.btnAddTable.TabIndex = 13;
@@ -453,7 +455,7 @@
             // btnSaveChanges
             // 
             this.btnSaveChanges.Enabled = false;
-            this.btnSaveChanges.Location = new System.Drawing.Point(251, 59);
+            this.btnSaveChanges.Location = new System.Drawing.Point(252, 98);
             this.btnSaveChanges.Name = "btnSaveChanges";
             this.btnSaveChanges.Size = new System.Drawing.Size(87, 23);
             this.btnSaveChanges.TabIndex = 14;
@@ -461,11 +463,44 @@
             this.btnSaveChanges.UseVisualStyleBackColor = true;
             this.btnSaveChanges.Click += new System.EventHandler(this.btnSaveChanges_Click);
             // 
+            // label_Title
+            // 
+            this.label_Title.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label_Title.BackColor = System.Drawing.Color.White;
+            this.label_Title.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Title.Location = new System.Drawing.Point(1, 1);
+            this.label_Title.Name = "label_Title";
+            this.label_Title.Size = new System.Drawing.Size(520, 30);
+            this.label_Title.TabIndex = 15;
+            this.label_Title.Text = "    Assign Attendees to Seats";
+            this.label_Title.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.White;
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Image = global::Efficienseat.Properties.Resources.Close_Dark;
+            this.btnClose.Location = new System.Drawing.Point(476, 1);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.btnClose.Size = new System.Drawing.Size(45, 29);
+            this.btnClose.TabIndex = 16;
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnClose.MouseEnter += new System.EventHandler(this.btnClose_MouseEnter);
+            this.btnClose.MouseLeave += new System.EventHandler(this.btnClose_MouseLeave);
+            // 
             // TableAssignments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(522, 510);
+            this.ClientSize = new System.Drawing.Size(522, 548);
+            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.label_Title);
             this.Controls.Add(this.btnSaveChanges);
             this.Controls.Add(this.btnAddTable);
             this.Controls.Add(this.lvwUnseated);
@@ -476,7 +511,7 @@
             this.Controls.Add(this.cbxTableShape);
             this.Controls.Add(this.cbxTableName);
             this.Controls.Add(this.pnlWorkspace);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "TableAssignments";
             this.Text = "Table Assignments";
             this.Load += new System.EventHandler(this.TableAssignments_Load);
@@ -516,5 +551,7 @@
         private System.Windows.Forms.ImageList imageList_Seat_32;
         private System.Windows.Forms.Button btnAddTable;
         private System.Windows.Forms.Button btnSaveChanges;
+        private System.Windows.Forms.Label label_Title;
+        private System.Windows.Forms.Button btnClose;
     }
 }

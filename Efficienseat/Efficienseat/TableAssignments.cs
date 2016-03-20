@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,6 +23,221 @@ namespace Efficienseat
         List<ListView> listviews;
         ListViewItem empty = new ListViewItem("Empty");
         private int wedID;
+
+        #region Custom_UI
+
+
+        // Window Resize Variables
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect, // x-coordinate of upper-left corner
+            int nTopRect, // y-coordinate of upper-left corner
+            int nRightRect, // x-coordinate of lower-right corner
+            int nBottomRect, // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+         );
+
+        [DllImport("dwmapi.dll")]
+        public static extern int DwmExtendFrameIntoClientArea(IntPtr hWnd, ref MARGINS pMarInset);
+
+        [DllImport("dwmapi.dll")]
+        public static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, ref int attrValue, int attrSize);
+
+        [DllImport("dwmapi.dll")]
+        public static extern int DwmIsCompositionEnabled(ref int pfEnabled);
+
+        private bool m_aeroEnabled;                     // variables for box shadow
+        private const int CS_DROPSHADOW = 0x00020000;
+        private const int WM_NCPAINT = 0x0085;
+        private const int WM_ACTIVATEAPP = 0x001C;
+
+        public struct MARGINS                           // struct for box shadow
+        {
+            public int leftWidth;
+            public int rightWidth;
+            public int topHeight;
+            public int bottomHeight;
+        }
+
+        private const int WM_NCHITTEST = 0x84;          // variables for dragging the form
+        private const int HTCLIENT = 0x1;
+        private const int HTCAPTION = 0x2;
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                m_aeroEnabled = CheckAeroEnabled();
+
+                CreateParams cp = base.CreateParams;
+                if (!m_aeroEnabled)
+                    cp.ClassStyle |= CS_DROPSHADOW;
+
+                return cp;
+            }
+        }
+
+        private bool CheckAeroEnabled()
+        {
+            if (Environment.OSVersion.Version.Major >= 6)
+            {
+                int enabled = 0;
+                DwmIsCompositionEnabled(ref enabled);
+                return (enabled == 1) ? true : false;
+            }
+            return false;
+        }
+
+        // Window Border Method - Overload paint method to draw a border on the form
+        private void LoadForm_Paint(object sender, PaintEventArgs e)
+        {
+            // Rectangle formBorder = this.DisplayRectangle;
+            Rectangle formBorder = new Rectangle(0, 0, this.DisplayRectangle.Width - 1, this.DisplayRectangle.Height - 1);
+            e.Graphics.DrawRectangle(new Pen(Color.DarkSlateGray, 1),
+                                     formBorder);
+        }
+
+        ///// <summary>
+        /////  Custom Form Controls
+        ///// </summary>
+
+        // Event Handler for Form Move.  Comment out code to disable movement.
+        void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+
+        // Window Resize and Draw Shadow Method - utilize Win32 interoperability to manage.
+        protected override void WndProc(ref Message m)
+        {
+            const int wmNcHitTest = 0x84;
+            const int htLeft = 10;
+            const int htRight = 11;
+            const int htTop = 12;
+            const int htTopLeft = 13;
+            const int htTopRight = 14;
+            const int htBottom = 15;
+            const int htBottomLeft = 16;
+            const int htBottomRight = 17;
+
+            // Comment out section to disable resize on specified border
+            if (m.Msg == wmNcHitTest)
+            {
+                int x = (int)(m.LParam.ToInt64() & 0xFFFF);
+                int y = (int)((m.LParam.ToInt64() & 0xFFFF0000) >> 16);
+                Point pt = PointToClient(new Point(x, y));
+                Size clientSize = ClientSize;
+                /////allow resize on the lower right corner
+                //if (pt.X >= clientSize.Width - 5 && pt.Y >= clientSize.Height - 5 && clientSize.Height >= 16)
+                //{
+                //    m.Result = (IntPtr)(IsMirrored ? htBottomLeft : htBottomRight);
+                //    return;
+                //}
+                /////allow resize on the lower left corner
+                //if (pt.X <= 5 && pt.Y >= clientSize.Height - 5 && clientSize.Height >= 16)
+                //{
+                //    m.Result = (IntPtr)(IsMirrored ? htBottomRight : htBottomLeft);
+                //    return;
+                //}
+                /////allow resize on the upper right corner
+                //if (pt.X <= 5 && pt.Y <= 5 && clientSize.Height >= 16)
+                //{
+                //    m.Result = (IntPtr)(IsMirrored ? htTopRight : htTopLeft);
+                //    return;
+                //}
+                /////allow resize on the upper left corner
+                //if (pt.X >= clientSize.Width - 5 && pt.Y <= 5 && clientSize.Height >= 16)
+                //{
+                //    m.Result = (IntPtr)(IsMirrored ? htTopLeft : htTopRight);
+                //    return;
+                //}
+                /////allow resize on the top border
+                //if (pt.Y <= 5 && clientSize.Height >= 16)
+                //{
+                //    m.Result = (IntPtr)(htTop);
+                //    return;
+                //}
+                /////allow resize on the bottom border
+                //if (pt.Y >= clientSize.Height - 5 && clientSize.Height >= 16)
+                //{
+                //    m.Result = (IntPtr)(htBottom);
+                //    return;
+                //}
+                /////allow resize on the left border
+                //if (pt.X <= 5 && clientSize.Height >= 16)
+                //{
+                //    m.Result = (IntPtr)(htLeft);
+                //    return;
+                //}
+                /////allow resize on the right border
+                //if (pt.X >= clientSize.Width - 5 && clientSize.Height >= 16)
+                //{
+                //    m.Result = (IntPtr)(htRight);
+                //    return;
+                //}
+            }
+
+            switch (m.Msg)
+            {
+                case WM_NCPAINT:                        // box shadow
+                    if (m_aeroEnabled)
+                    {
+                        var v = 2;
+                        DwmSetWindowAttribute(this.Handle, 2, ref v, 4);
+                        MARGINS margins = new MARGINS()
+                        {
+                            bottomHeight = 1,
+                            leftWidth = 1,
+                            rightWidth = 1,
+                            topHeight = 1
+                        };
+                        DwmExtendFrameIntoClientArea(this.Handle, ref margins);
+
+                    }
+                    break;
+                default:
+                    break;
+            }
+            base.WndProc(ref m);
+
+            if (m.Msg == WM_NCHITTEST && (int)m.Result == HTCLIENT)     // drag the form
+                m.Result = (IntPtr)HTCAPTION;
+
+            //base.WndProc(ref m);
+        }
+
+        [DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd,
+                         int Msg, int wParam, int lParam);
+        [DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnClose_MouseEnter(object sender, EventArgs e)
+        {
+            btnClose.Image = Efficienseat.Properties.Resources.Close_Light;
+        }
+
+        private void btnClose_MouseLeave(object sender, EventArgs e)
+        {
+            btnClose.Image = Efficienseat.Properties.Resources.Close_Dark;
+        }
+
+        #endregion Custom_UI
+
 
         public int WeddingID
         {
@@ -43,6 +259,13 @@ namespace Efficienseat
                 //view.Enabled = false;
                 view.Visible = false;
             }
+
+            // border code
+            this.Paint += new PaintEventHandler(LoadForm_Paint);
+            this.ResizeRedraw = true;
+
+            // movement code                  
+            label_Title.MouseDown += new MouseEventHandler(Form1_MouseDown);
         }
 
         private void TableAssignments_Load(object sender, EventArgs e)
@@ -813,6 +1036,8 @@ namespace Efficienseat
             removeAttendee();
             loadListView();
         }
+
+
 
         private void Row_Changed(object sender, DataRowChangeEventArgs e)
         {

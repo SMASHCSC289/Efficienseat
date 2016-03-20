@@ -20,7 +20,11 @@ namespace Efficienseat
 
         #region Custom_UI
 
-        //[DllImport("user32.dll")]
+
+        // Window Resize Variables
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
         (
@@ -83,13 +87,8 @@ namespace Efficienseat
             return false;
         }
 
-        ///// <summary>
-        ///// Window Border Method 
-        ///// </summary>
-        ///// <param name="sender"></param>
-        ///// <param name="e"></param>
-
-        private void Form1_Paint(object sender, PaintEventArgs e)
+        // Window Border Method - Overload paint method to draw a border on the form
+        private void LoadForm_Paint(object sender, PaintEventArgs e)
         {
             // Rectangle formBorder = this.DisplayRectangle;
             Rectangle formBorder = new Rectangle(0, 0, this.DisplayRectangle.Width - 1, this.DisplayRectangle.Height - 1);
@@ -100,7 +99,8 @@ namespace Efficienseat
         ///// <summary>
         /////  Custom Form Controls
         ///// </summary>
-
+        
+        // Event Handler for Form Move.  Comment out code to disable movement.
         void Form1_MouseDown(object sender, MouseEventArgs e)
         {
             //if (e.Button == MouseButtons.Left)
@@ -110,10 +110,7 @@ namespace Efficienseat
             //}
         }
 
-        /// <summary>
-        /// Window Resize Method
-        /// </summary>
-        /// <param name="m"></param>
+        // Window Resize and Draw Shadow Method - utilize Win32 interoperability to manage.
         protected override void WndProc(ref Message m)
         {
             const int wmNcHitTest = 0x84;
@@ -126,60 +123,61 @@ namespace Efficienseat
             const int htBottomLeft = 16;
             const int htBottomRight = 17;
 
+            // Comment out section to disable resize on specified border
             if (m.Msg == wmNcHitTest)
             {
                 int x = (int)(m.LParam.ToInt64() & 0xFFFF);
                 int y = (int)((m.LParam.ToInt64() & 0xFFFF0000) >> 16);
                 Point pt = PointToClient(new Point(x, y));
                 Size clientSize = ClientSize;
-                ///allow resize on the lower right corner
-                if (pt.X >= clientSize.Width - 5 && pt.Y >= clientSize.Height - 5 && clientSize.Height >= 16)
-                {
-                    m.Result = (IntPtr)(IsMirrored ? htBottomLeft : htBottomRight);
-                    return;
-                }
-                ///allow resize on the lower left corner
-                if (pt.X <= 5 && pt.Y >= clientSize.Height - 5 && clientSize.Height >= 16)
-                {
-                    m.Result = (IntPtr)(IsMirrored ? htBottomRight : htBottomLeft);
-                    return;
-                }
-                ///allow resize on the upper right corner
-                if (pt.X <= 5 && pt.Y <= 5 && clientSize.Height >= 16)
-                {
-                    m.Result = (IntPtr)(IsMirrored ? htTopRight : htTopLeft);
-                    return;
-                }
-                ///allow resize on the upper left corner
-                if (pt.X >= clientSize.Width - 5 && pt.Y <= 5 && clientSize.Height >= 16)
-                {
-                    m.Result = (IntPtr)(IsMirrored ? htTopLeft : htTopRight);
-                    return;
-                }
-                ///allow resize on the top border
-                if (pt.Y <= 5 && clientSize.Height >= 16)
-                {
-                    m.Result = (IntPtr)(htTop);
-                    return;
-                }
-                ///allow resize on the bottom border
-                if (pt.Y >= clientSize.Height - 5 && clientSize.Height >= 16)
-                {
-                    m.Result = (IntPtr)(htBottom);
-                    return;
-                }
-                ///allow resize on the left border
-                if (pt.X <= 5 && clientSize.Height >= 16)
-                {
-                    m.Result = (IntPtr)(htLeft);
-                    return;
-                }
-                ///allow resize on the right border
-                if (pt.X >= clientSize.Width - 5 && clientSize.Height >= 16)
-                {
-                    m.Result = (IntPtr)(htRight);
-                    return;
-                }
+                /////allow resize on the lower right corner
+                //if (pt.X >= clientSize.Width - 5 && pt.Y >= clientSize.Height - 5 && clientSize.Height >= 16)
+                //{
+                //    m.Result = (IntPtr)(IsMirrored ? htBottomLeft : htBottomRight);
+                //    return;
+                //}
+                /////allow resize on the lower left corner
+                //if (pt.X <= 5 && pt.Y >= clientSize.Height - 5 && clientSize.Height >= 16)
+                //{
+                //    m.Result = (IntPtr)(IsMirrored ? htBottomRight : htBottomLeft);
+                //    return;
+                //}
+                /////allow resize on the upper right corner
+                //if (pt.X <= 5 && pt.Y <= 5 && clientSize.Height >= 16)
+                //{
+                //    m.Result = (IntPtr)(IsMirrored ? htTopRight : htTopLeft);
+                //    return;
+                //}
+                /////allow resize on the upper left corner
+                //if (pt.X >= clientSize.Width - 5 && pt.Y <= 5 && clientSize.Height >= 16)
+                //{
+                //    m.Result = (IntPtr)(IsMirrored ? htTopLeft : htTopRight);
+                //    return;
+                //}
+                /////allow resize on the top border
+                //if (pt.Y <= 5 && clientSize.Height >= 16)
+                //{
+                //    m.Result = (IntPtr)(htTop);
+                //    return;
+                //}
+                /////allow resize on the bottom border
+                //if (pt.Y >= clientSize.Height - 5 && clientSize.Height >= 16)
+                //{
+                //    m.Result = (IntPtr)(htBottom);
+                //    return;
+                //}
+                /////allow resize on the left border
+                //if (pt.X <= 5 && clientSize.Height >= 16)
+                //{
+                //    m.Result = (IntPtr)(htLeft);
+                //    return;
+                //}
+                /////allow resize on the right border
+                //if (pt.X >= clientSize.Width - 5 && clientSize.Height >= 16)
+                //{
+                //    m.Result = (IntPtr)(htRight);
+                //    return;
+                //}
             }
 
             switch (m.Msg)
@@ -209,29 +207,13 @@ namespace Efficienseat
                 m.Result = (IntPtr)HTCAPTION;
 
             //base.WndProc(ref m);
-        }
-
-        ///// <summary>
-        ///// Window Resize Variables
-        ///// </summary>
-        public const int WM_NCLBUTTONDOWN = 0xA1;
-        public const int HT_CAPTION = 0x2;
+        }        
 
         [DllImportAttribute("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd,
                          int Msg, int wParam, int lParam);
         [DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
-
-        private void buttonClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void buttonMinimize_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
 
         #endregion Custom_UI
 
@@ -240,11 +222,10 @@ namespace Efficienseat
             InitializeComponent();
 
             // border code
-            this.Paint += new PaintEventHandler(Form1_Paint);
+            this.Paint += new PaintEventHandler(LoadForm_Paint);
             this.ResizeRedraw = true;
 
-            // movement code
-            // this.MouseDown += new MouseEventHandler(Form1_MouseDown);            
+            // movement code                  
             label_Title.MouseDown += new MouseEventHandler(Form1_MouseDown);
         }
 

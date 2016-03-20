@@ -226,7 +226,7 @@
             this.label_Title.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Title.Location = new System.Drawing.Point(1, 1);
             this.label_Title.Name = "label_Title";
-            this.label_Title.Size = new System.Drawing.Size(476, 32);
+            this.label_Title.Size = new System.Drawing.Size(476, 30);
             this.label_Title.TabIndex = 8;
             this.label_Title.Text = "    Welcome to Efficienseat";
             this.label_Title.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
