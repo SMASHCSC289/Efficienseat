@@ -101,6 +101,9 @@
     <Compile Include="Main_Window.Designer.cs">
       <DependentUpon>Main_Window.cs</DependentUpon>
     </Compile>
+    <Compile Include="SizablePanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="StartupForm.cs">
       <SubType>Form</SubType>
     </Compile>

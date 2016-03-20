@@ -101,44 +101,32 @@ namespace Efficienseat
             // Rectangle
             if (shapeType == 2)
             {
-                if (cbEndSeats.Checked)
-                {
-                    rectSide2 = pnlWorkspace.Height - ((listviews[0].Height + 10) * 2);
-                }
-                else
-                {
-                    rectSide2 = pnlWorkspace.Height - 20;
-                }
+                rectSide2 = pnlWorkspace.Height - ((listviews[0].Height + 10));
+
                 Table = pnlWorkspace.CreateGraphics();
                 TextureBrush tbrush = new TextureBrush(image);
                 Table.FillRectangle(tbrush, new Rectangle((pnlWorkspace.Width / 2) - (rectSide / 2), (pnlWorkspace.Height / 2) - (rectSide2 / 2), rectSide, rectSide2));
                 //Pen p = new Pen(Color.Black);
-                //Table.DrawRectangle(p, (panel1.Width / 2) - (rectSide / 2), (panel1.Height / 2) - (rectSide2 / 2), rectSide, rectSide2);
-            }
-
-            // Oval
-            if (shapeType == 3)
-            {
-                rectSide2 = 2 * rectSide;
-                Table = pnlWorkspace.CreateGraphics();
-                TextureBrush tbrush = new TextureBrush(image);
-                Table.FillEllipse(tbrush, new Rectangle((pnlWorkspace.Width / 2) - (rectSide / 2), (pnlWorkspace.Height / 2) - (rectSide2 / 2), rectSide, rectSide2));
-                //Pen p = new Pen(Color.Black);
-                //Table.DrawEllipse(p, (panel1.Width / 2) - (rectSide / 2), (panel1.Height / 2) - (rectSide2 / 2), rectSide, rectSide2);
+                //Table.DrawRectangle(p, (pnlWorkspace.Width / 2) - (rectSide / 2) - 50, (pnlWorkspace.Height / 2) - (rectSide2 / 2), rectSide + 50 + 50, rectSide2);
+                numericUpDown1.Maximum = 8;
+                calcPoints(numPoints, rectSide);
             }
         }
 
         // Calculate seating positions in the panel
         private void calcPoints(int numPoints, int side)
         {
+            // MessageBox.Show("calcPoints");
+
             Pen p = new Pen(Color.Black);
             Pen p2 = new Pen(Color.Red);
 
             // Circle
             if (shapeType == 0)
             {
+                // MessageBox.Show("Circle");
                 int additionalRad = 60;
-                double angle = 360 / numPoints;     
+                double angle = 360 / numPoints;
 
                 for (int i = 0; i < numPoints; i++)
                 {
@@ -155,6 +143,7 @@ namespace Efficienseat
             // Square
             else if (shapeType == 1)
             {
+                // MessageBox.Show("Square");
                 int additionalSide = 50;
 
                 Rectangle rectSeating = new Rectangle((pnlWorkspace.Width / 2) - (rectSide / 2) - additionalSide,
@@ -219,9 +208,9 @@ namespace Efficienseat
                         listviews[i].Location = new Point(sqSeatsLessThanFive[i].X - (listviews[i].Width / 2),
                                                           sqSeatsLessThanFive[i].Y - (listviews[i].Height / 2));
                         listviews[i].Visible = true;
-                    } 
+                    }
                 }
-                
+
                 // once the number goes beyond 4
                 // 5 = 2 seats on side 1
                 else if (numPoints == 5)
@@ -269,6 +258,123 @@ namespace Efficienseat
                     }
                 }
             }
+
+            // Rectangle
+            else if (shapeType == 2)
+            {
+                // MessageBox.Show("Rectangle");
+                int additionalSide = 50;
+
+                Rectangle rectSeating = new Rectangle((pnlWorkspace.Width / 2) - (rectSide / 2) - additionalSide, 
+                                                      (pnlWorkspace.Height / 2) - (rectSide2 / 2), 
+                                                      rectSide + (additionalSide * 2), 
+                                                      rectSide2);
+
+                List<Point> rctSeatsLessThanFive = new List<Point>() {
+                                                                        new Point(rectSeating.Left, rectSeating.Top + 5 + (rectSeating.Height / 3)),
+                                                                        new Point(rectSeating.Left, rectSeating.Top + 5 + (rectSeating.Height / 3) * 2),
+                                                                        new Point(rectSeating.Right, rectSeating.Top + 5 + (rectSeating.Height / 3)),
+                                                                        new Point(rectSeating.Right, rectSeating.Top + 5 + (rectSeating.Height / 3) * 2)
+                                                                    };
+
+                List<Point> rctSeatsFive = new List<Point>() {
+                                                                        new Point(rectSeating.Left, rectSeating.Top + 5 + (rectSeating.Height / 4)),
+                                                                        new Point(rectSeating.Left, rectSeating.Top + 5 + (rectSeating.Height / 4) * 2),
+                                                                        new Point(rectSeating.Left, rectSeating.Top + 5 + (rectSeating.Height / 4) * 3),
+                                                                        new Point(rectSeating.Right, rectSeating.Top + 5 + (rectSeating.Height / 3) * 2),
+                                                                        new Point(rectSeating.Right, rectSeating.Top + 5 + (rectSeating.Height / 3))
+                                                                        
+                                                                    };
+
+                List<Point> rctSeatsSix = new List<Point>() {
+                                                                        new Point(rectSeating.Left, rectSeating.Top + 5 + (rectSeating.Height / 4)),
+                                                                        new Point(rectSeating.Left, rectSeating.Top + 5 + (rectSeating.Height / 4) * 2),
+                                                                        new Point(rectSeating.Left, rectSeating.Top + 5 + (rectSeating.Height / 4) * 3),
+                                                                        new Point(rectSeating.Right, rectSeating.Top + 5 + (rectSeating.Height / 4) * 3),
+                                                                        new Point(rectSeating.Right, rectSeating.Top + 5 + (rectSeating.Height / 4) * 2),
+                                                                        new Point(rectSeating.Right, rectSeating.Top + 5 + (rectSeating.Height / 4))                                                                        
+                                                                    };
+
+                List<Point> rctSeatsSeven = new List<Point>() {
+                                                                        new Point(rectSeating.Left, rectSeating.Top + 5 + (rectSeating.Height / 5)),
+                                                                        new Point(rectSeating.Left, rectSeating.Top + 5 + (rectSeating.Height / 5) * 2),
+                                                                        new Point(rectSeating.Left, rectSeating.Top + 5 + (rectSeating.Height / 5) * 3),
+                                                                        new Point(rectSeating.Left, rectSeating.Top + 5 + (rectSeating.Height / 5) * 4),
+                                                                        new Point(rectSeating.Right, rectSeating.Top + 5 + (rectSeating.Height / 4) * 3),
+                                                                        new Point(rectSeating.Right, rectSeating.Top + 5 + (rectSeating.Height / 4) * 2),
+                                                                        new Point(rectSeating.Right, rectSeating.Top + 5 + (rectSeating.Height / 4))
+                                                                    };
+
+                List<Point> rctSeatsEight = new List<Point>() {
+                                                                        new Point(rectSeating.Left, rectSeating.Top + 5 + (rectSeating.Height / 5)),
+                                                                        new Point(rectSeating.Left, rectSeating.Top + 5 + (rectSeating.Height / 5) * 2),
+                                                                        new Point(rectSeating.Left, rectSeating.Top + 5 + (rectSeating.Height / 5) * 3),
+                                                                        new Point(rectSeating.Left, rectSeating.Top + 5 + (rectSeating.Height / 5) * 4),
+                                                                        new Point(rectSeating.Right, rectSeating.Top + 5 + (rectSeating.Height / 5) * 4),
+                                                                        new Point(rectSeating.Right, rectSeating.Top + 5 + (rectSeating.Height / 5) * 3),
+                                                                        new Point(rectSeating.Right, rectSeating.Top + 5 + (rectSeating.Height / 5) * 2),
+                                                                        new Point(rectSeating.Right, rectSeating.Top + 5 + (rectSeating.Height / 5)),                                                                        
+                                                                    };
+                                
+                // if the number of seats is less than or equal to 4
+                // there is one seat per side
+                if (numPoints <= 4)
+                {
+                    for (int i = 0; i < numPoints; i++)
+                    {
+                        Table.DrawRectangle(p2, rctSeatsLessThanFive[i].X, rctSeatsLessThanFive[i].Y, 2, 2);
+                        listviews[i].Location = new Point(rctSeatsLessThanFive[i].X - (listviews[i].Width / 2),
+                                                          rctSeatsLessThanFive[i].Y - (listviews[i].Height / 2));
+                        listviews[i].Visible = true;
+                    }
+                }
+                // once the number goes beyond 4
+                // 5 : 3 left, 2 right
+                else if (numPoints == 5)
+                {
+                    for (int i = 0; i < numPoints; i++)
+                    {
+                        Table.DrawRectangle(p2, rctSeatsFive[i].X, rctSeatsFive[i].Y, 2, 2);
+                        listviews[i].Location = new Point(rctSeatsFive[i].X - (listviews[i].Width / 2),
+                                                          rctSeatsFive[i].Y - (listviews[i].Height / 2));
+                        listviews[i].Visible = true;
+                    }
+                }
+                // 6 : 3 each
+                else if (numPoints == 6)
+                {
+                    for (int i = 0; i < numPoints; i++)
+                    {
+                        Table.DrawRectangle(p2, rctSeatsSix[i].X, rctSeatsSix[i].Y, 2, 2);
+                        listviews[i].Location = new Point(rctSeatsSix[i].X - (listviews[i].Width / 2),
+                                                          rctSeatsSix[i].Y - (listviews[i].Height / 2));
+                        listviews[i].Visible = true;
+                    }
+                }
+
+                // 7 : 4 left, 3 right
+                else if (numPoints == 7)
+                {
+                    for (int i = 0; i < numPoints; i++)
+                    {
+                        Table.DrawRectangle(p2, rctSeatsSeven[i].X, rctSeatsSeven[i].Y, 2, 2);
+                        listviews[i].Location = new Point(rctSeatsSeven[i].X - (listviews[i].Width / 2),
+                                                          rctSeatsSeven[i].Y - (listviews[i].Height / 2));
+                        listviews[i].Visible = true;
+                    }
+                }
+                // 8 : 4 each
+                else if (numPoints == 8)
+                {
+                    for (int i = 0; i < numPoints; i++)
+                    {
+                        Table.DrawRectangle(p2, rctSeatsEight[i].X, rctSeatsEight[i].Y, 2, 2);
+                        listviews[i].Location = new Point(rctSeatsEight[i].X - (listviews[i].Width / 2),
+                                                          rctSeatsEight[i].Y - (listviews[i].Height / 2));
+                        listviews[i].Visible = true;
+                    }
+                }
+            }
         }
 
         // Convert degrees to radians for circle calculations
@@ -296,20 +402,7 @@ namespace Efficienseat
         private void doTableStuff()
         {
             shapeType = cbxTableShape.SelectedIndex;
-            if (cbxTableShape.Text == "Rectangle")
-            {
-                cbEndSeats.Enabled = true;
-            }
-            else
-            {
-                cbEndSeats.Enabled = false;
-            }
-
-            Refresh();
-        }
-
-        private void cbEndSeats_CheckedChanged(object sender, EventArgs e)
-        {
+            //MessageBox.Show("Shape Type : " + shapeType);
             Refresh();
         }
 
@@ -658,7 +751,7 @@ namespace Efficienseat
                 newTableID = Convert.ToInt32(TableDT.Compute("max(TABLE_ID)", string.Empty)) + 1;
             }
 
-            MessageBox.Show(newTableID.ToString());
+            // MessageBox.Show(newTableID.ToString());
 
             //Create and fill a new DataRow based on TableDT
             DataRow row = TableDT.NewRow();

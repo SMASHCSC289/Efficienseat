@@ -57,13 +57,14 @@
             this.imlTableNumbers = new System.Windows.Forms.ImageList(this.components);
             this.btnEditEntry = new System.Windows.Forms.Button();
             this.btnRemoveAttendee = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.cmsAttendee.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lvwAttendee
             // 
-            this.lvwAttendee.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.lvwAttendee.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lvwAttendee.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lvwAttendee.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -110,13 +111,13 @@
             listViewGroup9,
             listViewGroup10,
             listViewGroup11});
-            this.lvwAttendee.Location = new System.Drawing.Point(12, 41);
+            this.lvwAttendee.Location = new System.Drawing.Point(1, 34);
+            this.lvwAttendee.Margin = new System.Windows.Forms.Padding(1, 0, 1, 1);
             this.lvwAttendee.Name = "lvwAttendee";
-            this.lvwAttendee.Size = new System.Drawing.Size(483, 466);
+            this.lvwAttendee.Size = new System.Drawing.Size(506, 453);
             this.lvwAttendee.TabIndex = 0;
             this.lvwAttendee.UseCompatibleStateImageBehavior = false;
             this.lvwAttendee.View = System.Windows.Forms.View.Tile;
-            this.lvwAttendee.ItemMouseHover += new System.Windows.Forms.ListViewItemMouseHoverEventHandler(this.lvwAttendee_ItemMouseHover);
             // 
             // First_Name
             // 
@@ -149,32 +150,33 @@
             this.tmiEdit,
             this.tmiImport});
             this.cmsAttendee.Name = "contextMenuStrip1";
-            this.cmsAttendee.Size = new System.Drawing.Size(114, 70);
+            this.cmsAttendee.Size = new System.Drawing.Size(118, 70);
             // 
             // tmiRemoveAttendee
             // 
             this.tmiRemoveAttendee.Name = "tmiRemoveAttendee";
-            this.tmiRemoveAttendee.Size = new System.Drawing.Size(113, 22);
+            this.tmiRemoveAttendee.Size = new System.Drawing.Size(117, 22);
             this.tmiRemoveAttendee.Text = "Remove";
             this.tmiRemoveAttendee.Click += new System.EventHandler(this.tmiRemoveAttendee_Click);
             // 
             // tmiEdit
             // 
             this.tmiEdit.Name = "tmiEdit";
-            this.tmiEdit.Size = new System.Drawing.Size(113, 22);
+            this.tmiEdit.Size = new System.Drawing.Size(117, 22);
             this.tmiEdit.Text = "Edit";
             this.tmiEdit.Click += new System.EventHandler(this.tmiEdit_Click);
             // 
             // tmiImport
             // 
             this.tmiImport.Name = "tmiImport";
-            this.tmiImport.Size = new System.Drawing.Size(113, 22);
+            this.tmiImport.Size = new System.Drawing.Size(117, 22);
             this.tmiImport.Text = "Import";
             this.tmiImport.Click += new System.EventHandler(this.tmiImport_Click);
             // 
             // btnAddAtendee
             // 
-            this.btnAddAtendee.Location = new System.Drawing.Point(12, 12);
+            this.btnAddAtendee.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAddAtendee.Location = new System.Drawing.Point(3, 3);
             this.btnAddAtendee.Name = "btnAddAtendee";
             this.btnAddAtendee.Size = new System.Drawing.Size(120, 23);
             this.btnAddAtendee.TabIndex = 1;
@@ -184,7 +186,8 @@
             // 
             // btnChangeView
             // 
-            this.btnChangeView.Location = new System.Drawing.Point(249, 12);
+            this.btnChangeView.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnChangeView.Location = new System.Drawing.Point(255, 3);
             this.btnChangeView.Name = "btnChangeView";
             this.btnChangeView.Size = new System.Drawing.Size(120, 23);
             this.btnChangeView.TabIndex = 3;
@@ -202,7 +205,8 @@
             // 
             // btnEditEntry
             // 
-            this.btnEditEntry.Location = new System.Drawing.Point(375, 12);
+            this.btnEditEntry.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnEditEntry.Location = new System.Drawing.Point(381, 3);
             this.btnEditEntry.Name = "btnEditEntry";
             this.btnEditEntry.Size = new System.Drawing.Size(120, 23);
             this.btnEditEntry.TabIndex = 4;
@@ -212,30 +216,46 @@
             // 
             // btnRemoveAttendee
             // 
-            this.btnRemoveAttendee.Location = new System.Drawing.Point(138, 12);
+            this.btnRemoveAttendee.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnRemoveAttendee.Location = new System.Drawing.Point(129, 3);
             this.btnRemoveAttendee.Name = "btnRemoveAttendee";
-            this.btnRemoveAttendee.Size = new System.Drawing.Size(105, 23);
+            this.btnRemoveAttendee.Size = new System.Drawing.Size(120, 23);
             this.btnRemoveAttendee.TabIndex = 5;
             this.btnRemoveAttendee.Text = "Remove Attendee";
             this.btnRemoveAttendee.UseVisualStyleBackColor = true;
             this.btnRemoveAttendee.Click += new System.EventHandler(this.btnRemoveAttendee_Click);
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanel1.Controls.Add(this.btnAddAtendee);
+            this.flowLayoutPanel1.Controls.Add(this.btnRemoveAttendee);
+            this.flowLayoutPanel1.Controls.Add(this.btnChangeView);
+            this.flowLayoutPanel1.Controls.Add(this.btnEditEntry);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(1, 1);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(1);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(506, 32);
+            this.flowLayoutPanel1.TabIndex = 6;
+            // 
             // Attendee_List
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(507, 519);
-            this.Controls.Add(this.btnRemoveAttendee);
-            this.Controls.Add(this.btnEditEntry);
-            this.Controls.Add(this.btnChangeView);
-            this.Controls.Add(this.btnAddAtendee);
+            this.ClientSize = new System.Drawing.Size(508, 488);
+            this.ControlBox = false;
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.lvwAttendee);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximumSize = new System.Drawing.Size(508, 9999);
+            this.MinimumSize = new System.Drawing.Size(292, 0);
             this.Name = "Attendee_List";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Attendee List";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Load += new System.EventHandler(this.Attendee_List_Load);
+            this.Resize += new System.EventHandler(this.Attendee_List_Resize);
             this.cmsAttendee.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -258,5 +278,6 @@
         private System.Windows.Forms.ToolStripMenuItem tmiImport;
         private System.Windows.Forms.ColumnHeader Last_Name;
         private System.Windows.Forms.ColumnHeader Guest_ID;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

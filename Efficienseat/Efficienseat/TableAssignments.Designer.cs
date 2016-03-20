@@ -55,7 +55,6 @@
             this.lvwSeat3 = new System.Windows.Forms.ListView();
             this.lvwSeat2 = new System.Windows.Forms.ListView();
             this.lvwSeat1 = new System.Windows.Forms.ListView();
-            this.cbEndSeats = new System.Windows.Forms.CheckBox();
             this.btnAddTable = new System.Windows.Forms.Button();
             this.btnSaveChanges = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -65,7 +64,7 @@
             // cbxTableName
             // 
             this.cbxTableName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxTableName.Location = new System.Drawing.Point(212, 6);
+            this.cbxTableName.Location = new System.Drawing.Point(187, 6);
             this.cbxTableName.Name = "cbxTableName";
             this.cbxTableName.Size = new System.Drawing.Size(151, 21);
             this.cbxTableName.TabIndex = 2;
@@ -78,15 +77,15 @@
             "Circle",
             "Square",
             "Rectangle"});
-            this.cbxTableShape.Location = new System.Drawing.Point(212, 33);
+            this.cbxTableShape.Location = new System.Drawing.Point(187, 33);
             this.cbxTableShape.Name = "cbxTableShape";
-            this.cbxTableShape.Size = new System.Drawing.Size(107, 21);
+            this.cbxTableShape.Size = new System.Drawing.Size(151, 21);
             this.cbxTableShape.TabIndex = 3;
             this.cbxTableShape.SelectionChangeCommitted += new System.EventHandler(this.cbxTableShape_SelectionChangeCommitted);
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(212, 60);
+            this.numericUpDown1.Location = new System.Drawing.Point(187, 60);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             10,
             0,
@@ -125,7 +124,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(132, 9);
+            this.label1.Location = new System.Drawing.Point(107, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 13);
             this.label1.TabIndex = 5;
@@ -134,7 +133,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(129, 36);
+            this.label2.Location = new System.Drawing.Point(104, 36);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 13);
             this.label2.TabIndex = 6;
@@ -143,7 +142,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(111, 62);
+            this.label3.Location = new System.Drawing.Point(86, 62);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(95, 13);
             this.label3.TabIndex = 7;
@@ -340,7 +339,7 @@
             this.lvwSeat5.Name = "lvwSeat5";
             this.lvwSeat5.Scrollable = false;
             this.lvwSeat5.ShowItemToolTips = true;
-            this.lvwSeat5.Size = new System.Drawing.Size(71, 65);
+            this.lvwSeat5.Size = new System.Drawing.Size(70, 65);
             this.lvwSeat5.SmallImageList = this.imageList_16;
             this.lvwSeat5.TabIndex = 4;
             this.lvwSeat5.Tag = "5";
@@ -439,35 +438,21 @@
             this.lvwSeat1.DragEnter += new System.Windows.Forms.DragEventHandler(this.listView_DragEnter);
             this.lvwSeat1.DragLeave += new System.EventHandler(this.listView_DragLeave);
             // 
-            // cbEndSeats
-            // 
-            this.cbEndSeats.AutoSize = true;
-            this.cbEndSeats.Checked = true;
-            this.cbEndSeats.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbEndSeats.Enabled = false;
-            this.cbEndSeats.Location = new System.Drawing.Point(325, 35);
-            this.cbEndSeats.Name = "cbEndSeats";
-            this.cbEndSeats.Size = new System.Drawing.Size(81, 17);
-            this.cbEndSeats.TabIndex = 11;
-            this.cbEndSeats.Text = "End Seats?";
-            this.cbEndSeats.UseVisualStyleBackColor = true;
-            this.cbEndSeats.CheckedChanged += new System.EventHandler(this.cbEndSeats_CheckedChanged);
-            // 
             // btnAddTable
             // 
-            this.btnAddTable.Location = new System.Drawing.Point(369, 6);
+            this.btnAddTable.Location = new System.Drawing.Point(344, 5);
             this.btnAddTable.Name = "btnAddTable";
-            this.btnAddTable.Size = new System.Drawing.Size(42, 23);
+            this.btnAddTable.Size = new System.Drawing.Size(93, 23);
             this.btnAddTable.TabIndex = 13;
-            this.btnAddTable.Text = "Add";
+            this.btnAddTable.Text = "Add Table";
             this.btnAddTable.UseVisualStyleBackColor = true;
             this.btnAddTable.Click += new System.EventHandler(this.btnAddTable_Click);
             // 
             // btnSaveChanges
             // 
-            this.btnSaveChanges.Location = new System.Drawing.Point(276, 57);
+            this.btnSaveChanges.Location = new System.Drawing.Point(251, 59);
             this.btnSaveChanges.Name = "btnSaveChanges";
-            this.btnSaveChanges.Size = new System.Drawing.Size(135, 23);
+            this.btnSaveChanges.Size = new System.Drawing.Size(87, 23);
             this.btnSaveChanges.TabIndex = 14;
             this.btnSaveChanges.Text = "Save Changes";
             this.btnSaveChanges.UseVisualStyleBackColor = true;
@@ -480,7 +465,6 @@
             this.ClientSize = new System.Drawing.Size(522, 510);
             this.Controls.Add(this.btnSaveChanges);
             this.Controls.Add(this.btnAddTable);
-            this.Controls.Add(this.cbEndSeats);
             this.Controls.Add(this.lvwUnseated);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -527,7 +511,6 @@
         private System.Windows.Forms.ListView lvwSeat5;
         private System.Windows.Forms.ListView lvwSeat6;
         private System.Windows.Forms.ImageList imageList_Seat_32;
-        private System.Windows.Forms.CheckBox cbEndSeats;
         private System.Windows.Forms.Button btnAddTable;
         private System.Windows.Forms.Button btnSaveChanges;
     }

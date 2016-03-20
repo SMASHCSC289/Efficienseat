@@ -39,10 +39,23 @@ namespace Efficienseat
 
         private void loadAttendeeList()
         {
+            // Get the client rectangle for the MDI workspace
+            MdiClient client = null;
+            foreach (Control c in this.Controls)
+            {
+                client = c as MdiClient;
+                if (client != null)
+                {
+                    break;
+                }
+            }
+
             al = new Attendee_List();
             al.MdiParent = this;
+            //al.Height = client.Height;
+            al.Size = new Size(508, client.Height - 5);
             al.StartPosition = FormStartPosition.Manual;
-            al.Location = new Point(0, 0);            
+            al.Location = new Point(0, 0);
         }
 
         private void showTableEditorToolStripMenuItem_Click(object sender, EventArgs e)
@@ -53,8 +66,7 @@ namespace Efficienseat
             ta.MdiParent = this;
             ta.StartPosition = FormStartPosition.Manual;
             ta.Location = new Point(al.Location.X + al.Width + 5,
-                                    al.Location.Y);
-            ta.Height = al.Height;
+                                    al.Location.Y);            
 
             ta.AttendeeDT = AttendeeDT;
             ta.TableDT = TableDT;
@@ -98,6 +110,7 @@ namespace Efficienseat
 
             LoadForm lf = new LoadForm();
             lf.wedDT = wedDT;
+
             if (lf.ShowDialog(this) == DialogResult.OK)
             {
                 loadAttendeeList();
@@ -292,10 +305,27 @@ namespace Efficienseat
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            al.Close();
+            if (al != null)
+                al.Close();
             if (ta != null)
                 ta.Close();
             GetWeddingParty();
+        }
+
+        private void Main_Window_Resize(object sender, EventArgs e)
+        {
+            // Get the client rectangle for the MDI workspace
+            MdiClient client = null;
+            foreach (Control c in this.Controls)
+            {
+                client = c as MdiClient;
+                if (client != null)
+                {
+                    break;
+                }
+            }
+
+            al.Height = client.Height - 5;
         }
     }
 }
