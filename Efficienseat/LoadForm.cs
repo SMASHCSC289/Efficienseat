@@ -325,7 +325,24 @@ namespace Efficienseat
             else
             {
                 //set wedName to wedPartyName from selected wedID
-                wedName = WeddingComboBox.Text + "JANUARY-2017";
+                string[] month = { "JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER" };
+                int monthPos = -1;
+
+                wedName = WeddingComboBox.Text;
+
+                bool invalidFormat = true;
+
+                for (int i = 0; i < 12; i++)
+                {
+                    monthPos = wedName.IndexOf(month[i]);
+                    if (monthPos != -1)
+                    {
+                        invalidFormat = false;
+                        break;
+                    }
+                }
+                if(invalidFormat)
+                    wedName = WeddingComboBox.Text + "JANUARY-2017";
                 this.Close();
             }
         }
