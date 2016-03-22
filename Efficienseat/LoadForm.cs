@@ -325,7 +325,7 @@ namespace Efficienseat
             else
             {
                 //set wedName to wedPartyName from selected wedID
-                wedName = WeddingComboBox.Text;
+                wedName = WeddingComboBox.Text + "JANUARY-2017";
                 this.Close();
             }
         }
