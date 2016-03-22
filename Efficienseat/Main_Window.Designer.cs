@@ -283,7 +283,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Efficienseat";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_Window_FormClosing);
-            this.Load += new System.EventHandler(this.Play_With_MDI_Load);
             this.Shown += new System.EventHandler(this.Main_Window_Shown);
             this.Resize += new System.EventHandler(this.Main_Window_Resize);
             this.menuStrip1.ResumeLayout(false);

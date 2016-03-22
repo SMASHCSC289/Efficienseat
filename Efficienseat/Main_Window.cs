@@ -34,11 +34,6 @@ namespace Efficienseat
             InitializeComponent();
         }
 
-        private void Play_With_MDI_Load(object sender, EventArgs e)
-        {
-            
-        }
-
         private void loadAttendeeList()
         {
             // Get the client rectangle for the MDI workspace
@@ -116,6 +111,7 @@ namespace Efficienseat
             if (lf.ShowDialog(this) == DialogResult.OK)
             {
                 loadAttendeeList();
+                setWindowTitle(lf.WedName);
                 wed_id = lf.WedID;
                 GetData(lf.WedID);
                 loadedWedID = lf.WedID;
@@ -259,40 +255,57 @@ namespace Efficienseat
                 //parse name, month and year then assign
                 string[] month = { "JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER" };
                 int monthPos = -1;
+
+                bool invalidFormat = true;
+
                 for(int i = 0; i < 12; i++)
                 {
                     monthPos = description.IndexOf(month[i]);
                     if (monthPos != -1)
+                    {
+                        invalidFormat = false;
                         break;
+                    }
                 }
 
-                string monthCB = description.Substring(monthPos); 
-                int yearPos = monthCB.IndexOf("-") + 1;
-                string yearCB = monthCB.Substring(yearPos);
+                if (invalidFormat)
+                {
+                    ew.WeddingName = description;
+                    ew.WeddingMonth = "JANUARY";
+                    ew.WeddingYear = "2017";
+                }
+                else
+                {
+                    string monthCB = description.Substring(monthPos);
+                    int yearPos = monthCB.IndexOf("-") + 1;
+                    string yearCB = monthCB.Substring(yearPos);
 
-                description = description.Substring(0, monthPos - 1);
+                    description = description.Substring(0, monthPos - 1);
 
-                MessageBox.Show(monthPos.ToString() + " " + yearPos.ToString(), "Error", MessageBoxButtons.OK);
-                monthCB = monthCB.Substring(0, (yearPos - 1));
+                    monthCB = monthCB.Substring(0, (yearPos - 1));
 
+                    ew.WeddingName = description;
 
-                ew.WeddingName = description;
-
-                //SelectedIndex = ComboBox.FindStringExact(month/year/etc)
-                ew.WeddingMonth = monthCB;
-                ew.WeddingYear = yearCB;
-
+                    ew.WeddingMonth = monthCB;
+                    ew.WeddingYear = yearCB;
+                }
                 if(ew.ShowDialog(this) == DialogResult.OK)
                 {
                     //push update here
                     SQLiteCommand cmd = new SQLiteCommand("UPDATE WED_PARTY SET WED_PARTY_NAME = @wedPartyName WHERE WED_ID = @loadedID", DBConnection);
 
                     string wedPartyName = ew.WeddingName + " " + ew.WeddingMonth + "-" + ew.WeddingYear;
+                    setWindowTitle(wedPartyName);
                     cmd.Parameters.AddWithValue("@wedPartyName", wedPartyName);
                     cmd.Parameters.AddWithValue("@loadedID", loadedWedID);
                     cmd.ExecuteNonQuery();
                 }
             }
+        }
+
+        private void setWindowTitle(string name)
+        {
+            this.Text = "Efficienseat - " + name;
         }
 
         private void Main_Window_FormClosing(object sender, FormClosingEventArgs e)

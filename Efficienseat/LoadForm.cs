@@ -16,6 +16,7 @@ namespace Efficienseat
     {
         public DataTable wedDT;
         private int wedID;
+        private string wedName;
         bool dataValid = true;
 
         #region Custom_UI
@@ -243,6 +244,12 @@ namespace Efficienseat
             set { wedID = value; }
         }
         
+        public string WedName
+        {
+            get { return wedName; }
+            set { wedName = value; }
+        }
+
         private void CreateRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             if (rbtnCreate.Checked)
@@ -308,7 +315,8 @@ namespace Efficienseat
                         newRow["WED_ID"] = 1;
                     else
                         newRow["WED_ID"] = Convert.ToInt32(wedDT.Compute("max(WED_ID)", string.Empty)) + 1;
-                    newRow["WED_PARTY_NAME"] = txtPartyName.Text.ToString() + " " + cbMonth.Text.ToString() + "-" + cbYear.Text.ToString();
+                    wedName = txtPartyName.Text.ToString() + " " + cbMonth.Text.ToString() + "-" + cbYear.Text.ToString();
+                    newRow["WED_PARTY_NAME"] = wedName;
                     wedDT.Rows.Add(newRow);
                     wedID = Convert.ToInt32(newRow["WED_ID"].ToString());
                     this.Close();
@@ -316,6 +324,8 @@ namespace Efficienseat
             }
             else
             {
+                //set wedName to wedPartyName from selected wedID
+                wedName = WeddingComboBox.Text;
                 this.Close();
             }
         }

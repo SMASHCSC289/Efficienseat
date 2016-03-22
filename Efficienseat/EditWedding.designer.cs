@@ -42,11 +42,12 @@
             this.weddingNameTextBox.Location = new System.Drawing.Point(88, 37);
             this.weddingNameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.weddingNameTextBox.Name = "weddingNameTextBox";
-            this.weddingNameTextBox.Size = new System.Drawing.Size(204, 20);
+            this.weddingNameTextBox.Size = new System.Drawing.Size(259, 20);
             this.weddingNameTextBox.TabIndex = 0;
             // 
             // weddingMonthComboBox
             // 
+            this.weddingMonthComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.weddingMonthComboBox.FormattingEnabled = true;
             this.weddingMonthComboBox.Items.AddRange(new object[] {
             "JANUARY",
@@ -64,11 +65,12 @@
             this.weddingMonthComboBox.Location = new System.Drawing.Point(88, 73);
             this.weddingMonthComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.weddingMonthComboBox.Name = "weddingMonthComboBox";
-            this.weddingMonthComboBox.Size = new System.Drawing.Size(62, 21);
+            this.weddingMonthComboBox.Size = new System.Drawing.Size(113, 21);
             this.weddingMonthComboBox.TabIndex = 1;
             // 
             // weddingYearComboBox
             // 
+            this.weddingYearComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.weddingYearComboBox.FormattingEnabled = true;
             this.weddingYearComboBox.Items.AddRange(new object[] {
             "2016",
@@ -96,10 +98,10 @@
             "2038",
             "2039",
             "2040"});
-            this.weddingYearComboBox.Location = new System.Drawing.Point(228, 73);
+            this.weddingYearComboBox.Location = new System.Drawing.Point(268, 73);
             this.weddingYearComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.weddingYearComboBox.Name = "weddingYearComboBox";
-            this.weddingYearComboBox.Size = new System.Drawing.Size(62, 21);
+            this.weddingYearComboBox.Size = new System.Drawing.Size(79, 21);
             this.weddingYearComboBox.TabIndex = 2;
             // 
             // label1
@@ -115,7 +117,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(18, 73);
+            this.label2.Location = new System.Drawing.Point(43, 73);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 13);
@@ -125,7 +127,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(172, 73);
+            this.label3.Location = new System.Drawing.Point(235, 73);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 13);
@@ -135,7 +137,7 @@
             // button1
             // 
             this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button1.Location = new System.Drawing.Point(228, 123);
+            this.button1.Location = new System.Drawing.Point(283, 111);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(64, 25);
@@ -148,7 +150,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(322, 164);
+            this.ClientSize = new System.Drawing.Size(370, 162);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
