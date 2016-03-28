@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SQLite;
 
 namespace Efficienseat
 {
@@ -16,6 +17,7 @@ namespace Efficienseat
     {
         public DataTable AttendeeDT;
         public DataTable TableDT;
+        public SQLiteConnection DBConnection;
         int wedID;
 
         #region Custom_UI
@@ -518,6 +520,7 @@ namespace Efficienseat
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 absolutePath = openFileDialog.FileName;
+                Cursor.Current = Cursors.WaitCursor;
 
                 //open file and parse by line
                 try
@@ -531,53 +534,73 @@ namespace Efficienseat
                         bool equal = false;
                         string[] name;
                         char delimiter = ',';
-                        //iterate through listviewitems to compare with current line from txt file
-                        //  sloppy as it iterates through the entire listview for each line item
-                        //  --Potentially faster to check txt file for duplicates first and then only
-                        //      check existing listviewitems for equality?
-                        foreach (ListViewItem lvi in lvwAttendee.Items)
+                        var count = line.Count(c => c == ',');
+                        if (count != 1)
                         {
-                            //if names are equal, do not add and break from search
-                            if (line.Equals(lvi.SubItems[0].Text))
-                            {
-                                equal = true;
-                                break;
-                            }
+                            Cursor.Current = Cursors.Default;
+                            MessageBox.Show("Line " + line + " has too many commas in the format", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
                         }
+
                         //if name does not already exist, add item to ListView
                         if (!equal)
                         {
                             name = line.Split(delimiter);
 
-                            DataRow newRow = AttendeeDT.NewRow();
-                            newRow["FIRST_NAME"] = name[1].ToString().Trim();
-                            newRow["LAST_NAME"] = name[0].ToString().Trim();
-                            newRow["RSVP"] = "Unknown";
-                            if (AttendeeDT.Rows.Count == 0)
-                                newRow["GUEST_ID"] = 1;
-                            else
-                                newRow["GUEST_ID"] = Convert.ToInt32(AttendeeDT.Compute("max(GUEST_ID)", string.Empty)) + 1;
-                            newRow["WED_ID"] = wedID;
-                            AttendeeDT.Rows.Add(newRow);
+                            string FirstName = name[1].ToString().Trim().ToUpper();
+                            string LastName = name[0].ToString().Trim().ToUpper();
 
-                            //ListViewItem [0] = NAME
-                            //ListViewItem [1] = RSVP
-                            //ListViewItem [2] = GUEST_ID
-                            //ListViewItem [3] = FOOD_ALLERGY
-                            //ListViewItem [4] = COMMENTS
-                            ListViewItem newGuest = new ListViewItem(new string[] { name[1] + ", " + name[0], "Unknown", newRow["GUEST_ID"].ToString(), "", "" });
-                            lvwAttendee.Items.Add(newGuest);
+                            string FullName = LastName + ", " + FirstName;
+
+                            //iterate through listviewitems to compare with current line from txt file
+                            //  sloppy as it iterates through the entire listview for each line item
+                            //  --Potentially faster to check txt file for duplicates first and then only
+                            //      check existing listviewitems for equality?
+                            foreach (ListViewItem lvi in lvwAttendee.Items)
+                            {
+                                //if names are equal, do not add and break from search
+                                if (FullName.Equals(lvi.SubItems[0].Text))
+                                {
+                                    equal = true;
+                                    break;
+                                }
+                            }
+                            
+                            if (!equal)
+                            {
+                                DataRow newRow = AttendeeDT.NewRow();
+                                newRow["FIRST_NAME"] = FirstName;
+                                newRow["LAST_NAME"] = LastName;
+                                newRow["RSVP"] = "Unknown";
+                                if (AttendeeDT.Rows.Count == 0)
+                                    newRow["GUEST_ID"] = 1;
+                                else
+                                    newRow["GUEST_ID"] = Convert.ToInt32(AttendeeDT.Compute("max(GUEST_ID)", string.Empty)) + 1;
+                                newRow["WED_ID"] = wedID;
+                                AttendeeDT.Rows.Add(newRow);
+
+                                //ListViewItem [0] = NAME
+                                //ListViewItem [1] = RSVP
+                                //ListViewItem [2] = GUEST_ID
+                                //ListViewItem [3] = FOOD_ALLERGY
+                                //ListViewItem [4] = COMMENTS
+                                ListViewItem newGuest = new ListViewItem(new string[] { newRow["LAST_NAME"] + ", " + newRow["FIRST_NAME"], "Unknown", newRow["GUEST_ID"].ToString(), "", "" });
+                                lvwAttendee.Items.Add(newGuest);
+                            }
                         }
                     }
                     //close open stream
                     filestream.Dispose();
+
                 }
                 catch (Exception e)
                 {
+                    Cursor.Current = Cursors.Default;
                     MessageBox.Show("Error: could not open file.\n Message: " + e.ToString());
                 }
             }
             openFileDialog.Dispose();
+            Cursor.Current = Cursors.Default;
         }
 
         #endregion Methods

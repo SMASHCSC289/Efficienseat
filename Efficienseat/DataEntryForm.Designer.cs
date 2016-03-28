@@ -63,6 +63,7 @@
             // txtFirstName
             // 
             this.txtFirstName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtFirstName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtFirstName.Location = new System.Drawing.Point(111, 12);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(146, 20);
@@ -71,6 +72,7 @@
             // txtLastName
             // 
             this.txtLastName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtLastName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtLastName.Location = new System.Drawing.Point(111, 38);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(146, 20);

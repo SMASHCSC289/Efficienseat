@@ -53,6 +53,7 @@ namespace Efficienseat
             }
 
             al = new Attendee_List();
+            al.DBConnection = this.DBConnection;
             al.MdiParent = this;
             //al.Height = client.Height;
             al.Size = new Size(508, client.Height - 5);

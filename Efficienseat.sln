@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Efficienseat", "Efficienseat\Efficienseat.csproj", "{9B35A169-5593-469F-A081-B352672D73F7}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "EfficienseatInstaller", "EfficienseatInstaller\EfficienseatInstaller.vdproj", "{7830A103-DC2B-41EA-B1AA-03298B8FE7E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{9B35A169-5593-469F-A081-B352672D73F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B35A169-5593-469F-A081-B352672D73F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B35A169-5593-469F-A081-B352672D73F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7830A103-DC2B-41EA-B1AA-03298B8FE7E1}.Debug|Any CPU.ActiveCfg = Debug
+		{7830A103-DC2B-41EA-B1AA-03298B8FE7E1}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
