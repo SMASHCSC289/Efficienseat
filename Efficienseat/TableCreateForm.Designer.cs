@@ -159,6 +159,7 @@
             this.Controls.Add(this.nudNumSeats);
             this.Controls.Add(this.cbxTableShape);
             this.Name = "TableCreateForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "TableCreateForm";
             ((System.ComponentModel.ISupportInitialize)(this.nudNumSeats)).EndInit();
             this.ResumeLayout(false);

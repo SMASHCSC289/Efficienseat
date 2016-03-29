@@ -132,7 +132,7 @@
             // 
             // colRSVP
             // 
-            this.colRSVP.Text = "RSVP";
+            this.colRSVP.Text = "Allergy";
             // 
             // colComments
             // 
@@ -145,26 +145,26 @@
             this.tmiEdit,
             this.tmiImport});
             this.cmsAttendee.Name = "contextMenuStrip1";
-            this.cmsAttendee.Size = new System.Drawing.Size(114, 70);
+            this.cmsAttendee.Size = new System.Drawing.Size(118, 70);
             // 
             // tmiRemoveAttendee
             // 
             this.tmiRemoveAttendee.Name = "tmiRemoveAttendee";
-            this.tmiRemoveAttendee.Size = new System.Drawing.Size(113, 22);
+            this.tmiRemoveAttendee.Size = new System.Drawing.Size(117, 22);
             this.tmiRemoveAttendee.Text = "Remove";
             this.tmiRemoveAttendee.Click += new System.EventHandler(this.tmiRemoveAttendee_Click);
             // 
             // tmiEdit
             // 
             this.tmiEdit.Name = "tmiEdit";
-            this.tmiEdit.Size = new System.Drawing.Size(113, 22);
+            this.tmiEdit.Size = new System.Drawing.Size(117, 22);
             this.tmiEdit.Text = "Edit";
             this.tmiEdit.Click += new System.EventHandler(this.tmiEdit_Click);
             // 
             // tmiImport
             // 
             this.tmiImport.Name = "tmiImport";
-            this.tmiImport.Size = new System.Drawing.Size(113, 22);
+            this.tmiImport.Size = new System.Drawing.Size(117, 22);
             this.tmiImport.Text = "Import";
             this.tmiImport.Click += new System.EventHandler(this.tmiImport_Click);
             // 
