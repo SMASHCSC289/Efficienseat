@@ -45,7 +45,7 @@
             this.colName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colResponse = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colGuestID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colRSVP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colAllergy = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colComments = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cmsAttendee = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tmiRemoveAttendee = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,7 +70,7 @@
             this.colName,
             this.colResponse,
             this.colGuestID,
-            this.colRSVP,
+            this.colAllergy,
             this.colComments});
             this.lvwAttendee.ContextMenuStrip = this.cmsAttendee;
             this.lvwAttendee.FullRowSelect = true;
@@ -124,19 +124,22 @@
             // colResponse
             // 
             this.colResponse.Text = "Response";
+            this.colResponse.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // colGuestID
             // 
             this.colGuestID.Text = "Guest ID";
             this.colGuestID.Width = 0;
             // 
-            // colRSVP
+            // colAllergy
             // 
-            this.colRSVP.Text = "Allergy";
+            this.colAllergy.Text = "Allergy";
+            this.colAllergy.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // colComments
             // 
             this.colComments.Text = "Comments";
+            this.colComments.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // cmsAttendee
             // 
@@ -145,26 +148,26 @@
             this.tmiEdit,
             this.tmiImport});
             this.cmsAttendee.Name = "contextMenuStrip1";
-            this.cmsAttendee.Size = new System.Drawing.Size(118, 70);
+            this.cmsAttendee.Size = new System.Drawing.Size(114, 70);
             // 
             // tmiRemoveAttendee
             // 
             this.tmiRemoveAttendee.Name = "tmiRemoveAttendee";
-            this.tmiRemoveAttendee.Size = new System.Drawing.Size(117, 22);
+            this.tmiRemoveAttendee.Size = new System.Drawing.Size(113, 22);
             this.tmiRemoveAttendee.Text = "Remove";
             this.tmiRemoveAttendee.Click += new System.EventHandler(this.tmiRemoveAttendee_Click);
             // 
             // tmiEdit
             // 
             this.tmiEdit.Name = "tmiEdit";
-            this.tmiEdit.Size = new System.Drawing.Size(117, 22);
+            this.tmiEdit.Size = new System.Drawing.Size(113, 22);
             this.tmiEdit.Text = "Edit";
             this.tmiEdit.Click += new System.EventHandler(this.tmiEdit_Click);
             // 
             // tmiImport
             // 
             this.tmiImport.Name = "tmiImport";
-            this.tmiImport.Size = new System.Drawing.Size(117, 22);
+            this.tmiImport.Size = new System.Drawing.Size(113, 22);
             this.tmiImport.Text = "Import";
             this.tmiImport.Click += new System.EventHandler(this.tmiImport_Click);
             // 
@@ -248,7 +251,6 @@
             this.MinimumSize = new System.Drawing.Size(292, 0);
             this.Name = "Attendee_List";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Load += new System.EventHandler(this.Attendee_List_Load);
             this.Resize += new System.EventHandler(this.Attendee_List_Resize);
             this.cmsAttendee.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
@@ -272,7 +274,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.ColumnHeader colResponse;
         private System.Windows.Forms.ColumnHeader colGuestID;
-        private System.Windows.Forms.ColumnHeader colRSVP;
+        private System.Windows.Forms.ColumnHeader colAllergy;
         private System.Windows.Forms.ColumnHeader colComments;
     }
 }

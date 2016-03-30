@@ -17,13 +17,7 @@ namespace Efficienseat
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //button for save data
-            //  Simple close as data is pulled via AttendeeList
-            Close();
-        }
-
+        #region Properties
         public string FirstName
         {
             get { return txtFirstName.Text; }
@@ -59,7 +53,10 @@ namespace Efficienseat
             set { txtComments.Text = value; }
         }
 
+        #endregion
 
+
+        #region Events
         private void btnCancel_Click(object sender, EventArgs e)
         {
             //button for cancel
@@ -69,7 +66,61 @@ namespace Efficienseat
             cbFoodAllergy.Text = "";
             cbRSVP.Text = "";
             txtComments.Text = "";
+            btnSave.DialogResult = DialogResult.OK;
             Close();
         }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            // Check if all required data is present. If not then cancel form close in FormClosing Event 
+            ValidData();
+        }
+
+        private void DataEntryForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (btnSave.DialogResult != DialogResult.OK)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        #endregion
+
+
+        #region Methods
+
+        private void ValidData()
+        {
+            btnSave.DialogResult = DialogResult.OK;
+
+            if (txtFirstName.Text.ToString() == "")
+            {
+                MessageBox.Show("First Name is required.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtFirstName.Focus();
+                btnSave.DialogResult = DialogResult.No;
+            }
+            else if (txtLastName.Text.ToString() == "")
+            {
+                MessageBox.Show("Last Name is required.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtLastName.Focus();
+                btnSave.DialogResult = DialogResult.No;
+            }
+            else if (cbFoodAllergy.Text.ToString() == "")
+            {
+                MessageBox.Show("Please choose a Food Allergy option.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cbFoodAllergy.Focus();
+                btnSave.DialogResult = DialogResult.No;
+            }
+            else if (cbRSVP.Text.ToString() == "")
+            {
+                MessageBox.Show("Please choose a RSVP option.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cbRSVP.Focus();
+                btnSave.DialogResult = DialogResult.No;
+            }
+        }
+
+
+        #endregion
+
     }
 }

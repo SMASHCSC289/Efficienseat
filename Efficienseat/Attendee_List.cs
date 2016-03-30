@@ -15,10 +15,15 @@ namespace Efficienseat
 {
     public partial class Attendee_List : Form
     {
+        //private 
+        private int wedID;
+        private int guestCount;
+
+        //public
         public DataTable AttendeeDT;
         public DataTable TableDT;
         public SQLiteConnection DBConnection;
-        int wedID;
+        
 
         #region Custom_UI
 
@@ -85,18 +90,6 @@ namespace Efficienseat
             return false;
         }
 
-        //private void MainForm_Resize(object sender, EventArgs e)
-        //{
-        //    label_Title.Width = this.Width - 2;
-        //    menuStrip1.Width = this.Width - 2;
-        //}
-
-        ///// <summary>
-        ///// Window Border Method 
-        ///// </summary>
-        ///// <param name="sender"></param>
-        ///// <param name="e"></param>
-
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             // Rectangle formBorder = this.DisplayRectangle;
@@ -105,134 +98,30 @@ namespace Efficienseat
                                      formBorder);
         }
 
-        ///// <summary>
-        /////  Custom Form Controls
-        ///// </summary>
 
-        void Form1_MouseDown(object sender, MouseEventArgs e)
+        private void Attendee_List_Resize(object sender, EventArgs e)
         {
-            //if (e.Button == MouseButtons.Left)
-            //{
-            //    ReleaseCapture();
-            //    SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            //}
-        }
+            int flowPanelHeight = 32;
+            lvwAttendee.Width = this.Width - 2;
+            flowLayoutPanel1.Width = this.Width - 2;
 
-        /// <summary>
-        /// Window Resize Method
-        /// </summary>
-        /// <param name="m"></param>
-        protected override void WndProc(ref Message m)
-        {
-            const int wmNcHitTest = 0x84;
-            const int htLeft = 10;
-            const int htRight = 11;
-            const int htTop = 12;
-            const int htTopLeft = 13;
-            const int htTopRight = 14;
-            const int htBottom = 15;
-            const int htBottomLeft = 16;
-            const int htBottomRight = 17;
-
-            if (m.Msg == wmNcHitTest)
+            if (this.Width < 505)
             {
-                int x = (int)(m.LParam.ToInt64() & 0xFFFF);
-                int y = (int)((m.LParam.ToInt64() & 0xFFFF0000) >> 16);
-                Point pt = PointToClient(new Point(x, y));
-                Size clientSize = ClientSize;
-                /////allow resize on the lower right corner
-                //if (pt.X >= clientSize.Width - 5 && pt.Y >= clientSize.Height - 5 && clientSize.Height >= 16)
-                //{
-                //    m.Result = (IntPtr)(IsMirrored ? htBottomLeft : htBottomRight);
-                //    return;
-                //}
-                /////allow resize on the lower left corner
-                //if (pt.X <= 5 && pt.Y >= clientSize.Height - 5 && clientSize.Height >= 16)
-                //{
-                //    m.Result = (IntPtr)(IsMirrored ? htBottomRight : htBottomLeft);
-                //    return;
-                //}
-                /////allow resize on the upper right corner
-                //if (pt.X <= 5 && pt.Y <= 5 && clientSize.Height >= 16)
-                //{
-                //    m.Result = (IntPtr)(IsMirrored ? htTopRight : htTopLeft);
-                //    return;
-                //}
-                /////allow resize on the upper left corner
-                //if (pt.X >= clientSize.Width - 5 && pt.Y <= 5 && clientSize.Height >= 16)
-                //{
-                //    m.Result = (IntPtr)(IsMirrored ? htTopLeft : htTopRight);
-                //    return;
-                //}
-                /////allow resize on the top border
-                //if (pt.Y <= 5 && clientSize.Height >= 16)
-                //{
-                //    m.Result = (IntPtr)(htTop);
-                //    return;
-                //}
-                /////allow resize on the bottom border
-                //if (pt.Y >= clientSize.Height - 5 && clientSize.Height >= 16)
-                //{
-                //    m.Result = (IntPtr)(htBottom);
-                //    return;
-                //}
-                /////allow resize on the left border
-                //if (pt.X <= 5 && clientSize.Height >= 16)
-                //{
-                //    m.Result = (IntPtr)(htLeft);
-                //    return;
-                //}
-
-                ///allow resize on the right border
-                if (pt.X >= clientSize.Width - 5 && clientSize.Height >= 16)
-                {
-                    m.Result = (IntPtr)(htRight);
-                    return;
-                }
+                flowLayoutPanel1.Height = (flowPanelHeight * 2);
+                lvwAttendee.Location = new Point(1, flowLayoutPanel1.Location.Y + flowLayoutPanel1.Height + 1);
+            }
+            else if (this.Width >= 505)
+            {
+                flowLayoutPanel1.Height = flowPanelHeight;
+                lvwAttendee.Location = new Point(1, flowLayoutPanel1.Location.Y + flowLayoutPanel1.Height + 1);
             }
 
-            switch (m.Msg)
-            {
-                case WM_NCPAINT:                        // box shadow
-                    if (m_aeroEnabled)
-                    {
-                        var v = 2;
-                        DwmSetWindowAttribute(this.Handle, 2, ref v, 4);
-                        MARGINS margins = new MARGINS()
-                        {
-                            bottomHeight = 1,
-                            leftWidth = 1,
-                            rightWidth = 1,
-                            topHeight = 1
-                        };
-                        DwmExtendFrameIntoClientArea(this.Handle, ref margins);
-
-                    }
-                    break;
-                default:
-                    break;
-            }
-            base.WndProc(ref m);
-
-            if (m.Msg == WM_NCHITTEST && (int)m.Result == HTCLIENT)     // drag the form
-                m.Result = (IntPtr)HTCAPTION;
-
-            //base.WndProc(ref m);
+            lvwAttendee.Height = this.Height - flowLayoutPanel1.Height - 2;
         }
-
-        ///// <summary>
-        ///// Window Resize Variables
-        ///// </summary>
-        public const int WM_NCLBUTTONDOWN = 0xA1;
-        public const int HT_CAPTION = 0x2;
-
-        [DllImportAttribute("user32.dll")]
-        public static extern int SendMessage(IntPtr hWnd,
-                         int Msg, int wParam, int lParam);
-        [DllImportAttribute("user32.dll")]
-        public static extern bool ReleaseCapture();
 
         #endregion Custom_UI
+
+        #region Constructor 
 
         public Attendee_List()
         {
@@ -253,19 +142,18 @@ namespace Efficienseat
             lvwAttendee.Location = new Point(1, flowLayoutPanel1.Location.Y + flowLayoutPanel1.Height + 1);            
         }
 
+        #endregion
+
+        #region Properties
+
         public int WedID
         {
             get { return wedID; }
 
             set { wedID = value; }
         }
+        #endregion
 
-        private void Attendee_List_Load(object sender, EventArgs e)
-        {
-           // Set list of images for listview
-           // lvwAttendee.LargeImageList = imlTableNumbers;
-
-        } //END Attendee_List_Load EVENT
 
         // BUTTONS
         #region FormButtons
@@ -304,7 +192,10 @@ namespace Efficienseat
         private void tmiRemoveAttendee_Click(object sender, EventArgs e)
         {
             // TODO: update to retrieve item under mouse
-            removeAttendee(lvwAttendee.SelectedItems[0]);
+            if (lvwAttendee.SelectedItems.Count == 1)
+            {
+                removeAttendee(lvwAttendee.SelectedItems[0]);
+            }
         }
 
         private void tmiEdit_Click(object sender, EventArgs e)
@@ -373,6 +264,8 @@ namespace Efficienseat
                 listitem.SubItems.Add(dr["COMMENTS"].ToString());
                 lvwAttendee.Items.Add(listitem);
             }
+
+            CheckGuestCount();
         }
 
         // add item
@@ -425,6 +318,8 @@ namespace Efficienseat
                     lvwAttendee.Items.Add(newGuest);
                 }
             }
+
+            CheckGuestCount();
         }
 
         // change listview visuals
@@ -441,10 +336,10 @@ namespace Efficienseat
                 lvwAttendee.ShowGroups = false;
                 lvwAttendee.AutoResizeColumn(0, ColumnHeaderAutoResizeStyle.HeaderSize);
                 lvwAttendee.AutoResizeColumn(1, ColumnHeaderAutoResizeStyle.HeaderSize);
-               // lvwAttendee.AutoResizeColumn(2, ColumnHeaderAutoResizeStyle.HeaderSize);
+                //lvwAttendee.AutoResizeColumn(2, ColumnHeaderAutoResizeStyle.HeaderSize);
                 lvwAttendee.AutoResizeColumn(3, ColumnHeaderAutoResizeStyle.HeaderSize);
                 lvwAttendee.AutoResizeColumn(4, ColumnHeaderAutoResizeStyle.HeaderSize);
-               // lvwAttendee.AutoResizeColumn(5, ColumnHeaderAutoResizeStyle.HeaderSize);
+                // lvwAttendee.AutoResizeColumn(5, ColumnHeaderAutoResizeStyle.HeaderSize);
             }
         }
 
@@ -499,6 +394,8 @@ namespace Efficienseat
                 int SelectedIndex = AttendeeDT.Rows.IndexOf(removeRow[0]);
                 AttendeeDT.Rows.RemoveAt(SelectedIndex);
             }
+
+            CheckGuestCount();
         }
 
         //import attendees from text file
@@ -506,6 +403,12 @@ namespace Efficienseat
         {
             string absolutePath = null;
             string line = null;
+            string FirstName = "";
+            string LastName = "";
+            string FullName = "";
+
+            MessageBox.Show("Import file must be of extension type *.txt. \n" +
+                            "File format must consist of: \n    Last Name, First Name \nto be valid for import.", "Import File Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             OpenFileDialog openFileDialog = new OpenFileDialog();
 
             //set options for open file menu
@@ -547,10 +450,10 @@ namespace Efficienseat
                         {
                             name = line.Split(delimiter);
 
-                            string FirstName = name[1].ToString().Trim().ToUpper();
-                            string LastName = name[0].ToString().Trim().ToUpper();
+                            FirstName = name[1].ToString().Trim().ToUpper();
+                            LastName = name[0].ToString().Trim().ToUpper();
 
-                            string FullName = LastName + ", " + FirstName;
+                            FullName = LastName + ", " + FirstName;
 
                             //iterate through listviewitems to compare with current line from txt file
                             //  sloppy as it iterates through the entire listview for each line item
@@ -584,9 +487,18 @@ namespace Efficienseat
                                 //ListViewItem [2] = GUEST_ID
                                 //ListViewItem [3] = FOOD_ALLERGY
                                 //ListViewItem [4] = COMMENTS
-                                ListViewItem newGuest = new ListViewItem(new string[] { newRow["LAST_NAME"] + ", " + newRow["FIRST_NAME"], "Unknown", newRow["GUEST_ID"].ToString(), "", "" });
+                                ListViewItem newGuest = new ListViewItem(new string[] { newRow["LAST_NAME"] + ", " + newRow["FIRST_NAME"], "Unknown", newRow["GUEST_ID"].ToString(), "N", "" });
                                 lvwAttendee.Items.Add(newGuest);
+
                             }
+                        }
+
+                        if (AttendeeDT.Rows.Count == 100)
+                        {
+                            MessageBox.Show("You have reached your 100 guest limit.\nNo more names will be added." +
+                                            "\nThe last name added was: " + FullName.ToString(), "Name Limit Reached", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                            CheckGuestCount();
+                            break;
                         }
                     }
                     //close open stream
@@ -603,31 +515,16 @@ namespace Efficienseat
             Cursor.Current = Cursors.Default;
         }
 
+        // Check to see if Guest Count is at 100 (maximum). If so disable Add button, otherwise enable Add button. 
+        private void CheckGuestCount()
+        {
+            if (AttendeeDT.Rows.Count == 100)
+                btnAddAtendee.Enabled = false;
+            else
+                btnAddAtendee.Enabled = true;
+        }
+
         #endregion Methods
 
-        private void Attendee_List_Resize(object sender, EventArgs e)
-        {
-            int flowPanelHeight = 32;
-            lvwAttendee.Width = this.Width - 2;
-            flowLayoutPanel1.Width = this.Width - 2;           
-
-            if (this.Width < 505)
-            {
-                flowLayoutPanel1.Height = (flowPanelHeight * 2);
-                lvwAttendee.Location = new Point(1, flowLayoutPanel1.Location.Y + flowLayoutPanel1.Height + 1);
-            }
-            else if (this.Width >= 505)
-            {
-                flowLayoutPanel1.Height = flowPanelHeight;
-                lvwAttendee.Location = new Point(1, flowLayoutPanel1.Location.Y + flowLayoutPanel1.Height + 1);
-            }
-
-            lvwAttendee.Height = this.Height - flowLayoutPanel1.Height - 2;
-        }
-
-        private void Attendee_List_Move(object sender, EventArgs e)
-        {
-            this.Location = new Point(0, 0);
-        }
     }
 }

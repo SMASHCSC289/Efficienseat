@@ -132,7 +132,7 @@
             this.btnSave.TabIndex = 15;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.button1_Click);
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
@@ -183,6 +183,7 @@
             this.Name = "DataEntryForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DataEntryForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DataEntryForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
