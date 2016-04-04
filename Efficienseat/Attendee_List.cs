@@ -17,7 +17,7 @@ namespace Efficienseat
     {
         //private 
         private int wedID;
-        private int guestCount;
+        private int scrollSpot = 0;
 
         //public
         public DataTable AttendeeDT;
@@ -230,42 +230,49 @@ namespace Efficienseat
         public void LoadListView()
         {
             lvwAttendee.Items.Clear();
-
-            for (int i = 0; i < AttendeeDT.Rows.Count; i++)
+            try
             {
-                DataRow dr = AttendeeDT.Rows[i];
-                ListViewItem listitem = new ListViewItem(dr["LAST_NAME"].ToString() + ", " + dr["FIRST_NAME"].ToString());
-                if (dr["RSVP"] == null || dr["RSVP"].ToString() == "")
+                lvwAttendee.BeginUpdate();
+                for (int i = 0; i < AttendeeDT.Rows.Count; i++)
                 {
-                    listitem.SubItems.Add("Unknown");
-                    listitem.ImageIndex = 0;
-                    listitem.Group = lvwAttendee.Groups[0];
-                }
-                else if (dr["RSVP"].ToString() == "Accept" && dr["TABLE_ID"].ToString() == "")
-                {
-                    listitem.SubItems.Add(dr["RSVP"].ToString());
-                    listitem.ImageIndex = 0;
-                    listitem.Group = lvwAttendee.Groups[0];
-                }
-                else if (dr["RSVP"].ToString() == "Accept" && dr["TABLE_ID"].ToString() != "")
-                {
-                    int index = Convert.ToInt32(dr["TABLE_ID"]);
-                    listitem.SubItems.Add(dr["RSVP"].ToString());
-                    listitem.ImageIndex = index;
-                    listitem.Group = lvwAttendee.Groups[index];
-                }
-                else
-                {
-                    listitem.SubItems.Add(dr["RSVP"].ToString());
+                    DataRow dr = AttendeeDT.Rows[i];
+                    ListViewItem listitem = new ListViewItem(dr["LAST_NAME"].ToString() + ", " + dr["FIRST_NAME"].ToString());
+                    if (dr["RSVP"] == null || dr["RSVP"].ToString() == "")
+                    {
+                        listitem.SubItems.Add("Unknown");
+                        listitem.ImageIndex = 0;
+                        listitem.Group = lvwAttendee.Groups[0];
+                    }
+                    else if (dr["RSVP"].ToString() == "Accept" && dr["TABLE_ID"].ToString() == "")
+                    {
+                        listitem.SubItems.Add(dr["RSVP"].ToString());
+                        listitem.ImageIndex = 0;
+                        listitem.Group = lvwAttendee.Groups[0];
+                    }
+                    else if (dr["RSVP"].ToString() == "Accept" && dr["TABLE_ID"].ToString() != "")
+                    {
+                        int index = Convert.ToInt32(dr["TABLE_ID"]);
+                        listitem.SubItems.Add(dr["RSVP"].ToString());
+                        listitem.ImageIndex = index;
+                        listitem.Group = lvwAttendee.Groups[index];
+                    }
+                    else
+                    {
+                        listitem.SubItems.Add(dr["RSVP"].ToString());
+                    }
+
+                    listitem.SubItems.Add(dr["GUEST_ID"].ToString());
+                    listitem.SubItems.Add(dr["FOOD_ALLERGY"].ToString());
+                    listitem.SubItems.Add(dr["COMMENTS"].ToString());
+                    lvwAttendee.Items.Add(listitem);
                 }
 
-                listitem.SubItems.Add(dr["GUEST_ID"].ToString());                
-                listitem.SubItems.Add(dr["FOOD_ALLERGY"].ToString());
-                listitem.SubItems.Add(dr["COMMENTS"].ToString());
-                lvwAttendee.Items.Add(listitem);
             }
-
-            CheckGuestCount();
+            finally
+            {
+                lvwAttendee.EndUpdate();
+                CheckGuestCount();
+            }
         }
 
         // add item
@@ -368,14 +375,14 @@ namespace Efficienseat
                         updateRow[0]["RSVP"] = data.RSVP;
                         updateRow[0]["FOOD_ALLERGY"] = data.FoodAllergy;
                         updateRow[0]["COMMENTS"] = data.Comments;
-                        AttendeeDT.AcceptChanges();
+                        //AttendeeDT.AcceptChanges();
 
                         lvi.Text = data.LastName + ", " + data.FirstName;
                         lvi.SubItems[1].Text = data.RSVP;
                         lvi.SubItems[2].Text = data.FoodAllergy;
                         lvi.SubItems[3].Text = data.Comments;
 
-                        LoadListView();
+                        //LoadListView();
                     }
                 }
             }
@@ -525,6 +532,5 @@ namespace Efficienseat
         }
 
         #endregion Methods
-
     }
 }

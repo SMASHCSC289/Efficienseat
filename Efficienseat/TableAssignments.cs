@@ -240,8 +240,8 @@ namespace Efficienseat
             }       
 
             // Set event handlers to manage DataTable change events
-            AttendeeDT.RowDeleted += new DataRowChangeEventHandler(Row_Deleted);
-            AttendeeDT.RowChanged += new DataRowChangeEventHandler(Row_Changed);     
+            //AttendeeDT.RowDeleted += new DataRowChangeEventHandler(Row_Deleted);
+            //AttendeeDT.RowChanged += new DataRowChangeEventHandler(Row_Changed);     
             
             // Load tables from DB
             foreach (DataRow row in TableDT.Rows)
@@ -1018,15 +1018,15 @@ namespace Efficienseat
         }
 
         // Attendee DataTable Change Events
-        private void Row_Deleted(object sender, DataRowChangeEventArgs e)
-        {
-            removeAttendee();
-            loadListView();
-        }
+        //private void Row_Deleted(object sender, DataRowChangeEventArgs e)
+        //{
+        //    removeAttendee();
+        //    loadListView();
+        //}
 
-        private void Row_Changed(object sender, DataRowChangeEventArgs e)
-        {
-            loadListView();
-        }
+        //private void Row_Changed(object sender, DataRowChangeEventArgs e)
+        //{
+        //    loadListView();
+        //}
     }
 }

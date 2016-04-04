@@ -113,6 +113,7 @@
             this.lvwAttendee.Margin = new System.Windows.Forms.Padding(1, 0, 1, 1);
             this.lvwAttendee.Name = "lvwAttendee";
             this.lvwAttendee.Size = new System.Drawing.Size(506, 453);
+            this.lvwAttendee.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.lvwAttendee.TabIndex = 0;
             this.lvwAttendee.UseCompatibleStateImageBehavior = false;
             this.lvwAttendee.View = System.Windows.Forms.View.Tile;

@@ -188,6 +188,9 @@ namespace Efficienseat
             {
                 cmdBuilder = new SQLiteCommandBuilder(sdaAttendee);
                 sdaAttendee.Update(AttendeeDT);
+                al.LoadListView();
+                if (ta != null && ta.Visible)
+                    ta.loadListView();
             }
             catch (Exception ex)
             {
@@ -201,6 +204,9 @@ namespace Efficienseat
             {
                 cmdBuilder = new SQLiteCommandBuilder(sdaAttendee);
                 sdaAttendee.Update(AttendeeDT);
+                al.LoadListView();
+                if (ta != null && ta.Visible)
+                    ta.loadListView();
             }
             catch (Exception ex)
             {
