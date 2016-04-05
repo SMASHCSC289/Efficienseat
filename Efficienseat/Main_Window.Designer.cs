@@ -58,7 +58,6 @@
             this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.importTextFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -210,7 +209,6 @@
             // toolsToolStripMenuItem
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.importTextFileToolStripMenuItem,
             this.importToolStripMenuItem,
             this.editWeddingInfoToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
@@ -224,20 +222,20 @@
             this.excelFileToolStripMenuItem});
             this.importToolStripMenuItem.Name = "importToolStripMenuItem";
             this.importToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
-            this.importToolStripMenuItem.Text = "Import Excel file";
+            this.importToolStripMenuItem.Text = "Import file";
             this.importToolStripMenuItem.Click += new System.EventHandler(this.excelFileToolStripMenuItem_Click);
             // 
             // textFileToolStripMenuItem
             // 
             this.textFileToolStripMenuItem.Name = "textFileToolStripMenuItem";
-            this.textFileToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.textFileToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.textFileToolStripMenuItem.Text = "Import Text File";
             this.textFileToolStripMenuItem.Click += new System.EventHandler(this.textFileToolStripMenuItem_Click);
             // 
             // excelFileToolStripMenuItem
             // 
             this.excelFileToolStripMenuItem.Name = "excelFileToolStripMenuItem";
-            this.excelFileToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.excelFileToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.excelFileToolStripMenuItem.Text = "Excel File";
             this.excelFileToolStripMenuItem.Click += new System.EventHandler(this.excelFileToolStripMenuItem_Click);
             // 
@@ -289,12 +287,6 @@
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.aboutToolStripMenuItem.Text = "&About...";
-            // 
-            // importTextFileToolStripMenuItem
-            // 
-            this.importTextFileToolStripMenuItem.Name = "importTextFileToolStripMenuItem";
-            this.importTextFileToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
-            this.importTextFileToolStripMenuItem.Text = "Import Text File";
             // 
             // Main_Window
             // 
@@ -350,6 +342,5 @@
         private System.Windows.Forms.ToolStripMenuItem guestPerTableToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem textFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem excelFileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem importTextFileToolStripMenuItem;
     }
 }
