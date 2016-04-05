@@ -81,8 +81,7 @@ namespace Efficienseat
 
         private void importToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Attendee_List al = (Attendee_List) this.MdiChildren[0];
-            al.importAttendees();
+
         }
 
         #region Methods
@@ -342,6 +341,18 @@ namespace Efficienseat
         {
             ReportForm rf = new ReportForm(wed_id);
             rf.Show();
+        }
+
+        private void textFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Attendee_List al = (Attendee_List)this.MdiChildren[0];
+            al.importAttendeesText();
+        }
+
+        private void excelFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Attendee_List al = (Attendee_List)this.MdiChildren[0];
+            al.importAttendeesExcel();
         }
     }
 }

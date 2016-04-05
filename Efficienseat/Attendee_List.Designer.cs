@@ -57,6 +57,7 @@
             this.btnEditEntry = new System.Windows.Forms.Button();
             this.btnRemoveAttendee = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.importExcelFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsAttendee.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -147,29 +148,30 @@
             this.cmsAttendee.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tmiRemoveAttendee,
             this.tmiEdit,
-            this.tmiImport});
+            this.tmiImport,
+            this.importExcelFileToolStripMenuItem});
             this.cmsAttendee.Name = "contextMenuStrip1";
-            this.cmsAttendee.Size = new System.Drawing.Size(114, 70);
+            this.cmsAttendee.Size = new System.Drawing.Size(154, 114);
             // 
             // tmiRemoveAttendee
             // 
             this.tmiRemoveAttendee.Name = "tmiRemoveAttendee";
-            this.tmiRemoveAttendee.Size = new System.Drawing.Size(113, 22);
+            this.tmiRemoveAttendee.Size = new System.Drawing.Size(153, 22);
             this.tmiRemoveAttendee.Text = "Remove";
             this.tmiRemoveAttendee.Click += new System.EventHandler(this.tmiRemoveAttendee_Click);
             // 
             // tmiEdit
             // 
             this.tmiEdit.Name = "tmiEdit";
-            this.tmiEdit.Size = new System.Drawing.Size(113, 22);
+            this.tmiEdit.Size = new System.Drawing.Size(153, 22);
             this.tmiEdit.Text = "Edit";
             this.tmiEdit.Click += new System.EventHandler(this.tmiEdit_Click);
             // 
             // tmiImport
             // 
             this.tmiImport.Name = "tmiImport";
-            this.tmiImport.Size = new System.Drawing.Size(113, 22);
-            this.tmiImport.Text = "Import";
+            this.tmiImport.Size = new System.Drawing.Size(153, 22);
+            this.tmiImport.Text = "Import Text File";
             this.tmiImport.Click += new System.EventHandler(this.tmiImport_Click);
             // 
             // btnAddAtendee
@@ -238,6 +240,13 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(506, 32);
             this.flowLayoutPanel1.TabIndex = 6;
             // 
+            // importExcelFileToolStripMenuItem
+            // 
+            this.importExcelFileToolStripMenuItem.Name = "importExcelFileToolStripMenuItem";
+            this.importExcelFileToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.importExcelFileToolStripMenuItem.Text = "Import Excel File";
+            this.importExcelFileToolStripMenuItem.Click += new System.EventHandler(this.importExcelFileToolStripMenuItem_Click);
+            // 
             // Attendee_List
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -277,5 +286,6 @@
         private System.Windows.Forms.ColumnHeader colGuestID;
         private System.Windows.Forms.ColumnHeader colAllergy;
         private System.Windows.Forms.ColumnHeader colComments;
+        private System.Windows.Forms.ToolStripMenuItem importExcelFileToolStripMenuItem;
     }
 }

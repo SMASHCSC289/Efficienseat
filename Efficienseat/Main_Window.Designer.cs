@@ -56,6 +56,8 @@
             this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.textFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.excelFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -215,6 +217,9 @@
             // 
             // importToolStripMenuItem
             // 
+            this.importToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.textFileToolStripMenuItem,
+            this.excelFileToolStripMenuItem});
             this.importToolStripMenuItem.Name = "importToolStripMenuItem";
             this.importToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.importToolStripMenuItem.Text = "Import";
@@ -269,6 +274,20 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.aboutToolStripMenuItem.Text = "&About...";
             // 
+            // textFileToolStripMenuItem
+            // 
+            this.textFileToolStripMenuItem.Name = "textFileToolStripMenuItem";
+            this.textFileToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.textFileToolStripMenuItem.Text = "Text File";
+            this.textFileToolStripMenuItem.Click += new System.EventHandler(this.textFileToolStripMenuItem_Click);
+            // 
+            // excelFileToolStripMenuItem
+            // 
+            this.excelFileToolStripMenuItem.Name = "excelFileToolStripMenuItem";
+            this.excelFileToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.excelFileToolStripMenuItem.Text = "Excel File";
+            this.excelFileToolStripMenuItem.Click += new System.EventHandler(this.excelFileToolStripMenuItem_Click);
+            // 
             // Main_Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -322,5 +341,7 @@
         private System.Windows.Forms.ToolStripMenuItem editWeddingInfoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem guestPerTableToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem textFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem excelFileToolStripMenuItem;
     }
 }
