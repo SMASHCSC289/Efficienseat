@@ -12,13 +12,20 @@ namespace Efficienseat
 {
     public partial class EditWedding : Form
     {
+        //  constructor
         public EditWedding()
         {
             InitializeComponent();
         }
 
+        #region Event handler
+
+        //<summary>
+        //  Event handler for Ok button click
+        //</summary>
         private void button1_Click(object sender, EventArgs e)
         {
+            //check fields for data, if empty pop error and refocus appropriate field
             if (weddingNameTextBox.Text.ToString() == "")
             {
                 MessageBox.Show("Please enter a Wedding Party Name", "Warning", MessageBoxButtons.OK);
@@ -34,12 +41,20 @@ namespace Efficienseat
                 MessageBox.Show("Please choose the Wedding Year", "Warning", MessageBoxButtons.OK);
                 weddingYearComboBox.Focus();
             }
+            //if valid, close window
             else
             {
                 this.Close();
             }
         }
 
+        #endregion Event handler
+
+        #region Accessors
+
+        //<summary>
+        //  Accessor for wedding name
+        //</summary>
         public string WeddingName
         {
             get
@@ -51,6 +66,10 @@ namespace Efficienseat
                 weddingNameTextBox.Text = value;
             }
         }
+
+        //<summary>
+        //  Accessor for wedding month
+        //</summary>
         public string WeddingMonth
         {
             get
@@ -62,6 +81,10 @@ namespace Efficienseat
                 weddingMonthComboBox.Text = value;
             }
         }
+
+        //<summary>
+        //  Accessor for wedding year
+        //</summary>
         public string WeddingYear
         {
             get
@@ -73,5 +96,7 @@ namespace Efficienseat
                 weddingYearComboBox.Text = value;
             }
         }
+
+        #endregion Accessors
     }
 }
