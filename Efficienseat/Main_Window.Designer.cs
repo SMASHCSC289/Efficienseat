@@ -223,13 +223,12 @@
             this.importToolStripMenuItem.Name = "importToolStripMenuItem";
             this.importToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.importToolStripMenuItem.Text = "Import file";
-            this.importToolStripMenuItem.Click += new System.EventHandler(this.excelFileToolStripMenuItem_Click);
             // 
             // textFileToolStripMenuItem
             // 
             this.textFileToolStripMenuItem.Name = "textFileToolStripMenuItem";
             this.textFileToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.textFileToolStripMenuItem.Text = "Import Text File";
+            this.textFileToolStripMenuItem.Text = "Text File";
             this.textFileToolStripMenuItem.Click += new System.EventHandler(this.textFileToolStripMenuItem_Click);
             // 
             // excelFileToolStripMenuItem
