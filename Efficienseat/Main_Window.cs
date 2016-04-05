@@ -81,14 +81,7 @@ namespace Efficienseat
                 ta.Height = client.Height - 5;
         }
 
-<<<<<<< HEAD
         #endregion Main Window events
-=======
-        private void importToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
->>>>>>> origin/master
 
         #region Methods
 
@@ -416,15 +409,6 @@ namespace Efficienseat
         }
 
         //<summary>
-        //  Event handler for the import function from the tool strip
-        //</summary>
-        private void importToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Attendee_List al = (Attendee_List)this.MdiChildren[0];
-            al.importAttendees();
-        }
-
-        //<summary>
         //  Event handler for the edit wedding action from the tool strip
         //</summary>
         private void editWeddingInfoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -462,20 +446,25 @@ namespace Efficienseat
             rf.Show();
         }
 
-<<<<<<< HEAD
-        #endregion Tool Strip Event Handlers
-=======
+        //<summary>
+        //  Event handler for the import text function from the tool strip
+        //</summary>
         private void textFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Attendee_List al = (Attendee_List)this.MdiChildren[0];
             al.importAttendeesText();
         }
 
+        //<summary>
+        //  Event handler for the import excel function from the tool strip
+        //</summary>
         private void excelFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Attendee_List al = (Attendee_List)this.MdiChildren[0];
             al.importAttendeesExcel();
         }
->>>>>>> origin/master
+
+        #endregion Tool Strip Event Handlers
+
     }
 }
