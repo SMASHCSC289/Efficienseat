@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using Excel = Microsoft.Office.Interop.Excel;
+using System.Data.OleDb;
 
 namespace Efficienseat
 {
@@ -208,9 +210,13 @@ namespace Efficienseat
 
         private void tmiImport_Click(object sender, EventArgs e)
         {
-            importAttendees();
+            importAttendeesText();
         }
 
+        private void importExcelFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            importAttendeesExcel();
+        }
         #endregion ListViewContextMenu
 
         // METHODS
@@ -406,7 +412,7 @@ namespace Efficienseat
         }
 
         //import attendees from text file
-        public void importAttendees()
+        public void importAttendeesText()
         {
             string absolutePath = null;
             string line = null;
@@ -515,12 +521,125 @@ namespace Efficienseat
                 catch (Exception e)
                 {
                     Cursor.Current = Cursors.Default;
-                    MessageBox.Show("Error: could not open file.\n Message: " + e.ToString());
+                    MessageBox.Show("Error during Import.\n Message: " + e.ToString());
                 }
             }
             openFileDialog.Dispose();
             Cursor.Current = Cursors.Default;
         }
+
+
+        public void importAttendeesExcel()
+        {
+
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            string absolutePath = null;
+            string FirstName = "";
+            string LastName = "";
+            string FullName = "";
+
+            MessageBox.Show("Excel file must have the following format:\n" +
+                                "Column A, Row 1 value must = 'LASTNAME'\n" +
+                                "Column B, Row 1 value must = 'FIRSTNAME'\n" + 
+                                "Worksheet name must = 'Sheet1'", "Import File Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            try
+            {                
+                //set options for open file menu
+                openFileDialog.DefaultExt = "txt";
+                openFileDialog.Filter = "Excel Files|*.xls;*.xlsx;*.xlsm"; 
+                openFileDialog.FilterIndex = 1;
+                openFileDialog.InitialDirectory = "C:\\";
+                openFileDialog.RestoreDirectory = true;
+                openFileDialog.Multiselect = false;
+
+                //if user selects file and hits confirms
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    absolutePath = openFileDialog.FileName;
+                    Cursor.Current = Cursors.WaitCursor;
+
+                    //Get Data From Excel File
+                    OleDbConnection MyConnection;
+                    DataSet DtSet;
+                    OleDbDataAdapter MyCommand;
+                    string extension = Path.GetExtension(absolutePath);
+                    if (extension == ".xls")
+                        MyConnection = new OleDbConnection("provider=Microsoft.Jet.OLEDB.4.0;Data Source='" + absolutePath + "';Extended Properties=Excel 12.0;");
+                    else
+                        MyConnection = new OleDbConnection("provider=Microsoft.ACE.OLEDB.12.0;Data Source='" + absolutePath + "';Extended Properties=Excel 8.0;");
+                    MyCommand = new OleDbDataAdapter("select * from [Sheet1$]", MyConnection);
+                    MyCommand.TableMappings.Add("Table", "Names");
+                    DtSet = new DataSet();
+                    MyCommand.Fill(DtSet);
+                    DataTable NameTable = DtSet.Tables[0];
+                    MyConnection.Close();
+
+                    for (int i = 0; i < NameTable.Rows.Count; i++)
+                    {
+                        DataRow dr = NameTable.Rows[i];
+                        FirstName = dr["LASTNAME"].ToString().Trim().ToUpper();
+                        LastName = dr["FIRSTNAME"].ToString().Trim().ToUpper();
+
+                        FullName = LastName + ", " + FirstName;
+
+                        bool equal = false;
+                        foreach (ListViewItem lvi in lvwAttendee.Items)
+                        {
+                            //if names are equal, do not add and break from search
+                            if (FullName.Equals(lvi.SubItems[0].Text))
+                            {
+                                equal = true;
+                                break;
+                            }
+                        }
+
+                        if (!equal)
+                        {
+                            DataRow newRow = AttendeeDT.NewRow();
+                            newRow["FIRST_NAME"] = FirstName;
+                            newRow["LAST_NAME"] = LastName;
+                            newRow["RSVP"] = "Unknown";
+                            if (AttendeeDT.Rows.Count == 0)
+                                newRow["GUEST_ID"] = 1;
+                            else
+                                newRow["GUEST_ID"] = Convert.ToInt32(AttendeeDT.Compute("max(GUEST_ID)", string.Empty)) + 1;
+                            newRow["WED_ID"] = wedID;
+                            AttendeeDT.Rows.Add(newRow);
+
+                            //ListViewItem [0] = NAME
+                            //ListViewItem [1] = RSVP
+                            //ListViewItem [2] = GUEST_ID
+                            //ListViewItem [3] = FOOD_ALLERGY
+                            //ListViewItem [4] = COMMENTS
+                            ListViewItem newGuest = new ListViewItem(new string[] { newRow["LAST_NAME"] + ", " + newRow["FIRST_NAME"], "Unknown", newRow["GUEST_ID"].ToString(), "N", "" });
+                            lvwAttendee.Items.Add(newGuest);
+
+                        }
+
+                        if (AttendeeDT.Rows.Count == 100)
+                        {
+                            MessageBox.Show("You have reached your 100 guest limit.\nNo more names will be added." +
+                                            "\nThe last name added was: " + FullName.ToString(), "Name Limit Reached", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                            CheckGuestCount();
+                            break;
+                        }
+                    }
+
+                }
+            }
+            catch (Exception e)
+            {
+                Cursor.Current = Cursors.Default;
+                MessageBox.Show("Error during Import.\n Message: " + e.ToString());
+            }
+            finally
+            {
+                openFileDialog.Dispose();
+                Cursor.Current = Cursors.Default;
+            }
+        }
+
 
         // Check to see if Guest Count is at 100 (maximum). If so disable Add button, otherwise enable Add button. 
         private void CheckGuestCount()
@@ -532,5 +651,6 @@ namespace Efficienseat
         }
 
         #endregion Methods
+
     }
 }

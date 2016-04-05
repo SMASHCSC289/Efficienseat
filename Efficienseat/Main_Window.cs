@@ -81,7 +81,14 @@ namespace Efficienseat
                 ta.Height = client.Height - 5;
         }
 
+<<<<<<< HEAD
         #endregion Main Window events
+=======
+        private void importToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+>>>>>>> origin/master
 
         #region Methods
 
@@ -455,6 +462,20 @@ namespace Efficienseat
             rf.Show();
         }
 
+<<<<<<< HEAD
         #endregion Tool Strip Event Handlers
+=======
+        private void textFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Attendee_List al = (Attendee_List)this.MdiChildren[0];
+            al.importAttendeesText();
+        }
+
+        private void excelFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Attendee_List al = (Attendee_List)this.MdiChildren[0];
+            al.importAttendeesExcel();
+        }
+>>>>>>> origin/master
     }
 }
