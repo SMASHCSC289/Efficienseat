@@ -768,7 +768,7 @@ namespace Efficienseat
                 {
                     ListViewItem lvi = listSeats[i].Items[0];
                     updateAttendee(Convert.ToInt32(lvi.SubItems[3].Text));
-                    removeItemFromAll(lvi);                    
+                    removeItemFromAll(lvi);
                     lvwUnseated.Items.Add(lvi);
                     lvwUnseated.Refresh();
 
