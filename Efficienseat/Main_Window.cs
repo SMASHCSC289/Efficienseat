@@ -429,11 +429,6 @@ namespace Efficienseat
         //</summary>
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //close any active windows and implement GetWeddingParty (load via LoadForm)
-            if (al != null)
-                al.Close();
-            if (ta != null)
-                ta.Close();
             GetWeddingParty();
         }
 

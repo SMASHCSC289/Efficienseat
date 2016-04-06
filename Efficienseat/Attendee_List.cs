@@ -325,10 +325,10 @@ namespace Efficienseat
                     //ListViewItem [2] = GUEST_ID
                     //ListViewItem [3] = FOOD_ALLERGY
                     //ListViewItem [4] = COMMENTS
-                    ListViewItem newGuest = new ListViewItem(new string[] { name, rsvp, newRow["GUEST_ID"].ToString(), newRow["FOOD_ALLERGY"].ToString(), newRow["COMMENTS"].ToString() });
-                    newGuest.ImageIndex = 0;
-                    newGuest.Group = lvwAttendee.Groups[0];
-                    lvwAttendee.Items.Add(newGuest);
+                    //ListViewItem newGuest = new ListViewItem(new string[] { name, rsvp, newRow["GUEST_ID"].ToString(), newRow["FOOD_ALLERGY"].ToString(), newRow["COMMENTS"].ToString() });
+                    //newGuest.ImageIndex = 0;
+                    //newGuest.Group = lvwAttendee.Groups[0];
+                    //lvwAttendee.Items.Add(newGuest);
                 }
             }
 
