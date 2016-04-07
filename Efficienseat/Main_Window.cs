@@ -135,8 +135,30 @@ namespace Efficienseat
                 wed_id = lf.WedID;
                 GetData(lf.WedID);
                 loadedWedID = lf.WedID;
+                setMenuStripItems(true);
                 al.Show();
             }
+            else
+            {
+                if (al == null)
+                {
+                    setMenuStripItems(false);
+                }
+                else
+                {
+                    setMenuStripItems(true);
+                }
+            }
+        }
+
+        private void setMenuStripItems(bool aValue)
+        {
+            saveToolStripMenuItem.Enabled = aValue;
+            editToolStripMenuItem.Enabled = aValue;
+            windowToolStripMenuItem.Enabled = aValue;
+            toolsToolStripMenuItem.Enabled = aValue;
+            reportsToolStripMenuItem.Enabled = aValue;
+            helpToolStripMenuItem.Enabled = aValue;
         }
 
         //<summary>
