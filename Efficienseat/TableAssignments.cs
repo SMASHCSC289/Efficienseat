@@ -13,16 +13,22 @@ namespace Efficienseat
 {
     public partial class TableAssignments : Form
     {
-        public DataTable TableDT;
-        Graphics Table;
+        //private
         private int shapeType = -1;
-        int rectSide, rectSide2;
-        Image image = new Bitmap(Efficienseat.Properties.Resources.Tablecloth);
+        private int wedID;
+        private int rectSide, rectSide2;
+        private int cbxtableID;
+        
+        //public
+        public DataTable TableDT;
         public DataTable AttendeeDT;
+
+        Graphics Table;
+        Image image = new Bitmap(Efficienseat.Properties.Resources.Tablecloth);
         Mysource dragSource = new Mysource();
         List<ListView> listSeats;
         ListViewItem empty = new ListViewItem("Empty");
-        private int wedID;
+        
 
         // Applies custom UI settings by making various 
         #region Custom_UI
@@ -232,22 +238,8 @@ namespace Efficienseat
 
         private void TableAssignments_Load(object sender, EventArgs e)
         {
-            // Prime all "Seats" with empty items
-            foreach (ListView l in listSeats)
-            {
-                ListViewItem emp = empty.Clone() as ListViewItem;
-                l.Items.Add(emp);
-            }
-
-            // Set event handlers to manage DataTable change events
-            AttendeeDT.RowDeleted += new DataRowChangeEventHandler(Row_Deleted);
-            AttendeeDT.RowChanged += new DataRowChangeEventHandler(Row_Changed);
-
-            // Load tables from DB
-            foreach (DataRow row in TableDT.Rows)
-            {
-                cbxTableName.Items.Add(row.Field<string>("TABLE_NAME"));
-            }
+            primeSeats();
+            loadTableComobBox();
         }
 
         /// <summary>
@@ -684,11 +676,7 @@ namespace Efficienseat
                     removeItemFromAll(myItem);
                     lv.Items.Add(myItem);
 
-                    //MessageBox.Show("'" + myItem.SubItems[3].Text + "'" + Environment.NewLine +
-                    //                "'" + lv.Tag + "'" + Environment.NewLine +
-                    //                "'" + cbxTableName.SelectedIndex + "'");
-
-                    updateAttendee(Convert.ToInt32(myItem.SubItems[3].Text), Convert.ToInt32(lv.Tag), cbxTableName.SelectedIndex + 1);
+                    updateAttendee(Convert.ToInt32(myItem.SubItems[3].Text), Convert.ToInt32(lv.Tag), cbxtableID);
 
                     updateSeatListViews();
                 }
@@ -707,7 +695,7 @@ namespace Efficienseat
                         // Insert drag item
                         removeItemFromAll(myItem);
                         lv.Items.Add(myItem);
-                        updateAttendee(Convert.ToInt32(myItem.SubItems[3].Text), Convert.ToInt32(lv.Tag), cbxTableName.SelectedIndex + 1);
+                        updateAttendee(Convert.ToInt32(myItem.SubItems[3].Text), Convert.ToInt32(lv.Tag), cbxtableID);
 
                         updateSeatListViews();
                     }
@@ -769,7 +757,7 @@ namespace Efficienseat
                     ListViewItem lvi = listSeats[i].Items[0];
                     updateAttendee(Convert.ToInt32(lvi.SubItems[3].Text));
                     removeItemFromAll(lvi);
-                    lvwUnseated.Items.Add(lvi);
+                    //lvwUnseated.Items.Add(lvi);
                     lvwUnseated.Refresh();
 
                     ListViewItem emp = empty.Clone() as ListViewItem;
@@ -791,6 +779,7 @@ namespace Efficienseat
         public void loadListView()
         {
             lvwUnseated.Clear();
+            lvwUnseated.BeginUpdate();
 
             // Iterate through all attendees that have accepted and are not seated
             // Add them to the unseated list
@@ -820,9 +809,11 @@ namespace Efficienseat
                     lvwUnseated.Items.Add(li);
                 }
             }
+
+            lvwUnseated.EndUpdate();
         }
 
-        private void removeAttendee()
+        private void removeAllAttendees()
         {
             foreach (ListView lv in listSeats)
             {
@@ -832,19 +823,37 @@ namespace Efficienseat
                     if (lv.Items[0].Text != "Empty")
                     {
                         //MessageBox.Show(lv.Items[0].SubItems[3].Text);
+                        updateAttendee(Convert.ToInt32(lv.Items[0].SubItems[3].Text));
 
-                        var result = from DataRow row in AttendeeDT.Rows
-                                     where Convert.ToInt32(row[0]) == wedID && Convert.ToInt32(row[1]) == Convert.ToInt32(lv.Items[0].SubItems[3].Text)
-                                     select row;
+                        //var result = from DataRow row in AttendeeDT.Rows
+                        //             where Convert.ToInt32(row[0]) == wedID && Convert.ToInt32(row[1]) == Convert.ToInt32(lv.Items[0].SubItems[3].Text)
+                        //             select row;
 
-                        if (!result.Any())
-                        {
-                            lv.Items.Clear();
-                            ListViewItem emp = empty.Clone() as ListViewItem;
-                            lv.Items.Add(emp);
-                        }
+                        lv.Items.Clear();
+                        ListViewItem emp = empty.Clone() as ListViewItem;
+                        lv.Items.Add(emp);
                     }
                 }
+            }
+        }
+
+        private void loadTableComobBox()
+        {
+            // Load tables from DB
+            cbxTableName.Items.Clear();
+            foreach (DataRow row in TableDT.Rows)
+            {
+                cbxTableName.Items.Add(row.Field<string>("TABLE_NAME"));
+            }
+        }
+
+        private void primeSeats()
+        {
+            // Prime all "Seats" with empty items
+            foreach (ListView l in listSeats)
+            {
+                ListViewItem emp = empty.Clone() as ListViewItem;
+                l.Items.Add(emp);
             }
         }
 
@@ -861,7 +870,7 @@ namespace Efficienseat
 
             // Get list of all seated attendees for the selected table
             var result = from DataRow row in AttendeeDT.Rows
-                         where Convert.ToInt32(row[0]) == wedID && row[7] != DBNull.Value && Convert.ToInt32(row[7]) == (cbxTableName.SelectedIndex + 1)
+                         where Convert.ToInt32(row[0]) == wedID && row[7] != DBNull.Value && Convert.ToInt32(row[7]) == (cbxtableID)
                          select row;
 
 
@@ -926,14 +935,21 @@ namespace Efficienseat
         // Implemented due to broken real-time edit changes.
         private void btnSaveChanges_Click(object sender, EventArgs e)
         {
-            updateTable(cbxTableName.SelectedIndex + 1, cbxTableShape.Text, (int)numericUpDown1.Value);
+            updateTable(cbxtableID, cbxTableShape.Text, (int)numericUpDown1.Value);
         }
 
         // Open TableCreateForm to add a table to the database
         private void btnAddTable_Click(object sender, EventArgs e)
         {
+            List<string> taTableNames = new List<string>();
+            for (int i = 0; i < cbxTableName.Items.Count; i++)
+            {
+                taTableNames.Add(cbxTableName.Items[i].ToString());
+            }
+
             using (TableCreateForm tcf = new TableCreateForm())
             {
+                tcf.tableNames = taTableNames;
                 if (tcf.ShowDialog(this) == DialogResult.OK)
                 {
                     if (tcf.Name != null || tcf.Shape != null)
@@ -1000,13 +1016,45 @@ namespace Efficienseat
         // Load all elements of the newly selected table
         private void cbxTableName_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            loadTable(cbxTableName.SelectedIndex + 1);
+            cbxtableID = GetTableID(cbxTableName.Text.ToString());
+            loadTable(cbxtableID);
             cbxTableShape.Enabled = true;
             numericUpDown1.Enabled = true;
             btnSaveChanges.Enabled = true;
             loadSeats();
         }
 
+        private void btnDeleteTable_Click(object sender, EventArgs e)
+        {
+            if (cbxTableName.Text.ToString() != "")
+            {
+                if (MessageBox.Show("Do you really want to delete table " + cbxTableName.Text + "?", "Delete Table?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    removeAllAttendees();
+                    deleteTable();
+                    primeSeats();
+                    loadTableComobBox();
+                    clearPanel();
+                }
+            }
+        }
+
+        public void clearPanel()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                listSeats[i].Visible = false;
+            }
+
+            //Table.Clear(Color.White);
+            cbxTableShape.SelectedIndex = -1;
+            cbxTableShape.Enabled = false;
+           // numericUpDown1.ResetText();
+            numericUpDown1.Enabled = false;
+            shapeType = -1;
+            Refresh();
+            
+        }
         // Get table from DB and set form controls
         private void loadTable(int index)
         {
@@ -1023,16 +1071,26 @@ namespace Efficienseat
             doTableStuff();
         }
 
-        // Attendee DataTable Change Events
-        private void Row_Deleted(object sender, DataRowChangeEventArgs e)
+        private void deleteTable()
         {
-            removeAttendee();
-            loadListView();
+            DataRow[] removeRow = TableDT.Select("TABLE_ID = " + cbxtableID.ToString());
+            if (removeRow.Length > 0)
+            {
+                int SelectedIndex = TableDT.Rows.IndexOf(removeRow[0]);
+                TableDT.Rows.RemoveAt(SelectedIndex);
+            }
         }
 
-        private void Row_Changed(object sender, DataRowChangeEventArgs e)
+        private int GetTableID(string tableName)
         {
-            loadListView();
+            cbxtableID = -1;
+            DataRow[] returnRow = TableDT.Select("TABLE_NAME = '" + tableName + "'");
+            if (returnRow.Length > 0)
+            {
+                cbxtableID = Convert.ToInt32(returnRow[0]["TABLE_ID"].ToString());
+            }
+
+            return cbxtableID;
         }
     }
 }

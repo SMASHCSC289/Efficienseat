@@ -25,7 +25,6 @@ namespace Efficienseat
         SQLiteDataAdapter sdaTable;
         SQLiteDataAdapter wedAdapter;
         SQLiteCommandBuilder cmdBuilder;
-        ReportForm rf;
         int wed_id;
 
         private int loadedWedID = 0;
@@ -124,6 +123,11 @@ namespace Efficienseat
             //on LoadForm event OK
             if (lf.ShowDialog(this) == DialogResult.OK)
             {
+                foreach (Form frm in this.MdiChildren)
+                {
+                    frm.Close();
+                }
+
                 //load AttendeeList window 
                 loadAttendeeList();
 

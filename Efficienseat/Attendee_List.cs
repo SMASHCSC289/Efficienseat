@@ -19,7 +19,6 @@ namespace Efficienseat
     {
         //private 
         private int wedID;
-        private int scrollSpot = 0;
 
         //public
         public DataTable AttendeeDT;

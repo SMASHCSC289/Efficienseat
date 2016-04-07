@@ -59,6 +59,7 @@
             this.btnSaveChanges = new System.Windows.Forms.Button();
             this.label_Title = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
+            this.btnDeleteTable = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.pnlWorkspace.SuspendLayout();
             this.SuspendLayout();
@@ -494,11 +495,22 @@
             this.btnClose.MouseEnter += new System.EventHandler(this.btnClose_MouseEnter);
             this.btnClose.MouseLeave += new System.EventHandler(this.btnClose_MouseLeave);
             // 
+            // btnDeleteTable
+            // 
+            this.btnDeleteTable.Location = new System.Drawing.Point(345, 72);
+            this.btnDeleteTable.Name = "btnDeleteTable";
+            this.btnDeleteTable.Size = new System.Drawing.Size(93, 23);
+            this.btnDeleteTable.TabIndex = 17;
+            this.btnDeleteTable.Text = "Delete Table";
+            this.btnDeleteTable.UseVisualStyleBackColor = true;
+            this.btnDeleteTable.Click += new System.EventHandler(this.btnDeleteTable_Click);
+            // 
             // TableAssignments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(522, 548);
+            this.Controls.Add(this.btnDeleteTable);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.label_Title);
             this.Controls.Add(this.btnSaveChanges);
@@ -553,5 +565,6 @@
         private System.Windows.Forms.Button btnSaveChanges;
         private System.Windows.Forms.Label label_Title;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnDeleteTable;
     }
 }

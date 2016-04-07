@@ -12,10 +12,15 @@ namespace Efficienseat
 {
     public partial class TableCreateForm : Form
     {
+        //private
         private string tableName = null;
         private string tableShape = null;
         private int numSeats = 0;
 
+        //public
+        public List<string> tableNames;
+
+        #region Properties
         public string TableName
         {
             get { return tableName; }
@@ -38,6 +43,9 @@ namespace Efficienseat
         {
             InitializeComponent();
         }
+        #endregion
+
+        #region Events
 
         private void cbxTableShape_SelectionChangeCommitted(object sender, EventArgs e)
         {
@@ -63,6 +71,44 @@ namespace Efficienseat
         private void nudNumSeats_ValueChanged(object sender, EventArgs e)
         {
             NumberOfSeats = (int) nudNumSeats.Value;
+        }
+
+        private void TableCreateForm_Shown(object sender, EventArgs e)
+        {
+            txtName.Focus();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            ValidData();
+        }
+
+        private void TableCreateForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (btnSave.DialogResult != DialogResult.OK)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        #endregion
+
+        private void ValidData()
+        {
+            btnSave.DialogResult = DialogResult.OK;
+
+            if (tableNames.IndexOf(txtName.Text.Trim().ToString()) > -1)
+            {
+                MessageBox.Show("Table Name already exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtName.Focus();
+                txtName.SelectAll();
+                btnSave.DialogResult = DialogResult.No;
+            }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

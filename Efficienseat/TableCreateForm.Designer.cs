@@ -46,12 +46,13 @@
             this.cbEndSeats.Checked = true;
             this.cbEndSeats.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbEndSeats.Enabled = false;
-            this.cbEndSeats.Location = new System.Drawing.Point(104, 103);
+            this.cbEndSeats.Location = new System.Drawing.Point(35, 122);
             this.cbEndSeats.Name = "cbEndSeats";
             this.cbEndSeats.Size = new System.Drawing.Size(81, 17);
             this.cbEndSeats.TabIndex = 15;
             this.cbEndSeats.Text = "End Seats?";
             this.cbEndSeats.UseVisualStyleBackColor = true;
+            this.cbEndSeats.Visible = false;
             // 
             // label3
             // 
@@ -77,7 +78,7 @@
             0});
             this.nudNumSeats.Name = "nudNumSeats";
             this.nudNumSeats.Size = new System.Drawing.Size(107, 20);
-            this.nudNumSeats.TabIndex = 13;
+            this.nudNumSeats.TabIndex = 1;
             this.nudNumSeats.Value = new decimal(new int[] {
             1,
             0,
@@ -95,7 +96,7 @@
             this.cbxTableShape.Location = new System.Drawing.Point(104, 76);
             this.cbxTableShape.Name = "cbxTableShape";
             this.cbxTableShape.Size = new System.Drawing.Size(107, 21);
-            this.cbxTableShape.TabIndex = 12;
+            this.cbxTableShape.TabIndex = 2;
             this.cbxTableShape.SelectionChangeCommitted += new System.EventHandler(this.cbxTableShape_SelectionChangeCommitted);
             // 
             // label2
@@ -112,7 +113,7 @@
             this.txtName.Location = new System.Drawing.Point(104, 24);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(107, 20);
-            this.txtName.TabIndex = 17;
+            this.txtName.TabIndex = 0;
             this.txtName.Leave += new System.EventHandler(this.txtName_Leave);
             // 
             // label1
@@ -127,28 +128,30 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(35, 145);
+            this.btnCancel.Location = new System.Drawing.Point(41, 116);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 19;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
             this.btnSave.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnSave.Location = new System.Drawing.Point(116, 145);
+            this.btnSave.Location = new System.Drawing.Point(122, 116);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 20;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // TableCreateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(227, 180);
+            this.ClientSize = new System.Drawing.Size(227, 158);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.label1);
@@ -160,7 +163,9 @@
             this.Controls.Add(this.cbxTableShape);
             this.Name = "TableCreateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "TableCreateForm";
+            this.Text = "Create Table";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TableCreateForm_FormClosing);
+            this.Shown += new System.EventHandler(this.TableCreateForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.nudNumSeats)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

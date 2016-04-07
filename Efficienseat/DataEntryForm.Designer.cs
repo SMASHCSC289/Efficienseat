@@ -67,7 +67,7 @@
             this.txtFirstName.Location = new System.Drawing.Point(111, 12);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(146, 20);
-            this.txtFirstName.TabIndex = 2;
+            this.txtFirstName.TabIndex = 0;
             // 
             // txtLastName
             // 
@@ -76,7 +76,7 @@
             this.txtLastName.Location = new System.Drawing.Point(111, 38);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(146, 20);
-            this.txtLastName.TabIndex = 3;
+            this.txtLastName.TabIndex = 1;
             // 
             // cbFoodAllergy
             // 
@@ -89,7 +89,7 @@
             this.cbFoodAllergy.Location = new System.Drawing.Point(111, 69);
             this.cbFoodAllergy.Name = "cbFoodAllergy";
             this.cbFoodAllergy.Size = new System.Drawing.Size(49, 21);
-            this.cbFoodAllergy.TabIndex = 11;
+            this.cbFoodAllergy.TabIndex = 2;
             // 
             // lblFoodAllergy
             // 
@@ -112,7 +112,7 @@
             this.cbRSVP.Location = new System.Drawing.Point(111, 105);
             this.cbRSVP.Name = "cbRSVP";
             this.cbRSVP.Size = new System.Drawing.Size(146, 21);
-            this.cbRSVP.TabIndex = 13;
+            this.cbRSVP.TabIndex = 3;
             // 
             // label7
             // 
@@ -129,7 +129,7 @@
             this.btnSave.Location = new System.Drawing.Point(136, 259);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 15;
+            this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -140,7 +140,7 @@
             this.btnCancel.Location = new System.Drawing.Point(41, 259);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 16;
+            this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -151,7 +151,7 @@
             this.txtComments.Multiline = true;
             this.txtComments.Name = "txtComments";
             this.txtComments.Size = new System.Drawing.Size(245, 70);
-            this.txtComments.TabIndex = 17;
+            this.txtComments.TabIndex = 4;
             // 
             // label1
             // 
@@ -182,7 +182,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "DataEntryForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "DataEntryForm";
+            this.Text = "Wedding Guest";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DataEntryForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
