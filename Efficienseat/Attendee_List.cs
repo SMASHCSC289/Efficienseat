@@ -181,7 +181,8 @@ namespace Efficienseat
         {
             if (lvwAttendee.SelectedItems.Count == 1)
             {
-                removeAttendee(lvwAttendee.SelectedItems[0]);
+                if (MessageBox.Show("Are you sure you want to remove: " + lvwAttendee.SelectedItems[0].Text + "?", "Remove Guest", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                 removeAttendee(lvwAttendee.SelectedItems[0]);
             }
         } //END btnRemoveAttendee_Click EVENT
 
