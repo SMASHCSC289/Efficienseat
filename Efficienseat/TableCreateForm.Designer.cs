@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cbEndSeats = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.nudNumSeats = new System.Windows.Forms.NumericUpDown();
             this.cbxTableShape = new System.Windows.Forms.ComboBox();
@@ -39,20 +38,6 @@
             this.btnSave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudNumSeats)).BeginInit();
             this.SuspendLayout();
-            // 
-            // cbEndSeats
-            // 
-            this.cbEndSeats.AutoSize = true;
-            this.cbEndSeats.Checked = true;
-            this.cbEndSeats.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbEndSeats.Enabled = false;
-            this.cbEndSeats.Location = new System.Drawing.Point(35, 122);
-            this.cbEndSeats.Name = "cbEndSeats";
-            this.cbEndSeats.Size = new System.Drawing.Size(81, 17);
-            this.cbEndSeats.TabIndex = 15;
-            this.cbEndSeats.Text = "End Seats?";
-            this.cbEndSeats.UseVisualStyleBackColor = true;
-            this.cbEndSeats.Visible = false;
             // 
             // label3
             // 
@@ -127,8 +112,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(41, 116);
+            this.btnCancel.Location = new System.Drawing.Point(35, 116);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 19;
@@ -138,8 +122,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnSave.Location = new System.Drawing.Point(122, 116);
+            this.btnSave.Location = new System.Drawing.Point(116, 116);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 20;
@@ -157,7 +140,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.cbEndSeats);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.nudNumSeats);
             this.Controls.Add(this.cbxTableShape);
@@ -165,6 +147,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Create Table";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TableCreateForm_FormClosing);
+            this.Load += new System.EventHandler(this.TableCreateForm_Load);
             this.Shown += new System.EventHandler(this.TableCreateForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.nudNumSeats)).EndInit();
             this.ResumeLayout(false);
@@ -173,8 +156,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.CheckBox cbEndSeats;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown nudNumSeats;
         private System.Windows.Forms.ComboBox cbxTableShape;

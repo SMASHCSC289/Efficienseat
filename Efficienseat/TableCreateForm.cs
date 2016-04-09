@@ -16,6 +16,7 @@ namespace Efficienseat
         private string tableName = null;
         private string tableShape = null;
         private int numSeats = 0;
+        private DialogResult formDR;  
 
         //public
         public List<string> tableNames;
@@ -46,20 +47,14 @@ namespace Efficienseat
         #endregion
 
         #region Events
+        private void TableCreateForm_Load(object sender, EventArgs e)
+        {
+            formDR = DialogResult.None;
+        }
 
         private void cbxTableShape_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if (cbxTableShape.Text == "Rectangle")
-            {
-                cbEndSeats.Enabled = true;
-            }
-            else
-            {
-                cbEndSeats.Enabled = false;
-            }
-
             Shape = cbxTableShape.Text;
-
             //Refresh();
         }
 
@@ -78,37 +73,60 @@ namespace Efficienseat
             txtName.Focus();
         }
 
+        #endregion
+
+        private DialogResult ValidData()
+        {
+            if (txtName.Text == "")
+            {
+                MessageBox.Show("Please enter a table name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return DialogResult.None;
+            }            
+
+            if (cbxTableShape.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please enter a table shape.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return DialogResult.None;
+            }
+
+            if (tableNames.IndexOf(txtName.Text.Trim().ToString()) > -1)
+            {
+                MessageBox.Show("Table Name already exists.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtName.Focus();
+                txtName.SelectAll();
+                return DialogResult.None;
+            }
+
+            return DialogResult.OK;
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
-            ValidData();
+            NumberOfSeats = (int)nudNumSeats.Value;
+            
+            // Set override value
+            formDR = ValidData();
+
+            this.Close();
         }
 
         private void TableCreateForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (btnSave.DialogResult != DialogResult.OK)
+            // Override native "Cancel" status
+            this.DialogResult = formDR;
+
+            // - MessageBox.Show(this.DialogResult.ToString());
+
+            if (this.DialogResult != DialogResult.OK && this.DialogResult != DialogResult.Cancel)
             {
                 e.Cancel = true;
             }
         }
-
-        #endregion
-
-        private void ValidData()
-        {
-            btnSave.DialogResult = DialogResult.OK;
-
-            if (tableNames.IndexOf(txtName.Text.Trim().ToString()) > -1)
-            {
-                MessageBox.Show("Table Name already exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtName.Focus();
-                txtName.SelectAll();
-                btnSave.DialogResult = DialogResult.No;
-            }
-        }
-
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            Close();
+            // Set override value
+            formDR = DialogResult.Cancel;
+            this.Close();
         }
     }
 }
