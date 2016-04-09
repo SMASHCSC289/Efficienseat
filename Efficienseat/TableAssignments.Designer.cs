@@ -70,6 +70,7 @@
             this.cbxTableName.Location = new System.Drawing.Point(188, 45);
             this.cbxTableName.Name = "cbxTableName";
             this.cbxTableName.Size = new System.Drawing.Size(151, 21);
+            this.cbxTableName.Sorted = true;
             this.cbxTableName.TabIndex = 2;
             this.cbxTableName.SelectionChangeCommitted += new System.EventHandler(this.cbxTableName_SelectionChangeCommitted);
             // 

@@ -966,6 +966,9 @@ namespace Efficienseat
                     }
                 }
             }
+
+            if (TableDT.Rows.Count == 10)
+                btnAddTable.Enabled = false;
         }
 
         // Add new table to the wedding
@@ -1079,6 +1082,9 @@ namespace Efficienseat
                 int SelectedIndex = TableDT.Rows.IndexOf(removeRow[0]);
                 TableDT.Rows.RemoveAt(SelectedIndex);
             }
+
+            if (TableDT.Rows.Count < 10)
+                btnAddTable.Enabled = true;
         }
 
         private int GetTableID(string tableName)
