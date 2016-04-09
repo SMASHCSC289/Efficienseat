@@ -64,7 +64,7 @@
             this.weddingMonthComboBox.Location = new System.Drawing.Point(88, 73);
             this.weddingMonthComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.weddingMonthComboBox.Name = "weddingMonthComboBox";
-            this.weddingMonthComboBox.Size = new System.Drawing.Size(62, 21);
+            this.weddingMonthComboBox.Size = new System.Drawing.Size(103, 21);
             this.weddingMonthComboBox.TabIndex = 1;
             // 
             // weddingYearComboBox
@@ -115,7 +115,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(18, 73);
+            this.label2.Location = new System.Drawing.Point(43, 73);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 13);
@@ -125,19 +125,19 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(172, 73);
+            this.label3.Location = new System.Drawing.Point(195, 73);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 13);
             this.label3.TabIndex = 5;
             this.label3.Text = "Year";
             // 
-            // button1
+            // btnSave
             // 
             this.btnSave.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnSave.Location = new System.Drawing.Point(228, 123);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSave.Name = "button1";
+            this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(64, 25);
             this.btnSave.TabIndex = 6;
             this.btnSave.Text = "Submit";
