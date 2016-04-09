@@ -80,12 +80,14 @@ namespace Efficienseat
             if (txtName.Text == "")
             {
                 MessageBox.Show("Please enter a table name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtName.Focus();
                 return DialogResult.None;
             }            
 
             if (cbxTableShape.SelectedIndex == -1)
             {
                 MessageBox.Show("Please enter a table shape.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cbxTableShape.Focus();
                 return DialogResult.None;
             }
 

@@ -12,6 +12,8 @@ namespace Efficienseat
 {
     public partial class DataEntryForm : Form
     {
+        bool result;
+
         //  Constructor
         public DataEntryForm()
         {
@@ -79,6 +81,7 @@ namespace Efficienseat
         //</summary>
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            result = true;
             Close();
         }
 
@@ -96,9 +99,13 @@ namespace Efficienseat
         //</summary>
         private void DataEntryForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (btnSave.DialogResult != DialogResult.OK)
+            if (!result)
             {
                 e.Cancel = true;
+            }
+            else
+            {
+                e.Cancel = false;
             }
         }
 
@@ -111,31 +118,31 @@ namespace Efficienseat
         //</summary>
         private void ValidData()
         {
-            btnSave.DialogResult = DialogResult.OK;
+            result = true;
 
             if (txtFirstName.Text.ToString() == "")
             {
                 MessageBox.Show("First Name is required.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtFirstName.Focus();
-                btnSave.DialogResult = DialogResult.No;
+                result = false;
             }
             else if (txtLastName.Text.ToString() == "")
             {
                 MessageBox.Show("Last Name is required.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtLastName.Focus();
-                btnSave.DialogResult = DialogResult.No;
+                result = false;
             }
             else if (cbFoodAllergy.Text.ToString() == "")
             {
                 MessageBox.Show("Please choose a Food Allergy option.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 cbFoodAllergy.Focus();
-                btnSave.DialogResult = DialogResult.No;
+                result = false;
             }
             else if (cbRSVP.Text.ToString() == "")
             {
                 MessageBox.Show("Please choose a RSVP option.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 cbRSVP.Focus();
-                btnSave.DialogResult = DialogResult.No;
+                result = false;
             }
         }
 
