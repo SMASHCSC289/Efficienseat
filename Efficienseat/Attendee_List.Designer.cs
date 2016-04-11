@@ -51,15 +51,19 @@
             this.tmiRemoveAttendee = new System.Windows.Forms.ToolStripMenuItem();
             this.tmiEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.tmiImport = new System.Windows.Forms.ToolStripMenuItem();
+            this.importExcelFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAddAtendee = new System.Windows.Forms.Button();
             this.btnChangeView = new System.Windows.Forms.Button();
             this.imlTableNumbers = new System.Windows.Forms.ImageList(this.components);
             this.btnEditEntry = new System.Windows.Forms.Button();
             this.btnRemoveAttendee = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.importExcelFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblGuestCount = new System.Windows.Forms.Label();
             this.cmsAttendee.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lvwAttendee
@@ -151,28 +155,35 @@
             this.tmiImport,
             this.importExcelFileToolStripMenuItem});
             this.cmsAttendee.Name = "contextMenuStrip1";
-            this.cmsAttendee.Size = new System.Drawing.Size(154, 114);
+            this.cmsAttendee.Size = new System.Drawing.Size(161, 92);
             // 
             // tmiRemoveAttendee
             // 
             this.tmiRemoveAttendee.Name = "tmiRemoveAttendee";
-            this.tmiRemoveAttendee.Size = new System.Drawing.Size(153, 22);
+            this.tmiRemoveAttendee.Size = new System.Drawing.Size(160, 22);
             this.tmiRemoveAttendee.Text = "Remove";
             this.tmiRemoveAttendee.Click += new System.EventHandler(this.tmiRemoveAttendee_Click);
             // 
             // tmiEdit
             // 
             this.tmiEdit.Name = "tmiEdit";
-            this.tmiEdit.Size = new System.Drawing.Size(153, 22);
+            this.tmiEdit.Size = new System.Drawing.Size(160, 22);
             this.tmiEdit.Text = "Edit";
             this.tmiEdit.Click += new System.EventHandler(this.tmiEdit_Click);
             // 
             // tmiImport
             // 
             this.tmiImport.Name = "tmiImport";
-            this.tmiImport.Size = new System.Drawing.Size(153, 22);
+            this.tmiImport.Size = new System.Drawing.Size(160, 22);
             this.tmiImport.Text = "Import Text File";
             this.tmiImport.Click += new System.EventHandler(this.tmiImport_Click);
+            // 
+            // importExcelFileToolStripMenuItem
+            // 
+            this.importExcelFileToolStripMenuItem.Name = "importExcelFileToolStripMenuItem";
+            this.importExcelFileToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.importExcelFileToolStripMenuItem.Text = "Import Excel File";
+            this.importExcelFileToolStripMenuItem.Click += new System.EventHandler(this.importExcelFileToolStripMenuItem_Click);
             // 
             // btnAddAtendee
             // 
@@ -240,12 +251,36 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(506, 32);
             this.flowLayoutPanel1.TabIndex = 6;
             // 
-            // importExcelFileToolStripMenuItem
+            // panel1
             // 
-            this.importExcelFileToolStripMenuItem.Name = "importExcelFileToolStripMenuItem";
-            this.importExcelFileToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-            this.importExcelFileToolStripMenuItem.Text = "Import Excel File";
-            this.importExcelFileToolStripMenuItem.Click += new System.EventHandler(this.importExcelFileToolStripMenuItem_Click);
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.lblGuestCount);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(1, 460);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(506, 27);
+            this.panel1.TabIndex = 7;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(11, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(107, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Total Guest Count :";
+            // 
+            // lblGuestCount
+            // 
+            this.lblGuestCount.AutoSize = true;
+            this.lblGuestCount.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGuestCount.Location = new System.Drawing.Point(115, 6);
+            this.lblGuestCount.Name = "lblGuestCount";
+            this.lblGuestCount.Size = new System.Drawing.Size(13, 13);
+            this.lblGuestCount.TabIndex = 1;
+            this.lblGuestCount.Text = "0";
             // 
             // Attendee_List
             // 
@@ -253,6 +288,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(508, 488);
             this.ControlBox = false;
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.lvwAttendee);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -264,6 +300,8 @@
             this.Resize += new System.EventHandler(this.Attendee_List_Resize);
             this.cmsAttendee.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -287,5 +325,8 @@
         private System.Windows.Forms.ColumnHeader colAllergy;
         private System.Windows.Forms.ColumnHeader colComments;
         private System.Windows.Forms.ToolStripMenuItem importExcelFileToolStripMenuItem;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblGuestCount;
+        private System.Windows.Forms.Label label1;
     }
 }

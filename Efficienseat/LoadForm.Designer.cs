@@ -111,7 +111,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(39, 142);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(27, 13);
+            this.label3.Size = new System.Drawing.Size(28, 13);
             this.label3.TabIndex = 10;
             this.label3.Text = "Year";
             // 
@@ -166,7 +166,7 @@
             this.cbYear.Location = new System.Drawing.Point(107, 139);
             this.cbYear.Name = "cbYear";
             this.cbYear.Size = new System.Drawing.Size(93, 21);
-            this.cbYear.TabIndex = 7;
+            this.cbYear.TabIndex = 3;
             // 
             // txtPartyName
             // 
@@ -174,7 +174,7 @@
             this.txtPartyName.Location = new System.Drawing.Point(107, 62);
             this.txtPartyName.Name = "txtPartyName";
             this.txtPartyName.Size = new System.Drawing.Size(287, 22);
-            this.txtPartyName.TabIndex = 6;
+            this.txtPartyName.TabIndex = 1;
             // 
             // cbMonth
             // 
@@ -196,7 +196,7 @@
             this.cbMonth.Location = new System.Drawing.Point(107, 100);
             this.cbMonth.Name = "cbMonth";
             this.cbMonth.Size = new System.Drawing.Size(131, 21);
-            this.cbMonth.TabIndex = 5;
+            this.cbMonth.TabIndex = 2;
             // 
             // gbExisting
             // 

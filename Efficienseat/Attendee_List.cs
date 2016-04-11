@@ -277,6 +277,7 @@ namespace Efficienseat
             finally
             {
                 lvwAttendee.EndUpdate();
+                updateGuestCount();
                 CheckGuestCount();
             }
         }
@@ -319,6 +320,7 @@ namespace Efficienseat
                     }
                     AttendeeDT.Rows.Add(newRow);
 
+                    updateGuestCount();
 
                     //ListViewItem [0] = NAME
                     //ListViewItem [1] = RSVP
@@ -333,6 +335,11 @@ namespace Efficienseat
             }
 
             CheckGuestCount();
+        }
+
+        private void updateGuestCount()
+        {
+            lblGuestCount.Text = lvwAttendee.Items.Count.ToString();
         }
 
         // change listview visuals
@@ -406,6 +413,7 @@ namespace Efficienseat
             {
                 int SelectedIndex = AttendeeDT.Rows.IndexOf(removeRow[0]);
                 AttendeeDT.Rows.RemoveAt(SelectedIndex);
+                updateGuestCount();
             }
 
             CheckGuestCount();
@@ -506,6 +514,7 @@ namespace Efficienseat
                             }
                         }
 
+                        updateGuestCount();
                         if (AttendeeDT.Rows.Count == 100)
                         {
                             MessageBox.Show("You have reached your 100 guest limit.\nNo more names will be added." +
@@ -617,6 +626,7 @@ namespace Efficienseat
 
                         }
 
+                        updateGuestCount();
                         if (AttendeeDT.Rows.Count == 100)
                         {
                             MessageBox.Show("You have reached your 100 guest limit.\nNo more names will be added." +
