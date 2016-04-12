@@ -42,15 +42,17 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 52);
+            this.label3.Location = new System.Drawing.Point(24, 100);
+            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 13);
+            this.label3.Size = new System.Drawing.Size(172, 25);
             this.label3.TabIndex = 14;
             this.label3.Text = "Number of Seats";
             // 
             // nudNumSeats
             // 
-            this.nudNumSeats.Location = new System.Drawing.Point(104, 50);
+            this.nudNumSeats.Location = new System.Drawing.Point(208, 96);
+            this.nudNumSeats.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.nudNumSeats.Maximum = new decimal(new int[] {
             10,
             0,
@@ -62,7 +64,7 @@
             0,
             0});
             this.nudNumSeats.Name = "nudNumSeats";
-            this.nudNumSeats.Size = new System.Drawing.Size(107, 20);
+            this.nudNumSeats.Size = new System.Drawing.Size(214, 31);
             this.nudNumSeats.TabIndex = 1;
             this.nudNumSeats.Value = new decimal(new int[] {
             1,
@@ -78,43 +80,48 @@
             "Circle",
             "Square",
             "Rectangle"});
-            this.cbxTableShape.Location = new System.Drawing.Point(104, 76);
+            this.cbxTableShape.Location = new System.Drawing.Point(208, 146);
+            this.cbxTableShape.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.cbxTableShape.Name = "cbxTableShape";
-            this.cbxTableShape.Size = new System.Drawing.Size(107, 21);
+            this.cbxTableShape.Size = new System.Drawing.Size(210, 33);
             this.cbxTableShape.TabIndex = 2;
             this.cbxTableShape.SelectionChangeCommitted += new System.EventHandler(this.cbxTableShape_SelectionChangeCommitted);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 79);
+            this.label2.Location = new System.Drawing.Point(60, 152);
+            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 13);
+            this.label2.Size = new System.Drawing.Size(134, 25);
             this.label2.TabIndex = 16;
             this.label2.Text = "Table Shape";
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(104, 24);
+            this.txtName.Location = new System.Drawing.Point(208, 46);
+            this.txtName.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(107, 20);
+            this.txtName.Size = new System.Drawing.Size(210, 31);
             this.txtName.TabIndex = 0;
             this.txtName.Leave += new System.EventHandler(this.txtName_Leave);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(30, 27);
+            this.label1.Location = new System.Drawing.Point(60, 52);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 13);
+            this.label1.Size = new System.Drawing.Size(128, 25);
             this.label1.TabIndex = 18;
             this.label1.Text = "Table Name";
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(35, 116);
+            this.btnCancel.Location = new System.Drawing.Point(70, 223);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Size = new System.Drawing.Size(150, 44);
             this.btnCancel.TabIndex = 19;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -122,9 +129,10 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(116, 116);
+            this.btnSave.Location = new System.Drawing.Point(232, 223);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(150, 44);
             this.btnSave.TabIndex = 20;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -132,9 +140,10 @@
             // 
             // TableCreateForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(227, 158);
+            this.ClientSize = new System.Drawing.Size(464, 304);
+            this.ControlBox = false;
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.label1);
@@ -143,6 +152,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.nudNumSeats);
             this.Controls.Add(this.cbxTableShape);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "TableCreateForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

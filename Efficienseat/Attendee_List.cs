@@ -166,7 +166,7 @@ namespace Efficienseat
 
         private void btnChangeView_Click(object sender, EventArgs e)
         {
-            changeView();
+           changeView();
         } //END btnChangeView_Click EVENT
 
         private void btnEditEntry_Click(object sender, EventArgs e)
@@ -175,6 +175,11 @@ namespace Efficienseat
             {
                 editAttendee(lvwAttendee.SelectedItems[0]);
             }
+            else if (lvwAttendee.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Please choose a guest to edit.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
         } //END btnEditEntry_Click EVENT
 
         private void btnRemoveAttendee_Click(object sender, EventArgs e)
@@ -183,6 +188,10 @@ namespace Efficienseat
             {
                 if (MessageBox.Show("Are you sure you want to remove: " + lvwAttendee.SelectedItems[0].Text + "?", "Remove Guest", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                  removeAttendee(lvwAttendee.SelectedItems[0]);
+            }
+            else if (lvwAttendee.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Please choose a guest to remove.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         } //END btnRemoveAttendee_Click EVENT
 
