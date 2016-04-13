@@ -126,6 +126,8 @@
             this.imageList_16.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList_16.Images.SetKeyName(0, "man13_blk.png");
             this.imageList_16.Images.SetKeyName(1, "man13_red.png");
+            this.imageList_16.Images.SetKeyName(2, "man13_blk_cmnt.png");
+            this.imageList_16.Images.SetKeyName(3, "man13_red_cmnt.png");
             // 
             // label1
             // 
@@ -244,6 +246,8 @@
             this.imageList_Seat_32.Images.SetKeyName(0, "seated_32_blk.png");
             this.imageList_Seat_32.Images.SetKeyName(1, "seated_32_red.png");
             this.imageList_Seat_32.Images.SetKeyName(2, "chair_32_blk.png");
+            this.imageList_Seat_32.Images.SetKeyName(3, "seated_32_blk_cmnt.png");
+            this.imageList_Seat_32.Images.SetKeyName(4, "seated_32_red_cmnt.png");
             // 
             // lvwSeat8
             // 
