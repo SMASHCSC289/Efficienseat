@@ -898,8 +898,11 @@ namespace Efficienseat
                 li.SubItems.Add(dr["GUEST_ID"].ToString());
 
                 // Have to use SEAT_NUM - 1 to account for 0 indexed list.
-                listSeats[Convert.ToInt32(dr["SEAT_NUM"]) - 1].Items.Clear();
-                listSeats[Convert.ToInt32(dr["SEAT_NUM"]) - 1].Items.Add(li);
+                if (dr["SEAT_NUM"].ToString() != "")
+                {
+                    listSeats[Convert.ToInt32(dr["SEAT_NUM"]) - 1].Items.Clear();
+                    listSeats[Convert.ToInt32(dr["SEAT_NUM"]) - 1].Items.Add(li);
+                }
             }
         }
 
