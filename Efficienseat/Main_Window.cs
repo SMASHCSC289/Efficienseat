@@ -345,7 +345,9 @@ namespace Efficienseat
                 sdaAttendee.Update(AttendeeDT);
                 al.LoadListView();
                 if (ta != null && ta.Visible)
+                {
                     ta.loadListView();
+                }
             }
             catch (Exception ex)
             {
@@ -364,7 +366,11 @@ namespace Efficienseat
                 sdaAttendee.Update(AttendeeDT);
                 al.LoadListView();
                 if (ta != null && ta.Visible)
+                {
                     ta.loadListView();
+                    ta.loadSeats();
+                }
+                    
             }
             catch (Exception ex)
             {

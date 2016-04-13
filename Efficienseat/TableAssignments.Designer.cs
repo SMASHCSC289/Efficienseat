@@ -170,7 +170,7 @@
             this.lvwUnseated.MultiSelect = false;
             this.lvwUnseated.Name = "lvwUnseated";
             this.lvwUnseated.ShowItemToolTips = true;
-            this.lvwUnseated.Size = new System.Drawing.Size(124, 409);
+            this.lvwUnseated.Size = new System.Drawing.Size(169, 409);
             this.lvwUnseated.SmallImageList = this.imageList_16;
             this.lvwUnseated.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.lvwUnseated.TabIndex = 8;
@@ -473,7 +473,7 @@
             this.label_Title.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Title.Location = new System.Drawing.Point(1, 1);
             this.label_Title.Name = "label_Title";
-            this.label_Title.Size = new System.Drawing.Size(520, 30);
+            this.label_Title.Size = new System.Drawing.Size(557, 30);
             this.label_Title.TabIndex = 15;
             this.label_Title.Text = "    Assign Attendees to Seats";
             this.label_Title.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -486,7 +486,7 @@
             this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Image = global::Efficienseat.Properties.Resources.Close_Dark;
-            this.btnClose.Location = new System.Drawing.Point(476, 1);
+            this.btnClose.Location = new System.Drawing.Point(513, 2);
             this.btnClose.Name = "btnClose";
             this.btnClose.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.btnClose.Size = new System.Drawing.Size(45, 29);
@@ -510,7 +510,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(522, 548);
+            this.ClientSize = new System.Drawing.Size(559, 548);
             this.Controls.Add(this.btnDeleteTable);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.label_Title);

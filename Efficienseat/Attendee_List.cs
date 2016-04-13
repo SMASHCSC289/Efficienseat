@@ -117,7 +117,7 @@ namespace Efficienseat
                 lvwAttendee.Location = new Point(1, flowLayoutPanel1.Location.Y + flowLayoutPanel1.Height + 1);
             }
 
-            lvwAttendee.Height = this.Height - flowLayoutPanel1.Height - 2;
+            lvwAttendee.Height = this.Height - flowLayoutPanel1.Height - pnlGuestCount.Height - 2;
         }
 
         #endregion Custom_UI
@@ -184,6 +184,16 @@ namespace Efficienseat
                 if (MessageBox.Show("Are you sure you want to remove: " + lvwAttendee.SelectedItems[0].Text + "?", "Remove Guest", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                  removeAttendee(lvwAttendee.SelectedItems[0]);
             }
+            //else if (lvwAttendee.SelectedItems.Count > 1)
+            //{
+            //    if (MessageBox.Show("Are you sure you want to remove all selected guest?", "Remove Guest", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            //    {
+            //        for (int i = 0; i < lvwAttendee.SelectedItems.Count; i++)
+            //        {
+            //            removeAttendee(lvwAttendee.SelectedItems[i]);
+            //        }
+            //    }
+            //}
         } //END btnRemoveAttendee_Click EVENT
 
         #endregion FormButtons
@@ -389,6 +399,11 @@ namespace Efficienseat
                         updateRow[0]["FOOD_ALLERGY"] = data.FoodAllergy;
                         updateRow[0]["COMMENTS"] = data.Comments;
                         //AttendeeDT.AcceptChanges();
+                        if (updateRow[0]["RSVP"].ToString() != "Accept")
+                        {
+                            updateRow[0]["TABLE_ID"] = DBNull.Value;
+                            updateRow[0]["SEAT_NUM"] = DBNull.Value;
+                        }
 
                         lvi.Text = data.LastName + ", " + data.FirstName;
                         lvi.SubItems[1].Text = data.RSVP;
