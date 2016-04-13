@@ -45,20 +45,18 @@
             // lblFirstName
             // 
             this.lblFirstName.AutoSize = true;
-            this.lblFirstName.Location = new System.Drawing.Point(24, 27);
-            this.lblFirstName.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblFirstName.Location = new System.Drawing.Point(12, 14);
             this.lblFirstName.Name = "lblFirstName";
-            this.lblFirstName.Size = new System.Drawing.Size(128, 25);
+            this.lblFirstName.Size = new System.Drawing.Size(63, 13);
             this.lblFirstName.TabIndex = 0;
             this.lblFirstName.Text = "First Name :";
             // 
             // lblLastName
             // 
             this.lblLastName.AutoSize = true;
-            this.lblLastName.Location = new System.Drawing.Point(20, 77);
-            this.lblLastName.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblLastName.Location = new System.Drawing.Point(10, 40);
             this.lblLastName.Name = "lblLastName";
-            this.lblLastName.Size = new System.Drawing.Size(127, 25);
+            this.lblLastName.Size = new System.Drawing.Size(64, 13);
             this.lblLastName.TabIndex = 1;
             this.lblLastName.Text = "Last Name :";
             // 
@@ -66,20 +64,18 @@
             // 
             this.txtFirstName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtFirstName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtFirstName.Location = new System.Drawing.Point(222, 23);
-            this.txtFirstName.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtFirstName.Location = new System.Drawing.Point(111, 12);
             this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(290, 31);
+            this.txtFirstName.Size = new System.Drawing.Size(146, 20);
             this.txtFirstName.TabIndex = 0;
             // 
             // txtLastName
             // 
             this.txtLastName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtLastName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtLastName.Location = new System.Drawing.Point(222, 73);
-            this.txtLastName.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtLastName.Location = new System.Drawing.Point(111, 38);
             this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(290, 31);
+            this.txtLastName.Size = new System.Drawing.Size(146, 20);
             this.txtLastName.TabIndex = 1;
             // 
             // cbFoodAllergy
@@ -90,19 +86,17 @@
             this.cbFoodAllergy.Items.AddRange(new object[] {
             "Y",
             "N"});
-            this.cbFoodAllergy.Location = new System.Drawing.Point(222, 133);
-            this.cbFoodAllergy.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.cbFoodAllergy.Location = new System.Drawing.Point(111, 69);
             this.cbFoodAllergy.Name = "cbFoodAllergy";
-            this.cbFoodAllergy.Size = new System.Drawing.Size(94, 33);
+            this.cbFoodAllergy.Size = new System.Drawing.Size(49, 21);
             this.cbFoodAllergy.TabIndex = 2;
             // 
             // lblFoodAllergy
             // 
             this.lblFoodAllergy.AutoSize = true;
-            this.lblFoodAllergy.Location = new System.Drawing.Point(24, 138);
-            this.lblFoodAllergy.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblFoodAllergy.Location = new System.Drawing.Point(12, 72);
             this.lblFoodAllergy.Name = "lblFoodAllergy";
-            this.lblFoodAllergy.Size = new System.Drawing.Size(139, 25);
+            this.lblFoodAllergy.Size = new System.Drawing.Size(68, 13);
             this.lblFoodAllergy.TabIndex = 12;
             this.lblFoodAllergy.Text = "Food Allergy:";
             // 
@@ -115,29 +109,26 @@
             "Unknown",
             "Accept",
             "Decline"});
-            this.cbRSVP.Location = new System.Drawing.Point(222, 202);
-            this.cbRSVP.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.cbRSVP.Location = new System.Drawing.Point(111, 105);
             this.cbRSVP.Name = "cbRSVP";
-            this.cbRSVP.Size = new System.Drawing.Size(288, 33);
+            this.cbRSVP.Size = new System.Drawing.Size(146, 21);
             this.cbRSVP.TabIndex = 3;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(20, 208);
-            this.label7.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label7.Location = new System.Drawing.Point(10, 108);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(184, 25);
+            this.label7.Size = new System.Drawing.Size(93, 13);
             this.label7.TabIndex = 14;
             this.label7.Text = "RSVP Response :";
             // 
             // btnSave
             // 
             this.btnSave.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnSave.Location = new System.Drawing.Point(272, 498);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnSave.Location = new System.Drawing.Point(146, 251);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(150, 44);
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -146,10 +137,9 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(82, 498);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnCancel.Location = new System.Drawing.Point(51, 251);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(150, 44);
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -157,28 +147,26 @@
             // 
             // txtComments
             // 
-            this.txtComments.Location = new System.Drawing.Point(30, 329);
-            this.txtComments.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtComments.Location = new System.Drawing.Point(15, 171);
             this.txtComments.Multiline = true;
             this.txtComments.Name = "txtComments";
-            this.txtComments.Size = new System.Drawing.Size(486, 131);
+            this.txtComments.Size = new System.Drawing.Size(245, 70);
             this.txtComments.TabIndex = 4;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 298);
-            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label1.Location = new System.Drawing.Point(12, 155);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(132, 25);
+            this.label1.Size = new System.Drawing.Size(65, 13);
             this.label1.TabIndex = 18;
             this.label1.Text = "Comments : ";
             // 
             // DataEntryForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(544, 565);
+            this.ClientSize = new System.Drawing.Size(272, 294);
             this.ControlBox = false;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtComments);
@@ -193,7 +181,6 @@
             this.Controls.Add(this.lblLastName);
             this.Controls.Add(this.lblFirstName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "DataEntryForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Wedding Guest";
