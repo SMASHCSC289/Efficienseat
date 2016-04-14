@@ -29,17 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Unassigned", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Table 1", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Table 2", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Table 3", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Table 4", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("Table 5", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup7 = new System.Windows.Forms.ListViewGroup("Table 6", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup8 = new System.Windows.Forms.ListViewGroup("Table 7", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup9 = new System.Windows.Forms.ListViewGroup("Table 8", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup10 = new System.Windows.Forms.ListViewGroup("Table 9", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup11 = new System.Windows.Forms.ListViewGroup("Table 10", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Awaiting Response", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Declined", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Accepted", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Table 1", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Table 2", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("Table 3", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup7 = new System.Windows.Forms.ListViewGroup("Table 4", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup8 = new System.Windows.Forms.ListViewGroup("Table 5", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup9 = new System.Windows.Forms.ListViewGroup("Table 6", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup10 = new System.Windows.Forms.ListViewGroup("Table 7", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup11 = new System.Windows.Forms.ListViewGroup("Table 8", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup12 = new System.Windows.Forms.ListViewGroup("Table 9", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup13 = new System.Windows.Forms.ListViewGroup("Table 10", System.Windows.Forms.HorizontalAlignment.Left);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Attendee_List));
             this.lvwAttendee = new System.Windows.Forms.ListView();
             this.colName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -80,28 +82,32 @@
             this.lvwAttendee.ContextMenuStrip = this.cmsAttendee;
             this.lvwAttendee.FullRowSelect = true;
             this.lvwAttendee.GridLines = true;
-            listViewGroup1.Header = "Unassigned";
-            listViewGroup1.Name = "unassigned";
-            listViewGroup2.Header = "Table 1";
-            listViewGroup2.Name = "table1";
-            listViewGroup3.Header = "Table 2";
-            listViewGroup3.Name = "table2";
-            listViewGroup4.Header = "Table 3";
-            listViewGroup4.Name = "table3";
-            listViewGroup5.Header = "Table 4";
-            listViewGroup5.Name = "table4";
-            listViewGroup6.Header = "Table 5";
-            listViewGroup6.Name = "table5";
-            listViewGroup7.Header = "Table 6";
-            listViewGroup7.Name = "table6";
-            listViewGroup8.Header = "Table 7";
-            listViewGroup8.Name = "table7";
-            listViewGroup9.Header = "Table 8";
-            listViewGroup9.Name = "table8";
-            listViewGroup10.Header = "Table 9";
-            listViewGroup10.Name = "table9";
-            listViewGroup11.Header = "Table 10";
-            listViewGroup11.Name = "table10";
+            listViewGroup1.Header = "Awaiting Response";
+            listViewGroup1.Name = "noresponse";
+            listViewGroup2.Header = "Declined";
+            listViewGroup2.Name = "decline";
+            listViewGroup3.Header = "Accepted";
+            listViewGroup3.Name = "unassigned";
+            listViewGroup4.Header = "Table 1";
+            listViewGroup4.Name = "table1";
+            listViewGroup5.Header = "Table 2";
+            listViewGroup5.Name = "table2";
+            listViewGroup6.Header = "Table 3";
+            listViewGroup6.Name = "table3";
+            listViewGroup7.Header = "Table 4";
+            listViewGroup7.Name = "table4";
+            listViewGroup8.Header = "Table 5";
+            listViewGroup8.Name = "table5";
+            listViewGroup9.Header = "Table 6";
+            listViewGroup9.Name = "table6";
+            listViewGroup10.Header = "Table 7";
+            listViewGroup10.Name = "table7";
+            listViewGroup11.Header = "Table 8";
+            listViewGroup11.Name = "table8";
+            listViewGroup12.Header = "Table 9";
+            listViewGroup12.Name = "table9";
+            listViewGroup13.Header = "Table 10";
+            listViewGroup13.Name = "table10";
             this.lvwAttendee.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
             listViewGroup1,
             listViewGroup2,
@@ -113,7 +119,9 @@
             listViewGroup8,
             listViewGroup9,
             listViewGroup10,
-            listViewGroup11});
+            listViewGroup11,
+            listViewGroup12,
+            listViewGroup13});
             this.lvwAttendee.Location = new System.Drawing.Point(1, 34);
             this.lvwAttendee.Margin = new System.Windows.Forms.Padding(1, 0, 1, 1);
             this.lvwAttendee.Name = "lvwAttendee";

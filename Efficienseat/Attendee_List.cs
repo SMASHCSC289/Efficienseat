@@ -239,7 +239,7 @@ namespace Efficienseat
             for (int i = 0; i < TableDT.Rows.Count; i++)
             {
                 DataRow dr = TableDT.Rows[i];
-                lvwAttendee.Groups[i+1].Header = dr["TABLE_NAME"].ToString();
+                lvwAttendee.Groups[i+3].Header = dr["TABLE_NAME"].ToString();
             }
         }
 
@@ -259,18 +259,30 @@ namespace Efficienseat
                         listitem.ImageIndex = 0;
                         listitem.Group = lvwAttendee.Groups[0];
                     }
-                    else if (dr["RSVP"].ToString() == "Accept" && dr["TABLE_ID"].ToString() == "")
+                    else if (dr["RSVP"].ToString() == "Unknown")
                     {
                         listitem.SubItems.Add(dr["RSVP"].ToString());
                         listitem.ImageIndex = 0;
                         listitem.Group = lvwAttendee.Groups[0];
+                    }
+                    else if (dr["RSVP"].ToString() == "Decline")
+                    {
+                        listitem.SubItems.Add(dr["RSVP"].ToString());
+                        listitem.ImageIndex = 0;
+                        listitem.Group = lvwAttendee.Groups[1];
+                    }
+                    else if (dr["RSVP"].ToString() == "Accept" && dr["TABLE_ID"].ToString() == "")
+                    {
+                        listitem.SubItems.Add(dr["RSVP"].ToString());
+                        listitem.ImageIndex = 0;
+                        listitem.Group = lvwAttendee.Groups[2];
                     }
                     else if (dr["RSVP"].ToString() == "Accept" && dr["TABLE_ID"].ToString() != "")
                     {
                         int index = Convert.ToInt32(dr["TABLE_ID"]);
                         listitem.SubItems.Add(dr["RSVP"].ToString());
                         listitem.ImageIndex = index;
-                        listitem.Group = lvwAttendee.Groups[index];
+                        listitem.Group = lvwAttendee.Groups[index + 2];
                     }
                     else
                     {

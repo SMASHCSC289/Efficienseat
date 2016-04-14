@@ -33,7 +33,6 @@
             this.cbxTableName = new System.Windows.Forms.ComboBox();
             this.cbxTableShape = new System.Windows.Forms.ComboBox();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.imageList_32 = new System.Windows.Forms.ImageList(this.components);
             this.imageList_16 = new System.Windows.Forms.ImageList(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -113,13 +112,6 @@
             0});
             this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
-            // imageList_32
-            // 
-            this.imageList_32.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList_32.ImageStream")));
-            this.imageList_32.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList_32.Images.SetKeyName(0, "man13_blk.png");
-            this.imageList_32.Images.SetKeyName(1, "man13_red.png");
-            // 
             // imageList_16
             // 
             this.imageList_16.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList_16.ImageStream")));
@@ -167,7 +159,6 @@
             this.Guest_ID});
             this.lvwUnseated.FullRowSelect = true;
             this.lvwUnseated.GridLines = true;
-            this.lvwUnseated.LargeImageList = this.imageList_32;
             this.lvwUnseated.Location = new System.Drawing.Point(386, 127);
             this.lvwUnseated.MultiSelect = false;
             this.lvwUnseated.Name = "lvwUnseated";
@@ -551,7 +542,6 @@
         private System.Windows.Forms.ColumnHeader Guest_Name;
         private System.Windows.Forms.ColumnHeader Response;
         private System.Windows.Forms.ColumnHeader Comments;
-        private System.Windows.Forms.ImageList imageList_32;
         private System.Windows.Forms.ImageList imageList_16;
         private System.Windows.Forms.ColumnHeader Guest_ID;
         private System.Windows.Forms.Panel pnlWorkspace;

@@ -792,13 +792,25 @@ namespace Efficienseat
                     li.Text = dr["LAST_NAME"] + ", " + dr["FIRST_NAME"];
                     li.SubItems.Add(dr["RSVP"].ToString());
 
-                    if (dr["COMMENTS"].ToString() != "")
+                    if (dr["FOOD_ALLERGY"].ToString() == "Y" && dr["COMMENTS"].ToString() != "")
                     {
-                        li.ImageIndex = 1;
+                        li.ImageIndex = 3;
                         li.SubItems.Add(dr["COMMENTS"].ToString());
                         li.ToolTipText = dr["COMMENTS"].ToString();
                     }
-                    else
+                    else if (dr["FOOD_ALLERGY"].ToString() == "N" && dr["COMMENTS"].ToString() != "")
+                    {
+                        li.ImageIndex = 2;
+                        li.SubItems.Add(dr["COMMENTS"].ToString());
+                        li.ToolTipText = dr["COMMENTS"].ToString();
+                    }
+
+                    else if (dr["FOOD_ALLERGY"].ToString() == "Y" && dr["COMMENTS"].ToString() == "")
+                    {
+                        li.ImageIndex = 1;
+                        li.SubItems.Add("");
+                    }
+                    else if (dr["FOOD_ALLERGY"].ToString() == "N" && dr["COMMENTS"].ToString() == "")
                     {
                         li.ImageIndex = 0;
                         li.SubItems.Add("");
@@ -883,13 +895,25 @@ namespace Efficienseat
                 li.Text = dr["LAST_NAME"] + ", " + dr["FIRST_NAME"];
                 li.SubItems.Add(dr["RSVP"].ToString());
 
-                if (dr["COMMENTS"].ToString() != "")
+                if (dr["FOOD_ALLERGY"].ToString() == "Y" && dr["COMMENTS"].ToString() != "")
                 {
-                    li.ImageIndex = 1;
+                    li.ImageIndex = 4;
                     li.SubItems.Add(dr["COMMENTS"].ToString());
                     li.ToolTipText = dr["COMMENTS"].ToString();
                 }
-                else
+                else if (dr["FOOD_ALLERGY"].ToString() == "N" && dr["COMMENTS"].ToString() != "")
+                {
+                    li.ImageIndex = 3;
+                    li.SubItems.Add(dr["COMMENTS"].ToString());
+                    li.ToolTipText = dr["COMMENTS"].ToString();
+                }
+
+                else if (dr["FOOD_ALLERGY"].ToString() == "Y" && dr["COMMENTS"].ToString() == "")
+                {
+                    li.ImageIndex = 1;
+                    li.SubItems.Add("");
+                }
+                else if (dr["FOOD_ALLERGY"].ToString() == "N" && dr["COMMENTS"].ToString() == "")
                 {
                     li.ImageIndex = 0;
                     li.SubItems.Add("");
