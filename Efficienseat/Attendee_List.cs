@@ -307,42 +307,62 @@ namespace Efficienseat
         // add item
         private void addAttendee()
         {
+            bool equal = false;
             //Create edit entry window for data population
             //  Pull data form form rather than passing through
             using (DataEntryForm data = new DataEntryForm())
             {
                 if (data.ShowDialog(this) == DialogResult.OK)
                 {
-                    string name = data.LastName + "," + data.FirstName;
+
+                    string name = data.LastName + ", " + data.FirstName;
                     string rsvp = data.RSVP;
                     string allergy = data.FoodAllergy;
                     string comment = data.Comments;
 
-                    //add new row to DataTable
-                    DataRow newRow = AttendeeDT.NewRow();
-                    newRow["FIRST_NAME"] = data.FirstName;
-                    newRow["LAST_NAME"] = data.LastName;
-                    if (data.RSVP.ToString() == "")
-                        newRow["RSVP"] = "Unknown";
-                    else
-                        newRow["RSVP"] = data.RSVP;
-                    if (AttendeeDT.Rows.Count == 0)
-                        newRow["GUEST_ID"] = 1;
-                    else
-                        newRow["GUEST_ID"] = Convert.ToInt32(AttendeeDT.Compute("max(GUEST_ID)", string.Empty)) + 1;
-                    newRow["WED_ID"] = wedID;
-                    newRow["FOOD_ALLERGY"] = allergy;
-                    if (comment == "")
-                    {
-                        newRow["COMMENTS"] = DBNull.Value;
-                    }
-                    else
-                    {
-                        newRow["COMMENTS"] = comment;
-                    }
-                    AttendeeDT.Rows.Add(newRow);
 
-                    updateGuestCount();
+                    foreach (ListViewItem lvi in lvwAttendee.Items)
+                    {
+                        //if names are equal, do not add and break from search
+                        if (name.Equals(lvi.SubItems[0].Text))
+                        {
+                            equal = true;
+                            break;
+                        }
+                    }
+
+                    if (!equal)
+                    {
+                        //add new row to DataTable
+                        DataRow newRow = AttendeeDT.NewRow();
+                        newRow["FIRST_NAME"] = data.FirstName;
+                        newRow["LAST_NAME"] = data.LastName;
+                        if (data.RSVP.ToString() == "")
+                            newRow["RSVP"] = "Unknown";
+                        else
+                            newRow["RSVP"] = data.RSVP;
+                        if (AttendeeDT.Rows.Count == 0)
+                            newRow["GUEST_ID"] = 1;
+                        else
+                            newRow["GUEST_ID"] = Convert.ToInt32(AttendeeDT.Compute("max(GUEST_ID)", string.Empty)) + 1;
+                        newRow["WED_ID"] = wedID;
+                        newRow["FOOD_ALLERGY"] = allergy;
+                        if (comment == "")
+                        {
+                            newRow["COMMENTS"] = DBNull.Value;
+                        }
+                        else
+                        {
+                            newRow["COMMENTS"] = comment;
+                        }
+                        AttendeeDT.Rows.Add(newRow);
+
+                        updateGuestCount();
+                    }
+                    else
+                    {
+                        MessageBox.Show(name + " already is listed as a guest", "Duplicate", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
 
                     //ListViewItem [0] = NAME
                     //ListViewItem [1] = RSVP
