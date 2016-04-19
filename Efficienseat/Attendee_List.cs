@@ -383,6 +383,8 @@ namespace Efficienseat
                 lvwAttendee.AutoResizeColumn(4, ColumnHeaderAutoResizeStyle.HeaderSize);
                 // lvwAttendee.AutoResizeColumn(5, ColumnHeaderAutoResizeStyle.HeaderSize);
             }
+
+            lvwAttendee.Refresh();
         }
 
         // change data in selected item
@@ -535,8 +537,8 @@ namespace Efficienseat
                                 //ListViewItem [2] = GUEST_ID
                                 //ListViewItem [3] = FOOD_ALLERGY
                                 //ListViewItem [4] = COMMENTS
-                                ListViewItem newGuest = new ListViewItem(new string[] { newRow["LAST_NAME"] + ", " + newRow["FIRST_NAME"], "Unknown", newRow["GUEST_ID"].ToString(), "N", "" });
-                                lvwAttendee.Items.Add(newGuest);
+                                //ListViewItem newGuest = new ListViewItem(new string[] { newRow["LAST_NAME"] + ", " + newRow["FIRST_NAME"], "Unknown", newRow["GUEST_ID"].ToString(), "N", "" });
+                                //lvwAttendee.Items.Add(newGuest);
 
                             }
                         }
@@ -576,8 +578,9 @@ namespace Efficienseat
 
             MessageBox.Show("Excel file must have the following format:\n" +
                                 "Column A, Row 1 value must = 'LASTNAME'\n" +
-                                "Column B, Row 1 value must = 'FIRSTNAME'\n" + 
-                                "Worksheet name must = 'Sheet1'", "Import File Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                "Column B, Row 1 value must = 'FIRSTNAME'\n", "Import File Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //"Worksheet name must = 'Sheet1'", "Import File Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
 
             try
             {                
@@ -604,13 +607,22 @@ namespace Efficienseat
                         MyConnection = new OleDbConnection("provider=Microsoft.Jet.OLEDB.4.0;Data Source='" + absolutePath + "';Extended Properties=Excel 12.0;");
                     else
                         MyConnection = new OleDbConnection("provider=Microsoft.ACE.OLEDB.12.0;Data Source='" + absolutePath + "';Extended Properties=Excel 8.0;");
-                    MyCommand = new OleDbDataAdapter("select * from [Sheet1$]", MyConnection);
+
+
+                    MyConnection.Open();
+
+                    DataTable sheetTable = MyConnection.GetSchema("Tables");
+                    string strSHeetName = Convert.ToString(sheetTable.Rows[0]["TABLE_NAME"]);
+
+                    //MyCommand = new OleDbDataAdapter("select * from [Sheet1$]", MyConnection);
+                    MyCommand = new OleDbDataAdapter("select * from [" + strSHeetName + "]", MyConnection);
                     MyCommand.TableMappings.Add("Table", "Names");
                     DtSet = new DataSet();
                     MyCommand.Fill(DtSet);
                     DataTable NameTable = DtSet.Tables[0];
                     MyConnection.Close();
 
+                    lvwAttendee.BeginUpdate();
                     for (int i = 0; i < NameTable.Rows.Count; i++)
                     {
                         DataRow dr = NameTable.Rows[i];
@@ -648,12 +660,13 @@ namespace Efficienseat
                             //ListViewItem [2] = GUEST_ID
                             //ListViewItem [3] = FOOD_ALLERGY
                             //ListViewItem [4] = COMMENTS
-                            ListViewItem newGuest = new ListViewItem(new string[] { newRow["LAST_NAME"] + ", " + newRow["FIRST_NAME"], "Unknown", newRow["GUEST_ID"].ToString(), "N", "" });
-                            lvwAttendee.Items.Add(newGuest);
+                            //ListViewItem newGuest = new ListViewItem(new string[] { newRow["LAST_NAME"] + ", " + newRow["FIRST_NAME"], "Unknown", newRow["GUEST_ID"].ToString(), "N", "" });
+                            //lvwAttendee.Items.Add(newGuest);
 
                         }
 
                         updateGuestCount();
+                        lvwAttendee.Refresh();
                         if (AttendeeDT.Rows.Count == 100)
                         {
                             MessageBox.Show("You have reached your 100 guest limit.\nNo more names will be added." +
@@ -662,6 +675,8 @@ namespace Efficienseat
                             break;
                         }
                     }
+
+                    lvwAttendee.EndUpdate();
 
                 }
             }
