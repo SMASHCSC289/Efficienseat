@@ -402,9 +402,9 @@ namespace Efficienseat
                 lvwAttendee.AutoResizeColumn(3, ColumnHeaderAutoResizeStyle.HeaderSize);
                 lvwAttendee.AutoResizeColumn(4, ColumnHeaderAutoResizeStyle.HeaderSize);
                 // lvwAttendee.AutoResizeColumn(5, ColumnHeaderAutoResizeStyle.HeaderSize);
+                lvwAttendee.RedrawItems(0, lvwAttendee.Items.Count - 1, false);
             }
 
-            lvwAttendee.Refresh();
         }
 
         // change data in selected item

@@ -170,6 +170,7 @@
             // 
             // txtPartyName
             // 
+            this.txtPartyName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtPartyName.Enabled = false;
             this.txtPartyName.Location = new System.Drawing.Point(107, 62);
             this.txtPartyName.Name = "txtPartyName";
